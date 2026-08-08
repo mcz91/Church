@@ -46,9 +46,9 @@ Kontrakt: [`05-kontrakt-CHURCH-2.md`](05-kontrakt-CHURCH-2.md); decyzje:
 
 ## Następny krok
 
-Operator odbiera wdrożenie `CHURCH-2` (ocena „ślicznie", `docs/05`
-akceptacja 11) i rozstrzyga BRAK-i z dokumentów 04 i 06 (dostawca
-e-mail, hosting, domena, narzędzie analityki). Gałąź PM jest wchłonięta
-selektywnie (briefy w `docs/briefs/`, decyzja i właściciel integracji:
-dokument 06). Architekt pisze kontrakt `CHURCH-3` (automatyzacja
-faktów + pilotaż Gdańsk wg `PB-002`).
+Kontrakt [`CHURCH-3`](08-kontrakt-CHURCH-3.md) (automatyzacja faktów +
+Gdańsk wg `PB-002`, decyzje w [dokumencie 07](07-decyzja-automatyzacja-faktow-i-wstepnej-moderacji.md))
+jest napisany — **czeka na akt zatwierdzenia operatora**; do tego czasu
+koder go nie wykonuje. Operator odbiera też estetycznie `CHURCH-1`
+i `CHURCH-2` („ślicznie") i rozstrzyga BRAK-i (dostawca e-mail,
+hosting/CI, domena, narzędzie analityki).

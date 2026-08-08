@@ -19,9 +19,9 @@ Protokół (koszt czytelnika > koszt pisarza):
 - 2026-08-08 koder: `CHURCH-1` z poprawkami i `CHURCH-2` wykonane na
   gałęzi `claude/church-rating-app-architecture-gnx6tr`; `npm run
   verify` zielone; czeka odbiór operatora (`docs/05` akc. 11).
-- 2026-08-08 arch: akt „zatwierdz" odnotowany w `docs/05`; delegacja
-  „podejmij decyzje" wykonana dokumentem `docs/06`; następny produkt
-  architekta: kontrakt `CHURCH-3` (automatyzacja + Gdańsk wg `PB-002`).
+- 2026-08-08 arch: kontrakt `CHURCH-3` napisany (`docs/08`, decyzje
+  w `docs/07`) — pole zatwierdzenia puste, czeka na akt operatora;
+  `CHURCH-4` (zdjęcia) do napisania po wykonaniu `CHURCH-3`.
 
 ## WĄTKI — otwarte, bez kontraktu
 
