@@ -34,8 +34,12 @@ Protokół (koszt czytelnika > koszt pisarza):
   znaleźć swoje miejsce" — akt kwalifikacji bez ProductBriefu PM-a;
   założenia zastępcze w `docs/01`, wiążą po zatwierdzeniu `CHURCH-1`.
 - 2026-08-08 operator: kierunek wizualny bez estetyki dewocyjnej —
-  złoto i ciężki granat odrzucone; obowiązują tokeny v2 z `docs/01`
-  (świerkowa zieleń, bezszeryfy, zero symboliki religijnej w UI).
+  złoto i ciężki granat odrzucone; potem doprecyzowanie: „poetycko
+  piękne, nie krzykliwe" — obowiązują tokeny v3 z `docs/01` (lekki
+  szeryf + bezszeryf UI, hairline'y, zero symboliki religijnej w UI).
+- 2026-08-08 operator: opinie użytkowników mają być w produkcie —
+  forma „głosów" (cytat, autor, moderacja, bez gwiazdek) zaprojektowana
+  w makiecie v3; realizacja pozostaje odłożona do kontraktu CHURCH-2.
 
 ## PUŁAPKI — koszt odkrycia > koszt linii
 

@@ -100,29 +100,32 @@ Warianty odrzucone:
 
 ## Język wizualny — „prosto, ale ślicznie"
 
-Kierunek po korekcie operatora z 2026-08-08: **estetyka współczesnego
-produktu, nie sakralna** — bez złota, ciężkich granatów i motywów
-liturgicznych; produkt ma wyglądać jak dobra wyszukiwarka miejsc.
+Kierunek po korektach operatora z 2026-08-08: **poetycka prostota** —
+nie krzykliwie i nie sakralnie; piękno ma nieść typografia i światło,
+nie ornament ani symbolika.
 
 Tokeny (do wdrożenia jako CSS custom properties, jedno źródło):
 
-- tło `#FAFAF7` (papierowa biel), tekst `#1C2321` (atrament), akcent
-  `#2F6B5E` (głęboka świerkowa zieleń) z tłem pomocniczym `#EAF1EE`;
-  jeden akcent, paleta neutralna wyznaniowo;
-- typografia: wyłącznie bezszeryfowa — nagłówki ciężkim krojem
-  geometryczno-humanistycznym, treść czytelnym tekstowym (docelowo
-  Inter / General Sans lub równoważne); fonty self-hosted — zero
-  CDN-ów zewnętrznych;
-- dużo światła: szeroki interlinia, karty z miękkim cieniem, promień
-  12–14 px, pola i przyciski w formie pigułek, maksymalna szerokość
-  łamu czytelnicza (~68 znaków);
+- tło `#FBFAF6` (papier), tekst `#252A26` (atrament), akcent `#3E6B5E`
+  (przygaszona świerkowa zieleń) z tłem pomocniczym `#EDF2EF`; jeden
+  akcent, używany oszczędnie; paleta neutralna wyznaniowo;
+- typografia dwugłosowa: nazwy, nagłówki i cytaty głosów — lekki szeryf
+  w wadze regularnej, kursywa dla tonu odautorskiego; warstwa UI
+  (etykiety, przyciski, tabele) — bezszeryf systemowy/Inter; fonty
+  self-hosted — zero CDN-ów zewnętrznych;
+- zamiast ciężkich ram: linie włoskowe (hairline) jako podziały,
+  jedna biała karta „arkusza" dla profilu i porównania, promień 10 px,
+  cień ledwo obecny; wyszukiwarka i przyciski jako pigułki;
+- kompozycja skondensowana: wąski łam (~660 px), listy zamiast
+  kart-kafli, etykiety drobną kapitalikową antykwą;
 - mobile-first; bez ikon ozdobnych i symboliki religijnej w warstwie
   UI — treść religijna pojawia się wyłącznie jako fakt w danych.
 
-Wzorcem jest makieta v2 zaakceptowana kierunkowo przez operatora.
-Estetyka nie jest w pełni mechanizowalna — ostateczną akceptację
-„ślicznie" wydaje operator przy odbiorze wdrożenia, i tak zapisuje to
-kontrakt.
+Głosy użytkowników mają zaprojektowaną formę: cytat szeryfową kursywą,
+autor i data pod spodem, dopisek o moderacji — bez gwiazdek i punktacji,
+które wprowadzałyby ranking. Wzorcem jest makieta v3. Estetyka nie jest
+w pełni mechanizowalna — ostateczną akceptację „ślicznie" wydaje
+operator przy odbiorze wdrożenia, i tak zapisuje to kontrakt.
 
 ## Mechanizacja decyzji
 
