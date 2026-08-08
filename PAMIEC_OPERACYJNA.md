@@ -16,9 +16,9 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-08 pm: PB-002 (zastępuje PB-001) na gałęzi
-  `claude/church-rating-app-pm-ze7w6m`, niescalony; decyzje operatora
-  w sekcji BRAK briefu.
+- 2026-08-08 pm: PB-002 zatwierdzony, na gałęzi
+  `claude/church-rating-app-pm-ze7w6m`, niescalony; następna w kolejce
+  sesja architekta nad kwalifikacją PB-002.
 
 ## WĄTKI — otwarte, bez kontraktu
 

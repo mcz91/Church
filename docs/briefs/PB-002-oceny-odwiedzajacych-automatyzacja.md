@@ -1,6 +1,7 @@
 # ProductBrief PB-002 — oceny odwiedzających na zautomatyzowanym katalogu
 
-Status: **czeka na zatwierdzenie operatora** · autor: PM · 2026-08-08
+Status: **zatwierdzony przez operatora 2026-08-08** (komplet decyzji
+w sekcji „Decyzje operatora") · autor: PM · 2026-08-08
 Zastępuje [`PB-001`](PB-001-porownanie-praktyczne-pilot.md) decyzją
 operatora: rdzeniem produktu są oceny odwiedzających, a pozyskiwanie
 i utrzymanie danych ma być mocno zautomatyzowane.
@@ -8,7 +9,7 @@ Wynik kwalifikacji PM: **buduj (zakres pilotażowy)** — pętli ocen nie da
 się zwalidować taniej niż realnym produktem przyjmującym realne oceny;
 zakres ograniczony do jednego miasta trzyma koszt eksperymentu.
 
-## Interpretacja polecenia operatora (do potwierdzenia przy zatwierdzeniu)
+## Interpretacja polecenia operatora (potwierdzona 2026-08-08)
 
 - „mocny automatyzm" = fakty o kościołach pozyskiwane i odświeżane
   automatycznie z publicznych źródeł (koszt ręczny na parafię bliski
@@ -88,13 +89,13 @@ ustrukturyzowane, moderowane oceny własnego doświadczenia, to:
 
 ## Warunek porażki
 
-Hipoteza jest obalona, jeżeli po 8 tygodniach pilotażu w jednym mieście:
+Hipoteza jest obalona, jeżeli po 8 tygodniach pilotażu w Gdańsku:
 
 - mniej niż 1% odwiedzin karty kończy się przesłaną oceną, **lub**
 - mniej niż 10% kart pilotażu ma ≥3 opublikowane oceny, **lub**
 - utrzymanie jakości wymaga stałej pracy ręcznej przy faktach lub
-  moderacji przekraczającej limit czasu zadeklarowany przez operatora
-  przy zatwierdzeniu.
+  moderacji przekraczającej 3 godziny tygodniowo (limit zadeklarowany
+  przez operatora przy zatwierdzeniu).
 
 Obalenie kończy iterację raportem: pivot (np. powrót do porównania
 faktów z PB-001) albo odrzucenie kierunku. Progi koryguje operator.
@@ -135,11 +136,12 @@ koszt wejścia niż landing PB-001 — świadomie, bo decyzja operatora
 przenosi walidację z „czy fakty są warte udostępnienia" na „czy ludzie
 będą oceniać" — a tego nie sprawdzi atrapa.
 
-## BRAK — do decyzji operatora przed przekazaniem architektowi
+## Decyzje operatora (2026-08-08, czat)
 
-- `BRAK: zatwierdzenie interpretacji polecenia` — sekcja wyżej;
-- `BRAK: miasto pilotażu` — wybór wymaga wiedzy operatora o rynku;
-- `BRAK: metryka północna` — propozycja wyżej;
-- `BRAK: limit czasu operatora na moderację graniczną` — wchodzi do
-  warunku porażki;
-- `BRAK: zatwierdzenie briefu` — PM nie zatwierdza własnych briefów.
+1. interpretacja polecenia — potwierdzona;
+2. miasto pilotażu — **Gdańsk**;
+3. metryka północna — zatwierdzona: **tygodniowa liczba opublikowanych
+   ocen odwiedzających**;
+4. limit czasu operatora na moderację graniczną — **3 h/tydzień**
+   (wpisany do warunku porażki);
+5. brief — **zatwierdzony**; przechodzi do kwalifikacji architekta.

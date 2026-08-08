@@ -21,11 +21,13 @@ bramki CI ani registry kontraktów.
 
 ## Następny krok
 
-Obowiązujący kierunek operatora (2026-08-08): rdzeniem produktu są
-oceny odwiedzających, pozyskiwanie danych mocno zautomatyzowane.
-Aktualny brief:
-[`briefs/PB-002-oceny-odwiedzajacych-automatyzacja.md`](briefs/PB-002-oceny-odwiedzajacych-automatyzacja.md)
-(wynik kwalifikacji PM: buduj, zakres pilotażowy; zastępuje PB-001).
-Czeka na decyzje operatora z sekcji `BRAK` briefu — w tym zatwierdzenie
-interpretacji polecenia i wybór miasta pilotażu. Po zatwierdzeniu
-architekt kwalifikuje brief i pisze kontrakt `CHURCH-1`.
+Obowiązuje zatwierdzony brief
+[`briefs/PB-002-oceny-odwiedzajacych-automatyzacja.md`](briefs/PB-002-oceny-odwiedzajacych-automatyzacja.md):
+rdzeniem produktu są moderowane oceny odwiedzających na automatycznie
+zasilanym katalogu; pilotaż w Gdańsku; metryka północna: tygodniowa
+liczba opublikowanych ocen odwiedzających. Komplet decyzji operatora
+w sekcji „Decyzje operatora" briefu.
+
+Następny krok: sesja architekta (`PROMPT_ARCHITEKT.md`) kwalifikuje
+PB-002 i pisze kontrakt `CHURCH-1` — pierwszy kontrakt kodu musi
+ustanowić komendy weryfikacji w `README.md`.
