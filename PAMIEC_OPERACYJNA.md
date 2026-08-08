@@ -19,14 +19,14 @@ Protokół (koszt czytelnika > koszt pisarza):
 - 2026-08-08 koder: `CHURCH-1` z poprawkami i `CHURCH-2` wykonane na
   gałęzi `claude/church-rating-app-architecture-gnx6tr`; `npm run
   verify` zielone; czeka odbiór operatora (`docs/05` akc. 11).
-- 2026-08-08 koder: akt zatwierdzenia `CHURCH-2` padł w czacie
-  („zatwierdz", w odpowiedzi na OBJECTION) — pole zatwierdzenia
-  w `docs/05` uzupełnia architekt, koder tego pliku nie dotyka.
+- 2026-08-08 arch: akt „zatwierdz" odnotowany w `docs/05`; delegacja
+  „podejmij decyzje" wykonana dokumentem `docs/06`; następny produkt
+  architekta: kontrakt `CHURCH-3` (automatyzacja + Gdańsk wg `PB-002`).
 
 ## WĄTKI — otwarte, bez kontraktu
 
-- 2026-08-08 arch: analityka metryki północnej — osobna decyzja
-  operatora; zdjęcia w głosach wycięte do `CHURCH-3` (`docs/04`).
+- 2026-08-08 arch: narzędzie analityki odwiedzin (diagnostyka `PB-002`)
+  — decyzja operatora przed startem pilotażu Gdańska.
 
 ## DECYZJE Z CZATU — obowiązują, niezmechanizowane
 
@@ -40,12 +40,6 @@ Protokół (koszt czytelnika > koszt pisarza):
   wykonawczym jest opis tokenów w `docs/01`, nie plik makiety.
 
 ## PUŁAPKI — koszt odkrycia > koszt linii
-
-- 2026-08-08 koder: gałąź `claude/church-rating-app-pm-ze7w6m`
-  (PB-001/PB-002, zatwierdzony Gdańsk) bazuje na bootstrapie sprzed
-  `CHURCH-1` i równolegle edytuje `docs/CURRENT_STATE.md` oraz ten
-  plik — integracja z gałęzią wykonania wymaga właściciela kolejności
-  scalania (konstytucja §14).
 
 - 2026-08-08 koder: oficjalne strony części parafii Torunia bywają
   niedostępne (katedratorun.pl — domena przejęta przez aukcję;

@@ -3,9 +3,11 @@
 Wersja: 1 · Data: 2026-08-08 · Autor: architekt · Typ: feature
 (nowe zachowanie — nowe testy muszą być czerwone przed implementacją).
 
-**Zatwierdzenie operatora:** _niewypełnione — kontrakt staje się
-wykonywalny wyłącznie po jawnym akcie operatora; do tej chwili żaden
-koder nie zaczyna pracy._
+**Zatwierdzenie operatora:** zatwierdzony aktem operatora z 2026-08-08
+(czat): „zatwierdz" — wydanym w odpowiedzi na `OBJECTION` kodera
+o pustym polu zatwierdzenia; wpis uzupełnił architekt, bo dla kodera
+ten plik jest tylko do odczytu. Kontrakt jest od tej chwili
+niemutowalny.
 
 Decyzje, które ten kontrakt realizuje:
 [dokument 03](03-model-glosow-ocen-i-rankingu.md) (model głosów,

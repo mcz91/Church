@@ -32,18 +32,23 @@ Kontrakt: [`05-kontrakt-CHURCH-2.md`](05-kontrakt-CHURCH-2.md); decyzje:
   04); build nie ustawia `site`, obraz Open Graph czeka na domenę (DŁUG
   w `PAMIEC_OPERACYJNA.md`); adres serwisu dla stron statycznych podaje
   `PUBLIC_ZAPIS_URL` (domyślnie localhost);
-- zdjęcia w głosach: poza zakresem, czekają na kontrakt `CHURCH-3`
-  (dokument 04);
+- kolejność kontraktów z [dokumentu 06](06-decyzja-kwalifikacja-pb002-i-integracja.md):
+  `CHURCH-3` — automatyczne pozyskiwanie faktów + pilotaż `PB-002`
+  w Gdańsku; `CHURCH-4` — zdjęcia w głosach; Toruń do tego czasu
+  pozostaje jedynym miastem (walidacja mechaniki);
 - registry kontraktów nie istnieje; kontrakty obowiązują w treści
   dokumentów `docs/02-…`, `docs/05-…`;
-- metryka północna nierozstrzygnięta; analityka poza kontraktami;
+- metryka północna zatwierdzona w `PB-002` (tygodniowa liczba
+  opublikowanych ocen), liczona z historii gita bez analityki osobowej
+  (dokument 06); narzędzie analityki odwiedzin pozostaje `BRAK`;
 - ocena estetyczna („ślicznie") należy do operatora przy odbiorze —
   nie jest zmechanizowana.
 
 ## Następny krok
 
 Operator odbiera wdrożenie `CHURCH-2` (ocena „ślicznie", `docs/05`
-akceptacja 11); pole zatwierdzenia w `docs/05` czeka na uzupełnienie
-przez architekta (akt operatora padł w czacie 2026-08-08). Osobno:
-rozplątanie równoległej gałęzi PM (pułapka w `PAMIEC_OPERACYJNA.md`)
-wymaga decyzji operatora o kolejności scalania (konstytucja §14).
+akceptacja 11) i rozstrzyga BRAK-i z dokumentów 04 i 06 (dostawca
+e-mail, hosting, domena, narzędzie analityki). Gałąź PM jest wchłonięta
+selektywnie (briefy w `docs/briefs/`, decyzja i właściciel integracji:
+dokument 06). Architekt pisze kontrakt `CHURCH-3` (automatyzacja
+faktów + pilotaż Gdańsk wg `PB-002`).

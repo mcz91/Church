@@ -90,9 +90,9 @@ decyzja operatora przed startem pilotażu.
 
 ## Co pozostaje przy operatorze
 
-1. zatwierdzenie kontraktu `CHURCH-2` (pole w
-   [dokumencie 05](05-kontrakt-CHURCH-2.md) — architekt nie zatwierdza
-   własnych kontraktów);
+1. ~~zatwierdzenie kontraktu `CHURCH-2`~~ — dokonane aktem „zatwierdz"
+   (czat 2026-08-08), odnotowane w [dokumencie 05](05-kontrakt-CHURCH-2.md);
 2. `BRAK: dostawca e-mail`, `BRAK: hosting`, `BRAK: domena`
    (dokument 04) oraz `BRAK: narzędzie analityki` (wyżej);
-3. odbiór estetyczny `CHURCH-1` („ślicznie", dokument 02 akc. 7).
+3. odbiór estetyczny `CHURCH-1` i `CHURCH-2` („ślicznie", dokument 02
+   akc. 7 i dokument 05 akc. 11).
