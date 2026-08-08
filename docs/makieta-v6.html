@@ -1,0 +1,474 @@
+<!--
+Wzorzec wizualny zatwierdzony przez operatora 2026-08-08 (docs/01, docs/02).
+Dane, nazwy parafii, głosy i zdjęcia są poglądowe — nie opisują realnych wspólnot.
+Sekcje Start / Profil (fakty) / Porównanie / karta udostępnienia = zakres CHURCH-1.
+Sekcje Głosy / wymiary ocen / W Toruniu (ranking) / galeria = zakres CHURCH-2 (docs/03).
+-->
+<title>Church — makieta MVP „Znajdź swoje miejsce" (v6)</title>
+<style>
+  :root{
+    --bg:#FBFAF6; --surface:#FFFFFF; --ink:#252A26; --muted:#7A8078;
+    --accent:#3E6B5E; --accent-deep:#33584E; --accent-soft:#EDF2EF;
+    --line:#E8E6DC; --line-soft:rgba(122,128,120,.28);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--sans);
+    line-height:1.65; padding:0 22px 64px; font-size:15.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent-soft);color:var(--accent-deep)}
+  a{color:var(--accent)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:660px;margin:0 auto}
+
+  /* ożywanie — tylko z JS i bez reduced-motion */
+  .will{opacity:0;transform:translateY(12px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.6,.2,1)}
+  .will.in{opacity:1;transform:none}
+  .list .row.will:nth-child(2){transition-delay:.07s}
+  .list .row.will:nth-child(3){transition-delay:.14s}
+
+  .kicker{
+    font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--muted);margin:60px 0 16px;text-align:center;
+  }
+  .kicker::after{
+    content:"";display:block;width:1px;height:30px;margin:14px auto 0;
+    background:linear-gradient(var(--line-soft),transparent);
+  }
+
+  header.site{padding:66px 0 6px;text-align:center}
+  .wordmark{font-family:var(--serif);font-size:1.5rem;letter-spacing:.015em}
+  .wordmark i{color:var(--accent);font-style:normal}
+  header.site .note{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+
+  /* start */
+  .hero{text-align:center;padding:36px 0 6px;position:relative}
+  .hero::before{
+    content:"";position:absolute;inset:-40px -60px auto;height:300px;pointer-events:none;
+    background:radial-gradient(340px 190px at 50% 30%,rgba(62,107,94,.055),transparent 70%);
+  }
+  .hero h1{
+    font-family:var(--serif);font-weight:400;font-size:clamp(2.1rem,5.6vw,3rem);
+    line-height:1.18;text-wrap:balance;letter-spacing:.002em;
+  }
+  .hero .sub{
+    font-family:var(--serif);font-style:italic;color:var(--muted);
+    margin-top:12px;font-size:1.12rem;letter-spacing:.005em;
+  }
+  .search{
+    margin:32px auto 0;max-width:400px;display:flex;align-items:center;position:relative;
+    border:1px solid var(--line);border-radius:999px;background:var(--surface);
+    padding:5px 5px 5px 21px;box-shadow:0 1px 2px rgba(37,42,38,.03),0 6px 24px rgba(37,42,38,.05);
+    transition:border-color .25s,box-shadow .25s;
+  }
+  .search:focus-within{border-color:var(--accent);box-shadow:0 1px 2px rgba(37,42,38,.03),0 8px 28px rgba(62,107,94,.12)}
+  .search input{flex:1;border:0;padding:9px 4px;font:inherit;color:var(--ink);background:transparent;outline:none;min-width:0}
+  .search button{
+    border:0;background:var(--accent);color:#fff;font:inherit;font-size:.9rem;
+    padding:9px 21px;border-radius:999px;cursor:pointer;transition:background .2s;
+  }
+  .search button:hover,.search button:focus-visible{background:var(--accent-deep)}
+  .hints{margin-top:15px;font-size:.85rem;color:var(--muted)}
+  .hints a{
+    color:var(--accent);text-decoration:none;
+    border-bottom:1px solid var(--line);transition:border-color .2s;
+  }
+  .hints a:hover{border-color:var(--accent)}
+
+  /* punkty — kropki z częściowym wypełnieniem */
+  .dots{display:inline-flex;gap:3.5px;vertical-align:-1px}
+  .dots u{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  .dots u.o{background:transparent;box-shadow:inset 0 0 0 1px var(--line-soft)}
+  .dots u.p{
+    background:linear-gradient(90deg,var(--accent) var(--f,50%),transparent var(--f,50%));
+    box-shadow:inset 0 0 0 1px var(--line-soft);
+  }
+  .score-num{font-family:var(--serif);font-size:1.05em;font-variant-numeric:tabular-nums}
+
+  /* wyniki */
+  .list{margin-top:28px;border-top:1px solid var(--line)}
+  .row{
+    display:flex;justify-content:space-between;gap:18px;align-items:baseline;
+    padding:15px 2px;border-bottom:1px solid var(--line);
+  }
+  .row b{font-family:var(--serif);font-weight:500;font-size:1.14rem;letter-spacing:.004em}
+  .row a.name{color:inherit;text-decoration:none;background:linear-gradient(var(--accent),var(--accent)) no-repeat 0 100%/0 1px;transition:background-size .3s}
+  .row:hover a.name{background-size:100% 1px}
+  .row .sub{color:var(--muted);font-size:.84rem;margin-top:1px}
+  .row .aside{text-align:right;flex-shrink:0}
+  .row .facts{color:var(--accent);font-size:.82rem}
+  .row .sc{font-size:.86rem;margin-top:2px}
+  .row .sc small{color:var(--muted);font-size:.78rem}
+
+  /* arkusz */
+  .sheet{
+    background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:36px 38px 32px;box-shadow:0 1px 2px rgba(37,42,38,.03),0 10px 34px rgba(37,42,38,.045);
+  }
+  .profile-top{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}
+  .sheet .denom{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .sheet h2{font-family:var(--serif);font-weight:400;font-size:2rem;margin-top:7px;line-height:1.15;letter-spacing:.002em}
+  .sheet .addr{color:var(--muted);font-size:.88rem;margin-top:5px}
+  .sheet .addr a{text-decoration:none;border-bottom:1px solid var(--line)}
+  .bigscore{text-align:right;flex-shrink:0;padding-top:4px}
+  .bigscore .n{font-family:var(--serif);font-size:2.3rem;line-height:1;font-variant-numeric:tabular-nums}
+  .bigscore .n small{font-size:1.05rem;color:var(--muted)}
+  .bigscore .dots{margin-top:6px}
+  .bigscore .c{font-size:.74rem;color:var(--muted);margin-top:5px}
+
+  dl.facts{margin-top:24px;border-top:1px solid var(--line)}
+  dl.facts>div{
+    display:grid;grid-template-columns:132px 1fr;gap:2px 24px;
+    padding:12px 0;border-bottom:1px solid var(--line);
+  }
+  dt{color:var(--muted);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;padding-top:3px}
+  dd{font-size:.95rem}
+  .src{font-size:.72rem;color:var(--muted);white-space:nowrap;margin-left:8px}
+  .src::before{content:"— "}
+
+  /* galeria */
+  .gallery{display:flex;gap:8px;margin-top:22px}
+  .ph{
+    flex:1;aspect-ratio:4/3;border-radius:7px;position:relative;overflow:hidden;
+    background:linear-gradient(150deg,#DCE5DF 0%,#C6D4CB 55%,#B2C4B8 100%);
+  }
+  .ph>span{
+    position:absolute;inset:0;transition:transform .5s ease;
+    background:inherit;
+  }
+  .ph:hover>span{transform:scale(1.04)}
+  .ph::after{
+    content:attr(data-cap);position:absolute;left:0;right:0;bottom:0;z-index:1;
+    font-size:.62rem;color:#fff;background:linear-gradient(transparent,rgba(37,42,38,.55));
+    padding:16px 8px 5px;letter-spacing:.02em;
+  }
+  .ph.a,.ph.a>span{background:linear-gradient(160deg,#E3DED2 0%,#CFC6B4 60%,#B8AE99 100%)}
+  .ph.b,.ph.b>span{background:linear-gradient(200deg,#D9E2E4 0%,#BFCED2 55%,#A7BABF 100%)}
+  .ph.more{
+    flex:0 0 74px;aspect-ratio:auto;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--accent);font-size:.78rem;text-align:center;line-height:1.3;
+  }
+  .ph.more::after{content:none}
+
+  /* wymiary */
+  .aspects{margin-top:24px;border-top:1px solid var(--line);padding-top:18px}
+  .aspects h4{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .agrid{display:grid;grid-template-columns:1fr 1fr;gap:9px 36px;margin-top:12px}
+  .arow{display:flex;justify-content:space-between;align-items:center;font-size:.88rem}
+  .arow .v{display:flex;align-items:center;gap:9px}
+  .arow .score-num{font-size:.92rem}
+
+  /* głosy */
+  .voices{margin-top:30px;border-top:1px solid var(--line);padding-top:20px}
+  .voices h3{
+    font-family:var(--serif);font-weight:400;font-size:1.3rem;
+    display:flex;align-items:baseline;gap:10px;
+  }
+  .voices h3 small{font-family:var(--sans);font-size:.76rem;color:var(--muted)}
+  .quote{padding:19px 0 8px;border-bottom:1px solid var(--line)}
+  .quote:last-of-type{border-bottom:0}
+  .qhead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:9px}
+  .qhead .by{font-size:.8rem;color:var(--muted)}
+  .qhead .by b{color:var(--ink);font-weight:600}
+  .qhead .sc{font-size:.82rem;color:var(--muted);display:flex;gap:8px;align-items:center;flex-shrink:0}
+  .quote p{
+    font-family:var(--serif);font-size:1.16rem;line-height:1.55;font-style:italic;
+    font-feature-settings:"onum";
+    text-indent:-.42em;max-width:56ch;
+  }
+  .quote p::before{content:"„"}
+  .quote p::after{content:"”"}
+  .quote .qph{margin:12px 0 8px;width:136px}
+  .quote .qph .ph{border-radius:6px}
+  .quote .tags{margin:9px 0 12px;font-size:.75rem;color:var(--muted)}
+  .quote .tags i{font-style:normal;color:var(--accent)}
+  .voices .mod{font-size:.72rem;color:var(--muted);margin-top:16px;max-width:52ch}
+  .mod::before{content:"";display:inline-block;width:5px;height:5px;border-radius:99px;background:var(--accent);margin-right:7px;vertical-align:2px}
+  .addvoice{
+    margin-top:18px;display:inline-block;border:1px solid var(--accent);color:var(--accent);
+    border-radius:999px;padding:8px 24px;font-size:.88rem;text-decoration:none;
+    transition:background .2s,color .2s;
+  }
+  .addvoice:hover,.addvoice:focus-visible{background:var(--accent);color:#fff}
+
+  /* ranking */
+  .rank ol{list-style:none;counter-reset:r;border-top:1px solid var(--line);padding:0}
+  .rank li{
+    counter-increment:r;display:flex;align-items:baseline;gap:18px;
+    padding:14px 2px;border-bottom:1px solid var(--line);
+  }
+  .rank li::before{
+    content:counter(r);font-family:var(--serif);font-style:italic;font-size:1.1rem;
+    color:var(--muted);width:1.1em;text-align:right;flex-shrink:0;
+  }
+  .rank .who{flex:1}
+  .rank .who b{font-family:var(--serif);font-weight:500;font-size:1.12rem}
+  .rank .who .sub{color:var(--muted);font-size:.82rem}
+  .rank .sc{display:flex;gap:10px;align-items:baseline;flex-shrink:0}
+  .rank .sc .score-num{font-size:1.05rem}
+  .rank .sc small{color:var(--muted);font-size:.74rem}
+  .rank .foot{font-size:.76rem;color:var(--muted);margin-top:14px;max-width:54ch;line-height:1.6}
+  .rank .sort{font-size:.78rem;color:var(--muted);margin-bottom:10px}
+  .rank .sort b{color:var(--ink);font-weight:600;border-bottom:1px solid var(--accent)}
+  .rank .sort a{text-decoration:none;color:var(--muted);border-bottom:1px solid var(--line);transition:border-color .2s}
+  .rank .sort a:hover{border-color:var(--accent)}
+
+  /* porównanie */
+  .compare-scroll{overflow-x:auto}
+  table.compare{width:100%;border-collapse:collapse;min-width:520px;font-variant-numeric:tabular-nums}
+  .compare th,.compare td{padding:11px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  .compare thead th{
+    font-family:var(--serif);font-weight:500;font-size:1.12rem;
+    border-bottom:1.5px solid var(--ink);padding-bottom:9px;
+  }
+  .compare thead th:first-child{width:160px}
+  .compare tbody th{color:var(--muted);font-weight:500;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;width:160px}
+  .compare td{font-size:.92rem}
+  .compare tbody tr:last-child td,.compare tbody tr:last-child th{border-bottom:0}
+  .permalink{margin-top:15px;font-size:.8rem;color:var(--muted);text-align:center}
+  .permalink code{background:var(--accent-soft);color:var(--accent);border-radius:6px;padding:2px 10px;font-size:.78rem}
+
+  /* udostępnienie */
+  .og{
+    margin:24px auto 0;max-width:340px;background:var(--surface);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    box-shadow:0 2px 8px rgba(37,42,38,.06);
+  }
+  .og-banner{
+    background:var(--accent-soft);color:var(--accent-deep);
+    padding:22px 18px;font-family:var(--serif);font-size:1.14rem;line-height:1.45;
+  }
+  .og-banner i{font-style:italic;opacity:.75}
+  .og-meta{padding:10px 15px 12px}
+  .og-meta .t{font-weight:600;font-size:.88rem}
+  .og-meta .d{color:var(--muted);font-size:.78rem;margin-top:2px}
+  .og-meta .u{color:var(--muted);font-size:.66rem;letter-spacing:.08em;margin-top:7px;text-transform:uppercase}
+
+  footer.site{margin-top:76px;text-align:center;color:var(--muted);font-size:.78rem}
+  footer.site::before{content:"·";display:block;color:var(--accent);font-size:1.1rem;margin-bottom:8px}
+  footer.site .line{font-family:var(--serif);font-style:italic;font-size:.95rem;margin-bottom:10px}
+
+  @media (max-width:560px){
+    dl.facts>div{grid-template-columns:1fr}
+    .sheet{padding:28px 22px}
+    .row{flex-direction:column;gap:4px}
+    .row .aside{text-align:left}
+    .agrid{grid-template-columns:1fr}
+    .profile-top{flex-direction:column}
+    .bigscore{text-align:left}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important}
+  }
+</style>
+
+<header class="site">
+  <div class="wordmark">Church<i>.</i></div>
+  <div class="note">Makieta v6 · dane, głosy i zdjęcia poglądowe</div>
+</header>
+
+<section class="hero wrap">
+  <h1>Gdzie szukasz<br>swojego miejsca?</h1>
+  <p class="sub">Godziny, dojazd, muzyka, wspólnoty — i głosy ludzi, którzy tam bywają.</p>
+  <div class="search">
+    <input aria-label="Miejscowość" value="Toruń">
+    <button type="button">Szukaj</button>
+  </div>
+  <p class="hints">np. <a href="#">msza z dziećmi</a> · <a href="#">wejście bez schodów</a> · <a href="#">transmisja online</a></p>
+
+  <div class="list" aria-label="Wyniki">
+    <div class="row">
+      <div><b><a class="name" href="#profil">Św. Anny na Wzgórzu</a></b><div class="sub">rzymskokatolicka · ul. Klonowa 12</div></div>
+      <div class="aside">
+        <div class="facts">7 mszy w niedzielę · schola</div>
+        <div class="sc"><span class="score-num">4,6</span> <small>· 23 głosy</small></div>
+      </div>
+    </div>
+    <div class="row">
+      <div><b><a class="name" href="#">Dobrego Pasterza</a></b><div class="sub">rzymskokatolicka · ul. Nadrzeczna 3</div></div>
+      <div class="aside">
+        <div class="facts">msza z dziećmi · duży parking</div>
+        <div class="sc"><span class="score-num">4,8</span> <small>· 31 głosów</small></div>
+      </div>
+    </div>
+    <div class="row">
+      <div><b><a class="name" href="#">Opatrzności</a></b><div class="sub">ewangelicko-augsburska · pl. Zgody 1</div></div>
+      <div class="aside">
+        <div class="facts">pętla indukcyjna · transmisja</div>
+        <div class="sc"><span class="score-num">4,5</span> <small>· 12 głosów</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="kicker wrap" id="profil">Profil</div>
+
+<section class="wrap">
+  <div class="sheet">
+    <div class="profile-top">
+      <div>
+        <div class="denom">Parafia rzymskokatolicka · Toruń</div>
+        <h2>Św. Anny na Wzgórzu</h2>
+        <div class="addr">ul. Klonowa 12 · <a href="#">otwórz w mapach ↗</a></div>
+      </div>
+      <div class="bigscore">
+        <div class="n">4,6<small> / 5</small></div>
+        <div class="dots" role="img" aria-label="ocena 4,6 na 5"><u></u><u></u><u></u><u></u><u class="p" style="--f:60%"></u></div>
+        <div class="c">23 głosy · 12 zdjęć</div>
+      </div>
+    </div>
+
+    <dl class="facts">
+      <div><dt>Msze w niedzielę</dt>
+        <dd>7:00 · 8:30 · 10:00 (z dziećmi) · 11:30 · 13:00 · 18:00 · 20:00<span class="src">strona parafii, 08.2026</span></dd></div>
+      <div><dt>Spowiedź</dt>
+        <dd>pół godziny przed mszą; piątki 17:00–18:00<span class="src">strona parafii, 08.2026</span></dd></div>
+      <div><dt>Dostępność</dt>
+        <dd>wejście bez schodów od parkingu, miejsce na wózek<span class="src">wizyta, 07.2026</span></dd></div>
+      <div><dt>Muzyka</dt>
+        <dd>organy; schola młodzieżowa o 10:00<span class="src">strona parafii, 08.2026</span></dd></div>
+      <div><dt>Wspólnoty</dt>
+        <dd>krąg biblijny · duszpasterstwo akademickie · wolontariat<span class="src">biuletyn, 06.2026</span></dd></div>
+    </dl>
+
+    <div class="gallery" aria-label="Zdjęcia">
+      <div class="ph a" data-cap="nawa główna · fot. Magda K."><span></span></div>
+      <div class="ph" data-cap="witraż nad chórem · fot. Ewa"><span></span></div>
+      <div class="ph b" data-cap="wejście od parkingu · fot. Tomasz W."><span></span></div>
+      <div class="ph more">+9<br>zdjęć</div>
+    </div>
+
+    <div class="aspects">
+      <h4>Z głosów, w pięciu wymiarach doświadczenia</h4>
+      <div class="agrid">
+        <div class="arow">Przyjęcie<span class="v"><span class="dots"><u></u><u></u><u></u><u></u><u class="p" style="--f:90%"></u></span><span class="score-num">4,9</span></span></div>
+        <div class="arow">Muzyka<span class="v"><span class="dots"><u></u><u></u><u></u><u></u><u class="p" style="--f:40%"></u></span><span class="score-num">4,4</span></span></div>
+        <div class="arow">Z dziećmi<span class="v"><span class="dots"><u></u><u></u><u></u><u></u><u class="p" style="--f:50%"></u></span><span class="score-num">4,5</span></span></div>
+        <div class="arow">Dostępność<span class="v"><span class="dots"><u></u><u></u><u></u><u></u><u class="p" style="--f:70%"></u></span><span class="score-num">4,7</span></span></div>
+        <div class="arow">Organizacja<span class="v"><span class="dots"><u></u><u></u><u></u><u></u><u class="p" style="--f:30%"></u></span><span class="score-num">4,3</span></span></div>
+      </div>
+    </div>
+
+    <div class="voices">
+      <h3>Głosy <small>23 · po moderacji</small></h3>
+
+      <div class="quote">
+        <div class="qhead">
+          <div class="by"><b>Magda K.</b> · sierpień 2026</div>
+          <div class="sc"><span class="dots"><u></u><u></u><u></u><u></u><u></u></span><span class="score-num">5</span></div>
+        </div>
+        <p>Przyszliśmy w niedzielę z dwójką dzieci, trochę na próbę. Nikt nie
+        syczał, gdy młodszy nie wytrzymał — a schola śpiewała tak, że starszy
+        pierwszy raz sam zapytał, kiedy wrócimy</p>
+        <div class="qph"><div class="ph a" data-cap="fot. Magda K."><span></span></div></div>
+        <div class="tags">najwyżej: <i>przyjęcie</i>, <i>z dziećmi</i></div>
+      </div>
+
+      <div class="quote">
+        <div class="qhead">
+          <div class="by"><b>Tomasz W.</b> · lipiec 2026</div>
+          <div class="sc"><span class="dots"><u></u><u></u><u></u><u></u><u class="o"></u></span><span class="score-num">4</span></div>
+        </div>
+        <p>Jeżdżę na wózku i zwykle sprawdzam schody przed kimkolwiek innym.
+        Tu wjechałem od parkingu bez pomocy i miałem swoje miejsce w nawie,
+        nie na doczepkę. Punkt mniej, bo podjazd bywa zastawiony autami</p>
+        <div class="tags">najwyżej: <i>dostępność</i> · najniżej: <i>organizacja</i></div>
+      </div>
+
+      <div class="quote">
+        <div class="qhead">
+          <div class="by"><b>Ewa</b> · lipiec 2026</div>
+          <div class="sc"><span class="dots"><u></u><u></u><u></u><u></u><u></u></span><span class="score-num">5</span></div>
+        </div>
+        <p>Msza o 7:00 jest cicha i krótka, w sam raz przed pracą. Czasem
+        tylko organista się rozpędzi — ale to zarzut z gatunku miłych</p>
+        <div class="tags">najwyżej: <i>muzyka</i></div>
+      </div>
+
+      <div class="mod">Każdy głos ma autora, ocenę w pięciu wymiarach i przechodzi
+      moderację przed publikacją. Zdjęcia pokazują miejsce, nie ludzi.</div>
+      <br><a class="addvoice" href="#">Dodaj swój głos</a>
+    </div>
+  </div>
+</section>
+
+<div class="kicker wrap">W Toruniu</div>
+
+<section class="wrap rank">
+  <div class="sheet">
+    <div class="sort">sortuj według: <b>głosów</b> · <a href="#">liczby mszy</a> · <a href="#">dostępności</a></div>
+    <ol>
+      <li>
+        <div class="who"><b>Dobrego Pasterza</b><div class="sub">rzymskokatolicka · ul. Nadrzeczna 3</div></div>
+        <div class="sc"><span class="dots"><u></u><u></u><u></u><u></u><u class="p" style="--f:80%"></u></span><span class="score-num">4,8</span><small>31 głosów</small></div>
+      </li>
+      <li>
+        <div class="who"><b>Św. Anny na Wzgórzu</b><div class="sub">rzymskokatolicka · ul. Klonowa 12</div></div>
+        <div class="sc"><span class="dots"><u></u><u></u><u></u><u></u><u class="p" style="--f:60%"></u></span><span class="score-num">4,6</span><small>23 głosy</small></div>
+      </li>
+      <li>
+        <div class="who"><b>Opatrzności</b><div class="sub">ewangelicko-augsburska · pl. Zgody 1</div></div>
+        <div class="sc"><span class="dots"><u></u><u></u><u></u><u></u><u class="p" style="--f:50%"></u></span><span class="score-num">4,5</span><small>12 głosów</small></div>
+      </li>
+    </ol>
+    <p class="foot">Kolejność wynika wyłącznie z głosów o doświadczeniu — nie ocenia
+    wiary ani wyznania. Parafie z mniej niż 5 głosami czekają poza zestawieniem
+    (w Toruniu: 2), aż głosów będzie dość, by były fair.</p>
+  </div>
+</section>
+
+<div class="kicker wrap">Porównanie</div>
+
+<section class="wrap">
+  <div class="sheet">
+    <div class="compare-scroll">
+    <table class="compare">
+      <thead>
+        <tr><th scope="col"></th><th scope="col">Św. Anny na Wzgórzu</th><th scope="col">Dobrego Pasterza</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Głosy</th><td><span class="score-num">4,6</span> · 23 głosy</td><td><span class="score-num">4,8</span> · 31 głosów</td></tr>
+        <tr><th scope="row">Msze w niedzielę</th><td>7 mszy, 7:00–20:00</td><td>4 msze, 8:00–19:00</td></tr>
+        <tr><th scope="row">Msza z dziećmi</th><td>tak, 10:00</td><td>tak, 11:00</td></tr>
+        <tr><th scope="row">Bez schodów</th><td>tak, od parkingu</td><td>podjazd przy wejściu</td></tr>
+        <tr><th scope="row">Parking</th><td>ok. 20 miejsc</td><td>duży, bezpłatny</td></tr>
+        <tr><th scope="row">Muzyka</th><td>organy, schola</td><td>zespół z gitarami</td></tr>
+        <tr><th scope="row">Transmisja</th><td>nie</td><td>tak, niedziela 11:00</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="permalink">trwały link: <code>/porownaj/dobrego-pasterza-vs-sw-anny</code></p>
+  </div>
+  <div class="og">
+    <div class="og-banner">Św. Anny na Wzgórzu <i>albo</i> Dobrego Pasterza</div>
+    <div class="og-meta">
+      <div class="t">Porównanie parafii — Toruń</div>
+      <div class="d">Msze, dostępność, muzyka, wspólnoty i głosy bywalców.</div>
+      <div class="u">church.example / porownaj</div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="line">Fakty ze źródłem, głosy z podpisem.</div>
+  Makieta architekta do decyzji operatora · tokeny w <code>docs/01</code>, model ocen w <code>docs/03</code>
+</footer>
+
+<script>
+(function(){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var els=document.querySelectorAll('.hero,.list .row,.kicker,.sheet,.og');
+  els.forEach(function(e){e.classList.add('will')});
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(x){
+      if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}
+    })
+  },{threshold:.1,rootMargin:'0px 0px -5% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>

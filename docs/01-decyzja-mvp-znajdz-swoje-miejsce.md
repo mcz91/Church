@@ -134,7 +134,10 @@ Głosy użytkowników mają zaprojektowaną formę: cytat szeryfową kursywą,
 autor i data, ocena jako dyskretne kropki z liczbą (nie gwiazdki),
 wymiary doświadczenia, zdjęcia miejsc z podpisem autora — model
 i bezpieczniki w [dokumencie 03](03-model-glosow-ocen-i-rankingu.md).
-Wzorcem jest makieta v6. Estetyka nie jest w pełni mechanizowalna —
+Wzorcem jest makieta v6, wersjonowana jako
+[`makieta-v6.html`](makieta-v6.html) (dane poglądowe; sekcje głosów,
+rankingu i galerii obrazują zakres `CHURCH-2`, nie `CHURCH-1`).
+Estetyka nie jest w pełni mechanizowalna —
 ostateczną akceptację „ślicznie" wydaje operator przy odbiorze
 wdrożenia, i tak zapisuje to kontrakt.
 
