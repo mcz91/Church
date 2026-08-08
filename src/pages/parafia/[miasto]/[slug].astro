@@ -1,6 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import Bazowy from '../../../layouts/Bazowy.astro';
+import Kropki from '../../../components/Kropki.astro';
+import { glosyParafii, policzAgregaty } from '../../../lib/agregaty';
+import { WYMIARY, liczbaZPrzecinkiem, miesiacGlosu, odmianaGlosow } from '../../../lib/glosy';
+import type { Wymiar } from '../../../lib/glosy';
 import { OSIE } from '../../../lib/parafie';
 import type { Os } from '../../../lib/parafie';
 import { sciezkaPorownania } from '../../../lib/porownanie';
@@ -22,6 +26,10 @@ const { parafia, pozostale } = Astro.props;
 const { data } = parafia;
 const osieZDanymi = (Object.keys(OSIE) as Os[]).filter((os) => data.osie[os]);
 const mapyUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(`${data.adres.wartosc}`)}`;
+
+const wybor = glosyParafii(data.slug, (await getCollection('glosy')).map((g) => g.data));
+const agregaty = policzAgregaty(wybor);
+const glosy = [...wybor.glosy].sort((a, b) => b.data.localeCompare(a.data));
 ---
 
 <Bazowy
@@ -31,15 +39,33 @@ const mapyUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent
   <div class="kicker wrap">Profil</div>
   <section class="wrap">
     <div class="sheet">
-      <div class="denom">Parafia {data.wyznanie} · {data.miasto}</div>
-      <h2>{data.nazwa}</h2>
-      <div class="addr">
-        {data.adres.wartosc}
-        <span class="src"
-          >wg <a href={data.adres.zrodlo.url}>{data.adres.zrodlo.nazwa}</a>, {data.adres.dataOdczytu}</span
-        >
-        · <a href={mapyUrl}>otwórz w mapach ↗</a>
-        {data.www && <> · <a href={data.www}>strona parafii ↗</a></>}
+      <div class="profile-top">
+        <div>
+          <div class="denom">Parafia {data.wyznanie} · {data.miasto}</div>
+          <h2>{data.nazwa}</h2>
+          <div class="addr">
+            {data.adres.wartosc}
+            <span class="src"
+              >wg <a href={data.adres.zrodlo.url}>{data.adres.zrodlo.nazwa}</a>, {data.adres.dataOdczytu}</span
+            >
+            · <a href={mapyUrl}>otwórz w mapach ↗</a>
+            {data.www && <> · <a href={data.www}>strona parafii ↗</a></>}
+          </div>
+        </div>
+        {
+          agregaty && (
+            <div class="bigscore">
+              <div class="n">
+                {liczbaZPrzecinkiem(agregaty.ogolna)}
+                <small> / 5</small>
+              </div>
+              <Kropki ocena={agregaty.ogolna} />
+              <div class="c">
+                {agregaty.liczba} {odmianaGlosow(agregaty.liczba)}
+              </div>
+            </div>
+          )
+        }
       </div>
 
       <dl class="facts">
@@ -60,6 +86,59 @@ const mapyUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent
           })
         }
       </dl>
+
+      {
+        agregaty && (
+          <div class="aspects">
+            <h4>Z głosów, w pięciu wymiarach doświadczenia</h4>
+            <div class="agrid">
+              {(Object.keys(WYMIARY) as Wymiar[]).map((wymiar) => (
+                <div class="arow">
+                  {WYMIARY[wymiar]}
+                  <span class="v">
+                    <Kropki ocena={agregaty.wymiary[wymiar]} />
+                    <span class="score-num">{liczbaZPrzecinkiem(agregaty.wymiary[wymiar])}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      }
+
+      <div class="voices">
+        {
+          agregaty ? (
+            <h3>
+              Głosy <small>{agregaty.liczba} · po moderacji</small>
+            </h3>
+          ) : (
+            <h3>Głosy</h3>
+          )
+        }
+        {
+          glosy.map((glos) => (
+            <div class="quote">
+              <div class="qhead">
+                <div class="by">
+                  <b>{glos.autor.pseudonim}</b> · {miesiacGlosu(glos.data)}
+                </div>
+                <div class="sc">
+                  <Kropki ocena={glos.ocenaOgolna} />
+                  <span class="score-num">{liczbaZPrzecinkiem(glos.ocenaOgolna)}</span>
+                </div>
+              </div>
+              {glos.tekst && <p>{glos.tekst}</p>}
+            </div>
+          ))
+        }
+        {glosy.length === 0 && <p class="pusto">Jeszcze żadnego głosu — Twój może być pierwszy.</p>}
+        <div class="mod">
+          Każdy głos ma autora, ocenę w pięciu wymiarach doświadczenia i przechodzi moderację
+          przed publikacją.
+        </div>
+        <a class="addvoice" href={`/glos/${data.slug}`}>Dodaj swój głos</a>
+      </div>
 
       {
         pozostale.length > 0 && (

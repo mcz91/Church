@@ -16,13 +16,12 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-08 koder: `CHURCH-1` wykonany + poprawki z przeglądu
-  architekta (kontrast AA, podział osi tabeli, kopia startu, osie WNMP)
-  na gałęzi `claude/church-rating-app-architecture-gnx6tr`; `npm run
-  verify` zielone; katedra bez nowych osi — brak źródła (pkt 4 warunkowy);
-  czeka odbiór operatora (ocena „ślicznie", `docs/02` akc. 7).
-- 2026-08-08 arch: kontrakt `CHURCH-2` napisany (`docs/05`, architektura
-  w `docs/04`) — pole zatwierdzenia puste, czeka na akt operatora.
+- 2026-08-08 koder: `CHURCH-1` z poprawkami i `CHURCH-2` wykonane na
+  gałęzi `claude/church-rating-app-architecture-gnx6tr`; `npm run
+  verify` zielone; czeka odbiór operatora (`docs/05` akc. 11).
+- 2026-08-08 koder: akt zatwierdzenia `CHURCH-2` padł w czacie
+  („zatwierdz", w odpowiedzi na OBJECTION) — pole zatwierdzenia
+  w `docs/05` uzupełnia architekt, koder tego pliku nie dotyka.
 
 ## WĄTKI — otwarte, bez kontraktu
 

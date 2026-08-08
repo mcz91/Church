@@ -349,6 +349,315 @@ const { tytul, opis } = Astro.props;
     color: #fff;
   }
 
+  .dots {
+    display: inline-flex;
+    gap: 3.5px;
+    vertical-align: -1px;
+  }
+  .dots u {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .dots u.o {
+    background: transparent;
+    box-shadow: inset 0 0 0 1px var(--line-soft);
+  }
+  .dots u.p {
+    background: linear-gradient(90deg, var(--accent) var(--f, 50%), transparent var(--f, 50%));
+    box-shadow: inset 0 0 0 1px var(--line-soft);
+  }
+  .score-num {
+    font-family: var(--serif);
+    font-size: 1.05em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .profile-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .bigscore {
+    text-align: right;
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+  .bigscore .n {
+    font-family: var(--serif);
+    font-size: 2.3rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .bigscore .n small {
+    font-size: 1.05rem;
+    color: var(--muted);
+  }
+  .bigscore .dots {
+    margin-top: 6px;
+  }
+  .bigscore .c {
+    font-size: 0.74rem;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  .aspects {
+    margin-top: 24px;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+  }
+  .aspects h4 {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .agrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px 36px;
+    margin-top: 12px;
+  }
+  .arow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.88rem;
+  }
+  .arow .v {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .arow .score-num {
+    font-size: 0.92rem;
+  }
+
+  .voices {
+    margin-top: 30px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+  }
+  .voices h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .voices h3 small {
+    font-family: var(--sans);
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+  .quote {
+    padding: 19px 0 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .quote:last-of-type {
+    border-bottom: 0;
+  }
+  .qhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 9px;
+  }
+  .qhead .by {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .qhead .by b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .qhead .sc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .quote p {
+    font-family: var(--serif);
+    font-size: 1.16rem;
+    line-height: 1.55;
+    font-style: italic;
+    font-feature-settings: 'onum';
+    text-indent: -0.42em;
+    max-width: 56ch;
+  }
+  .quote p::before {
+    content: '„';
+  }
+  .quote p::after {
+    content: '”';
+  }
+  .voices .pusto {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--muted);
+    padding: 14px 0 4px;
+  }
+  .voices .mod {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 16px;
+    max-width: 52ch;
+  }
+  .mod::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 99px;
+    background: var(--accent);
+    margin-right: 7px;
+    vertical-align: 2px;
+  }
+  .addvoice {
+    margin-top: 18px;
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 999px;
+    padding: 8px 24px;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+  .addvoice:hover,
+  .addvoice:focus-visible {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .rank ol.rank-lista {
+    list-style: none;
+    border-top: 1px solid var(--line);
+    padding: 0;
+  }
+  .rank li {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    padding: 14px 2px;
+    border-bottom: 1px solid var(--line);
+  }
+  .rank .poz {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted);
+    width: 1.1em;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .rank .who {
+    flex: 1;
+  }
+  .rank .who b {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.12rem;
+  }
+  .rank .who a.name {
+    color: inherit;
+    text-decoration: none;
+  }
+  .rank .who .sub {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  .rank .sc {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    flex-shrink: 0;
+  }
+  .rank .sc .score-num {
+    font-size: 1.05rem;
+  }
+  .rank .sc small {
+    color: var(--muted);
+    font-size: 0.74rem;
+  }
+  .rank .foot {
+    font-size: 0.76rem;
+    color: var(--muted);
+    margin-top: 14px;
+    max-width: 54ch;
+    line-height: 1.6;
+  }
+
+  .wstep {
+    margin-top: 14px;
+    font-size: 0.95rem;
+    max-width: 56ch;
+  }
+  .form-glos {
+    margin-top: 20px;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+  }
+  .form-glos label {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .form-glos input {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+    padding: 9px 13px;
+    font: inherit;
+    color: var(--ink);
+  }
+  .form-glos input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  .form-glos button {
+    margin-top: 16px;
+    border: 0;
+    background: var(--accent);
+    color: #fff;
+    font: inherit;
+    font-size: 0.9rem;
+    padding: 9px 24px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .form-glos button:hover,
+  .form-glos button:focus-visible {
+    background: var(--accent-deep);
+  }
+  .form-glos .dopisek {
+    margin-top: 10px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .sheet > .mod {
+    margin-top: 20px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    max-width: 52ch;
+  }
+
   .compare-scroll {
     overflow-x: auto;
   }
@@ -456,6 +765,15 @@ const { tytul, opis } = Astro.props;
 
   @media (max-width: 560px) {
     dl.facts > div {
+      grid-template-columns: 1fr;
+    }
+    .profile-top {
+      flex-direction: column;
+    }
+    .bigscore {
+      text-align: left;
+    }
+    .agrid {
       grid-template-columns: 1fr;
     }
     .sheet {

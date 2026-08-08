@@ -24,11 +24,16 @@ npm run verify
 
 1. `npm run lint` — ESLint na plikach TypeScriptu;
 2. `npm run check` — `astro check` (typy stron i kolekcji);
-3. `npm run test` — testy jednostkowe Vitest (schemat danych,
-   kanoniczny adres porównania, komplet danych parafii);
+3. `npm run test` — testy Vitest: jednostkowe (schematy danych i głosów,
+   agregaty, ranking, kanoniczny adres porównania) i integracyjne
+   (serwis zapisu na bazie w pamięci, build na danych fikcyjnych);
 4. `npm run build` — pełny statyczny build Astro.
 
 Podgląd lokalny: `npm run dev`.
+
+Serwis zapisu głosów (deweloperski): `npm run serwis` — wymaga zmiennych
+środowiskowych z [`serwer/.env.example`](serwer/.env.example); magic linki
+trafiają na konsolę, dopóki dostawca e-mail nie jest rozstrzygnięty.
 
 ## Najważniejsza zasada produktu
 

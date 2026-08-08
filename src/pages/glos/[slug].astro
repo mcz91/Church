@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import Bazowy from '../../layouts/Bazowy.astro';
+import { ZASADY_MODERACJI } from '../../lib/glosy';
+
+export async function getStaticPaths() {
+  const parafie = await getCollection('parafie');
+  return parafie.map((parafia) => ({
+    params: { slug: parafia.data.slug },
+    props: { parafia },
+  }));
+}
+
+const { parafia } = Astro.props;
+const { data } = parafia;
+const zapisUrl = import.meta.env.PUBLIC_ZAPIS_URL ?? 'http://localhost:8788';
+---
+
+<Bazowy
+  tytul={`Twój głos o: ${data.nazwa} — ${data.miasto}`}
+  opis={`Podziel się doświadczeniem z parafii ${data.nazwa} (${data.miasto}): ocena w pięciu wymiarach i słowo od Ciebie, po moderacji.`}
+>
+  <div class="kicker wrap">Twój głos</div>
+  <section class="wrap">
+    <div class="sheet">
+      <div class="denom">Parafia {data.wyznanie} · {data.miasto}</div>
+      <h2>{data.nazwa}</h2>
+      <p class="wstep">
+        Głos to Twoje doświadczenie z tego miejsca: ocena ogólna, pięć wymiarów
+        i — jeśli chcesz — kilka zdań. Podpisujemy go wyłącznie pseudonimem.
+      </p>
+
+      <form class="form-glos" method="post" action={`${zapisUrl}/rejestracja`}>
+        <input type="hidden" name="parafia" value={data.slug} />
+        <label>
+          Adres e-mail (tylko do weryfikacji, nigdy publiczny)
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+        <label>
+          Pseudonim (podpis Twojego głosu)
+          <input type="text" name="pseudonim" required maxlength="80" />
+        </label>
+        <button type="submit">Wyślij link do głosu</button>
+        <p class="dopisek">
+          Wyślemy jednorazowy link — kliknięcie potwierdza adres i otwiera formularz ocen.
+        </p>
+      </form>
+
+      <div class="mod">{ZASADY_MODERACJI}</div>
+    </div>
+  </section>
+</Bazowy>

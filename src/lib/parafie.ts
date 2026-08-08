@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 
-const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+export const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 const zrodloSchema = z.object({
   nazwa: z.string().min(1),

@@ -1,0 +1,17 @@
+---
+import { liczbaZPrzecinkiem } from '../lib/glosy';
+import { kropki } from '../lib/kropki';
+
+interface Props {
+  ocena: number;
+}
+
+const { ocena } = Astro.props;
+const { pelne, czesc, puste } = kropki(ocena);
+---
+
+<span class="dots" role="img" aria-label={`ocena ${liczbaZPrzecinkiem(ocena)} na 5`}>
+  {Array.from({ length: pelne }, () => <u></u>)}
+  {czesc > 0 && <u class="p" style={`--f:${czesc}%`}></u>}
+  {Array.from({ length: puste }, () => <u class="o"></u>)}
+</span>
