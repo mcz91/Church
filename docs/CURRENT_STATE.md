@@ -59,7 +59,7 @@ kolejka wyjątków ręcznych, katalogi innych wyznań.
 
 ## Następny krok
 
-Decyzje operatora: (1) los pilotażu Gdańska przy pokryciu 13,8% —
+Decyzje operatora: (1) los pilotażu Gdańska przy pokryciu 22,4% —
 start mimo progu, zlecenie poszerzenia pokrycia albo wstrzymanie;
 (2) odbiór estetyczny `CHURCH-1`–`CHURCH-3`; (3) BRAK-i: dostawca
 e-mail, hosting/CI, domena, analityka. Po decyzjach architekt pisze

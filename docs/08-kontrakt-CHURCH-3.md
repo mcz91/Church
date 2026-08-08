@@ -5,8 +5,10 @@ Wersja: 1 · Data: 2026-08-08 · Autor: architekt · Typ: feature
 istniejące suity `CHURCH-1`/`CHURCH-2` to preservation: pełna zieleń
 przed i po).
 
-**Zatwierdzenie operatora:** _niewypełnione — kontrakt staje się
-wykonywalny wyłącznie po jawnym akcie operatora._
+**Zatwierdzenie operatora:** zatwierdzony aktem operatora z 2026-08-08
+(czat): „proceed" — wydanym w odpowiedzi na `OBJECTION` kodera o pustym
+polu zatwierdzenia; wpis uzupełnił architekt, bo dla kodera ten plik
+jest tylko do odczytu. Kontrakt jest od tej chwili niemutowalny.
 
 Decyzje, które ten kontrakt realizuje:
 [`PB-002`](briefs/PB-002-oceny-odwiedzajacych-automatyzacja.md),

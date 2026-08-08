@@ -19,10 +19,9 @@ Protokół (koszt czytelnika > koszt pisarza):
 - 2026-08-08 koder: `CHURCH-1`–`CHURCH-3` wykonane na gałęzi
   `claude/church-rating-app-architecture-gnx6tr`; `npm run verify`
   zielone; czekają odbiory operatora i decyzja o pilotażu przy
-  pokryciu 13,8% (`docs/CURRENT_STATE.md`).
-- 2026-08-08 koder: akt zatwierdzenia `CHURCH-3` padł w czacie
-  („proceed4", w odpowiedzi na OBJECTION o puste pole) — pole
-  zatwierdzenia w `docs/08` uzupełnia architekt, koder go nie dotyka.
+  pokryciu 22,4% (`docs/CURRENT_STATE.md`).
+- 2026-08-08 arch: zieleń `CHURCH-3` zweryfikowana niezależnie
+  (119 testów, build 114 stron); akt „proceed" wpisany do `docs/08`.
 
 ## WĄTKI — otwarte, bez kontraktu
 
