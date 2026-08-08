@@ -33,6 +33,9 @@ Protokół (koszt czytelnika > koszt pisarza):
 - 2026-08-08 operator: „buduj; prosto, ale ślicznie; apka, która pozwoli
   znaleźć swoje miejsce" — akt kwalifikacji bez ProductBriefu PM-a;
   założenia zastępcze w `docs/01`, wiążą po zatwierdzeniu `CHURCH-1`.
+- 2026-08-08 operator: kierunek wizualny bez estetyki dewocyjnej —
+  złoto i ciężki granat odrzucone; obowiązują tokeny v2 z `docs/01`
+  (świerkowa zieleń, bezszeryfy, zero symboliki religijnej w UI).
 
 ## PUŁAPKI — koszt odkrycia > koszt linii
 

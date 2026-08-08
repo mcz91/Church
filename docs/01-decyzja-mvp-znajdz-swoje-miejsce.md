@@ -100,21 +100,29 @@ Warianty odrzucone:
 
 ## Język wizualny — „prosto, ale ślicznie"
 
+Kierunek po korekcie operatora z 2026-08-08: **estetyka współczesnego
+produktu, nie sakralna** — bez złota, ciężkich granatów i motywów
+liturgicznych; produkt ma wyglądać jak dobra wyszukiwarka miejsc.
+
 Tokeny (do wdrożenia jako CSS custom properties, jedno źródło):
 
-- tło `#FAF7F2` (ciepła biel), tekst `#20242B` (atrament), akcent
-  `#1D3557` (głęboki granat), wyróżnienie oszczędnie `#C9A227` (stare
-  złoto); paleta neutralna wyznaniowo;
-- typografia: szeryfowa dla nazw i nagłówków (Fraunces lub równoważna),
-  humanistyczny bezszeryf dla treści (Inter lub równoważny); fonty
-  self-hosted — zero CDN-ów zewnętrznych;
-- dużo światła: szeroki interlinia, karty z delikatnym cieniem,
-  promień 8 px, maksymalna szerokość łamu czytelnicza (~68 znaków);
-- mobile-first; ikony liniowe, spójne, bez ozdobników.
+- tło `#FAFAF7` (papierowa biel), tekst `#1C2321` (atrament), akcent
+  `#2F6B5E` (głęboka świerkowa zieleń) z tłem pomocniczym `#EAF1EE`;
+  jeden akcent, paleta neutralna wyznaniowo;
+- typografia: wyłącznie bezszeryfowa — nagłówki ciężkim krojem
+  geometryczno-humanistycznym, treść czytelnym tekstowym (docelowo
+  Inter / General Sans lub równoważne); fonty self-hosted — zero
+  CDN-ów zewnętrznych;
+- dużo światła: szeroki interlinia, karty z miękkim cieniem, promień
+  12–14 px, pola i przyciski w formie pigułek, maksymalna szerokość
+  łamu czytelnicza (~68 znaków);
+- mobile-first; bez ikon ozdobnych i symboliki religijnej w warstwie
+  UI — treść religijna pojawia się wyłącznie jako fakt w danych.
 
-Estetyka nie jest w pełni mechanizowalna — akceptację „ślicznie" wydaje
-operator przy odbiorze, na podstawie makiety i wdrożenia, i tak zapisuje
-to kontrakt.
+Wzorcem jest makieta v2 zaakceptowana kierunkowo przez operatora.
+Estetyka nie jest w pełni mechanizowalna — ostateczną akceptację
+„ślicznie" wydaje operator przy odbiorze wdrożenia, i tak zapisuje to
+kontrakt.
 
 ## Mechanizacja decyzji
 
