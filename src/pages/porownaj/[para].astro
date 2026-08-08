@@ -1,0 +1,82 @@
+---
+import { getCollection } from 'astro:content';
+import Bazowy from '../../layouts/Bazowy.astro';
+import { OSIE } from '../../lib/parafie';
+import type { Os } from '../../lib/parafie';
+import { kanonicznaPara } from '../../lib/porownanie';
+
+export async function getStaticPaths() {
+  const parafie = await getCollection('parafie');
+  const sciezki = [];
+  for (const jedna of parafie) {
+    for (const druga of parafie) {
+      if (jedna.data.slug >= druga.data.slug) continue;
+      const [pierwszy, drugi] = kanonicznaPara(jedna.data.slug, druga.data.slug);
+      sciezki.push({
+        params: { para: `${pierwszy}-vs-${drugi}` },
+        props: { a: jedna, b: druga },
+      });
+    }
+  }
+  return sciezki;
+}
+
+const { a, b } = Astro.props;
+const osie = Object.keys(OSIE) as Os[];
+const trwalyLink = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<Bazowy
+  tytul={`${a.data.nazwa} i ${b.data.nazwa} obok siebie — ${a.data.miasto}`}
+  opis={`${a.data.nazwa} oraz ${b.data.nazwa} (${a.data.miasto}): msze, spowiedź, dostępność i dojazd obok siebie — same fakty, każdy ze źródłem i datą odczytu.`}
+>
+  <div class="kicker wrap">Porównanie</div>
+  <section class="wrap">
+    <div class="sheet">
+      <div class="compare-scroll">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              {
+                [a, b].map((p) => (
+                  <th scope="col">
+                    <a class="name" href={`/parafia/${p.data.miastoSlug}/${p.data.slug}`}>
+                      {p.data.nazwa}
+                    </a>
+                    <span class="sub">
+                      {p.data.wyznanie} · {p.data.adres.wartosc}
+                    </span>
+                  </th>
+                ))
+              }
+            </tr>
+          </thead>
+          <tbody>
+            {
+              osie.map((os) => (
+                <tr>
+                  <th scope="row">{OSIE[os]}</th>
+                  {[a, b].map((p) => {
+                    const fakt = p.data.osie[os];
+                    return fakt ? (
+                      <td>
+                        {fakt.wartosc}
+                        <span class="src">
+                          wg <a href={fakt.zrodlo.url}>{fakt.zrodlo.nazwa}</a>, {fakt.dataOdczytu}
+                        </span>
+                      </td>
+                    ) : (
+                      <td class="brak">brak danych</td>
+                    );
+                  })}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="permalink">trwały link: <code>{trwalyLink}</code></p>
+    </div>
+  </section>
+</Bazowy>

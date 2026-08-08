@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia katedralna Świętych Jana Chrzciciela i Jana Ewangelisty",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Toruń",
+  "miastoSlug": "torun",
+  "slug": "katedra-swietych-janow",
+  "adres": {
+    "wartosc": "ul. Kopernika 6, 87-100 Toruń",
+    "zrodlo": {
+      "nazwa": "Diecezja Toruńska, katalog parafii",
+      "url": "https://www.diecezja-torun.pl/diecezja/parafia/150/parafia-pw-swietych-jana-chrzciciela-i-jana-ewangelisty-w-toruniu"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "https://katedrajanow.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "7:30 · 9:00 (kapitulna) · 11:00 · 12:30 · 18:00",
+      "zrodlo": {
+        "nazwa": "Diecezja Toruńska, katalog parafii",
+        "url": "https://www.diecezja-torun.pl/diecezja/parafia/150/parafia-pw-swietych-jana-chrzciciela-i-jana-ewangelisty-w-toruniu"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "8:00 · 18:00",
+      "zrodlo": {
+        "nazwa": "Diecezja Toruńska, katalog parafii",
+        "url": "https://www.diecezja-torun.pl/diecezja/parafia/150/parafia-pw-swietych-jana-chrzciciela-i-jana-ewangelisty-w-toruniu"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

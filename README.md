@@ -10,6 +10,26 @@ Repozytorium jest pod kontrolą Foundry (`mcz91/foundry`). Obowiązuje
 **Bieżący etap, ograniczenia i następny krok:**
 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
 
+## Bramka repozytorium
+
+Komplet komend weryfikacji — wszystkie muszą być zielone przed
+zamknięciem każdej zmiany:
+
+```bash
+npm ci
+npm run verify
+```
+
+`npm run verify` wykonuje kolejno:
+
+1. `npm run lint` — ESLint na plikach TypeScriptu;
+2. `npm run check` — `astro check` (typy stron i kolekcji);
+3. `npm run test` — testy jednostkowe Vitest (schemat danych,
+   kanoniczny adres porównania, komplet danych parafii);
+4. `npm run build` — pełny statyczny build Astro.
+
+Podgląd lokalny: `npm run dev`.
+
 ## Najważniejsza zasada produktu
 
 > Każdy fakt o kościele ma źródło, każda ocena ma autora, a wirusowość

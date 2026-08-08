@@ -1,0 +1,42 @@
+{
+  "nazwa": "Parafia Wniebowzięcia Najświętszej Maryi Panny i bł. ks. Stefana Wincentego Frelichowskiego",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Toruń",
+  "miastoSlug": "torun",
+  "slug": "wniebowziecia-nmp",
+  "adres": {
+    "wartosc": "ul. Panny Marii 2, 87-100 Toruń",
+    "zrodlo": {
+      "nazwa": "Diecezja Toruńska, katalog parafii",
+      "url": "https://www.diecezja-torun.pl/diecezja/parafia/152/parafia-pw-wniebowziecia-najswietszej-maryi-panny-w-toruniu-drugi-patron-blogoslawiony-stefan-wincenty-frelichowski"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "https://parafia-wnmp.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "7:30 · 9:00 · 10:30 (dla dzieci) · 12:00 · 18:30",
+      "zrodlo": {
+        "nazwa": "Diecezja Toruńska, katalog parafii",
+        "url": "https://www.diecezja-torun.pl/diecezja/parafia/152/parafia-pw-wniebowziecia-najswietszej-maryi-panny-w-toruniu-drugi-patron-blogoslawiony-stefan-wincenty-frelichowski"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "8:00 · 17:00 · 18:30",
+      "zrodlo": {
+        "nazwa": "Diecezja Toruńska, katalog parafii",
+        "url": "https://www.diecezja-torun.pl/diecezja/parafia/152/parafia-pw-wniebowziecia-najswietszej-maryi-panny-w-toruniu-drugi-patron-blogoslawiony-stefan-wincenty-frelichowski"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeSzczegolne": {
+      "wartosc": "niedziela 10:30 — msza dla dzieci",
+      "zrodlo": {
+        "nazwa": "Diecezja Toruńska, katalog parafii",
+        "url": "https://www.diecezja-torun.pl/diecezja/parafia/152/parafia-pw-wniebowziecia-najswietszej-maryi-panny-w-toruniu-drugi-patron-blogoslawiony-stefan-wincenty-frelichowski"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

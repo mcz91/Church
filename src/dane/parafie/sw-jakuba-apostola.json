@@ -1,0 +1,50 @@
+{
+  "nazwa": "Parafia Świętego Jakuba Apostoła",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Toruń",
+  "miastoSlug": "torun",
+  "slug": "sw-jakuba-apostola",
+  "adres": {
+    "wartosc": "Rynek Nowomiejski 6, 87-100 Toruń",
+    "zrodlo": {
+      "nazwa": "Diecezja Toruńska, katalog parafii",
+      "url": "https://www.diecezja-torun.pl/diecezja/parafia/151/parafia-pw-swietego-jakuba-apostola-w-toruniu"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.parafiaswietegojakuba-torun.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "7:00 · 8:30 · 10:00 (suma parafialna) · 11:30 (rodzinna, z udziałem dzieci) · 13:00 (dla młodzieży) · 18:30",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.parafiaswietegojakuba-torun.pl/pliki/posluga.html"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "7:00 · 8:30 · 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.parafiaswietegojakuba-torun.pl/pliki/posluga.html"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "spowiedz": {
+      "wartosc": "codziennie przed mszą świętą oraz w każdy piątek 17:00–18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.parafiaswietegojakuba-torun.pl/pliki/posluga.html"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeSzczegolne": {
+      "wartosc": "niedziela 11:30 — msza rodzinna z udziałem dzieci; 13:00 — msza dla młodzieży",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.parafiaswietegojakuba-torun.pl/pliki/posluga.html"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

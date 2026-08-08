@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import Bazowy from '../layouts/Bazowy.astro';
+import { wyrozniki } from '../lib/parafie';
+
+const parafie = (await getCollection('parafie')).sort((a, b) =>
+  a.data.nazwa.localeCompare(b.data.nazwa, 'pl'),
+);
+const miasto = parafie[0]?.data.miasto ?? '';
+---
+
+<Bazowy
+  tytul={`Church — znajdź swoje miejsce w mieście ${miasto}`}
+  opis={`Parafie w mieście ${miasto}: godziny mszy, spowiedź, dostępność — same fakty, każdy ze źródłem i datą odczytu.`}
+>
+  <section class="hero wrap">
+    <h1>Gdzie szukasz<br />swojego miejsca?</h1>
+    <p class="sub">Godziny, spowiedź, dostępność, wspólnoty — same fakty, każdy ze źródłem.</p>
+    <p class="miasto-pigulka">na początek: <b>{miasto}</b></p>
+
+    <div class="list" aria-label={`Parafie — ${miasto}`}>
+      {
+        parafie.map((p) => (
+          <div class="row">
+            <div>
+              <b>
+                <a class="name" href={`/parafia/${p.data.miastoSlug}/${p.data.slug}`}>
+                  {p.data.nazwa}
+                </a>
+              </b>
+              <div class="sub">
+                {p.data.wyznanie} · {p.data.adres.wartosc}
+              </div>
+            </div>
+            <div class="aside">
+              <div class="facts">{wyrozniki(p.data).join(' · ')}</div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Bazowy>

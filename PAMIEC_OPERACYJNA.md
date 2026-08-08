@@ -16,15 +16,15 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-08 arch: `CHURCH-1` zatwierdzony (akt w `docs/02`); całość
-  na gałęzi `claude/church-rating-app-architecture-gnx6tr`; następny
-  ruch należy do kodera.
+- 2026-08-08 koder: `CHURCH-1` wykonany na gałęzi
+  `claude/church-rating-app-architecture-gnx6tr`; `npm run verify`
+  zielone; czeka odbiór operatora (ocena „ślicznie", `docs/02` akc. 7).
 
 ## WĄTKI — otwarte, bez kontraktu
 
 - 2026-08-08 arch: `CHURCH-2` (głosy wg `docs/03`) do napisania po
   wykonaniu `CHURCH-1`; analityka metryki północnej — osobna decyzja
-  operatora; miasto startowe nadal niewskazane.
+  operatora.
 
 ## DECYZJE Z CZATU — obowiązują, niezmechanizowane
 
@@ -39,9 +39,13 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## PUŁAPKI — koszt odkrycia > koszt linii
 
-- Komendy weryfikacji jeszcze nie istnieją (etap 0) — kontrakt kodu,
-  który ich nie ustanawia, jest niekompletny.
+- 2026-08-08 koder: oficjalne strony części parafii Torunia bywają
+  niedostępne (katedratorun.pl — domena wygasła, przejęta przez
+  aukcję; parafia-wnmp.pl — 503/zły certyfikat); katalog
+  diecezja-torun.pl jest stabilnym źródłem zastępczym.
 
 ## DŁUG — DebtRecords czekające na kontrakt
 
-(pusto)
+- 2026-08-08 koder: obraz Open Graph (`og:image`) wymaga absolutnego
+  URL, więc czeka na decyzję o domenie (`BRAK` w `docs/01`); strony
+  mają tytuł i opis OG zgodnie z akceptacją 6 `CHURCH-1`.

@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import Bazowy from '../../../layouts/Bazowy.astro';
+import { OSIE } from '../../../lib/parafie';
+import type { Os } from '../../../lib/parafie';
+import { sciezkaPorownania } from '../../../lib/porownanie';
+
+export async function getStaticPaths() {
+  const parafie = await getCollection('parafie');
+  return parafie.map((parafia) => ({
+    params: { miasto: parafia.data.miastoSlug, slug: parafia.data.slug },
+    props: {
+      parafia,
+      pozostale: parafie
+        .filter((p) => p.data.slug !== parafia.data.slug)
+        .sort((a, b) => a.data.nazwa.localeCompare(b.data.nazwa, 'pl')),
+    },
+  }));
+}
+
+const { parafia, pozostale } = Astro.props;
+const { data } = parafia;
+const osieZDanymi = (Object.keys(OSIE) as Os[]).filter((os) => data.osie[os]);
+const mapyUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(`${data.adres.wartosc}`)}`;
+---
+
+<Bazowy
+  tytul={`${data.nazwa} — ${data.miasto}`}
+  opis={`Fakty o parafii: ${data.nazwa}, ${data.miasto}. ${osieZDanymi.map((os) => OSIE[os]).join(', ')} — każdy fakt ze źródłem i datą odczytu.`}
+>
+  <div class="kicker wrap">Profil</div>
+  <section class="wrap">
+    <div class="sheet">
+      <div class="denom">Parafia {data.wyznanie} · {data.miasto}</div>
+      <h2>{data.nazwa}</h2>
+      <div class="addr">
+        {data.adres.wartosc}
+        <span class="src"
+          >wg <a href={data.adres.zrodlo.url}>{data.adres.zrodlo.nazwa}</a>, {data.adres.dataOdczytu}</span
+        >
+        · <a href={mapyUrl}>otwórz w mapach ↗</a>
+        {data.www && <> · <a href={data.www}>strona parafii ↗</a></>}
+      </div>
+
+      <dl class="facts">
+        {
+          osieZDanymi.map((os) => {
+            const fakt = data.osie[os]!;
+            return (
+              <div>
+                <dt>{OSIE[os]}</dt>
+                <dd>
+                  {fakt.wartosc}
+                  <span class="src">
+                    wg <a href={fakt.zrodlo.url}>{fakt.zrodlo.nazwa}</a>, {fakt.dataOdczytu}
+                  </span>
+                </dd>
+              </div>
+            );
+          })
+        }
+      </dl>
+
+      {
+        pozostale.length > 0 && (
+          <div class="porownaj-z">
+            <span class="label">Porównaj z…</span>
+            <br />
+            {pozostale.map((p) => (
+              <a href={sciezkaPorownania(data.slug, p.data.slug)}>{p.data.nazwa}</a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</Bazowy>
