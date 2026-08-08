@@ -20,15 +20,16 @@ z zatwierdzeniem `CHURCH-1`, nie wcześniej.
 |---|---|---|
 | Znajdowanie i profil kościoła z faktami ze źródłem | **zbuduj** (`CHURCH-1`) | rdzeń wartości: „znaleźć swoje miejsce" wymaga wiarygodnych faktów, nie opinii |
 | Porównanie 2 parafii + trwały link udostępnienia | **zbuduj** (`CHURCH-1`) | najtańszy nośnik pętli udostępnień; link jest interfejsem produktu |
-| Oceny użytkowników (UGC) | **odłóż** | wymagają autorstwa, moderacji przed publikacją i backendu; moderacja jest funkcją pierwszej klasy, więc nie wolno jej „dokleić"; wchodzi jako osobny kontrakt po walidacji odczytu |
+| Głosy użytkowników: tekst, oceny 1–5 w wymiarach, ranking miejski, zdjęcia | **zbuduj jako drugi krok** (`CHURCH-2`) | zażądane przez operatora 2026-08-08; model, bezpieczniki i warianty odrzucone w [dokumencie 03](03-model-glosow-ocen-i-rankingu.md); wymagają backendu i moderacji przed publikacją, więc wchodzą osobnym kontraktem po `CHURCH-1` |
 | Konta użytkowników, personalizacja | **odłóż** | zero danych osobowych, dopóki żaden kontrakt ich jawnie nie wymaga |
 | Mapa interaktywna | **odłóż** | adres + link do map zewnętrznych wystarcza w MVP; własna mapa to koszt bez dowodu potrzeby |
 | Ranking wyznań / „lepszość" religii | **odrzuć na stałe** | zakaz doktrynalny; oś taka byłaby `OBJECTION: UNSAFE` |
 
-Konsekwencja odłożenia UGC, mówiona wprost: pierwsza iteracja **nie jest
-jeszcze „apką oceniającą"** — jest porównywarką faktów. Zatwierdzenie
-`CHURCH-1` oznacza zgodę na tę kolejność; oceny są drugim kontraktem,
-nie zapomnianą obietnicą.
+Kolejność, mówiona wprost: pierwsza iteracja **nie jest jeszcze „apką
+oceniającą"** — jest porównywarką faktów. Zatwierdzenie `CHURCH-1`
+oznacza zgodę na tę kolejność; głosy z ocenami, rankingiem i zdjęciami
+są drugim kontraktem o zatwierdzonym już kierunku (dokument 03), nie
+zapomnianą obietnicą.
 
 ## Produkt MVP
 
@@ -122,10 +123,12 @@ Tokeny (do wdrożenia jako CSS custom properties, jedno źródło):
   UI — treść religijna pojawia się wyłącznie jako fakt w danych.
 
 Głosy użytkowników mają zaprojektowaną formę: cytat szeryfową kursywą,
-autor i data pod spodem, dopisek o moderacji — bez gwiazdek i punktacji,
-które wprowadzałyby ranking. Wzorcem jest makieta v3. Estetyka nie jest
-w pełni mechanizowalna — ostateczną akceptację „ślicznie" wydaje
-operator przy odbiorze wdrożenia, i tak zapisuje to kontrakt.
+autor i data, ocena jako dyskretne kropki z liczbą (nie gwiazdki),
+wymiary doświadczenia, zdjęcia miejsc z podpisem autora — model
+i bezpieczniki w [dokumencie 03](03-model-glosow-ocen-i-rankingu.md).
+Wzorcem jest makieta v4. Estetyka nie jest w pełni mechanizowalna —
+ostateczną akceptację „ślicznie" wydaje operator przy odbiorze
+wdrożenia, i tak zapisuje to kontrakt.
 
 ## Mechanizacja decyzji
 

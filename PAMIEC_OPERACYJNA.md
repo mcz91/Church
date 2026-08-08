@@ -22,24 +22,21 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## WĄTKI — otwarte, bez kontraktu
 
-- 2026-08-08 arch: oceny użytkowników odłożone do osobnego kontraktu
-  z moderacją; analityka metryki północnej — osobna decyzja operatora.
+- 2026-08-08 arch: `CHURCH-2` (głosy wg `docs/03`) do napisania po
+  wykonaniu `CHURCH-1`; analityka metryki północnej — osobna decyzja
+  operatora; miasto startowe nadal niewskazane.
 
 ## DECYZJE Z CZATU — obowiązują, niezmechanizowane
 
 - 2026-08-08 arch: repo startuje z czwórką ról `PROMPT_{PM,ARCHITEKT,
   KODER,AUDYTOR}.md` w korzeniu i kopią konstytucji Foundry; konwencja
   wspólna z `mcz91/foundry` i `mcz91/ezmat`, rozszerzona o PM.
-- 2026-08-08 operator: „buduj; prosto, ale ślicznie; apka, która pozwoli
-  znaleźć swoje miejsce" — akt kwalifikacji bez ProductBriefu PM-a;
-  założenia zastępcze w `docs/01`, wiążą po zatwierdzeniu `CHURCH-1`.
-- 2026-08-08 operator: kierunek wizualny bez estetyki dewocyjnej —
-  złoto i ciężki granat odrzucone; potem doprecyzowanie: „poetycko
-  piękne, nie krzykliwe" — obowiązują tokeny v3 z `docs/01` (lekki
-  szeryf + bezszeryf UI, hairline'y, zero symboliki religijnej w UI).
-- 2026-08-08 operator: opinie użytkowników mają być w produkcie —
-  forma „głosów" (cytat, autor, moderacja, bez gwiazdek) zaprojektowana
-  w makiecie v3; realizacja pozostaje odłożona do kontraktu CHURCH-2.
+- 2026-08-08 operator (czat, kolejno): „buduj" bez ProductBriefu PM-a;
+  estetyka niedewocyjna, potem „poetycko piękne, nie krzykliwe";
+  „fajne!" dla makiety v3; rozbudowa opinii o punkty, ranking
+  i zdjęcia — utrwalone w `docs/01` i `docs/03`; poza repo zostaje
+  tylko fakt, że akty padły w czacie, bez formalnego zatwierdzenia
+  pola w `docs/02`.
 
 ## PUŁAPKI — koszt odkrycia > koszt linii
 
