@@ -58,6 +58,8 @@ describe('pomocnicze funkcje deterministyczne', () => {
     );
     expect(normalizujGodziny('12.30 (Suma, parafialna), 18.00')).toBe('12:30 (Suma, parafialna) · 18:00');
     expect(normalizujGodziny('7.00; 8.30 (suma); 18.00')).toBe('7:00 · 8:30 (suma) · 18:00');
+    expect(normalizujGodziny('godz.: 8:00, 10:00 i 18:00')).toBe('8:00 · 10:00 · 18:00');
+    expect(normalizujGodziny('• 6.30 i 18.30')).toBe('6:30 · 18:30');
   });
 
   it('tekst bez ani jednej godziny jest wątpliwy — zwraca null', () => {

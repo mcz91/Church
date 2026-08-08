@@ -31,6 +31,8 @@ function odkoduj(tekst: string): string {
     .replaceAll('&oacute;', 'ó')
     .replaceAll('&Oacute;', 'Ó')
     .replaceAll('&quot;', '"')
+    .replaceAll('&bull;', ' ')
+    .replaceAll('•', ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -77,7 +79,9 @@ export function parsujKarteParafii(html: string): SzczegolyParafii | null {
 // „7:30 · 9:30 · 11:00 (dla dzieci)"; tekst bez ani jednej godziny jest
 // wątpliwy i zwraca null (wyjątek, nie dane).
 export function normalizujGodziny(tekst: string): string | null {
-  const czysty = odkoduj(tekst).replace(/[,;\s]+$/, '');
+  const czysty = odkoduj(tekst)
+    .replace(/^godz\.?:?\s*/i, '')
+    .replace(/[,;\s]+$/, '');
   if (!/\d{1,2}[.:]\d{2}/.test(czysty)) return null;
   const czesci: string[] = [];
   let biezaca = '';
@@ -94,6 +98,8 @@ export function normalizujGodziny(tekst: string): string | null {
   }
   czesci.push(biezaca);
   return czesci
+    // spójnik między dwiema godzinami („6.30 i 18.30") to też separator
+    .flatMap((c) => c.split(/\s+i\s+(?=\d{1,2}[.:]\d{2})/))
     .map((c) => c.trim().replace(/(\d{1,2})\.(\d{2})/g, '$1:$2'))
     .filter((c) => c.length > 0)
     .join(' · ');
@@ -102,18 +108,21 @@ export function normalizujGodziny(tekst: string): string | null {
 // Zamknięty zbiór etykiet porządku mszy — zakotwiczony ^…$, więc każdy
 // kwalifikator w etykiecie (okres wakacyjny, zakres dat, kaplica) wyklucza
 // segment zamiast być zgadywany.
-const ETYKIETA_NIEDZIELI = /^(w\s+)?(msze\s+św\.?\s+w\s+)?niedziel[ea](\s+i\s+(święta|uroczystości))?$/i;
-const ETYKIETA_TYGODNIA = /^(w\s+)?dni\s+powszednie$/i;
+const ETYKIETA_NIEDZIELI =
+  /^(msze\s+św(ięte)?\.?\s+)?(w\s+)?niedziel[aeę](\s+i\s+(święta|uroczystości))?$/i;
+const ETYKIETA_TYGODNIA = /^(msze\s+św(ięte)?\.?\s+)?(w\s+)?dni\s+powszednie$/i;
 const ETYKIETA_SPOWIEDZI = /^spowied[źz]$/i;
 
-const bezTagow = (fragment: string) => odkoduj(fragment.replace(/<[^>]+>/g, ' '));
+// Teksty linków (przyciski „Więcej" itp.) to nawigacja, nie fakty.
+const bezTagow = (fragment: string) =>
+  odkoduj(fragment.replace(/<a[\s>][\s\S]*?<\/a>/g, ' ').replace(/<[^>]+>/g, ' '));
 
 export function parsujMszeISP(html: string): MszeISP | null {
   for (const [, blok] of html.matchAll(/<div class="gpg-service">([\s\S]*?)<\/div>/g)) {
     // Jednoznaczna struktura silnika ISP: etykieta w <strong>, wartości
-    // w tekście do następnej etykiety albo końca akapitu.
+    // w tekście (także w kolejnym akapicie) do następnej etykiety.
     const segmenty = [
-      ...blok.matchAll(/<strong[^>]*>([\s\S]*?)<\/strong>([\s\S]*?)(?=<strong|<\/p|$)/g),
+      ...blok.matchAll(/<strong[^>]*>([\s\S]*?)<\/strong>([\s\S]*?)(?=<strong|$)/g),
     ].map(([, etykieta, wartosc]) => ({
       etykieta: bezTagow(etykieta).replace(/:\s*$/, '').trim(),
       wartosc: bezTagow(wartosc),

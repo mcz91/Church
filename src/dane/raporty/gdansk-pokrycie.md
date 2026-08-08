@@ -2,7 +2,7 @@
 
 Data raportu: 2026-08-08 · generat: `npm run dane:pokrycie`
 
-**Pokrycie: 13.8%** (8 z 58 pozycji listy
+**Pokrycie: 22.4%** (13 z 58 pozycji listy
 bazowej ma kartę nad progiem jakości: nazwa, wyznanie, adres, msze niedzielne —
 każdy fakt ze źródłem i datą odczytu).
 
@@ -35,24 +35,19 @@ Ograniczenie mianownika: Lista obejmuje parafie rzymskokatolickie miasta Gdańsk
 | Św. Barbary | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.sw-barbara.vn.pl) bez jednoznacznej struktury porządku mszy |
 | Św. Br. Alberta Chmielowskiego | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.bratalbertkokoszki.pl) bez jednoznacznej struktury porządku mszy |
 | Św. Brygidy | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.brygida.gdansk.pl) bez jednoznacznej struktury porządku mszy |
-| Św. Ignacego Loyoli | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.ignacy.diecezja.gda.pl) bez jednoznacznej struktury porządku mszy |
-| Św. Jadwigi Królowej | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.jadwigaorunia.gda.pl) bez jednoznacznej struktury porządku mszy |
 | Św. Jadwigi Śląskiej | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.jadwigagda.parafia.info.pl ) niedostępna — błąd pobrania |
 | Św. Jana Bosko | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.salezjanie-gdansk.pl) niedostępna — błąd pobrania |
 | Św. Jana Chrzciciela | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.kielpino.diecezja.gda.pl) niedostępna — błąd pobrania |
 | Św. Jana Pawła II | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafiajp2.pl) bez jednoznacznej struktury porządku mszy |
 | Św. Józefa | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.jozefprzymorze.gda.pl) bez jednoznacznej struktury porządku mszy |
 | Św. Judy Tadeusza Ap. | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.swjudytadeusza.pl) bez jednoznacznej struktury porządku mszy |
-| Św. Kazimierza Królewicza | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.swkazimierz.pl) bez jednoznacznej struktury porządku mszy |
 | Św. Krzysztofa | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.swkrzysztof.pl) bez jednoznacznej struktury porządku mszy |
 | Św. Maksymiliana Kolbe | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.kolbe.diecezja.gda.pl) niedostępna — błąd pobrania |
 | Św. Mikołaja | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.gdansk.dominikanie.pl) bez jednoznacznej struktury porządku mszy |
 | Św. Ojca Pio | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafiapio.pl) bez jednoznacznej struktury porządku mszy |
-| Św. Polikarpa Biskupa Męczennika | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.polikarp.gda.pl) niedostępna — błąd pobrania |
 | Św. Rafała Kalinowskiego | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafianazlotej.diecezja.gda.pl) niedostępna — błąd pobrania |
 | Św. Stanisława Bp. | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.stanislawbiskup.pl) bez jednoznacznej struktury porządku mszy |
 | Św. Stanisława Kostki | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.stanislawkostkaoliwa.pl) bez jednoznacznej struktury porządku mszy |
-| Św. Teresy Benedykty od Krzyża (Edyty Stein) | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.benedykta.diecezja.gda.pl) bez jednoznacznej struktury porządku mszy |
 | Św. Teresy od Dzieciątka Jezus | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.swteresa.pl) bez jednoznacznej struktury porządku mszy |
 | Św. Urszuli Ledóchowskiej | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.patronplus.pl) bez jednoznacznej struktury porządku mszy |
 | Św. Wojciecha | poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.wojciechgdansk.pl) bez jednoznacznej struktury porządku mszy |

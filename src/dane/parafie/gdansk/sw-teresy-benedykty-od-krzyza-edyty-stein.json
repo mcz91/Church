@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia pw. Św. Teresy Benedykty od Krzyża (Edyty Stein)",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-teresy-benedykty-od-krzyza-edyty-stein",
+  "adres": {
+    "wartosc": "ul. Wawelska 21, 80-034 Gdańsk Ujeścisko",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/505"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.benedykta.diecezja.gda.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "7:00 · 8:30 · 10:00 (z udziałem przedszkolaków) · 11:30 (z udziałem dzieci szkolnych) · 13:00 · 19:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.benedykta.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "7:00 · 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.benedykta.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

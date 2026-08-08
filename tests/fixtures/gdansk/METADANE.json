@@ -22,6 +22,14 @@
     "strona-isp-mbbolesna.html": {
       "url": "http://www.mbbolesna.pl",
       "opis": "Strona parafii na silniku ISP — wariant etykiet „Niedziele i Święta: / Dni powszednie:\" z czasami rozdzielanymi średnikami; osobno etykieta wakacyjna, której parser nie może pomylić z całorocznym porządkiem."
+    },
+    "strona-isp-ignacy.html": {
+      "url": "http://www.ignacy.diecezja.gda.pl",
+      "opis": "Wariant „W NIEDZIELĘ I UROCZYSTOŚCI:\" z wypunktowaniem (&bull;), godzinami dni powszednich w osobnym akapicie bez etykiety strong i spowiedzią opisową."
+    },
+    "strona-isp-benedykta.html": {
+      "url": "http://www.benedykta.diecezja.gda.pl",
+      "opis": "Wariant „Niedziela i Uroczystości:\" — etykieta w osobnym akapicie, czasy w kolejnym akapicie bez znacznika strong."
     }
   }
 }

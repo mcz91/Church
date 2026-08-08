@@ -20,17 +20,20 @@ wymagania: [`PB-002`](briefs/PB-002-oceny-odwiedzajacych-automatyzacja.md).
 
 ## Pokrycie Gdańska — wybór ścieżki z akceptacji 4
 
-Pokrycie listy bazowej: **13,8% (8 z 58 pozycji)** — poniżej progu 90%,
-więc obowiązuje ścieżka **raportu braków z przyczyną źródłową per
+Pokrycie listy bazowej: **22,4% (13 z 58 pozycji)** — poniżej progu
+90%, więc obowiązuje ścieżka **raportu braków z przyczyną źródłową per
 pozycja**: [`src/dane/raporty/gdansk-pokrycie.md`](../src/dane/raporty/gdansk-pokrycie.md)
 (generat `npm run dane:pokrycie`). Przyczyna dominująca: katalog
 archidiecezji nie publikuje godzin mszy, a moduł mszy na stronach
 parafii (silnik ISP) jest wypełniany wolnym tekstem — deterministyczny
-parser czyta wyłącznie jednoznaczne warianty etykiet; luźniejsze reguły
-ryzykowałyby błędne godziny mszy (dokument 07 zakazuje zgadywania).
-**Start pilotażu poniżej 90% pozostaje decyzją operatora**; drogi
-poszerzenia: kolejne zamknięte warianty etykiet (po ręcznej
-weryfikacji), kolejka wyjątków ręcznych, katalogi innych wyznań.
+parser czyta wyłącznie jednoznaczne, zweryfikowane warianty etykiet
+(sześć wariantów po dopracowaniu); luźniejsze reguły ryzykowałyby
+błędne godziny mszy (dokument 07 zakazuje zgadywania). Pozostałe braki:
+~22 strony na innych silnikach (nieparsowalne jednym parserem), reszta
+to wolny tekst bez etykiet, porządki wyłącznie wakacyjne albo strony
+niedostępne. **Start pilotażu poniżej 90% pozostaje decyzją
+operatora**; drogi poszerzenia: kolejne zweryfikowane warianty etykiet,
+kolejka wyjątków ręcznych, katalogi innych wyznań.
 
 ## Ograniczenia
 

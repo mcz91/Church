@@ -1,0 +1,42 @@
+{
+  "nazwa": "Parafia pw. Św. Ignacego Loyoli",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-ignacego-loyoli",
+  "adres": {
+    "wartosc": "ul. Brzegi 49, 80-045 Gdańsk Stare Szkoty",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/327"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.ignacy.diecezja.gda.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "8:00 · 09:30 · 11:00 (z udziałem dzieci) · 12:15 · 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.ignacy.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "6:30 · 18:30",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.ignacy.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "spowiedz": {
+      "wartosc": "15 minut przed Mszą Świetą w tygodniu, a w niedzielę i święta podczas Mszy Świętej",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.ignacy.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

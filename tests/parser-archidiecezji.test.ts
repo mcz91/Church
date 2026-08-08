@@ -82,6 +82,35 @@ describe('parser porządku mszy ze strony na silniku ISP', () => {
     });
   });
 
+  it('rozumie wariant „W NIEDZIELĘ I UROCZYSTOŚCI" z wypunktowaniem i wartością w kolejnym akapicie', () => {
+    expect(parsujMszeISP(fixture('strona-isp-ignacy.html'))).toEqual({
+      niedziela: '8:00 · 09:30 · 11:00 (z udziałem dzieci) · 12:15 · 18:00',
+      tydzien: '6:30 · 18:30',
+      spowiedz: '15 minut przed Mszą Świetą w tygodniu, a w niedzielę i święta podczas Mszy Świętej',
+    });
+  });
+
+  it('rozumie wariant „Niedziela i Uroczystości" z etykietą w osobnym akapicie', () => {
+    expect(parsujMszeISP(fixture('strona-isp-benedykta.html'))).toEqual({
+      niedziela:
+        '7:00 · 8:30 · 10:00 (z udziałem przedszkolaków) · 11:30 (z udziałem dzieci szkolnych) · 13:00 · 19:00',
+      tydzien: '7:00 · 18:00',
+    });
+  });
+
+  it('nie łyka tekstów linków (np. przycisku „Więcej") do wartości faktu', () => {
+    // Minimalny syntetyczny wycinek struktury silnika ISP — nie opisuje
+    // realnej wspólnoty; realne warianty pokrywają fixture'y wyżej.
+    const wycinek = `<div class="gpg-service">
+<p><strong>W niedziele i święta:</strong> 8.00, 10.00</p>
+<p><strong>SPOWIEDŹ:</strong></p><p>przed każdą Mszą</p>
+<p><a class="btn" type="button">Więcej</a></p></div>`;
+    expect(parsujMszeISP(wycinek)).toEqual({
+      niedziela: '8:00 · 10:00',
+      spowiedz: 'przed każdą Mszą',
+    });
+  });
+
   it('zwraca null dla strony bez jednoznacznej struktury ISP', () => {
     expect(parsujMszeISP(karta571)).toBeNull();
   });

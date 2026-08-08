@@ -1,0 +1,42 @@
+{
+  "nazwa": "Parafia pw. Św. Polikarpa Biskupa Męczennika",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-polikarpa-biskupa-meczennika",
+  "adres": {
+    "wartosc": "Plac św. Jana Apostoła 1, 80-299 Gdańsk Osowa",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/361"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.polikarp.gda.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "08:00 09:30 11:00 - dla dzieci - Msza św. z udziałem scholki dziecięcej 12:30 - Suma 18:00 19:15 - dla młodzieży",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.polikarp.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "Od Poniedziałku do Piątku 07:00 (8:00 - w lipcu i sierpniu) 18:00 (16:00 - w okresie wizyt kolędowych) w Soboty : 8:00 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.polikarp.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "spowiedz": {
+      "wartosc": "15 minut przed każdą Mszą św. Pierwszy Piątek Miesiąca - od godz. 16.30 (od 17.00 lipiec-sierpień)",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.polikarp.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

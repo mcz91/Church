@@ -1,0 +1,42 @@
+{
+  "nazwa": "Parafia pw. Św. Kazimierza",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-kazimierza-krolewicza",
+  "adres": {
+    "wartosc": "ul. Pilotów 1, 80-460 Gdańsk Zaspa",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/370"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.swkazimierz.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "Kościół górny : 7:00 · 9:00 · 10:30 · 12:00 · 13:30 (poza lipcem i sierpniem) · 18:00 · 19:15 (tylko w lipcu i sierpniu) Kościół dolny : 10:00 (młodzież) · 11:30 (dzieci) W lipcu i sierpniu Msze św. tylko w górnym kościele",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.swkazimierz.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "6:30 (poza lipcem i sierpniem) · 7:30 · 8:30 · 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.swkazimierz.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "spowiedz": {
+      "wartosc": "15 minut przed Mszą Św.",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.swkazimierz.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

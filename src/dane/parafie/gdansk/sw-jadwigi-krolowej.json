@@ -1,0 +1,42 @@
+{
+  "nazwa": "Parafia pw. Św. Jadwigi Królowej",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-jadwigi-krolowej",
+  "adres": {
+    "wartosc": "ul. Krzemowa 3, 80-041 Gdańsk Orunia",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/340"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.jadwigaorunia.gda.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "8:00 · 10:00 · 11:15 (z udziałem dzieci) · 12:30 · 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.jadwigaorunia.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "6:30 · 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.jadwigaorunia.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "spowiedz": {
+      "wartosc": "Poniedziałek - Sobota 15 minut przed Mszą Św. Niedziela i Święta - podczas każdej Mszy Św.",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.jadwigaorunia.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

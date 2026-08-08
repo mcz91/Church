@@ -75,8 +75,12 @@ export function wyrozniki(parafia: { osie: Partial<Record<Os, Fakt>> }): string[
   const w: string[] = [];
   const niedziela = parafia.osie.mszeNiedziela;
   if (niedziela) {
-    const n = niedziela.wartosc.split('·').length;
-    w.push(`${n} ${odmianaMszy(n)} w niedzielę`);
+    // Liczą się godziny poza nawiasami — dopiski („16:00 w okresie
+    // zimowym") nie są osobnymi mszami, a wartość bez separatorów nie
+    // może udawać jednej mszy.
+    const pozaNawiasami = niedziela.wartosc.replace(/\([^)]*\)/g, ' ');
+    const n = (pozaNawiasami.match(/\d{1,2}[.:]\d{2}/g) ?? []).length;
+    if (n > 0) w.push(`${n} ${odmianaMszy(n)} w niedzielę`);
   }
   if (parafia.osie.spowiedz) w.push('spowiedź także poza mszą');
   if (parafia.osie.mszeSzczegolne?.wartosc.toLowerCase().includes('dzieci')) {

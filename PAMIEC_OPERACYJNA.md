@@ -53,6 +53,10 @@ Protokół (koszt czytelnika > koszt pisarza):
   wyłącznie zamknięte warianty etykiet w `<strong>`; poszerzanie
   pokrycia = nowy zweryfikowany wariant etykiety + fixture, nigdy
   luźniejszy regex (błędne godziny mszy to realna szkoda).
+- 2026-08-08 koder: podstrony „Msze" na ISP nie mają modułu
+  `gpg-service` (ślepa uliczka); jadwigaorunia.gda.pl po południu
+  serwowała anty-botową przejściówkę — pipeline'u nie uruchamiać
+  w pętli, odstępy i pojedyncze przebiegi.
 
 ## DŁUG — DebtRecords czekające na kontrakt
 

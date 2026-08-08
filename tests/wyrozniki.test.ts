@@ -16,6 +16,20 @@ describe('wyróżniki karty parafii', () => {
     expect(w).toContain('5 mszy w niedzielę');
   });
 
+  it('liczy godziny, nie separatory — wartość bez „·" nie udaje jednej mszy', () => {
+    const w = wyrozniki({
+      osie: { mszeNiedziela: fakt('08:00 09:30 11:00 - dla dzieci 12:30 - Suma 18:00 19:15') },
+    });
+    expect(w).toContain('6 mszy w niedzielę');
+  });
+
+  it('nie liczy godzin z dopisków w nawiasach', () => {
+    const w = wyrozniki({
+      osie: { mszeNiedziela: fakt('7:30 · 18:00 (16:00 w okresie zimowym)') },
+    });
+    expect(w).toContain('2 msze w niedzielę');
+  });
+
   it('sygnalizuje spowiedź poza mszą i mszę z udziałem dzieci, gdy osie istnieją', () => {
     const w = wyrozniki({
       osie: {

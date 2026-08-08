@@ -23,7 +23,7 @@
       "dataOdczytu": "2026-08-08"
     },
     "mszeTydzien": {
-      "wartosc": "7:00 · 7:30 i 18:00",
+      "wartosc": "7:00 · 7:30 · 18:00",
       "zrodlo": {
         "nazwa": "strona parafii",
         "url": "http://www.pgsiedlce.diecezja.gda.pl"
