@@ -37,7 +37,10 @@ Kontrakt: [`02-kontrakt-CHURCH-1.md`](02-kontrakt-CHURCH-1.md); decyzje:
 
 ## Następny krok
 
-Dwa akty operatora: (1) odbiór wdrożenia `CHURCH-1` wraz z listą
-poprawek z przeglądu architekta (czat 2026-08-08), (2) zatwierdzenie
-kontraktu [`CHURCH-2`](05-kontrakt-CHURCH-2.md). Po nich koder wykonuje
-najpierw poprawki, potem `CHURCH-2`.
+Poprawki z przeglądu architekta są wykonane (commit `92f5c85`).
+Dwa akty operatora: (1) odbiór wdrożenia `CHURCH-1` (ocena „ślicznie",
+`docs/02` akc. 7), (2) zatwierdzenie kontraktu
+[`CHURCH-2`](05-kontrakt-CHURCH-2.md). Po zatwierdzeniu koder wykonuje
+`CHURCH-2`. Osobno: rozplątanie równoległej gałęzi PM (pułapka
+w `PAMIEC_OPERACYJNA.md`) wymaga decyzji operatora o kolejności
+scalania (konstytucja §14).
