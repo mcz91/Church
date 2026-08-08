@@ -1,0 +1,252 @@
+{
+  "dataGeneracji": "2026-08-08",
+  "rozklad": {
+    "isp": 7,
+    "martwa": 7,
+    "brak-www": 11,
+    "inny": 12,
+    "wordpress": 3
+  },
+  "pozycje": [
+    {
+      "id": "337",
+      "nazwa": "Bł. Doroty z Mątew",
+      "www": "http://www.parafiajasien.gda.pl",
+      "silnik": "isp"
+    },
+    {
+      "id": "571",
+      "nazwa": "Bożego Ciała",
+      "www": "http://www.bozecialo.info",
+      "silnik": "martwa"
+    },
+    {
+      "id": "367",
+      "nazwa": "Chrystusa Odkupiciela",
+      "www": "http://www.odkupiciel.net.pl",
+      "silnik": "isp"
+    },
+    {
+      "id": "362",
+      "nazwa": "Chrystusa Zbawiciela",
+      "www": null,
+      "silnik": "brak-www"
+    },
+    {
+      "id": "346",
+      "nazwa": "Matki Boskiej Częstochowskiej",
+      "www": null,
+      "silnik": "brak-www"
+    },
+    {
+      "id": "357",
+      "nazwa": "Matki Boskiej Nieustającej Pomocy",
+      "www": "http://www.parafiambnp.info",
+      "silnik": "inny"
+    },
+    {
+      "id": "332",
+      "nazwa": "Matki Boskiej Saletyńskiej",
+      "www": "http://www.sobieszewo.saletyni.pl",
+      "silnik": "martwa"
+    },
+    {
+      "id": "356",
+      "nazwa": "Matki Bożej Brzemiennej",
+      "www": "http://www.matemblewo.pl",
+      "silnik": "inny"
+    },
+    {
+      "id": "368",
+      "nazwa": "Matki Bożej Fatimskiej",
+      "www": "http://www.fatimska.net.pl",
+      "silnik": "isp"
+    },
+    {
+      "id": "354",
+      "nazwa": "Matki Bożej Królowej Korony Polskiej",
+      "www": "http://www.oliwa.cystersi.pl",
+      "silnik": "inny"
+    },
+    {
+      "id": "2695",
+      "nazwa": "Matki Odkupiciela",
+      "www": "http://www.mater.diecezja.gda.pl",
+      "silnik": "inny"
+    },
+    {
+      "id": "331",
+      "nazwa": "Najświętszego Imienia Maryi",
+      "www": null,
+      "silnik": "brak-www"
+    },
+    {
+      "id": "345",
+      "nazwa": "Najświętszego Serca Jezusowego",
+      "www": "http://www.nsjwrzeszcz.pl",
+      "silnik": "inny"
+    },
+    {
+      "id": "324",
+      "nazwa": "Niepokalanego Poczęcia NMP",
+      "www": "http://www.niepokalanegopoczecia.pl",
+      "silnik": "inny"
+    },
+    {
+      "id": "363",
+      "nazwa": "NMP Królowej Różańca Św.",
+      "www": "http://www.nmp.pl",
+      "silnik": "wordpress"
+    },
+    {
+      "id": "350",
+      "nazwa": "NMP Matki Kościoła i Św. Katarzyny Szwedzkiej",
+      "www": "http://www.matkakosciolagd.pl",
+      "silnik": "isp"
+    },
+    {
+      "id": "335",
+      "nazwa": "Podwyższenia Krzyża Świętego",
+      "www": null,
+      "silnik": "brak-www"
+    },
+    {
+      "id": "366",
+      "nazwa": "Św. Apostołów Piotra i Pawła",
+      "www": null,
+      "silnik": "brak-www"
+    },
+    {
+      "id": "330",
+      "nazwa": "Św. Barbary",
+      "www": "http://www.sw-barbara.vn.pl",
+      "silnik": "inny"
+    },
+    {
+      "id": "341",
+      "nazwa": "Św. Br. Alberta Chmielowskiego",
+      "www": null,
+      "silnik": "brak-www"
+    },
+    {
+      "id": "320",
+      "nazwa": "Św. Brygidy",
+      "www": "http://www.brygida.gdansk.pl",
+      "silnik": "inny"
+    },
+    {
+      "id": "348",
+      "nazwa": "Św. Jadwigi Śląskiej",
+      "www": "http://www.jadwigagda.parafia.info.pl ",
+      "silnik": "martwa"
+    },
+    {
+      "id": "323",
+      "nazwa": "Św. Jana Bosko",
+      "www": "http://www.salezjanie-gdansk.pl",
+      "silnik": "martwa"
+    },
+    {
+      "id": "342",
+      "nazwa": "Św. Jana Chrzciciela",
+      "www": "http://www.kielpino.diecezja.gda.pl",
+      "silnik": "martwa"
+    },
+    {
+      "id": "2735",
+      "nazwa": "Św. Jana Pawła II",
+      "www": "http://www.parafiajp2.pl",
+      "silnik": "inny"
+    },
+    {
+      "id": "365",
+      "nazwa": "Św. Józefa",
+      "www": null,
+      "silnik": "brak-www"
+    },
+    {
+      "id": "338",
+      "nazwa": "Św. Judy Tadeusza Ap.",
+      "www": "http://www.swjudytadeusza.pl",
+      "silnik": "isp"
+    },
+    {
+      "id": "1573",
+      "nazwa": "Św. Krzysztofa",
+      "www": "http://www.swkrzysztof.pl",
+      "silnik": "inny"
+    },
+    {
+      "id": "339",
+      "nazwa": "Św. Maksymiliana Kolbe",
+      "www": "http://www.kolbe.diecezja.gda.pl",
+      "silnik": "martwa"
+    },
+    {
+      "id": "496",
+      "nazwa": "Św. Ojca Pio",
+      "www": "http://www.parafiapio.pl",
+      "silnik": "wordpress"
+    },
+    {
+      "id": "360",
+      "nazwa": "Św. Rafała Kalinowskiego",
+      "www": "http://www.parafianazlotej.diecezja.gda.pl",
+      "silnik": "martwa"
+    },
+    {
+      "id": "344",
+      "nazwa": "Św. Stanisława Bp.",
+      "www": "http://www.stanislawbiskup.pl",
+      "silnik": "inny"
+    },
+    {
+      "id": "355",
+      "nazwa": "Św. Stanisława Kostki",
+      "www": null,
+      "silnik": "brak-www"
+    },
+    {
+      "id": "50052",
+      "nazwa": "Św. Teresy od Dzieciątka Jezus",
+      "www": null,
+      "silnik": "brak-www"
+    },
+    {
+      "id": "333",
+      "nazwa": "Św. Wojciecha - Milenijne Sanktuarium Chrzciciela Gdańska",
+      "www": "http://www.swibno.diecezja.gda.pl",
+      "silnik": "inny"
+    },
+    {
+      "id": "347",
+      "nazwa": "Świętego Krzyża",
+      "www": null,
+      "silnik": "brak-www"
+    },
+    {
+      "id": "328",
+      "nazwa": "Świętej Rodziny",
+      "www": "http://www.parafia-stogi.pl",
+      "silnik": "isp"
+    },
+    {
+      "id": "353",
+      "nazwa": "Trójcy Świętej",
+      "www": "http://www.archikatedraoliwa.pl",
+      "silnik": "isp"
+    },
+    {
+      "id": "325",
+      "nazwa": "Wniebowzięcia NMP",
+      "www": "http://www.bazylikamariacka.gdansk.pl",
+      "silnik": "wordpress"
+    },
+    {
+      "id": "359",
+      "nazwa": "Zmartwychwstania Pańskiego",
+      "www": null,
+      "silnik": "brak-www"
+    }
+  ]
+}

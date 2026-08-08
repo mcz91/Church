@@ -30,6 +30,26 @@
     "strona-isp-benedykta.html": {
       "url": "http://www.benedykta.diecezja.gda.pl",
       "opis": "Wariant „Niedziela i Uroczystości:\" — etykieta w osobnym akapicie, czasy w kolejnym akapicie bez znacznika strong."
+    },
+    "wp-milosierdzia-msze.html": {
+      "url": "https://parafiamigowo.pl/msze-sw-i-nabozenstwa/",
+      "opis": "Podstrona mszy na WordPressie (Gutenberg): etykiety w <strong> w osobnych akapitach, czasy w kolejnych akapitach z <br>."
+    },
+    "wp-mikolaj-msze.html": {
+      "url": "https://gdansk.dominikanie.pl/sakramenty/msza-swieta/",
+      "opis": "Podstrona mszy na WordPressie: etykiety w <h5> z sufiksem „/Sunday\", czasy w listach <ul><li>."
+    },
+    "wp-pio-msze.html": {
+      "url": "https://parafiapio.pl/nasza-parafia/msze-sw-i-nabozenstwa/",
+      "opis": "Podstrona mszy na WordPressie (Avada, kontener fusion-text): etykieta „Niedziela\" w osobnym akapicie, czasy w liniach <br> z kwalifikatorami po średnikach; etykieta „Od poniedziałku do piątku\"."
+    },
+    "joomla-letnica-msze.html": {
+      "url": "http://www.parafialetnica.pl/msze-swiete.html",
+      "opis": "Podstrona mszy na Joomli (kontener itemBody): linie rozdzielane <br> z myślnikami, etykieta niedzielna z czasami w kolejnych liniach."
+    },
+    "joomla-stanislaw-msze.html": {
+      "url": "http://www.stanislawbiskup.pl/parafia/porzadek-nabozenstw",
+      "opis": "Podstrona mszy na Joomli z etykietami wyłącznie kwalifikowanymi („PODCZAS ROKU SZKOLNEGO / LETNICH WAKACJI\") i minutami w <sup> — przypadek odrzucany przez parser (kwalifikator wyklucza segment), obsługiwany kolejką ręczną."
     }
   }
 }

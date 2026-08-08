@@ -34,6 +34,7 @@ export function zbudujRekord(wejscie: {
   zrodloStrony?: Zrodlo;
   slug?: string;
   miasto?: { nazwa: string; slug: string };
+  nazwaZrodlaStrony?: string;
 }): WynikBudowy {
   const { karta, szczegoly, msze, zrodloKatalogu, zrodloStrony } = wejscie;
   const miasto = wejscie.miasto ?? { nazwa: 'Gdańsk', slug: 'gdansk' };
@@ -53,7 +54,10 @@ export function zbudujRekord(wejscie: {
     nazwa: 'Archidiecezja Gdańska, katalog parafii',
     url: zrodloKatalogu.url,
   };
-  const zrodloParafii = { nazwa: 'strona parafii', url: zrodloStrony.url };
+  const zrodloParafii = {
+    nazwa: wejscie.nazwaZrodlaStrony ?? 'strona parafii',
+    url: zrodloStrony.url,
+  };
   const fakt = (wartosc: string, zrodlo: typeof zrodloKarty, dataOdczytu: string) => ({
     wartosc,
     zrodlo,

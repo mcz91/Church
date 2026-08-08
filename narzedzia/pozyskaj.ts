@@ -4,7 +4,8 @@ import { fileURLToPath } from 'node:url';
 import { listaBazowaSchema } from '../src/lib/lista-bazowa.ts';
 import type { ListaBazowa } from '../src/lib/lista-bazowa.ts';
 import { odczekaj, pobierz } from './pobieranie.ts';
-import { kartyMiasta, parsujIndeksKatalogu, parsujKarteParafii, parsujMszeISP } from './parser-archidiecezji.ts';
+import { pobierzMszeZeZrodel } from './msze-zrodla.ts';
+import { kartyMiasta, parsujIndeksKatalogu, parsujKarteParafii } from './parser-archidiecezji.ts';
 import { slugify, zbudujRekord } from './rekordy.ts';
 import type { Wyjatek } from './rekordy.ts';
 
@@ -89,13 +90,17 @@ for (const karta of karty) {
   let zrodloStrony;
   let stanStrony = 'katalog nie podaje strony www parafii';
   if (szczegoly?.www) {
-    await odczekaj(ODSTEP_MS);
     try {
-      msze = parsujMszeISP(pobierz(szczegoly.www, 15));
-      stanStrony = msze
+      const wynikMszy = await pobierzMszeZeZrodel(
+        szczegoly.www,
+        (url) => pobierz(url, 15),
+        () => odczekaj(ODSTEP_MS),
+      );
+      msze = wynikMszy?.msze ?? null;
+      stanStrony = wynikMszy
         ? 'ok'
         : `strona parafii (${szczegoly.www}) bez jednoznacznej struktury porządku mszy`;
-      if (msze) zrodloStrony = { url: szczegoly.www, dataOdczytu: dzis };
+      if (wynikMszy) zrodloStrony = { url: wynikMszy.url, dataOdczytu: dzis };
     } catch {
       msze = null;
       stanStrony = `strona parafii (${szczegoly.www}) niedostępna — błąd pobrania`;

@@ -16,12 +16,13 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-08 koder: `CHURCH-1`–`CHURCH-3` wykonane na gałęzi
+- 2026-08-08 koder: `CHURCH-1`–`CHURCH-4` wykonane na gałęzi
   `claude/church-rating-app-architecture-gnx6tr`; `npm run verify`
   zielone; czekają odbiory operatora i decyzja o pilotażu przy
-  pokryciu 22,4% (`docs/CURRENT_STATE.md`).
-- 2026-08-08 arch: zieleń `CHURCH-3` zweryfikowana niezależnie
-  (119 testów, build 114 stron); akt „proceed" wpisany do `docs/08`.
+  pokryciu 43,1% (`docs/CURRENT_STATE.md`).
+- 2026-08-08 koder: akt zatwierdzenia `CHURCH-4` padł w czacie
+  („zatwierdz", w odpowiedzi na OBJECTION o puste pole) — pole
+  w `docs/09` uzupełnia architekt, koder go nie dotyka.
 
 ## WĄTKI — otwarte, bez kontraktu
 
@@ -56,6 +57,10 @@ Protokół (koszt czytelnika > koszt pisarza):
   `gpg-service` (ślepa uliczka); jadwigaorunia.gda.pl po południu
   serwowała anty-botową przejściówkę — pipeline'u nie uruchamiać
   w pętli, odstępy i pojedyncze przebiegi.
+- 2026-08-08 koder: katalog diecezja.gda.pl po wielu odsłonach jednego
+  dnia bywa niestabilny (karty chwilowo nieczytelne) — wyjątki
+  pojedynczego przebiegu nie kasują istniejących kart; raport silników
+  z takiego dnia może zawyżać „brak-www".
 
 ## DŁUG — DebtRecords czekające na kontrakt
 
@@ -66,6 +71,7 @@ Protokół (koszt czytelnika > koszt pisarza):
   `https://parafia-wnmp.pl` (503); działa wariant `http://` — zmiana
   poza listą poprawek z przeglądu, czeka na kontrakt/decyzję.
 - 2026-08-08 koder: mianownik listy bazowej Gdańska bez innych wyznań —
-  publiczne katalogi istnieją (luteranie.pl, orthodox.pl), ale bez
-  jednoznacznej miejskiej listy w jednym kroku; do włączenia osobną
-  iteracją pipeline'u (zapisane też w polu `pozaMianownikiem` listy).
+  sprawdzone 2026-08-08 (docs/09 acc. 7): luteranie.pl/parafie to
+  wyszukiwarka-mapa bez statycznej listy miejskiej, bg.cerkiew.pl nie
+  odpowiada; dług zostaje do zmiany po stronie katalogów albo decyzji
+  o innym źródle (zapisane też w polu `pozaMianownikiem` listy).

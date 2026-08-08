@@ -2,6 +2,16 @@
 // (www.diecezja.gda.pl) i stron parafialnych na silniku ISP
 // (strony-parafialne.pl). Zero LLM w ścieżce prawdy (dokument 07):
 // struktura nieparsowalna daje null, nigdy zgadywanie.
+import {
+  ETYKIETA_NIEDZIELI,
+  ETYKIETA_SPOWIEDZI,
+  ETYKIETA_TYGODNIA,
+  bezTagow,
+  normalizujGodziny,
+  odkoduj,
+} from './etykiety.ts';
+
+export { normalizujGodziny };
 
 export type KartaKatalogu = {
   id: string;
@@ -24,18 +34,7 @@ export type MszeISP = {
   spowiedz?: string;
 };
 
-function odkoduj(tekst: string): string {
-  return tekst
-    .replaceAll('&nbsp;', ' ')
-    .replaceAll('&amp;', '&')
-    .replaceAll('&oacute;', 'ó')
-    .replaceAll('&Oacute;', 'Ó')
-    .replaceAll('&quot;', '"')
-    .replaceAll('&bull;', ' ')
-    .replaceAll('•', ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
+
 
 export function parsujIndeksKatalogu(html: string): KartaKatalogu[] {
   const karta =
@@ -75,47 +74,9 @@ export function parsujKarteParafii(html: string): SzczegolyParafii | null {
   };
 }
 
-// Normalizacja godzin: „7.30, 9.30, 11.00 (dla dzieci)" →
-// „7:30 · 9:30 · 11:00 (dla dzieci)"; tekst bez ani jednej godziny jest
-// wątpliwy i zwraca null (wyjątek, nie dane).
-export function normalizujGodziny(tekst: string): string | null {
-  const czysty = odkoduj(tekst)
-    .replace(/^godz\.?:?\s*/i, '')
-    .replace(/[,;\s]+$/, '');
-  if (!/\d{1,2}[.:]\d{2}/.test(czysty)) return null;
-  const czesci: string[] = [];
-  let biezaca = '';
-  let nawiasy = 0;
-  for (const znak of czysty) {
-    if (znak === '(') nawiasy += 1;
-    if (znak === ')') nawiasy = Math.max(0, nawiasy - 1);
-    if ((znak === ',' || znak === ';') && nawiasy === 0) {
-      czesci.push(biezaca);
-      biezaca = '';
-    } else {
-      biezaca += znak;
-    }
-  }
-  czesci.push(biezaca);
-  return czesci
-    // spójnik między dwiema godzinami („6.30 i 18.30") to też separator
-    .flatMap((c) => c.split(/\s+i\s+(?=\d{1,2}[.:]\d{2})/))
-    .map((c) => c.trim().replace(/(\d{1,2})\.(\d{2})/g, '$1:$2'))
-    .filter((c) => c.length > 0)
-    .join(' · ');
-}
-
 // Zamknięty zbiór etykiet porządku mszy — zakotwiczony ^…$, więc każdy
 // kwalifikator w etykiecie (okres wakacyjny, zakres dat, kaplica) wyklucza
 // segment zamiast być zgadywany.
-const ETYKIETA_NIEDZIELI =
-  /^(msze\s+św(ięte)?\.?\s+)?(w\s+)?niedziel[aeę](\s+i\s+(święta|uroczystości))?$/i;
-const ETYKIETA_TYGODNIA = /^(msze\s+św(ięte)?\.?\s+)?(w\s+)?dni\s+powszednie$/i;
-const ETYKIETA_SPOWIEDZI = /^spowied[źz]$/i;
-
-// Teksty linków (przyciski „Więcej" itp.) to nawigacja, nie fakty.
-const bezTagow = (fragment: string) =>
-  odkoduj(fragment.replace(/<a[\s>][\s\S]*?<\/a>/g, ' ').replace(/<[^>]+>/g, ' '));
 
 export function parsujMszeISP(html: string): MszeISP | null {
   for (const [, blok] of html.matchAll(/<div class="gpg-service">([\s\S]*?)<\/div>/g)) {

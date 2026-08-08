@@ -5,64 +5,56 @@ linkują tutaj zamiast utrzymywać własne kopie.
 
 ## Etap
 
-**3 — automatyzacja faktów i przygotowanie pilotażu Gdańska
-(`CHURCH-3`) wykonane.** Repozytorium zawiera: witrynę dwumiastową
-(Toruń — dane ręczne, Gdańsk — dane z pipeline'u) z wyborem miasta bez
-JavaScriptu, pipeline pozyskania/odświeżania/pokrycia
-(`narzedzia/`, komendy w [`README.md`](../README.md)), listę bazową
-Gdańska ze źródłami, zgłaszanie błędów faktów z panelem, regułową
-wstępną moderację głosów (automat nigdy nie ustawia `approved`)
-i metryki kolejki moderacji. Kontrakt:
-[`08-kontrakt-CHURCH-3.md`](08-kontrakt-CHURCH-3.md); decyzje:
-[06](06-decyzja-kwalifikacja-pb002-i-integracja.md),
-[07](07-decyzja-automatyzacja-faktow-i-wstepnej-moderacji.md);
-wymagania: [`PB-002`](briefs/PB-002-oceny-odwiedzajacych-automatyzacja.md).
+**4 — poszerzenie pokrycia Gdańska (`CHURCH-4`) wykonane.** Repozytorium
+zawiera: parsery trzech silników stron parafialnych (ISP + WordPress
+i Joomla — dwa najliczniejsze z raportu silników), kolejkę wyjątków
+ręcznych z zapisem wyłącznie po potwierdzeniu człowieka i weryfikacją
+godzin przeciw treści źródła, rejestr rekordów ręcznych z odciskiem
+godzinowym (odświeżanie oznacza je „do przeglądu ręcznego", nigdy nie
+nadpisuje) oraz komendy `dane:silniki` i `dane:kolejka` obok
+dotychczasowego pipeline'u. Kontrakt:
+[`09-kontrakt-CHURCH-4.md`](09-kontrakt-CHURCH-4.md); zasady:
+[dokument 07](07-decyzja-automatyzacja-faktow-i-wstepnej-moderacji.md).
 
-## Pokrycie Gdańska — wybór ścieżki z akceptacji 4
+## Pokrycie Gdańska — wybór ścieżki z akceptacji 6
 
-Pokrycie listy bazowej: **22,4% (13 z 58 pozycji)** — poniżej progu
-90%, więc obowiązuje ścieżka **raportu braków z przyczyną źródłową per
-pozycja**: [`src/dane/raporty/gdansk-pokrycie.md`](../src/dane/raporty/gdansk-pokrycie.md)
-(generat `npm run dane:pokrycie`). Przyczyna dominująca: katalog
-archidiecezji nie publikuje godzin mszy, a moduł mszy na stronach
-parafii (silnik ISP) jest wypełniany wolnym tekstem — deterministyczny
-parser czyta wyłącznie jednoznaczne, zweryfikowane warianty etykiet
-(sześć wariantów po dopracowaniu); luźniejsze reguły ryzykowałyby
-błędne godziny mszy (dokument 07 zakazuje zgadywania). Pozostałe braki:
-~22 strony na innych silnikach (nieparsowalne jednym parserem), reszta
-to wolny tekst bez etykiet, porządki wyłącznie wakacyjne albo strony
-niedostępne. **Start pilotażu poniżej 90% pozostaje decyzją
-operatora**; drogi poszerzenia: kolejne zweryfikowane warianty etykiet,
-kolejka wyjątków ręcznych, katalogi innych wyznań.
+Pokrycie listy bazowej: **43,1% (25 z 58 pozycji)** — poniżej celu 60%,
+więc obowiązuje ścieżka raportu braków: **wszystkie 33 braki mają
+przyczynę sprawdzoną ręcznie 2026-08-08**
+([`src/dane/raporty/gdansk-pokrycie.md`](../src/dane/raporty/gdansk-pokrycie.md)):
+strony martwe/niedostępne i pozycje bez działającego www (ok. 18),
+strony niepublikujące porządku mszy w miejscu osiągalnym
+deterministycznie (ogłoszenia/JS, ok. 13), wyłącznie porządek wakacyjny
+(1 — do ponownego odczytu po wakacjach). Tych przyczyn kolejka ręczna
+nie usuwa w dniu sprawdzenia; realne dalsze kroki to kontakt
+z parafiami albo kolejne iteracje po zmianach na stronach.
 
 ## Ograniczenia
 
-- miasta z zamkniętej listy: **Toruń** (walidacja mechaniki, dane
-  ręczne) i **Gdańsk** (pilotaż PB-002, dane z pipeline'u); profile,
-  porównania i ranking działają w obrębie jednego miasta;
-- lista bazowa Gdańska obejmuje wyłącznie katalog archidiecezji
-  gdańskiej; katalogi innych wyznań nie są włączone do mianownika
-  (DŁUG w `PAMIEC_OPERACYJNA.md`), wspólnoty bez publicznego katalogu
-  jawnie poza listą (pole `pozaMianownikiem`);
-- automat moderacji odrzuca samodzielnie wyłącznie twarde przypadki
-  (dane kontaktowe, wulgaryzmy) z powodem i flagą odwołania; frazy
-  porównujące wyznania dostają podpowiedź; `approved` ustawia wyłącznie
-  człowiek; LLM nie dotyka ścieżki prawdy ani decyzji moderacyjnych;
-- publiczny start pilotażu i zegar 8 tygodni czekają na BRAK-i
-  operatora: dostawca e-mail, hosting/CI (harmonogram `dane:odswiez`),
-  domena, narzędzie analityki; zdjęcia w głosach → `CHURCH-4`;
-- stos bez zmian: Astro + TypeScript strict + Zod, statyczny build;
-  serwis zapisu Hono + `node:sqlite`; fonty systemowe, zero CDN-ów;
-- registry kontraktów nie istnieje; kontrakty obowiązują w treści
-  `docs/02-…`, `docs/05-…`, `docs/08-…`;
+- miasta z zamkniętej listy: **Toruń** (dane ręczne) i **Gdańsk**
+  (pipeline + kolejka ręczna); profile, porównania i ranking w obrębie
+  jednego miasta;
+- rekordy ręczne: 7 pozycji w rejestrze
+  (`src/dane/raporty/gdansk-reczne.json`) ze źródłem „strona parafii
+  (odczyt ręczny)" i odciskiem godzinowym; automat nigdy ich nie
+  nadpisuje;
+- mianownik: wyłącznie katalog archidiecezji gdańskiej; katalogi innych
+  wyznań sprawdzone 2026-08-08 — luteranie.pl serwuje wyszukiwarkę-mapę
+  bez statycznej listy miejskiej, bg.cerkiew.pl nie odpowiada — DŁUG
+  pozostaje (pamięć operacyjna);
+- automat moderacji i bezpieczniki bez zmian (dokumenty 03, 07): zero
+  agregacji po wyznaniu, ranking per miasto z progiem i fail-closed,
+  `approved` ustawia wyłącznie człowiek, LLM poza ścieżką prawdy;
+- publiczny start pilotażu czeka na BRAK-i operatora: dostawca e-mail,
+  hosting/CI (harmonogram odświeżania), domena, analityka; zdjęcia
+  w głosach → `CHURCH-5`;
+- registry kontraktów nie istnieje; kontrakty w treści `docs/02/05/08/09`;
 - ocena estetyczna („ślicznie") należy do operatora przy odbiorze.
 
 ## Następny krok
 
-Operator wybrał poszerzenie pokrycia (czat 2026-08-08): kontrakt
-[`CHURCH-4`](09-kontrakt-CHURCH-4.md) (kolejka wyjątków ręcznych +
-parsery dwóch najliczniejszych silników, cel ≥60%) jest napisany —
-**czeka na akt zatwierdzenia operatora**; zdjęcia w głosach przesunięte
-na `CHURCH-5`. Pozostają: odbiór estetyczny `CHURCH-1`–`CHURCH-3`
-i BRAK-i (dostawca e-mail, hosting/CI, domena, analityka) — start
-pilotażu wymaga ich wszystkich.
+Decyzje operatora: (1) los pilotażu przy pokryciu 43,1% z wyczerpanymi
+dziś przyczynami braków — start, kontakt z parafiami o publikację
+godzin, albo wstrzymanie; (2) odbiór estetyczny `CHURCH-1`–`CHURCH-4`;
+(3) BRAK-i (e-mail, hosting/CI, domena, analityka). Po decyzjach
+architekt pisze `CHURCH-5` (zdjęcia w głosach).

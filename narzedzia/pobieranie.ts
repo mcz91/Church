@@ -15,3 +15,7 @@ export function pobierz(url: string, maxCzasS = 20): string {
 export function odczekaj(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+export function odczekajSync(ms: number): void {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+}

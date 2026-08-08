@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia pw. Św. Ojca Pio",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-ojca-pio",
+  "adres": {
+    "wartosc": "ul. Przemyska 21, 80-180 Gdańsk Ujeścisko",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/496"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.parafiapio.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "07:30 z udziałem dorosłych · 08:45 z udziałem dorosłych · 10:00 z udziałem małych dzieci · 11:15 z udziałem dzieci szkolnych · 12:30 z udziałem dorosłych · 18:00 z udziałem dorosłych",
+      "zrodlo": {
+        "nazwa": "strona parafii (odczyt ręczny)",
+        "url": "https://parafiapio.pl/nasza-parafia/msze-sw-i-nabozenstwa/"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "7:30 (w adwencie 6:30) · 8:30 · 18:00 · 19:00",
+      "zrodlo": {
+        "nazwa": "strona parafii (odczyt ręczny)",
+        "url": "https://parafiapio.pl/nasza-parafia/msze-sw-i-nabozenstwa/"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

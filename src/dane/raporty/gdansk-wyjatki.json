@@ -10,7 +10,7 @@
     {
       "pozycja": "571",
       "nazwa": "Bożego Ciała",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.bozecialo.info) niedostępna — błąd pobrania"
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
     },
     {
       "pozycja": "367",
@@ -35,12 +35,12 @@
     {
       "pozycja": "332",
       "nazwa": "Matki Boskiej Saletyńskiej",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.sobieszewo.saletyni.pl) niedostępna — błąd pobrania"
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
     },
     {
       "pozycja": "356",
       "nazwa": "Matki Bożej Brzemiennej",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.matemblewo.pl) bez jednoznacznej struktury porządku mszy"
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
     },
     {
       "pozycja": "368",
@@ -55,12 +55,7 @@
     {
       "pozycja": "2695",
       "nazwa": "Matki Odkupiciela",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.mater.diecezja.gda.pl) bez jednoznacznej struktury porządku mszy"
-    },
-    {
-      "pozycja": "343",
-      "nazwa": "Miłosierdzia Bożego",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafiamigowo.pl) bez jednoznacznej struktury porządku mszy"
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
     },
     {
       "pozycja": "331",
@@ -91,11 +86,6 @@
       "pozycja": "335",
       "nazwa": "Podwyższenia Krzyża Świętego",
       "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://http://parafia-chelm.y0.pl, www.pks.gda.pl) niedostępna — błąd pobrania"
-    },
-    {
-      "pozycja": "351",
-      "nazwa": "Św. Anny i Joachima",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafialetnica.pl) bez jednoznacznej struktury porządku mszy"
     },
     {
       "pozycja": "366",
@@ -140,12 +130,17 @@
     {
       "pozycja": "365",
       "nazwa": "Św. Józefa",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.jozefprzymorze.gda.pl) bez jednoznacznej struktury porządku mszy"
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
     },
     {
       "pozycja": "338",
       "nazwa": "Św. Judy Tadeusza Ap.",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.swjudytadeusza.pl) bez jednoznacznej struktury porządku mszy"
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
+    },
+    {
+      "pozycja": "370",
+      "nazwa": "Św. Kazimierza Królewicza",
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
     },
     {
       "pozycja": "1573",
@@ -155,22 +150,22 @@
     {
       "pozycja": "339",
       "nazwa": "Św. Maksymiliana Kolbe",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.kolbe.diecezja.gda.pl) niedostępna — błąd pobrania"
-    },
-    {
-      "pozycja": "321",
-      "nazwa": "Św. Mikołaja",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.gdansk.dominikanie.pl) bez jednoznacznej struktury porządku mszy"
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
     },
     {
       "pozycja": "496",
       "nazwa": "Św. Ojca Pio",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafiapio.pl) bez jednoznacznej struktury porządku mszy"
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
+    },
+    {
+      "pozycja": "361",
+      "nazwa": "Św. Polikarpa Biskupa Męczennika",
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
     },
     {
       "pozycja": "360",
       "nazwa": "Św. Rafała Kalinowskiego",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafianazlotej.diecezja.gda.pl) niedostępna — błąd pobrania"
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
     },
     {
       "pozycja": "344",
@@ -183,19 +178,14 @@
       "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.stanislawkostkaoliwa.pl) bez jednoznacznej struktury porządku mszy"
     },
     {
+      "pozycja": "505",
+      "nazwa": "Św. Teresy Benedykty od Krzyża (Edyty Stein)",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.benedykta.diecezja.gda.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
       "pozycja": "50052",
       "nazwa": "Św. Teresy od Dzieciątka Jezus",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.swteresa.pl) bez jednoznacznej struktury porządku mszy"
-    },
-    {
-      "pozycja": "490",
-      "nazwa": "Św. Urszuli Ledóchowskiej",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.patronplus.pl) bez jednoznacznej struktury porządku mszy"
-    },
-    {
-      "pozycja": "319",
-      "nazwa": "Św. Wojciecha",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.wojciechgdansk.pl) bez jednoznacznej struktury porządku mszy"
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
     },
     {
       "pozycja": "333",
@@ -205,7 +195,7 @@
     {
       "pozycja": "347",
       "nazwa": "Świętego Krzyża",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.gdansk.jezuici.pl) bez jednoznacznej struktury porządku mszy"
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
     },
     {
       "pozycja": "328",
@@ -215,7 +205,7 @@
     {
       "pozycja": "353",
       "nazwa": "Trójcy Świętej",
-      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.archikatedraoliwa.pl) bez jednoznacznej struktury porządku mszy"
+      "przyczyna": "karta katalogu nieczytelna (struktura nieparsowalna)"
     },
     {
       "pozycja": "325",

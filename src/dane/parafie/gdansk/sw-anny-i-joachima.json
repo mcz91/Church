@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia pw. Św. Anny i Joachima",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-anny-i-joachima",
+  "adres": {
+    "wartosc": "ul. Sucha 3, 80-531 Gdańsk Letnica",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/351"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.parafialetnica.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "9:00 - dla dorosłych · 11:00 - suma · 18:00 - dla młodzieży",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.parafialetnica.pl/msze-swiete.html"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.parafialetnica.pl/msze-swiete.html"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

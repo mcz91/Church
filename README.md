@@ -44,7 +44,14 @@ chodzą na zarchiwizowanych fixture'ach):
 2. `npm run dane:odswiez` — porównuje źródła ze stanem repo; zmiana
    wartości daje diff z nową datą odczytu, brak zmiany nie daje niczego;
 3. `npm run dane:pokrycie` — raport pokrycia listy bazowej
-   ([`src/dane/raporty/gdansk-pokrycie.md`](src/dane/raporty/gdansk-pokrycie.md)).
+   ([`src/dane/raporty/gdansk-pokrycie.md`](src/dane/raporty/gdansk-pokrycie.md));
+4. `npm run dane:silniki` — klasyfikacja stron z braków po silniku
+   (sygnatury w HTML) do `src/dane/raporty/gdansk-silniki.json`;
+5. `npm run dane:kolejka` — kolejka wyjątków ręcznych: podgląd
+   deterministycznych kandydatów (bez zapisu); zapis wyłącznie
+   z plikiem potwierdzeń człowieka, po weryfikacji każdej godziny
+   przeciw treści strony źródłowej
+   (`npm run dane:kolejka -- potwierdzenia.json`).
 
 ## Najważniejsza zasada produktu
 

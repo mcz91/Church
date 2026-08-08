@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia pw. Miłosierdzia Bożego",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "milosierdzia-bozego",
+  "adres": {
+    "wartosc": "ul. Myśliwska 25, 80-283 Gdańsk Migowo",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/343"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.parafiamigowo.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "7:00 · 8:15 · 9:30 · 11:00 (z udziałem dzieci) · 12:30 (suma) · 12:15 w domu parafialnym (dla dzieci przedszkolnych, od września do maja) · 16:30 (poza lipcem i sierpniem) · 18:00 (z udziałem młodzieży) · 20:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "https://parafiamigowo.pl/msze-sw-i-nabozenstwa/"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "7:00 · 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "https://parafiamigowo.pl/msze-sw-i-nabozenstwa/"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

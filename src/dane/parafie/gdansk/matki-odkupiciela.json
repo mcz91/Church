@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia pw. Matki Odkupiciela",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "matki-odkupiciela",
+  "adres": {
+    "wartosc": "ul. Sobótki 20, 80-247 Gdańsk Wrzeszcz",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/2695"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.mater.diecezja.gda.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "8:00 · 10:00 · 12:00 · 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii (odczyt ręczny)",
+        "url": "http://www.mater.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "8:00 · 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii (odczyt ręczny)",
+        "url": "http://www.mater.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

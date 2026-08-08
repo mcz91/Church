@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia pw. Św. Wojciecha",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-wojciecha",
+  "adres": {
+    "wartosc": "ul. Trakt Św. Wojciecha 440, 80-007 Gdańsk Św. Wojciech",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/319"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.wojciechgdansk.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "8:00 · 10:30 · 12:00 · 18:00 · W czasie wakacji nie ma Mszy o godzinie 12:00 · Dni powszednie: 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "https://wojciechgdansk.pl/strona-glowna/porzadek-mszy-swietych/"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "https://wojciechgdansk.pl/strona-glowna/porzadek-mszy-swietych/"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

@@ -29,7 +29,20 @@ const wyjatki = existsSync(sciezkaWyjatkow)
     }).wyjatki
   : [];
 
-const raport = policzPokrycie(lista.pozycje, slugiKart, wyjatki);
+// Wyniki ręcznego przejścia kolejki wyjątków mają pierwszeństwo przed
+// automatycznym raportem pipeline'u — niosą przyczynę z datą sprawdzenia.
+const sciezkaSprawdzen = join(korzen, 'src/dane/raporty/gdansk-kolejka-sprawdzenia.json');
+const sprawdzenia = existsSync(sciezkaSprawdzen)
+  ? (JSON.parse(readFileSync(sciezkaSprawdzen, 'utf-8')) as {
+      sprawdzenia: { pozycja: string; przyczyna: string }[];
+    }).sprawdzenia
+  : [];
+const przyczyny = [
+  ...sprawdzenia,
+  ...wyjatki.filter((w) => !sprawdzenia.some((s) => s.pozycja === w.pozycja)),
+];
+
+const raport = policzPokrycie(lista.pozycje, slugiKart, przyczyny);
 
 const wiersze = raport.braki
   .map((b) => `| ${b.nazwa} | ${b.przyczyna} |`)

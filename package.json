@@ -9,6 +9,8 @@
     "dane:pozyskaj": "node --experimental-strip-types narzedzia/pozyskaj.ts",
     "dane:odswiez": "node --experimental-strip-types narzedzia/odswiez.ts",
     "dane:pokrycie": "node --experimental-strip-types narzedzia/raport-pokrycia.ts",
+    "dane:silniki": "node --experimental-strip-types narzedzia/raport-silnikow.ts",
+    "dane:kolejka": "node --experimental-strip-types narzedzia/kolejka-cli.ts",
     "lint": "eslint .",
     "check": "astro check",
     "test": "vitest run",

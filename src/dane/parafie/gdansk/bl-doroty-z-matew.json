@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia pw. Bł. Doroty z Mątew",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "bl-doroty-z-matew",
+  "adres": {
+    "wartosc": "ul. Kartuska 349, 80-125 Gdańsk Jasień",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/337"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.parafiajasien.gda.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "sobota 18:00 (msza niedzielna) · 7:30 · 9:00 · 10:30 (suma parafialna) · 11:00 (dla przedszkolaków, dolny kościół; w wakacje nie ma) · 12:00 (dla dzieci szkolnych, górny kościół) · 13:15 (dla młodzieży) · 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii (odczyt ręczny)",
+        "url": "http://www.parafiajasien.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "6:30 · 8:00 · 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii (odczyt ręczny)",
+        "url": "http://www.parafiajasien.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

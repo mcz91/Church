@@ -1,0 +1,171 @@
+{
+  "dataSprawdzenia": "2026-08-08",
+  "opis": "Wyniki ręcznego przejścia kolejki wyjątków (docs/09, acc. 6): przyczyny braków, których kolejka nie usuwa w dniu sprawdzenia.",
+  "sprawdzenia": [
+    {
+      "pozycja": "571",
+      "nazwa": "Bożego Ciała",
+      "przyczyna": "strona martwa lub niedostępna (http://www.bozecialo.info) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "362",
+      "nazwa": "Chrystusa Zbawiciela",
+      "przyczyna": "strona publikuje wyłącznie porządek wakacyjny (etykiety z zakresem 29.06–30.08) — do ponownego odczytu po wakacjach — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "346",
+      "nazwa": "Matki Boskiej Częstochowskiej",
+      "przyczyna": "katalog archidiecezji nie podaje działającej strony www parafii — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "357",
+      "nazwa": "Matki Boskiej Nieustającej Pomocy",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "332",
+      "nazwa": "Matki Boskiej Saletyńskiej",
+      "przyczyna": "strona martwa lub niedostępna (http://www.sobieszewo.saletyni.pl) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "368",
+      "nazwa": "Matki Bożej Fatimskiej",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "354",
+      "nazwa": "Matki Bożej Królowej Korony Polskiej",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "331",
+      "nazwa": "Najświętszego Imienia Maryi",
+      "przyczyna": "katalog archidiecezji nie podaje działającej strony www parafii — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "345",
+      "nazwa": "Najświętszego Serca Jezusowego",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "324",
+      "nazwa": "Niepokalanego Poczęcia NMP",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "363",
+      "nazwa": "NMP Królowej Różańca Św.",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "335",
+      "nazwa": "Podwyższenia Krzyża Świętego",
+      "przyczyna": "katalog archidiecezji nie podaje działającej strony www parafii — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "366",
+      "nazwa": "Św. Apostołów Piotra i Pawła",
+      "przyczyna": "katalog archidiecezji nie podaje działającej strony www parafii — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "330",
+      "nazwa": "Św. Barbary",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "341",
+      "nazwa": "Św. Br. Alberta Chmielowskiego",
+      "przyczyna": "katalog archidiecezji nie podaje działającej strony www parafii — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "320",
+      "nazwa": "Św. Brygidy",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "348",
+      "nazwa": "Św. Jadwigi Śląskiej",
+      "przyczyna": "strona martwa lub niedostępna (http://www.jadwigagda.parafia.info.pl ) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "323",
+      "nazwa": "Św. Jana Bosko",
+      "przyczyna": "strona martwa lub niedostępna (http://www.salezjanie-gdansk.pl) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "342",
+      "nazwa": "Św. Jana Chrzciciela",
+      "przyczyna": "strona martwa lub niedostępna (http://www.kielpino.diecezja.gda.pl) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "2735",
+      "nazwa": "Św. Jana Pawła II",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "365",
+      "nazwa": "Św. Józefa",
+      "przyczyna": "katalog archidiecezji nie podaje działającej strony www parafii — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "338",
+      "nazwa": "Św. Judy Tadeusza Ap.",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "1573",
+      "nazwa": "Św. Krzysztofa",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "339",
+      "nazwa": "Św. Maksymiliana Kolbe",
+      "przyczyna": "strona martwa lub niedostępna (http://www.kolbe.diecezja.gda.pl) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "360",
+      "nazwa": "Św. Rafała Kalinowskiego",
+      "przyczyna": "strona martwa lub niedostępna (http://www.parafianazlotej.diecezja.gda.pl) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "355",
+      "nazwa": "Św. Stanisława Kostki",
+      "przyczyna": "katalog archidiecezji nie podaje działającej strony www parafii — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "50052",
+      "nazwa": "Św. Teresy od Dzieciątka Jezus",
+      "przyczyna": "katalog archidiecezji nie podaje działającej strony www parafii — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "333",
+      "nazwa": "Św. Wojciecha - Milenijne Sanktuarium Chrzciciela Gdańska",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "347",
+      "nazwa": "Świętego Krzyża",
+      "przyczyna": "katalog archidiecezji nie podaje działającej strony www parafii — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "328",
+      "nazwa": "Świętej Rodziny",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "353",
+      "nazwa": "Trójcy Świętej",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "325",
+      "nazwa": "Wniebowzięcia NMP",
+      "przyczyna": "strona nie publikuje porządku mszy w miejscu osiągalnym deterministycznie (ogłoszenia/JS, menu bez podstrony mszy) — sprawdzono ręcznie 2026-08-08"
+    },
+    {
+      "pozycja": "359",
+      "nazwa": "Zmartwychwstania Pańskiego",
+      "przyczyna": "katalog archidiecezji nie podaje działającej strony www parafii — sprawdzono ręcznie 2026-08-08"
+    }
+  ]
+}

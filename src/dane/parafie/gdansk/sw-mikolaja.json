@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia pw. Św. Mikołaja",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-mikolaja",
+  "adres": {
+    "wartosc": "ul. Świętojańska 72, 80-840 Gdańsk",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/321"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.gdansk.dominikanie.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "8:00 · 10:00 (rodzinna) · 11:30 (konwentualna) · 16:00 (recytowana) · 19:00 (młodzieżowa i akademicka) · 21:00 (ostatnia w mieście)",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "https://gdansk.dominikanie.pl/sakramenty/msza-swieta/"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "8:00 · 12:00 (konwentualna) · 19:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "https://gdansk.dominikanie.pl/sakramenty/msza-swieta/"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}
