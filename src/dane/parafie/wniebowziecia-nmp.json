@@ -30,6 +30,30 @@
       },
       "dataOdczytu": "2026-08-08"
     },
+    "spowiedz": {
+      "wartosc": "15 minut przed każdą mszą świętą; w pierwsze piątki od 16:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://parafia-wnmp.pl/parafia/spowiedz-swieta.html"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "muzyka": {
+      "wartosc": "chór parafialny",
+      "zrodlo": {
+        "nazwa": "strona parafii, ruchy i stowarzyszenia",
+        "url": "http://parafia-wnmp.pl/parafia/ruchy-i-stowarzyszenia.html"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "wspolnoty": {
+      "wartosc": "Krąg Biblijny · Parafialne Koło Stowarzyszenia Rodzin Katolickich · Rodzina Różańcowa · ministranci i lektorzy · Akcja Katolicka · Pomocnicy Maryi — Matki Kościoła · Rycerstwo Niepokalanej · chór parafialny · Domowy Kościół · Czciciele Miłosierdzia Bożego · duszpasterstwo seniorów · duszpasterstwo ludzi pracy",
+      "zrodlo": {
+        "nazwa": "strona parafii, ruchy i stowarzyszenia",
+        "url": "http://parafia-wnmp.pl/parafia/ruchy-i-stowarzyszenia.html"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
     "mszeSzczegolne": {
       "wartosc": "niedziela 10:30 — msza dla dzieci",
       "zrodlo": {

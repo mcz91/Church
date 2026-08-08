@@ -2,8 +2,7 @@
 import { getCollection } from 'astro:content';
 import Bazowy from '../../layouts/Bazowy.astro';
 import { OSIE } from '../../lib/parafie';
-import type { Os } from '../../lib/parafie';
-import { kanonicznaPara } from '../../lib/porownanie';
+import { kanonicznaPara, podzialOsi } from '../../lib/porownanie';
 
 export async function getStaticPaths() {
   const parafie = await getCollection('parafie');
@@ -22,13 +21,15 @@ export async function getStaticPaths() {
 }
 
 const { a, b } = Astro.props;
-const osie = Object.keys(OSIE) as Os[];
+const { zDanymi, bezDanych } = podzialOsi(a.data.osie, b.data.osie);
 const trwalyLink = Astro.url.pathname.replace(/\/$/, '');
+
+const malaLitera = (etykieta: string) => etykieta.charAt(0).toLowerCase() + etykieta.slice(1);
 ---
 
 <Bazowy
   tytul={`${a.data.nazwa} i ${b.data.nazwa} obok siebie — ${a.data.miasto}`}
-  opis={`${a.data.nazwa} oraz ${b.data.nazwa} (${a.data.miasto}): msze, spowiedź, dostępność i dojazd obok siebie — same fakty, każdy ze źródłem i datą odczytu.`}
+  opis={`${a.data.nazwa} oraz ${b.data.nazwa} (${a.data.miasto}): fakty obok siebie, każdy ze źródłem i datą odczytu.`}
 >
   <div class="kicker wrap">Porównanie</div>
   <section class="wrap">
@@ -54,7 +55,7 @@ const trwalyLink = Astro.url.pathname.replace(/\/$/, '');
           </thead>
           <tbody>
             {
-              osie.map((os) => (
+              zDanymi.map((os) => (
                 <tr>
                   <th scope="row">{OSIE[os]}</th>
                   {[a, b].map((p) => {
@@ -76,6 +77,13 @@ const trwalyLink = Astro.url.pathname.replace(/\/$/, '');
           </tbody>
         </table>
       </div>
+      {
+        bezDanych.length > 0 && (
+          <p class="compare-note">
+            bez danych u obu parafii: {bezDanych.map((os) => malaLitera(OSIE[os])).join(' · ')}
+          </p>
+        )
+      }
       <p class="permalink">trwały link: <code>{trwalyLink}</code></p>
     </div>
   </section>

@@ -16,13 +16,11 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-08 koder: `CHURCH-1` wykonany na gałęzi
-  `claude/church-rating-app-architecture-gnx6tr`; `npm run verify`
-  zielone; czeka odbiór operatora (ocena „ślicznie", `docs/02` akc. 7).
-- 2026-08-08 arch: przegląd wykonania `CHURCH-1` zrobiony (zrzuty
-  mobil/desktop, DOM, kontrast tokenów); lista poprawek przekazana
-  operatorowi w czacie — czeka na jego zatwierdzenie przed zleceniem
-  koderowi.
+- 2026-08-08 koder: `CHURCH-1` wykonany + poprawki z przeglądu
+  architekta (kontrast AA, podział osi tabeli, kopia startu, osie WNMP)
+  na gałęzi `claude/church-rating-app-architecture-gnx6tr`; `npm run
+  verify` zielone; katedra bez nowych osi — brak źródła (pkt 4 warunkowy);
+  czeka odbiór operatora (ocena „ślicznie", `docs/02` akc. 7).
 
 ## WĄTKI — otwarte, bez kontraktu
 
@@ -44,12 +42,16 @@ Protokół (koszt czytelnika > koszt pisarza):
 ## PUŁAPKI — koszt odkrycia > koszt linii
 
 - 2026-08-08 koder: oficjalne strony części parafii Torunia bywają
-  niedostępne (katedratorun.pl — domena wygasła, przejęta przez
-  aukcję; parafia-wnmp.pl — 503/zły certyfikat); katalog
-  diecezja-torun.pl jest stabilnym źródłem zastępczym.
+  niedostępne (katedratorun.pl — domena przejęta przez aukcję;
+  katedrajanow.pl — pusty shell SPA; parafia-wnmp.pl — 503 po HTTPS,
+  ale działa po zwykłym HTTP); katalog diecezja-torun.pl jest stabilny,
+  lecz nie podaje spowiedzi, muzyki, wspólnot ani dostępności.
 
 ## DŁUG — DebtRecords czekające na kontrakt
 
 - 2026-08-08 koder: obraz Open Graph (`og:image`) wymaga absolutnego
   URL, więc czeka na decyzję o domenie (`BRAK` w `docs/01`); strony
   mają tytuł i opis OG zgodnie z akceptacją 6 `CHURCH-1`.
+- 2026-08-08 koder: pole `www` rekordu WNMP wskazuje
+  `https://parafia-wnmp.pl` (503); działa wariant `http://` — zmiana
+  poza listą poprawek z przeglądu, czeka na kontrakt/decyzję.
