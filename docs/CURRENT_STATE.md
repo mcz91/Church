@@ -21,6 +21,9 @@ bramki CI ani registry kontraktów.
 
 ## Następny krok
 
-PM formułuje pierwszy ProductBrief (hipoteza wirusowości + metryka +
-najtańszy eksperyment). Architekt kwalifikuje go i — jeśli wynik brzmi
-„buduj" — pisze kontrakt `CHURCH-1`.
+Pierwszy ProductBrief istnieje:
+[`briefs/PB-001-porownanie-praktyczne-pilot.md`](briefs/PB-001-porownanie-praktyczne-pilot.md)
+(wynik kwalifikacji PM: eksperymentuj). Czeka na decyzje operatora
+wyliczone w sekcji `BRAK` briefu — w tym zatwierdzenie i wybór miejsca
+pilotażu. Po zatwierdzeniu architekt kwalifikuje brief i — jeśli wynik
+brzmi „buduj" lub „eksperymentuj" z kodem — pisze kontrakt `CHURCH-1`.

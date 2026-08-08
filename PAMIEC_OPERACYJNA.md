@@ -16,7 +16,8 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-(pusto = nic w locie)
+- 2026-08-08 pm: PB-001 na gałęzi `claude/church-rating-app-pm-ze7w6m`,
+  niescalony; komplet decyzji operatora wyliczony w sekcji BRAK briefu.
 
 ## WĄTKI — otwarte, bez kontraktu
 
