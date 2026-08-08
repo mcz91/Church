@@ -3,7 +3,7 @@
 Data: 2026-08-08 · Autor: architekt · Status: **kierunek zatwierdzony
 przez operatora w czacie; wiąże wykonawczo dopiero jako kontrakt
 `CHURCH-2`** (do napisania po zatwierdzeniu i wykonaniu
-[`CHURCH-1`](02-kontrakt-CHURCH-1.md)). Wzorzec wizualny: makieta v4.
+[`CHURCH-1`](02-kontrakt-CHURCH-1.md)). Wzorzec wizualny: makieta v6.
 
 ## Kontekst
 

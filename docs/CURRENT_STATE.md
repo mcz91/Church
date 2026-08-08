@@ -5,29 +5,32 @@ linkują tutaj zamiast utrzymywać własne kopie.
 
 ## Etap
 
-**0 — bootstrap, z gotową specyfikacją.** Repozytorium zawiera
-konstytucję, prompty ról, pamięć operacyjną, decyzję architektoniczną
-MVP ([`01-decyzja-mvp-znajdz-swoje-miejsce.md`](01-decyzja-mvp-znajdz-swoje-miejsce.md))
-i kontrakt [`CHURCH-1`](02-kontrakt-CHURCH-1.md) oczekujący na
-zatwierdzenie. Nie ma jeszcze kodu produktu, testów ani bramki CI.
+**0 — bootstrap, kontrakt zatwierdzony.** Repozytorium zawiera
+konstytucję, prompty ról, pamięć operacyjną, decyzje architektoniczne
+([01 — MVP](01-decyzja-mvp-znajdz-swoje-miejsce.md),
+[03 — głosy i ranking](03-model-glosow-ocen-i-rankingu.md)) oraz
+**zatwierdzony przez operatora kontrakt
+[`CHURCH-1`](02-kontrakt-CHURCH-1.md)** (2026-08-08, z korektą: bez
+osadzanego kroju ozdobnego). Nie ma jeszcze kodu produktu, testów ani
+bramki CI.
 
 ## Ograniczenia
 
-- 2026-08-08 operator zakwalifikował budowę aktem właściciela celu,
-  z pominięciem ProductBriefu PM-a; założenia produktowe przyjęte w ich
-  miejsce są jawnie oznaczone w dokumencie 01 i wchodzą w życie razem
-  z zatwierdzeniem `CHURCH-1`;
-- stos technologiczny jest wybrany w dokumencie 01 (Astro + TypeScript
-  strict + Zod, wyjście statyczne) i wiąże od zatwierdzenia `CHURCH-1`;
-- komendy weryfikacji nie istnieją; `CHURCH-1` ustanawia `npm run verify`
-  i wpisuje bramkę do `README.md`;
+- stos wiąże z dokumentu 01: Astro + TypeScript strict + Zod, wyjście
+  w pełni statyczne; fonty wyłącznie systemowe;
+- komendy weryfikacji nie istnieją; `CHURCH-1` ustanawia
+  `npm run verify` i wpisuje bramkę do `README.md`;
 - registry kontraktów nie istnieje; kontrakt obowiązuje w treści
-  dokumentu 02 z kompletem pól z `PROMPT_ARCHITEKT.md`;
-- oceny użytkowników są jawnie odłożone (nie odrzucone) — wymagają
-  osobnego kontraktu z moderacją; uzasadnienie w dokumencie 01.
+  dokumentu 02;
+- głosy użytkowników (oceny, ranking, zdjęcia) mają zatwierdzony
+  kierunek w dokumencie 03, ale wchodzą dopiero kontraktem `CHURCH-2`
+  po wykonaniu `CHURCH-1`;
+- miasto startowe niewskazane przez operatora — wybór jawnie
+  delegowany na kodera (dokument 01, sekcja BRAK);
+- metryka północna nierozstrzygnięta; jej pomiar jest poza `CHURCH-1`.
 
 ## Następny krok
 
-Operator zatwierdza (lub odrzuca) kontrakt `CHURCH-1` i rozstrzyga
-`BRAK:` z dokumentu 01 (metryka północna, miasto startowe). Po
-zatwierdzeniu koder wykonuje `CHURCH-1` w granicach `allowed_paths`.
+Koder wykonuje `CHURCH-1` w granicach `allowed_paths` z dokumentu 02:
+nowe testy czerwone przed implementacją, potem zieleń `npm run verify`
+i aktualizacja tego pliku (etap 0 → 1).

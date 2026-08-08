@@ -3,8 +3,11 @@
 Wersja: 1 · Data: 2026-08-08 · Autor: architekt · Typ: feature
 (nowe zachowanie — nowe testy muszą być czerwone przed implementacją).
 
-**Zatwierdzenie operatora:** _(puste — wypełnia wyłącznie akt operatora;
-do tego momentu kontrakt nie jest wykonywalny)_
+**Zatwierdzenie operatora:** zatwierdzony aktem operatora z 2026-08-08
+(czat): „zatwierdzam poza fontem — przesadzony". Zastrzeżenie dotyczy
+wyłącznie typografii: osadzony EB Garamond odpada, obowiązuje spokojny
+szeryf systemowy zapisany w [dokumencie 01](01-decyzja-mvp-znajdz-swoje-miejsce.md).
+Kontrakt jest od tej chwili niemutowalny i wykonywalny.
 
 Decyzje, które ten kontrakt realizuje:
 [`01-decyzja-mvp-znajdz-swoje-miejsce.md`](01-decyzja-mvp-znajdz-swoje-miejsce.md).

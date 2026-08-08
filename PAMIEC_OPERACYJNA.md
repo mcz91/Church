@@ -16,9 +16,9 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-08 arch: `CHURCH-1` + decyzja 01 na gałęzi
-  `claude/church-rating-app-architecture-gnx6tr`; czeka wyłącznie na
-  akt zatwierdzenia operatora (pole w `docs/02-kontrakt-CHURCH-1.md`).
+- 2026-08-08 arch: `CHURCH-1` zatwierdzony (akt w `docs/02`); całość
+  na gałęzi `claude/church-rating-app-architecture-gnx6tr`; następny
+  ruch należy do kodera.
 
 ## WĄTKI — otwarte, bez kontraktu
 
@@ -32,11 +32,10 @@ Protokół (koszt czytelnika > koszt pisarza):
   KODER,AUDYTOR}.md` w korzeniu i kopią konstytucji Foundry; konwencja
   wspólna z `mcz91/foundry` i `mcz91/ezmat`, rozszerzona o PM.
 - 2026-08-08 operator (czat, kolejno): „buduj" bez ProductBriefu PM-a;
-  estetyka niedewocyjna, potem „poetycko piękne, nie krzykliwe";
-  „fajne!" dla makiety v3; rozbudowa opinii o punkty, ranking
-  i zdjęcia — utrwalone w `docs/01` i `docs/03`; poza repo zostaje
-  tylko fakt, że akty padły w czacie, bez formalnego zatwierdzenia
-  pola w `docs/02`.
+  estetyka niedewocyjna → „poetycko piękne" → rozbudowa opinii →
+  zatwierdzenie CHURCH-1 z odrzuceniem fontu — wszystko utrwalone
+  w `docs/01`–`03`; makiety v1–v6 żyły w artefakcie czatu, wzorcem
+  wykonawczym jest opis tokenów w `docs/01`, nie plik makiety.
 
 ## PUŁAPKI — koszt odkrycia > koszt linii
 

@@ -111,10 +111,11 @@ Tokeny (do wdrożenia jako CSS custom properties, jedno źródło):
   (przygaszona świerkowa zieleń) z tłem pomocniczym `#EDF2EF`; jeden
   akcent, używany oszczędnie; paleta neutralna wyznaniowo;
 - typografia dwugłosowa: nazwy, nagłówki, liczby ocen i cytaty głosów —
-  **EB Garamond** (waga 400–500, kursywa dla głosu ludzi; subsety latin
-  + latin-ext dla polskich znaków); warstwa UI (etykiety, przyciski,
-  tabele) — bezszeryf systemowy/Inter; fonty wyłącznie self-hosted —
-  zero CDN-ów zewnętrznych;
+  spokojny szeryf **z zasobów systemowych** (stos: Iowan Old Style →
+  Palatino → Georgia; waga 400–500, kursywa dla głosu ludzi); warstwa
+  UI (etykiety, przyciski, tabele) — bezszeryf systemowy; operator
+  2026-08-08 odrzucił osadzanie kroju ozdobnego (EB Garamond) jako
+  przesadę — produkt nie dosyła żadnych fontów, zero CDN-ów;
 - zamiast ciężkich ram: linie włoskowe (hairline) jako podziały,
   jedna biała karta „arkusza" dla profilu i porównania, promień 10 px,
   cień ledwo obecny; wyszukiwarka i przyciski jako pigułki;
@@ -133,7 +134,7 @@ Głosy użytkowników mają zaprojektowaną formę: cytat szeryfową kursywą,
 autor i data, ocena jako dyskretne kropki z liczbą (nie gwiazdki),
 wymiary doświadczenia, zdjęcia miejsc z podpisem autora — model
 i bezpieczniki w [dokumencie 03](03-model-glosow-ocen-i-rankingu.md).
-Wzorcem jest makieta v5. Estetyka nie jest w pełni mechanizowalna —
+Wzorcem jest makieta v6. Estetyka nie jest w pełni mechanizowalna —
 ostateczną akceptację „ślicznie" wydaje operator przy odbiorze
 wdrożenia, i tak zapisuje to kontrakt.
 
