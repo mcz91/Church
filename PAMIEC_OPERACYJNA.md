@@ -41,6 +41,12 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## PUŁAPKI — koszt odkrycia > koszt linii
 
+- 2026-08-08 koder: gałąź `claude/church-rating-app-pm-ze7w6m`
+  (PB-001/PB-002, zatwierdzony Gdańsk) bazuje na bootstrapie sprzed
+  `CHURCH-1` i równolegle edytuje `docs/CURRENT_STATE.md` oraz ten
+  plik — integracja z gałęzią wykonania wymaga właściciela kolejności
+  scalania (konstytucja §14).
+
 - 2026-08-08 koder: oficjalne strony części parafii Torunia bywają
   niedostępne (katedratorun.pl — domena przejęta przez aukcję;
   katedrajanow.pl — pusty shell SPA; parafia-wnmp.pl — 503 po HTTPS,
