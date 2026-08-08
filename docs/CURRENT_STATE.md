@@ -21,9 +21,11 @@ bramki CI ani registry kontraktów.
 
 ## Następny krok
 
-Pierwszy ProductBrief istnieje:
-[`briefs/PB-001-porownanie-praktyczne-pilot.md`](briefs/PB-001-porownanie-praktyczne-pilot.md)
-(wynik kwalifikacji PM: eksperymentuj). Czeka na decyzje operatora
-wyliczone w sekcji `BRAK` briefu — w tym zatwierdzenie i wybór miejsca
-pilotażu. Po zatwierdzeniu architekt kwalifikuje brief i — jeśli wynik
-brzmi „buduj" lub „eksperymentuj" z kodem — pisze kontrakt `CHURCH-1`.
+Obowiązujący kierunek operatora (2026-08-08): rdzeniem produktu są
+oceny odwiedzających, pozyskiwanie danych mocno zautomatyzowane.
+Aktualny brief:
+[`briefs/PB-002-oceny-odwiedzajacych-automatyzacja.md`](briefs/PB-002-oceny-odwiedzajacych-automatyzacja.md)
+(wynik kwalifikacji PM: buduj, zakres pilotażowy; zastępuje PB-001).
+Czeka na decyzje operatora z sekcji `BRAK` briefu — w tym zatwierdzenie
+interpretacji polecenia i wybór miasta pilotażu. Po zatwierdzeniu
+architekt kwalifikuje brief i pisze kontrakt `CHURCH-1`.

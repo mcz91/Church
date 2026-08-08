@@ -1,8 +1,11 @@
 # ProductBrief PB-001 — praktyczne porównanie kościołów jednej dzielnicy
 
-Status: **czeka na zatwierdzenie operatora** · autor: PM · 2026-08-08
-Wynik kwalifikacji PM: **eksperymentuj** (najtańszy eksperyment przed
-jakąkolwiek budową; kod jest ostatnią formą walidacji).
+Status: **zastąpiony przez
+[`PB-002`](PB-002-oceny-odwiedzajacych-automatyzacja.md)** decyzją
+operatora z 2026-08-08 (rdzeń: oceny odwiedzających + mocna
+automatyzacja) · autor: PM · 2026-08-08
+Wynik kwalifikacji PM: eksperymentuj — nie wszedł do pracy; dokument
+pozostaje jako zapis odrzuconego wariantu i możliwy pivot.
 
 ## Problem i segment
 
