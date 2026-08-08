@@ -16,17 +16,23 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-(pusto = nic w locie)
+- 2026-08-08 arch: `CHURCH-1` + decyzja 01 na gałęzi
+  `claude/church-rating-app-architecture-gnx6tr`; czeka wyłącznie na
+  akt zatwierdzenia operatora (pole w `docs/02-kontrakt-CHURCH-1.md`).
 
 ## WĄTKI — otwarte, bez kontraktu
 
-(pusto)
+- 2026-08-08 arch: oceny użytkowników odłożone do osobnego kontraktu
+  z moderacją; analityka metryki północnej — osobna decyzja operatora.
 
 ## DECYZJE Z CZATU — obowiązują, niezmechanizowane
 
 - 2026-08-08 arch: repo startuje z czwórką ról `PROMPT_{PM,ARCHITEKT,
   KODER,AUDYTOR}.md` w korzeniu i kopią konstytucji Foundry; konwencja
   wspólna z `mcz91/foundry` i `mcz91/ezmat`, rozszerzona o PM.
+- 2026-08-08 operator: „buduj; prosto, ale ślicznie; apka, która pozwoli
+  znaleźć swoje miejsce" — akt kwalifikacji bez ProductBriefu PM-a;
+  założenia zastępcze w `docs/01`, wiążą po zatwierdzeniu `CHURCH-1`.
 
 ## PUŁAPKI — koszt odkrycia > koszt linii
 
