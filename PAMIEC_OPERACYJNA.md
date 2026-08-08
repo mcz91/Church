@@ -26,8 +26,8 @@ Protokół (koszt czytelnika > koszt pisarza):
 ## WĄTKI — otwarte, bez kontraktu
 
 - 2026-08-08 arch: narzędzie analityki odwiedzin (diagnostyka `PB-002`)
-  — decyzja operatora przed startem pilotażu Gdańska; `CHURCH-4`
-  (zdjęcia) do napisania po decyzjach z `docs/CURRENT_STATE.md`.
+  — decyzja operatora przed startem pilotażu Gdańska; `CHURCH-5`
+  (zdjęcia) do napisania po wykonaniu `CHURCH-4` (`docs/09`).
 
 ## DECYZJE Z CZATU — obowiązują, niezmechanizowane
 

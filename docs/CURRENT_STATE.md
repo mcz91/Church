@@ -59,8 +59,10 @@ kolejka wyjątków ręcznych, katalogi innych wyznań.
 
 ## Następny krok
 
-Decyzje operatora: (1) los pilotażu Gdańska przy pokryciu 22,4% —
-start mimo progu, zlecenie poszerzenia pokrycia albo wstrzymanie;
-(2) odbiór estetyczny `CHURCH-1`–`CHURCH-3`; (3) BRAK-i: dostawca
-e-mail, hosting/CI, domena, analityka. Po decyzjach architekt pisze
-kontrakt `CHURCH-4` (zdjęcia) lub kontrakt poszerzenia pokrycia.
+Operator wybrał poszerzenie pokrycia (czat 2026-08-08): kontrakt
+[`CHURCH-4`](09-kontrakt-CHURCH-4.md) (kolejka wyjątków ręcznych +
+parsery dwóch najliczniejszych silników, cel ≥60%) jest napisany —
+**czeka na akt zatwierdzenia operatora**; zdjęcia w głosach przesunięte
+na `CHURCH-5`. Pozostają: odbiór estetyczny `CHURCH-1`–`CHURCH-3`
+i BRAK-i (dostawca e-mail, hosting/CI, domena, analityka) — start
+pilotażu wymaga ich wszystkich.
