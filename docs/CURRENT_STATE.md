@@ -23,8 +23,11 @@ Kontrakt: [`02-kontrakt-CHURCH-1.md`](02-kontrakt-CHURCH-1.md); decyzje:
   (dokument 01, sekcja BRAK), zapisany w `src/dane/parafie/`;
 - registry kontraktów nie istnieje; kontrakty obowiązują w treści
   dokumentów `docs/02-…`;
-- głosy użytkowników (oceny, ranking, zdjęcia) mają zatwierdzony
-  kierunek w dokumencie 03 i czekają na kontrakt `CHURCH-2`;
+- głosy użytkowników: kierunek w dokumencie 03, architektura zapisu
+  w [dokumencie 04](04-decyzja-architektura-zapisu-glosow.md), kontrakt
+  [`CHURCH-2`](05-kontrakt-CHURCH-2.md) **napisany, niezatwierdzony** —
+  do aktu operatora żaden koder go nie wykonuje; zdjęcia wycięte do
+  przyszłego `CHURCH-3`;
 - metryka północna nierozstrzygnięta; analityka poza `CHURCH-1`;
 - domena i hosting nierozstrzygnięte (BRAK w dokumencie 01) — build
   nie ustawia `site`, a obraz Open Graph czeka na domenę (DŁUG
@@ -34,5 +37,7 @@ Kontrakt: [`02-kontrakt-CHURCH-1.md`](02-kontrakt-CHURCH-1.md); decyzje:
 
 ## Następny krok
 
-Operator odbiera wdrożenie (ocena „ślicznie" z dokumentu 02, akceptacja 7).
-Po odbiorze architekt pisze kontrakt `CHURCH-2` (głosy wg dokumentu 03).
+Dwa akty operatora: (1) odbiór wdrożenia `CHURCH-1` wraz z listą
+poprawek z przeglądu architekta (czat 2026-08-08), (2) zatwierdzenie
+kontraktu [`CHURCH-2`](05-kontrakt-CHURCH-2.md). Po nich koder wykonuje
+najpierw poprawki, potem `CHURCH-2`.

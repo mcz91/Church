@@ -21,12 +21,13 @@ Protokół (koszt czytelnika > koszt pisarza):
   na gałęzi `claude/church-rating-app-architecture-gnx6tr`; `npm run
   verify` zielone; katedra bez nowych osi — brak źródła (pkt 4 warunkowy);
   czeka odbiór operatora (ocena „ślicznie", `docs/02` akc. 7).
+- 2026-08-08 arch: kontrakt `CHURCH-2` napisany (`docs/05`, architektura
+  w `docs/04`) — pole zatwierdzenia puste, czeka na akt operatora.
 
 ## WĄTKI — otwarte, bez kontraktu
 
-- 2026-08-08 arch: `CHURCH-2` (głosy wg `docs/03`) do napisania po
-  wykonaniu `CHURCH-1`; analityka metryki północnej — osobna decyzja
-  operatora.
+- 2026-08-08 arch: analityka metryki północnej — osobna decyzja
+  operatora; zdjęcia w głosach wycięte do `CHURCH-3` (`docs/04`).
 
 ## DECYZJE Z CZATU — obowiązują, niezmechanizowane
 
