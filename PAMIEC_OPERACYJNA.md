@@ -19,6 +19,10 @@ Protokół (koszt czytelnika > koszt pisarza):
 - 2026-08-08 koder: `CHURCH-1` wykonany na gałęzi
   `claude/church-rating-app-architecture-gnx6tr`; `npm run verify`
   zielone; czeka odbiór operatora (ocena „ślicznie", `docs/02` akc. 7).
+- 2026-08-08 arch: przegląd wykonania `CHURCH-1` zrobiony (zrzuty
+  mobil/desktop, DOM, kontrast tokenów); lista poprawek przekazana
+  operatorowi w czacie — czeka na jego zatwierdzenie przed zleceniem
+  koderowi.
 
 ## WĄTKI — otwarte, bez kontraktu
 
