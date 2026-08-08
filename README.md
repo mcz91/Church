@@ -35,6 +35,17 @@ Serwis zapisu głosów (deweloperski): `npm run serwis` — wymaga zmiennych
 środowiskowych z [`serwer/.env.example`](serwer/.env.example); magic linki
 trafiają na konsolę, dopóki dostawca e-mail nie jest rozstrzygnięty.
 
+Pipeline danych Gdańska (sieć wyłącznie przy generowaniu danych — testy
+chodzą na zarchiwizowanych fixture'ach):
+
+1. `npm run dane:pozyskaj` — katalog archidiecezji gdańskiej + strony
+   parafii o jednoznacznej strukturze → `src/dane/parafie/gdansk/`,
+   lista bazowa i raport wyjątków;
+2. `npm run dane:odswiez` — porównuje źródła ze stanem repo; zmiana
+   wartości daje diff z nową datą odczytu, brak zmiany nie daje niczego;
+3. `npm run dane:pokrycie` — raport pokrycia listy bazowej
+   ([`src/dane/raporty/gdansk-pokrycie.md`](src/dane/raporty/gdansk-pokrycie.md)).
+
 ## Najważniejsza zasada produktu
 
 > Każdy fakt o kościele ma źródło, każda ocena ma autora, a wirusowość

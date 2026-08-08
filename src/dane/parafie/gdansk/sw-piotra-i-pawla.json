@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia pw. Św. Piotra i Pawła",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-piotra-i-pawla",
+  "adres": {
+    "wartosc": "ul. Żabi Kruk 3, 80-822 Gdańsk",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/326"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.piotripawel.diecezja.gda.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "8:00 - Msza św. 10:30 - Msza św. z udziałem dzieci 12:00 - Msza św. (suma parafialna) 16:00 - Msza św.",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.piotripawel.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "7:30 - Msza św. 17:30 - Msza św. od września do czerwca · lipiec i sierpień g. 18:00 - kościół św. Trójcy",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.piotripawel.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

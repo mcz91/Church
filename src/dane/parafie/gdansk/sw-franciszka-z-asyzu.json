@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia pw. Św. Franciszka z Asyżu",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-franciszka-z-asyzu",
+  "adres": {
+    "wartosc": "ul. Kartuska 186, 80-136 Gdańsk Siedlce",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/336"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.pgsiedlce.diecezja.gda.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "Od stycznia 2025: 8:00 · 10:00 · 11:30 (dla dzieci) · 13:00 · 18:00 (dla młodzieży)",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.pgsiedlce.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "7:00 · 7:30 i 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.pgsiedlce.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

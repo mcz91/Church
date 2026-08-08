@@ -1,0 +1,27 @@
+{
+  "opis": "Zarchiwizowane kopie realnych stron źródłowych do testów parsera — testy nigdy nie dotykają sieci.",
+  "dataPobrania": "2026-08-08",
+  "userAgent": "ChurchBot/0.1 (kontakt: macczeka@gmail.com; pozyskiwanie faktów o parafiach ze źródeł publicznych)",
+  "pliki": {
+    "katalog-index.html": {
+      "url": "https://www.diecezja.gda.pl/parafie",
+      "opis": "Indeks katalogu parafii Archidiecezji Gdańskiej (201 kart, w tym 58 z miejscowością Gdańsk)."
+    },
+    "katalog-parafia-571.html": {
+      "url": "https://www.diecezja.gda.pl/parafie/571",
+      "opis": "Karta parafii Bożego Ciała (Gdańsk Morena): adres i kontakt, bez godzin mszy; www (bozecialo.info) nie rozwiązywała się w dniu pobrania — rekord poniżej progu jakości."
+    },
+    "katalog-parafia-322.html": {
+      "url": "https://www.diecezja.gda.pl/parafie/322",
+      "opis": "Karta parafii Chrystusa Króla (Gdańsk): adres i www na silniku ISP — rekord osiąga próg jakości razem ze stroną parafii."
+    },
+    "strona-isp-chrystuskrol.html": {
+      "url": "https://www.chrystuskrol.diecezja.gda.pl/",
+      "opis": "Strona parafii na silniku ISP (strony-parafialne.pl) z jednolitym modułem gpg-service „Porządek Mszy Świętych\"."
+    },
+    "strona-isp-mbbolesna.html": {
+      "url": "http://www.mbbolesna.pl",
+      "opis": "Strona parafii na silniku ISP — wariant etykiet „Niedziele i Święta: / Dni powszednie:\" z czasami rozdzielanymi średnikami; osobno etykieta wakacyjna, której parser nie może pomylić z całorocznym porządkiem."
+    }
+  }
+}

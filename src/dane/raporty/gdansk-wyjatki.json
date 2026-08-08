@@ -1,0 +1,256 @@
+{
+  "dataGeneracji": "2026-08-08",
+  "zrodloIndeksu": "https://www.diecezja.gda.pl/parafie",
+  "wyjatki": [
+    {
+      "pozycja": "337",
+      "nazwa": "Bł. Doroty z Mątew",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafiajasien.gda.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "571",
+      "nazwa": "Bożego Ciała",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.bozecialo.info) niedostępna — błąd pobrania"
+    },
+    {
+      "pozycja": "367",
+      "nazwa": "Chrystusa Odkupiciela",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.odkupiciel.net.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "362",
+      "nazwa": "Chrystusa Zbawiciela",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.zbawiciel.gda.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "346",
+      "nazwa": "Matki Boskiej Częstochowskiej",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.pallotyni-wrzeszcz.com.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "357",
+      "nazwa": "Matki Boskiej Nieustającej Pomocy",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafiambnp.info) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "332",
+      "nazwa": "Matki Boskiej Saletyńskiej",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.sobieszewo.saletyni.pl) niedostępna — błąd pobrania"
+    },
+    {
+      "pozycja": "356",
+      "nazwa": "Matki Bożej Brzemiennej",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.matemblewo.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "368",
+      "nazwa": "Matki Bożej Fatimskiej",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.fatimska.net.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "354",
+      "nazwa": "Matki Bożej Królowej Korony Polskiej",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.oliwa.cystersi.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "2695",
+      "nazwa": "Matki Odkupiciela",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.mater.diecezja.gda.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "343",
+      "nazwa": "Miłosierdzia Bożego",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafiamigowo.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "331",
+      "nazwa": "Najświętszego Imienia Maryi",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a katalog nie podaje strony www parafii"
+    },
+    {
+      "pozycja": "345",
+      "nazwa": "Najświętszego Serca Jezusowego",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.nsjwrzeszcz.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "324",
+      "nazwa": "Niepokalanego Poczęcia NMP",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.niepokalanegopoczecia.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "363",
+      "nazwa": "NMP Królowej Różańca Św.",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.nmp.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "350",
+      "nazwa": "NMP Matki Kościoła i Św. Katarzyny Szwedzkiej",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.matkakosciolagd.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "335",
+      "nazwa": "Podwyższenia Krzyża Świętego",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://http://parafia-chelm.y0.pl, www.pks.gda.pl) niedostępna — błąd pobrania"
+    },
+    {
+      "pozycja": "351",
+      "nazwa": "Św. Anny i Joachima",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafialetnica.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "366",
+      "nazwa": "Św. Apostołów Piotra i Pawła",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.jelitkowo-parafia.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "330",
+      "nazwa": "Św. Barbary",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.sw-barbara.vn.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "341",
+      "nazwa": "Św. Br. Alberta Chmielowskiego",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.bratalbertkokoszki.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "320",
+      "nazwa": "Św. Brygidy",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.brygida.gdansk.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "327",
+      "nazwa": "Św. Ignacego Loyoli",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.ignacy.diecezja.gda.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "340",
+      "nazwa": "Św. Jadwigi Królowej",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.jadwigaorunia.gda.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "348",
+      "nazwa": "Św. Jadwigi Śląskiej",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.jadwigagda.parafia.info.pl ) niedostępna — błąd pobrania"
+    },
+    {
+      "pozycja": "323",
+      "nazwa": "Św. Jana Bosko",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.salezjanie-gdansk.pl) niedostępna — błąd pobrania"
+    },
+    {
+      "pozycja": "342",
+      "nazwa": "Św. Jana Chrzciciela",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.kielpino.diecezja.gda.pl) niedostępna — błąd pobrania"
+    },
+    {
+      "pozycja": "2735",
+      "nazwa": "Św. Jana Pawła II",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafiajp2.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "365",
+      "nazwa": "Św. Józefa",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.jozefprzymorze.gda.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "338",
+      "nazwa": "Św. Judy Tadeusza Ap.",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.swjudytadeusza.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "370",
+      "nazwa": "Św. Kazimierza Królewicza",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.swkazimierz.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "1573",
+      "nazwa": "Św. Krzysztofa",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.swkrzysztof.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "339",
+      "nazwa": "Św. Maksymiliana Kolbe",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.kolbe.diecezja.gda.pl) niedostępna — błąd pobrania"
+    },
+    {
+      "pozycja": "321",
+      "nazwa": "Św. Mikołaja",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.gdansk.dominikanie.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "496",
+      "nazwa": "Św. Ojca Pio",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafiapio.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "361",
+      "nazwa": "Św. Polikarpa Biskupa Męczennika",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.polikarp.gda.pl) niedostępna — błąd pobrania"
+    },
+    {
+      "pozycja": "360",
+      "nazwa": "Św. Rafała Kalinowskiego",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafianazlotej.diecezja.gda.pl) niedostępna — błąd pobrania"
+    },
+    {
+      "pozycja": "344",
+      "nazwa": "Św. Stanisława Bp.",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.stanislawbiskup.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "355",
+      "nazwa": "Św. Stanisława Kostki",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.stanislawkostkaoliwa.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "505",
+      "nazwa": "Św. Teresy Benedykty od Krzyża (Edyty Stein)",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.benedykta.diecezja.gda.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "50052",
+      "nazwa": "Św. Teresy od Dzieciątka Jezus",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.swteresa.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "490",
+      "nazwa": "Św. Urszuli Ledóchowskiej",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.patronplus.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "319",
+      "nazwa": "Św. Wojciecha",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.wojciechgdansk.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "333",
+      "nazwa": "Św. Wojciecha - Milenijne Sanktuarium Chrzciciela Gdańska",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.swibno.diecezja.gda.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "347",
+      "nazwa": "Świętego Krzyża",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.gdansk.jezuici.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "328",
+      "nazwa": "Świętej Rodziny",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.parafia-stogi.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "353",
+      "nazwa": "Trójcy Świętej",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.archikatedraoliwa.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "325",
+      "nazwa": "Wniebowzięcia NMP",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.bazylikamariacka.gdansk.pl) bez jednoznacznej struktury porządku mszy"
+    },
+    {
+      "pozycja": "359",
+      "nazwa": "Zmartwychwstania Pańskiego",
+      "przyczyna": "poniżej progu jakości: brak godzin mszy niedzielnych — katalog ich nie publikuje, a strona parafii (http://www.sanktuarium.gda.pl) bez jednoznacznej struktury porządku mszy"
+    }
+  ]
+}

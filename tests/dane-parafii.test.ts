@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { parafiaSchema } from '../src/lib/parafie';
+import { MIASTA, parafiaSchema } from '../src/lib/parafie';
 
 const katalog = fileURLToPath(new URL('../src/dane/parafie', import.meta.url));
 const pliki = readdirSync(katalog).filter((p) => p.endsWith('.json'));
@@ -23,10 +23,12 @@ describe('dane parafii', () => {
     });
   }
 
-  it('opisują dokładnie jedno miasto startowe', () => {
+  it('opisują wyłącznie miasta z zamkniętej listy, spójnie ze slugiem', () => {
     const parsy = rekordy.map((r) => parafiaSchema.parse(r.dane));
-    expect(new Set(parsy.map((p) => p.miasto)).size).toBe(1);
-    expect(new Set(parsy.map((p) => p.miastoSlug)).size).toBe(1);
+    for (const p of parsy) {
+      expect(Object.keys(MIASTA), p.slug).toContain(p.miastoSlug);
+      expect(p.miasto).toBe(MIASTA[p.miastoSlug as keyof typeof MIASTA]);
+    }
   });
 
   it('mają unikatowe slugi', () => {

@@ -2,6 +2,13 @@ import { z } from 'astro/zod';
 
 export const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
+// Zamknięta lista miast produktu (dokument 07, decyzja 6); rozszerzenie
+// wymaga decyzji architektonicznej, nie edycji danych.
+export const MIASTA = {
+  torun: 'Toruń',
+  gdansk: 'Gdańsk',
+} as const;
+
 const zrodloSchema = z.object({
   nazwa: z.string().min(1),
   url: z.url(),

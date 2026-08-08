@@ -1,0 +1,703 @@
+{
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "pozaMianownikiem": "Lista obejmuje parafie rzymskokatolickie miasta Gdańska z katalogu Archidiecezji Gdańskiej. Publiczne katalogi innych wyznań obecnych w Gdańsku (m.in. ewangelicko-augsburskiego i prawosławnego) istnieją, ale nie są jeszcze włączone do mianownika — pokrycie liczone wobec tej listy nie obejmuje tych wspólnot (dług odnotowany w PAMIEC_OPERACYJNA.md). Wspólnoty bez publicznego katalogu wyznania pozostają poza listą.",
+  "pozycje": [
+    {
+      "id": "337",
+      "nazwa": "Bł. Doroty z Mątew",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Jasień",
+      "slug": "bl-doroty-z-matew",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "571",
+      "nazwa": "Bożego Ciała",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Morena",
+      "slug": "bozego-ciala",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "322",
+      "nazwa": "Chrystusa Króla",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk",
+      "slug": "chrystusa-krola",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "367",
+      "nazwa": "Chrystusa Odkupiciela",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Żabianka",
+      "slug": "chrystusa-odkupiciela",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "362",
+      "nazwa": "Chrystusa Zbawiciela",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Osowa",
+      "slug": "chrystusa-zbawiciela",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "329",
+      "nazwa": "Matki Boskiej Bolesnej",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk",
+      "slug": "matki-boskiej-bolesnej",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "346",
+      "nazwa": "Matki Boskiej Częstochowskiej",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Wrzeszcz",
+      "slug": "matki-boskiej-czestochowskiej",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "357",
+      "nazwa": "Matki Boskiej Nieustającej Pomocy",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Brętowo",
+      "slug": "matki-boskiej-nieustajacej-pomocy",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "332",
+      "nazwa": "Matki Boskiej Saletyńskiej",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Sobieszewo",
+      "slug": "matki-boskiej-saletynskiej",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "356",
+      "nazwa": "Matki Bożej Brzemiennej",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Matemblewo",
+      "slug": "matki-bozej-brzemiennej",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "368",
+      "nazwa": "Matki Bożej Fatimskiej",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Żabianka",
+      "slug": "matki-bozej-fatimskiej",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "354",
+      "nazwa": "Matki Bożej Królowej Korony Polskiej",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Oliwa",
+      "slug": "matki-bozej-krolowej-korony-polskiej",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "2695",
+      "nazwa": "Matki Odkupiciela",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Wrzeszcz",
+      "slug": "matki-odkupiciela",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "343",
+      "nazwa": "Miłosierdzia Bożego",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Migowo",
+      "slug": "milosierdzia-bozego",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "331",
+      "nazwa": "Najświętszego Imienia Maryi",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Krakowiec",
+      "slug": "najswietszego-imienia-maryi",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "345",
+      "nazwa": "Najświętszego Serca Jezusowego",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Wrzeszcz",
+      "slug": "najswietszego-serca-jezusowego",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "324",
+      "nazwa": "Niepokalanego Poczęcia NMP",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk",
+      "slug": "niepokalanego-poczecia-nmp",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "363",
+      "nazwa": "NMP Królowej Różańca Św.",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Przymorze",
+      "slug": "nmp-krolowej-rozanca-sw",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "350",
+      "nazwa": "NMP Matki Kościoła i Św. Katarzyny Szwedzkiej",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk",
+      "slug": "nmp-matki-kosciola-i-sw-katarzyny-szwedzkiej",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "369",
+      "nazwa": "Opatrzności Bożej",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Zaspa",
+      "slug": "opatrznosci-bozej",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "335",
+      "nazwa": "Podwyższenia Krzyża Świętego",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Chełm",
+      "slug": "podwyzszenia-krzyza-swietego",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "351",
+      "nazwa": "Św. Anny i Joachima",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Letniewo",
+      "slug": "sw-anny-i-joachima",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "349",
+      "nazwa": "Św. Antoniego Padewskiego",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Brzeźno",
+      "slug": "sw-antoniego-padewskiego",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "366",
+      "nazwa": "Św. Apostołów Piotra i Pawła",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Jelitkowo",
+      "slug": "sw-apostolow-piotra-i-pawla",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "330",
+      "nazwa": "Św. Barbary",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk",
+      "slug": "sw-barbary",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "341",
+      "nazwa": "Św. Br. Alberta Chmielowskiego",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Kokoszki",
+      "slug": "sw-br-alberta-chmielowskiego",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "364",
+      "nazwa": "Św. Brata Alberta",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Przymorze",
+      "slug": "sw-brata-alberta",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "320",
+      "nazwa": "Św. Brygidy",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk",
+      "slug": "sw-brygidy",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "336",
+      "nazwa": "Św. Franciszka z Asyżu",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Siedlce",
+      "slug": "sw-franciszka-z-asyzu",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "327",
+      "nazwa": "Św. Ignacego Loyoli",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Stare Szkoty",
+      "slug": "sw-ignacego-loyoli",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "340",
+      "nazwa": "Św. Jadwigi Królowej",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Orunia",
+      "slug": "sw-jadwigi-krolowej",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "348",
+      "nazwa": "Św. Jadwigi Śląskiej",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Nowy Port",
+      "slug": "sw-jadwigi-slaskiej",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "323",
+      "nazwa": "Św. Jana Bosko",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Orunia",
+      "slug": "sw-jana-bosko",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "342",
+      "nazwa": "Św. Jana Chrzciciela",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Kiełpino",
+      "slug": "sw-jana-chrzciciela",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "2735",
+      "nazwa": "Św. Jana Pawła II",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Łostowice",
+      "slug": "sw-jana-pawla-ii",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "365",
+      "nazwa": "Św. Józefa",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Przymorze",
+      "slug": "sw-jozefa",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "338",
+      "nazwa": "Św. Judy Tadeusza Ap.",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Łostowice",
+      "slug": "sw-judy-tadeusza-ap",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "370",
+      "nazwa": "Św. Kazimierza Królewicza",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Zaspa",
+      "slug": "sw-kazimierza-krolewicza",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "1573",
+      "nazwa": "Św. Krzysztofa",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Os. Świętokrzyskie",
+      "slug": "sw-krzysztofa",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "339",
+      "nazwa": "Św. Maksymiliana Kolbe",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Suchanino",
+      "slug": "sw-maksymiliana-kolbe",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "321",
+      "nazwa": "Św. Mikołaja",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk",
+      "slug": "sw-mikolaja",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "496",
+      "nazwa": "Św. Ojca Pio",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Ujeścisko",
+      "slug": "sw-ojca-pio",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "326",
+      "nazwa": "Św. Piotra i Pawła",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk",
+      "slug": "sw-piotra-i-pawla",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "361",
+      "nazwa": "Św. Polikarpa Biskupa Męczennika",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Osowa",
+      "slug": "sw-polikarpa-biskupa-meczennika",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "360",
+      "nazwa": "Św. Rafała Kalinowskiego",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Złota Karczma",
+      "slug": "sw-rafala-kalinowskiego",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "344",
+      "nazwa": "Św. Stanisława Bp.",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Wrzeszcz",
+      "slug": "sw-stanislawa-bp",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "355",
+      "nazwa": "Św. Stanisława Kostki",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Oliwa",
+      "slug": "sw-stanislawa-kostki",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "505",
+      "nazwa": "Św. Teresy Benedykty od Krzyża (Edyty Stein)",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Ujeścisko",
+      "slug": "sw-teresy-benedykty-od-krzyza-edyty-stein",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "50052",
+      "nazwa": "Św. Teresy od Dzieciątka Jezus",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk",
+      "slug": "sw-teresy-od-dzieciatka-jezus",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "490",
+      "nazwa": "Św. Urszuli Ledóchowskiej",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Chełm",
+      "slug": "sw-urszuli-ledochowskiej",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "358",
+      "nazwa": "Św. Walentego",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Matarnia",
+      "slug": "sw-walentego",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "319",
+      "nazwa": "Św. Wojciecha",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Św. Wojciech",
+      "slug": "sw-wojciecha",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "333",
+      "nazwa": "Św. Wojciecha - Milenijne Sanktuarium Chrzciciela Gdańska",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Świbno",
+      "slug": "sw-wojciecha-milenijne-sanktuarium-chrzciciela-gdanska",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "347",
+      "nazwa": "Świętego Krzyża",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Wrzeszcz",
+      "slug": "swietego-krzyza",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "328",
+      "nazwa": "Świętej Rodziny",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Stogi",
+      "slug": "swietej-rodziny",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "353",
+      "nazwa": "Trójcy Świętej",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Oliwa",
+      "slug": "trojcy-swietej",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "325",
+      "nazwa": "Wniebowzięcia NMP",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk",
+      "slug": "wniebowziecia-nmp",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    {
+      "id": "359",
+      "nazwa": "Zmartwychwstania Pańskiego",
+      "wyznanie": "rzymskokatolicka",
+      "miejscowosc": "Gdańsk Strzyża",
+      "slug": "zmartwychwstania-panskiego",
+      "zrodlo": {
+        "nazwa": "Archidiecezja Gdańska, katalog parafii",
+        "url": "https://www.diecezja.gda.pl/parafie"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import { EMAIL, WYMIARY, ZASADY_MODERACJI, glosSchema } from '../src/lib/glosy.t
 import type { Glos } from '../src/lib/glosy.ts';
 import { eksportujGlos, usunPlikiAutora } from './eksport.ts';
 import type { DostawcaEmail } from './email.ts';
+import { klasyfikujGlos } from './moderacja-wstepna.ts';
 
 export type Konfiguracja = {
   baza: DatabaseSync;
@@ -179,18 +180,31 @@ ${Object.entries(WYMIARY)
     if (!wynik.success) return c.text('Głos nie przechodzi walidacji — popraw pola.', 400);
     const glos = wynik.data;
 
+    // Wstępna moderacja regułowa: twarde przypadki automat odrzuca
+    // z powodem i flagą odwołania; approved ustawia wyłącznie człowiek.
+    const klasyfikacja = klasyfikujGlos({ tekst: glos.tekst, pseudonim: konto.pseudonim });
+    const autoOdrzucony = klasyfikacja.twarde.length > 0;
+    const powod = autoOdrzucony
+      ? klasyfikacja.twarde.map((t) => t.powod).join('; ')
+      : null;
+    const podpowiedz = klasyfikacja.podpowiedzi.length > 0 ? klasyfikacja.podpowiedzi.join('; ') : null;
+
     // Trwały zapis przed odpowiedzią; ponowny zapis nadpisuje własny głos.
     k.baza
       .prepare(
         `INSERT INTO glosy (id, konto_id, parafia_slug, ocena_ogolna, przyjecie, muzyka,
-           z_dziecmi, dostepnosc, organizacja, tekst, status, powod_odrzucenia, data)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', NULL, ?)
+           z_dziecmi, dostepnosc, organizacja, tekst, status, powod_odrzucenia,
+           auto_odrzucone, podpowiedz, data, utworzone)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
          ON CONFLICT (konto_id, parafia_slug) DO UPDATE SET
            ocena_ogolna = excluded.ocena_ogolna, przyjecie = excluded.przyjecie,
            muzyka = excluded.muzyka, z_dziecmi = excluded.z_dziecmi,
            dostepnosc = excluded.dostepnosc, organizacja = excluded.organizacja,
-           tekst = excluded.tekst, status = 'pending', powod_odrzucenia = NULL,
-           data = excluded.data`,
+           tekst = excluded.tekst, status = excluded.status,
+           powod_odrzucenia = excluded.powod_odrzucenia,
+           auto_odrzucone = excluded.auto_odrzucone,
+           podpowiedz = excluded.podpowiedz,
+           data = excluded.data, utworzone = excluded.utworzone`,
       )
       .run(
         randomUUID(),
@@ -203,34 +217,133 @@ ${Object.entries(WYMIARY)
         glos.wymiary.dostepnosc,
         glos.wymiary.organizacja,
         glos.tekst ?? null,
+        autoOdrzucony ? 'rejected' : 'pending',
+        powod,
+        autoOdrzucony ? 1 : 0,
+        podpowiedz,
         glos.data,
+        Date.now(),
       );
+    if (autoOdrzucony) {
+      return c.html(
+        strona(
+          'Głos odrzucony automatycznie',
+          `<p>Powód: ${ucieknij(powod ?? '')}.</p>
+<p>Jeśli to pomyłka, możesz się odwołać: użyj formularza „zgłoś błąd"
+na stronie parafii — odwołanie trafi do moderatora-człowieka.</p>`,
+        ),
+      );
+    }
     return c.html(
       strona('Dziękujemy', '<p>Głos czeka na moderację — po przyjęciu pojawi się na stronie parafii.</p>'),
+    );
+  });
+
+  app.get('/blad/:miasto/:slug', (c) => {
+    const miasto = c.req.param('miasto');
+    const slug = c.req.param('slug');
+    if (!/^[a-z0-9-]+$/.test(miasto) || !/^[a-z0-9-]+$/.test(slug)) return c.notFound();
+    const karta = `/parafia/${miasto}/${slug}`;
+    return c.html(
+      strona(
+        'Zgłoś błąd w faktach',
+        `<p>Karta: <code>${ucieknij(karta)}</code></p>
+<p>Błąd godzin mszy to realna szkoda — poprawka faktu ma pierwszeństwo.
+Napisz, co się nie zgadza (i skąd wiesz, jeśli możesz podać źródło).</p>
+<form method="post" action="/blad">
+<input type="hidden" name="karta" value="${ucieknij(karta)}">
+<label>Co jest błędne?
+<textarea name="tresc" rows="5" style="width:100%" required></textarea></label>
+<button style="margin-top:1rem">Wyślij zgłoszenie</button>
+</form>`,
+      ),
+    );
+  });
+
+  app.post('/blad', async (c) => {
+    const cialo = await c.req.parseBody();
+    const karta = String(cialo.karta ?? '').trim();
+    const tresc = String(cialo.tresc ?? '').trim();
+    if (!karta || !tresc) return c.text('BRAK: adres karty i treść zgłoszenia.', 400);
+    // Trwały zapis przed odpowiedzią.
+    k.baza
+      .prepare(`INSERT INTO zgloszenia (id, karta, tresc, status, utworzone) VALUES (?, ?, ?, 'otwarte', ?)`)
+      .run(randomUUID(), karta, tresc, Date.now());
+    return c.html(
+      strona('Dziękujemy', '<p>Zgłoszenie trafiło do kolejki moderacji — poprawka faktu ma pierwszeństwo.</p>'),
     );
   });
 
   app.get('/moderacja', (c) => {
     if (!sesja(c)) return c.text('Zaloguj się magic linkiem.', 401);
     if (!moderator(c)) return c.text('Panel wyłącznie dla operatora.', 403);
-    const oczekujace = k.baza
+    const glosy = k.baza
       .prepare(`SELECT g.*, k2.pseudonim FROM glosy g JOIN konta k2 ON k2.id = g.konto_id
-                WHERE g.status = 'pending' ORDER BY g.rowid`)
+                WHERE g.status = 'pending' OR g.auto_odrzucone = 1 ORDER BY g.utworzone`)
       .all() as (Record<string, string | number | null> & { id: string })[];
-    const lista = oczekujace
-      .map(
-        (g) => `<li><b>${ucieknij(String(g.pseudonim))}</b> o ${ucieknij(String(g.parafia_slug))}
-· ogólna ${String(g.ocena_ogolna)}<br>${ucieknij(String(g.tekst ?? '(bez tekstu)'))}
+    const zgloszenia = k.baza
+      .prepare(`SELECT * FROM zgloszenia WHERE status = 'otwarte' ORDER BY utworzone`)
+      .all() as (Record<string, string | number> & { id: string })[];
+
+    // Rozmiar kolejki i wiek najstarszej pozycji — limit operatora
+    // 3 h/tydzień ma być mierzalny, nie deklarowany.
+    const oczekujace = glosy.filter((g) => g.status === 'pending');
+    const rozmiar = oczekujace.length + zgloszenia.length;
+    const najstarsze = Math.min(
+      ...oczekujace.map((g) => Number(g.utworzone)),
+      ...zgloszenia.map((z) => Number(z.utworzone)),
+    );
+    const wiekGodziny = Number.isFinite(najstarsze)
+      ? Math.round((Date.now() - najstarsze) / 3_600_000)
+      : null;
+    const naglowekKolejki =
+      rozmiar === 0
+        ? '<p><b>Kolejka: pusta.</b></p>'
+        : `<p><b>Kolejka: ${rozmiar}</b> (głosy: ${oczekujace.length}, zgłoszenia błędów: ${zgloszenia.length}) · najstarsza pozycja czeka ${
+            wiekGodziny !== null && wiekGodziny < 1 ? 'mniej niż godzinę' : `ok. ${wiekGodziny} h`
+          }</p>`;
+
+    const pozycjaGlosu = (g: (typeof glosy)[number]) => `<li><b>${ucieknij(String(g.pseudonim))}</b>
+o ${ucieknij(String(g.parafia_slug))} · ogólna ${String(g.ocena_ogolna)}<br>
+${ucieknij(String(g.tekst ?? '(bez tekstu)'))}
+${g.podpowiedz ? `<br><em>podpowiedź automatu: ${ucieknij(String(g.podpowiedz))}</em>` : ''}
+${g.auto_odrzucone ? `<br><em>odrzucony automatycznie (${ucieknij(String(g.powod_odrzucenia))}) — odwołanie możliwe</em>` : ''}
 <form method="post" action="/moderacja/przyjmij" style="display:inline">
 <input type="hidden" name="id" value="${ucieknij(g.id)}"><button>przyjmij</button></form>
 <form method="post" action="/moderacja/odrzuc" style="display:inline">
 <input type="hidden" name="id" value="${ucieknij(g.id)}">
-<input name="powod" placeholder="powód odrzucenia" required><button>odrzuć</button></form></li>`,
+<input name="powod" placeholder="powód odrzucenia" required><button>odrzuć</button></form></li>`;
+
+    const listaGlosow = oczekujace.map(pozycjaGlosu).join('\n');
+    const listaOdwolan = glosy.filter((g) => g.status === 'rejected' && g.auto_odrzucone).map(pozycjaGlosu).join('\n');
+    const listaZgloszen = zgloszenia
+      .map(
+        (z) => `<li><code>${ucieknij(String(z.karta))}</code><br>${ucieknij(String(z.tresc))}
+<form method="post" action="/moderacja/zgloszenie-zamknij" style="display:inline">
+<input type="hidden" name="id" value="${ucieknij(z.id)}"><button>zamknij</button></form></li>`,
       )
       .join('\n');
+
     return c.html(
-      strona('Moderacja', `<p>${ZASADY_MODERACJI}</p><ul>${lista || '<li>nic nie czeka</li>'}</ul>`),
+      strona(
+        'Moderacja',
+        `${naglowekKolejki}
+<p>${ZASADY_MODERACJI}</p>
+<h2>Głosy oczekujące</h2><ul>${listaGlosow || '<li>nic nie czeka</li>'}</ul>
+<h2>Odrzucone automatem (odwołania możliwe)</h2><ul>${listaOdwolan || '<li>żadnych</li>'}</ul>
+<h2>Zgłoszenia błędów faktów</h2><ul>${listaZgloszen || '<li>żadnych</li>'}</ul>`,
+      ),
     );
+  });
+
+  app.post('/moderacja/zgloszenie-zamknij', async (c) => {
+    if (!moderator(c)) return c.text('Panel wyłącznie dla operatora.', sesja(c) ? 403 : 401);
+    const cialo = await c.req.parseBody();
+    const wynik = k.baza
+      .prepare(`UPDATE zgloszenia SET status = 'zamkniete' WHERE id = ?`)
+      .run(String(cialo.id ?? ''));
+    if (wynik.changes === 0) return c.text('Nie ma takiego zgłoszenia.', 404);
+    return c.text('Zgłoszenie zamknięte.');
   });
 
   app.post('/moderacja/przyjmij', async (c) => {

@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia pw. Opatrzności Bożej",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "opatrznosci-bozej",
+  "adres": {
+    "wartosc": "Al. Jana Pawła II 48, 80-457 Gdańsk Zaspa",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/369"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.opatrznosc.gda.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "górny kościół: 7:00 · 9:00 · 10:30 · 12:00 · 13:00 · 19:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.opatrznosc.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "dolny kościół: 6:30 · 7:30 · górny kościół: 18:30",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.opatrznosc.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

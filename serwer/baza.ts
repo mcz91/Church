@@ -26,8 +26,18 @@ CREATE TABLE IF NOT EXISTS glosy (
   tekst TEXT,
   status TEXT NOT NULL DEFAULT 'pending',
   powod_odrzucenia TEXT,
+  auto_odrzucone INTEGER NOT NULL DEFAULT 0,
+  podpowiedz TEXT,
   data TEXT NOT NULL,
+  utworzone INTEGER NOT NULL DEFAULT 0,
   UNIQUE (konto_id, parafia_slug)
+);
+CREATE TABLE IF NOT EXISTS zgloszenia (
+  id TEXT PRIMARY KEY,
+  karta TEXT NOT NULL,
+  tresc TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'otwarte',
+  utworzone INTEGER NOT NULL
 );
 `;
 

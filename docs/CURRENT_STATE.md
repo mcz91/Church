@@ -5,50 +5,59 @@ linkują tutaj zamiast utrzymywać własne kopie.
 
 ## Etap
 
-**2 — głosy end-to-end (`CHURCH-2`) wykonane.** Repozytorium zawiera:
-statyczną witrynę Astro (start z rankingiem miejskim, profil parafii
-z agregatami i głosami, porównanie pary, strona „Twój głos"), dane trzech
-realnych parafii Torunia, serwis zapisu w [`serwer/`](../serwer)
-(Hono + `node:sqlite`: konta magic link, przyjmowanie głosów, moderacja
-z eksportem do `src/dane/glosy/**`, droga usunięcia konta) oraz bramkę
-`npm run verify` wyliczoną w [`README.md`](../README.md). Dane głosów
-startują puste — publikacja wyłącznie przez moderację i repo.
-Kontrakt: [`05-kontrakt-CHURCH-2.md`](05-kontrakt-CHURCH-2.md); decyzje:
-[03 — model głosów](03-model-glosow-ocen-i-rankingu.md),
-[04 — architektura zapisu](04-decyzja-architektura-zapisu-glosow.md).
+**3 — automatyzacja faktów i przygotowanie pilotażu Gdańska
+(`CHURCH-3`) wykonane.** Repozytorium zawiera: witrynę dwumiastową
+(Toruń — dane ręczne, Gdańsk — dane z pipeline'u) z wyborem miasta bez
+JavaScriptu, pipeline pozyskania/odświeżania/pokrycia
+(`narzedzia/`, komendy w [`README.md`](../README.md)), listę bazową
+Gdańska ze źródłami, zgłaszanie błędów faktów z panelem, regułową
+wstępną moderację głosów (automat nigdy nie ustawia `approved`)
+i metryki kolejki moderacji. Kontrakt:
+[`08-kontrakt-CHURCH-3.md`](08-kontrakt-CHURCH-3.md); decyzje:
+[06](06-decyzja-kwalifikacja-pb002-i-integracja.md),
+[07](07-decyzja-automatyzacja-faktow-i-wstepnej-moderacji.md);
+wymagania: [`PB-002`](briefs/PB-002-oceny-odwiedzajacych-automatyzacja.md).
+
+## Pokrycie Gdańska — wybór ścieżki z akceptacji 4
+
+Pokrycie listy bazowej: **13,8% (8 z 58 pozycji)** — poniżej progu 90%,
+więc obowiązuje ścieżka **raportu braków z przyczyną źródłową per
+pozycja**: [`src/dane/raporty/gdansk-pokrycie.md`](../src/dane/raporty/gdansk-pokrycie.md)
+(generat `npm run dane:pokrycie`). Przyczyna dominująca: katalog
+archidiecezji nie publikuje godzin mszy, a moduł mszy na stronach
+parafii (silnik ISP) jest wypełniany wolnym tekstem — deterministyczny
+parser czyta wyłącznie jednoznaczne warianty etykiet; luźniejsze reguły
+ryzykowałyby błędne godziny mszy (dokument 07 zakazuje zgadywania).
+**Start pilotażu poniżej 90% pozostaje decyzją operatora**; drogi
+poszerzenia: kolejne zamknięte warianty etykiet (po ręcznej
+weryfikacji), kolejka wyjątków ręcznych, katalogi innych wyznań.
 
 ## Ograniczenia
 
-- stos: Astro + TypeScript strict + Zod, wyjście statyczne; serwis
-  zapisu: Hono na Node ≥ 22 z wbudowanym `node:sqlite`; fonty wyłącznie
-  systemowe, zero zasobów z CDN-ów;
-- miasto startowe: **Toruń** (delegacja z dokumentu 01, sekcja BRAK);
-- publikacja głosu wyłącznie po moderacji: approve eksportuje plik do
-  `src/dane/glosy/**`, build renderuje tylko `approved`; ranking od
-  pięciu głosów, bez progu sekcja nie istnieje (fail-closed);
-- dostawca e-mail nierozstrzygnięty (BRAK w dokumencie 04) — magic link
-  działa przez interfejs `DostawcaEmail`, deweloping na konsolę;
-- hosting serwisu zapisu i domena nierozstrzygnięte (BRAK w dokumencie
-  04); build nie ustawia `site`, obraz Open Graph czeka na domenę (DŁUG
-  w `PAMIEC_OPERACYJNA.md`); adres serwisu dla stron statycznych podaje
-  `PUBLIC_ZAPIS_URL` (domyślnie localhost);
-- kolejność kontraktów z [dokumentu 06](06-decyzja-kwalifikacja-pb002-i-integracja.md):
-  `CHURCH-3` — automatyczne pozyskiwanie faktów + pilotaż `PB-002`
-  w Gdańsku; `CHURCH-4` — zdjęcia w głosach; Toruń do tego czasu
-  pozostaje jedynym miastem (walidacja mechaniki);
+- miasta z zamkniętej listy: **Toruń** (walidacja mechaniki, dane
+  ręczne) i **Gdańsk** (pilotaż PB-002, dane z pipeline'u); profile,
+  porównania i ranking działają w obrębie jednego miasta;
+- lista bazowa Gdańska obejmuje wyłącznie katalog archidiecezji
+  gdańskiej; katalogi innych wyznań nie są włączone do mianownika
+  (DŁUG w `PAMIEC_OPERACYJNA.md`), wspólnoty bez publicznego katalogu
+  jawnie poza listą (pole `pozaMianownikiem`);
+- automat moderacji odrzuca samodzielnie wyłącznie twarde przypadki
+  (dane kontaktowe, wulgaryzmy) z powodem i flagą odwołania; frazy
+  porównujące wyznania dostają podpowiedź; `approved` ustawia wyłącznie
+  człowiek; LLM nie dotyka ścieżki prawdy ani decyzji moderacyjnych;
+- publiczny start pilotażu i zegar 8 tygodni czekają na BRAK-i
+  operatora: dostawca e-mail, hosting/CI (harmonogram `dane:odswiez`),
+  domena, narzędzie analityki; zdjęcia w głosach → `CHURCH-4`;
+- stos bez zmian: Astro + TypeScript strict + Zod, statyczny build;
+  serwis zapisu Hono + `node:sqlite`; fonty systemowe, zero CDN-ów;
 - registry kontraktów nie istnieje; kontrakty obowiązują w treści
-  dokumentów `docs/02-…`, `docs/05-…`;
-- metryka północna zatwierdzona w `PB-002` (tygodniowa liczba
-  opublikowanych ocen), liczona z historii gita bez analityki osobowej
-  (dokument 06); narzędzie analityki odwiedzin pozostaje `BRAK`;
-- ocena estetyczna („ślicznie") należy do operatora przy odbiorze —
-  nie jest zmechanizowana.
+  `docs/02-…`, `docs/05-…`, `docs/08-…`;
+- ocena estetyczna („ślicznie") należy do operatora przy odbiorze.
 
 ## Następny krok
 
-Kontrakt [`CHURCH-3`](08-kontrakt-CHURCH-3.md) (automatyzacja faktów +
-Gdańsk wg `PB-002`, decyzje w [dokumencie 07](07-decyzja-automatyzacja-faktow-i-wstepnej-moderacji.md))
-jest napisany — **czeka na akt zatwierdzenia operatora**; do tego czasu
-koder go nie wykonuje. Operator odbiera też estetycznie `CHURCH-1`
-i `CHURCH-2` („ślicznie") i rozstrzyga BRAK-i (dostawca e-mail,
-hosting/CI, domena, narzędzie analityki).
+Decyzje operatora: (1) los pilotażu Gdańska przy pokryciu 13,8% —
+start mimo progu, zlecenie poszerzenia pokrycia albo wstrzymanie;
+(2) odbiór estetyczny `CHURCH-1`–`CHURCH-3`; (3) BRAK-i: dostawca
+e-mail, hosting/CI, domena, analityka. Po decyzjach architekt pisze
+kontrakt `CHURCH-4` (zdjęcia) lub kontrakt poszerzenia pokrycia.

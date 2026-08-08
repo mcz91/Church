@@ -1,0 +1,42 @@
+{
+  "nazwa": "Parafia pw. Chrystusa Króla",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "chrystusa-krola",
+  "adres": {
+    "wartosc": "ul. Bł. Ks. Franciszka Rogaczewskiego 55, 80-804 Gdańsk",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/322"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.chrystuskrol.diecezja.gda.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "7:30 · 9:30 · 11:00 (dla dzieci) · 12:30 (Suma parafialna) · 18:00 (dla młodzieży)",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.chrystuskrol.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "7:00 (lub w Adwencie 6:30 Roraty) · 8:00 (z wyjątkiem lipca i sierpnia) · 18:00 (lub 15:00 w czasie kolęd)",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.chrystuskrol.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "spowiedz": {
+      "wartosc": "10 minut przed Mszą Świętą",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.chrystuskrol.diecezja.gda.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

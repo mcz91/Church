@@ -10,6 +10,7 @@ export async function getStaticPaths() {
   for (const jedna of parafie) {
     for (const druga of parafie) {
       if (jedna.data.slug >= druga.data.slug) continue;
+      if (jedna.data.miastoSlug !== druga.data.miastoSlug) continue;
       const [pierwszy, drugi] = kanonicznaPara(jedna.data.slug, druga.data.slug);
       sciezki.push({
         params: { para: `${pierwszy}-vs-${drugi}` },

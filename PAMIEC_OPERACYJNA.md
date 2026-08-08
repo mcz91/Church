@@ -16,17 +16,19 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-08 koder: `CHURCH-1` z poprawkami i `CHURCH-2` wykonane na
-  gałęzi `claude/church-rating-app-architecture-gnx6tr`; `npm run
-  verify` zielone; czeka odbiór operatora (`docs/05` akc. 11).
-- 2026-08-08 arch: kontrakt `CHURCH-3` napisany (`docs/08`, decyzje
-  w `docs/07`) — pole zatwierdzenia puste, czeka na akt operatora;
-  `CHURCH-4` (zdjęcia) do napisania po wykonaniu `CHURCH-3`.
+- 2026-08-08 koder: `CHURCH-1`–`CHURCH-3` wykonane na gałęzi
+  `claude/church-rating-app-architecture-gnx6tr`; `npm run verify`
+  zielone; czekają odbiory operatora i decyzja o pilotażu przy
+  pokryciu 13,8% (`docs/CURRENT_STATE.md`).
+- 2026-08-08 koder: akt zatwierdzenia `CHURCH-3` padł w czacie
+  („proceed4", w odpowiedzi na OBJECTION o puste pole) — pole
+  zatwierdzenia w `docs/08` uzupełnia architekt, koder go nie dotyka.
 
 ## WĄTKI — otwarte, bez kontraktu
 
 - 2026-08-08 arch: narzędzie analityki odwiedzin (diagnostyka `PB-002`)
-  — decyzja operatora przed startem pilotażu Gdańska.
+  — decyzja operatora przed startem pilotażu Gdańska; `CHURCH-4`
+  (zdjęcia) do napisania po decyzjach z `docs/CURRENT_STATE.md`.
 
 ## DECYZJE Z CZATU — obowiązują, niezmechanizowane
 
@@ -46,6 +48,11 @@ Protokół (koszt czytelnika > koszt pisarza):
   katedrajanow.pl — pusty shell SPA; parafia-wnmp.pl — 503 po HTTPS,
   ale działa po zwykłym HTTP); katalog diecezja-torun.pl jest stabilny,
   lecz nie podaje spowiedzi, muzyki, wspólnot ani dostępności.
+- 2026-08-08 koder: katalog diecezja.gda.pl nie publikuje godzin mszy;
+  moduł `gpg-service` na stronach ISP to wolny tekst — parser czyta
+  wyłącznie zamknięte warianty etykiet w `<strong>`; poszerzanie
+  pokrycia = nowy zweryfikowany wariant etykiety + fixture, nigdy
+  luźniejszy regex (błędne godziny mszy to realna szkoda).
 
 ## DŁUG — DebtRecords czekające na kontrakt
 
@@ -55,3 +62,7 @@ Protokół (koszt czytelnika > koszt pisarza):
 - 2026-08-08 koder: pole `www` rekordu WNMP wskazuje
   `https://parafia-wnmp.pl` (503); działa wariant `http://` — zmiana
   poza listą poprawek z przeglądu, czeka na kontrakt/decyzję.
+- 2026-08-08 koder: mianownik listy bazowej Gdańska bez innych wyznań —
+  publiczne katalogi istnieją (luteranie.pl, orthodox.pl), ale bez
+  jednoznacznej miejskiej listy w jednym kroku; do włączenia osobną
+  iteracją pipeline'u (zapisane też w polu `pozaMianownikiem` listy).

@@ -13,11 +13,17 @@ import { beforeAll, describe, expect, it } from 'vitest';
 const korzen = fileURLToPath(new URL('..', import.meta.url));
 const EMAIL = /[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)+/i;
 
-const parafia = (nazwa: string, slug: string, wyznanie: string) => ({
+const parafia = (
+  nazwa: string,
+  slug: string,
+  wyznanie: string,
+  miasto = 'Miasto Przykładowe',
+  miastoSlug = 'miasto-przykladowe',
+) => ({
   nazwa,
   wyznanie,
-  miasto: 'Miasto Przykładowe',
-  miastoSlug: 'miasto-przykladowe',
+  miasto,
+  miastoSlug,
   slug,
   adres: {
     wartosc: 'ul. Testowa 1, Miasto Przykładowe',
@@ -71,6 +77,7 @@ beforeAll(() => {
     parafia('Parafia Testowa Alfa', 'parafia-testowa-alfa', 'testowe pierwsze'),
     parafia('Parafia Testowa Beta', 'parafia-testowa-beta', 'testowe drugie'),
     parafia('Parafia Testowa Gamma', 'parafia-testowa-gamma', 'testowe pierwsze'),
+    parafia('Parafia Testowa Delta', 'parafia-testowa-delta', 'testowe pierwsze', 'Miasto Próbne', 'miasto-probne'),
   ];
   for (const p of parafie) writeFileSync(join(parafieDir, `${p.slug}.json`), JSON.stringify(p));
 
@@ -106,7 +113,10 @@ beforeAll(() => {
   czytajHtml(dist);
 }, 180_000);
 
-const profil = (slug: string) => html.get(`/parafia/miasto-przykladowe/${slug}/index.html`) ?? '';
+const profil = (slug: string) =>
+  html.get(`/parafia/miasto-przykladowe/${slug}/index.html`) ??
+  html.get(`/parafia/miasto-probne/${slug}/index.html`) ??
+  '';
 
 describe('publikacja głosów w buildzie', () => {
   it('renderuje głos approved: cytat, pseudonim, miesiąc', () => {
@@ -173,6 +183,40 @@ describe('bezpieczniki w buildzie', () => {
     for (const [sciezka, tresc] of html) {
       expect(tresc, sciezka).not.toMatch(agregatWyznania);
       expect(tresc, sciezka).not.toMatch(zbiorczo);
+    }
+  });
+});
+
+describe('wielomiastowość w buildzie', () => {
+  it('strona startowa daje wybór miasta linkami działającymi bez JavaScriptu', () => {
+    const start = html.get('/index.html') ?? '';
+    expect(start).toContain('href="#miasto-miasto-przykladowe"');
+    expect(start).toContain('href="#miasto-miasto-probne"');
+    expect(start).toContain('id="miasto-miasto-probne"');
+    expect(start).toContain('Parafia Testowa Delta');
+  });
+
+  it('porównania istnieją wyłącznie w obrębie jednego miasta', () => {
+    expect(html.has('/porownaj/parafia-testowa-alfa-vs-parafia-testowa-beta/index.html')).toBe(true);
+    expect(html.has('/porownaj/parafia-testowa-alfa-vs-parafia-testowa-delta/index.html')).toBe(false);
+  });
+
+  it('profil nie proponuje porównania z parafią innego miasta', () => {
+    expect(profil('parafia-testowa-delta')).not.toContain('-vs-parafia-testowa-alfa');
+  });
+
+  it('ranking renderuje się per miasto — miasto bez progu nie ma zestawienia', () => {
+    const start = html.get('/index.html') ?? '';
+    expect(start.split('<ol class="rank-lista">')).toHaveLength(2);
+  });
+});
+
+describe('zgłoszenie błędu faktu w buildzie', () => {
+  it('każda karta parafii ma link „zgłoś błąd" do formularza serwisu', () => {
+    for (const slug of ['parafia-testowa-alfa', 'parafia-testowa-gamma', 'parafia-testowa-delta']) {
+      const strona = profil(slug);
+      expect(strona, slug).toMatch(/zgłoś błąd/i);
+      expect(strona, slug).toContain(`/blad/`);
     }
   });
 });

@@ -6,100 +6,114 @@ import { glosyParafii, policzAgregaty } from '../lib/agregaty';
 import { liczbaZPrzecinkiem, odmianaGlosow } from '../lib/glosy';
 import { wyrozniki } from '../lib/parafie';
 import { rankingMiejski } from '../lib/ranking';
+import type { Ranking } from '../lib/ranking';
 
 const parafie = (await getCollection('parafie')).sort((a, b) =>
   a.data.nazwa.localeCompare(b.data.nazwa, 'pl'),
 );
-const miasto = parafie[0]?.data.miasto ?? '';
-
 const glosy = (await getCollection('glosy')).map((g) => g.data);
-const ranking = rankingMiejski(
-  parafie.map((p) => {
-    const agregaty = policzAgregaty(glosyParafii(p.data.slug, glosy));
-    return { slug: p.data.slug, ocena: agregaty?.ogolna ?? 0, liczba: agregaty?.liczba ?? 0 };
-  }),
-);
+
+type Grupa = { miasto: string; slug: string; parafie: typeof parafie; ranking: Ranking | null };
+const miasta: Grupa[] = [...new Map(parafie.map((p) => [p.data.miastoSlug, p.data.miasto]))]
+  .sort(([, a], [, b]) => a.localeCompare(b, 'pl'))
+  .map(([slug, miasto]) => {
+    const wMiescie = parafie.filter((p) => p.data.miastoSlug === slug);
+    return {
+      miasto,
+      slug,
+      parafie: wMiescie,
+      ranking: rankingMiejski(
+        wMiescie.map((p) => {
+          const agregaty = policzAgregaty(glosyParafii(p.data.slug, glosy));
+          return { slug: p.data.slug, ocena: agregaty?.ogolna ?? 0, liczba: agregaty?.liczba ?? 0 };
+        }),
+      ),
+    };
+  });
 const wedlugSluga = new Map(parafie.map((p) => [p.data.slug, p.data]));
 ---
 
 <Bazowy
-  tytul={`Church — znajdź swoje miejsce w mieście ${miasto}`}
-  opis={`Parafie w mieście ${miasto}: godziny mszy, spowiedź, msze z dziećmi — same fakty, każdy ze źródłem i datą odczytu.`}
+  tytul="Church — znajdź swoje miejsce"
+  opis={`Parafie w miastach: ${miasta.map((m) => m.miasto).join(', ')}. Godziny mszy, spowiedź, msze z dziećmi — same fakty, każdy ze źródłem i datą odczytu.`}
 >
   <section class="hero wrap">
     <h1>Gdzie szukasz<br />swojego miejsca?</h1>
     <p class="sub">Godziny mszy, spowiedź, msze z dziećmi — same fakty, każdy ze źródłem.</p>
-    <p class="miasto-pigulka">na początek: <b>{miasto}</b></p>
-
-    <div class="list" aria-label={`Parafie — ${miasto}`}>
-      {
-        parafie.map((p) => (
-          <div class="row">
-            <div>
-              <b>
-                <a class="name" href={`/parafia/${p.data.miastoSlug}/${p.data.slug}`}>
-                  {p.data.nazwa}
-                </a>
-              </b>
-              <div class="sub">
-                {p.data.wyznanie} · {p.data.adres.wartosc}
-              </div>
-            </div>
-            <div class="aside">
-              <div class="facts">{wyrozniki(p.data).join(' · ')}</div>
-            </div>
-          </div>
-        ))
-      }
-    </div>
+    <nav class="miasta" aria-label="Wybór miasta">
+      {miasta.map((m) => <a href={`#miasto-${m.slug}`}>{m.miasto}</a>)}
+    </nav>
   </section>
 
   {
-    ranking && (
-      <>
-        <div class="kicker wrap">Z głosów — {miasto}</div>
-        <section class="wrap rank">
-          <div class="sheet">
-            <ol class="rank-lista">
-              {ranking.pozycje.map((pozycja) => {
-                const dane = wedlugSluga.get(pozycja.slug)!;
-                return (
-                  <li>
-                    <span class="poz">{pozycja.pozycja}</span>
-                    <div class="who">
-                      <b>
-                        <a class="name" href={`/parafia/${dane.miastoSlug}/${dane.slug}`}>
-                          {dane.nazwa}
-                        </a>
-                      </b>
-                      <div class="sub">
-                        {dane.wyznanie} · {dane.adres.wartosc}
+    miasta.map((m) => (
+      <section class="wrap miasto" id={`miasto-${m.slug}`} aria-label={`Parafie — ${m.miasto}`}>
+        <h2 class="miasto-tytul">{m.miasto}</h2>
+        <div class="list">
+          {m.parafie.map((p) => (
+            <div class="row">
+              <div>
+                <b>
+                  <a class="name" href={`/parafia/${p.data.miastoSlug}/${p.data.slug}`}>
+                    {p.data.nazwa}
+                  </a>
+                </b>
+                <div class="sub">
+                  {p.data.wyznanie} · {p.data.adres.wartosc}
+                </div>
+              </div>
+              <div class="aside">
+                <div class="facts">{wyrozniki(p.data).join(' · ')}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {m.ranking && (
+          <div class="rank">
+            <div class="kicker">Z głosów — {m.miasto}</div>
+            <div class="sheet">
+              <ol class="rank-lista">
+                {m.ranking.pozycje.map((pozycja) => {
+                  const dane = wedlugSluga.get(pozycja.slug)!;
+                  return (
+                    <li>
+                      <span class="poz">{pozycja.pozycja}</span>
+                      <div class="who">
+                        <b>
+                          <a class="name" href={`/parafia/${dane.miastoSlug}/${dane.slug}`}>
+                            {dane.nazwa}
+                          </a>
+                        </b>
+                        <div class="sub">
+                          {dane.wyznanie} · {dane.adres.wartosc}
+                        </div>
                       </div>
-                    </div>
-                    <div class="sc">
-                      <Kropki ocena={pozycja.ocena} />
-                      <span class="score-num">{liczbaZPrzecinkiem(pozycja.ocena)}</span>
-                      <small>
-                        {pozycja.liczba} {odmianaGlosow(pozycja.liczba)}
-                      </small>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
-            <p class="foot">
-              Kolejność wynika wyłącznie z głosów o doświadczeniu — nie ocenia wiary ani wyznania.
-              {ranking.zaMaloGlosow.length > 0 && (
-                <>
-                  {' '}
-                  Za mało głosów, by wejść do zestawienia:{' '}
-                  {ranking.zaMaloGlosow.map((slug) => wedlugSluga.get(slug)!.nazwa).join(', ')}.
-                </>
-              )}
-            </p>
+                      <div class="sc">
+                        <Kropki ocena={pozycja.ocena} />
+                        <span class="score-num">{liczbaZPrzecinkiem(pozycja.ocena)}</span>
+                        <small>
+                          {pozycja.liczba} {odmianaGlosow(pozycja.liczba)}
+                        </small>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
+              <p class="foot">
+                Kolejność wynika wyłącznie z głosów o doświadczeniu — nie ocenia wiary ani wyznania.
+                {m.ranking.zaMaloGlosow.length > 0 && (
+                  <>
+                    {' '}
+                    Za mało głosów, by wejść do zestawienia:{' '}
+                    {m.ranking.zaMaloGlosow.map((slug) => wedlugSluga.get(slug)!.nazwa).join(', ')}.
+                  </>
+                )}
+              </p>
+            </div>
           </div>
-        </section>
-      </>
-    )
+        )}
+      </section>
+    ))
   }
 </Bazowy>

@@ -1,0 +1,34 @@
+{
+  "nazwa": "Parafia pw. Św. Antoniego Padewskiego",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-antoniego-padewskiego",
+  "adres": {
+    "wartosc": "ul. Dworska 2, 80-511 Gdańsk Brzeźno",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/349"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.antonipadewski.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "6:30 · 8:00 · 9:30 11:00 (dla dzieci) 12:30 (Suma parafialna) 18:00 (dla młodzieży) 19:30 (od 1 maja do 20 września).",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.antonipadewski.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "6:30 · 7:30 · 18:00.",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.antonipadewski.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}

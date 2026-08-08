@@ -16,7 +16,9 @@ export async function getStaticPaths() {
     props: {
       parafia,
       pozostale: parafie
-        .filter((p) => p.data.slug !== parafia.data.slug)
+        .filter(
+          (p) => p.data.slug !== parafia.data.slug && p.data.miastoSlug === parafia.data.miastoSlug,
+        )
         .sort((a, b) => a.data.nazwa.localeCompare(b.data.nazwa, 'pl')),
     },
   }));
@@ -27,6 +29,7 @@ const { data } = parafia;
 const osieZDanymi = (Object.keys(OSIE) as Os[]).filter((os) => data.osie[os]);
 const mapyUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(`${data.adres.wartosc}`)}`;
 
+const zapisUrl = import.meta.env.PUBLIC_ZAPIS_URL ?? 'http://localhost:8788';
 const wybor = glosyParafii(data.slug, (await getCollection('glosy')).map((g) => g.data));
 const agregaty = policzAgregaty(wybor);
 const glosy = [...wybor.glosy].sort((a, b) => b.data.localeCompare(a.data));
@@ -86,6 +89,10 @@ const glosy = [...wybor.glosy].sort((a, b) => b.data.localeCompare(a.data));
           })
         }
       </dl>
+      <p class="zglos">
+        Dostrzegasz błąd w faktach? <a href={`${zapisUrl}/blad/${data.miastoSlug}/${data.slug}`}>Zgłoś błąd</a>
+        — poprawka ma pierwszeństwo.
+      </p>
 
       {
         agregaty && (

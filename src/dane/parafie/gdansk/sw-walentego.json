@@ -1,0 +1,42 @@
+{
+  "nazwa": "Parafia pw. Św. Walentego",
+  "wyznanie": "rzymskokatolicka",
+  "miasto": "Gdańsk",
+  "miastoSlug": "gdansk",
+  "slug": "sw-walentego",
+  "adres": {
+    "wartosc": "ul. Jesienna 13, 80-298 Gdańsk Matarnia",
+    "zrodlo": {
+      "nazwa": "Archidiecezja Gdańska, katalog parafii",
+      "url": "https://www.diecezja.gda.pl/parafie/358"
+    },
+    "dataOdczytu": "2026-08-08"
+  },
+  "www": "http://www.parafiawalenty.pl",
+  "osie": {
+    "mszeNiedziela": {
+      "wartosc": "8:00 · 9:30 · 11:00 (z udziałem dzieci) · 12:30 (suma parafialna) · 18:00 (lipiec i sierpień o 19:00)",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.parafiawalenty.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "mszeTydzien": {
+      "wartosc": "7:00 i 18:00",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.parafiawalenty.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    },
+    "spowiedz": {
+      "wartosc": "poniedziałek - sobota: na początku Mszy św. wieczornej niedziele: na początku każdej Mszy św. pierwsze piątki miesiąca: od 17.30",
+      "zrodlo": {
+        "nazwa": "strona parafii",
+        "url": "http://www.parafiawalenty.pl"
+      },
+      "dataOdczytu": "2026-08-08"
+    }
+  }
+}
