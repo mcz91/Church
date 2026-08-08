@@ -110,15 +110,22 @@ Tokeny (do wdrożenia jako CSS custom properties, jedno źródło):
 - tło `#FBFAF6` (papier), tekst `#252A26` (atrament), akcent `#3E6B5E`
   (przygaszona świerkowa zieleń) z tłem pomocniczym `#EDF2EF`; jeden
   akcent, używany oszczędnie; paleta neutralna wyznaniowo;
-- typografia dwugłosowa: nazwy, nagłówki i cytaty głosów — lekki szeryf
-  w wadze regularnej, kursywa dla tonu odautorskiego; warstwa UI
-  (etykiety, przyciski, tabele) — bezszeryf systemowy/Inter; fonty
-  self-hosted — zero CDN-ów zewnętrznych;
+- typografia dwugłosowa: nazwy, nagłówki, liczby ocen i cytaty głosów —
+  **EB Garamond** (waga 400–500, kursywa dla głosu ludzi; subsety latin
+  + latin-ext dla polskich znaków); warstwa UI (etykiety, przyciski,
+  tabele) — bezszeryf systemowy/Inter; fonty wyłącznie self-hosted —
+  zero CDN-ów zewnętrznych;
 - zamiast ciężkich ram: linie włoskowe (hairline) jako podziały,
   jedna biała karta „arkusza" dla profilu i porównania, promień 10 px,
   cień ledwo obecny; wyszukiwarka i przyciski jako pigułki;
 - kompozycja skondensowana: wąski łam (~660 px), listy zamiast
   kart-kafli, etykiety drobną kapitalikową antykwą;
+- oceny jako kropki, nie gwiazdki, z **ułamkowym wypełnieniem ostatniej
+  kropki** odpowiadającym części dziesiętnej (4,6 = cztery pełne +
+  jedna w 60%) i liczbą składaną szeryfem z przecinkiem;
+- ruch tylko jako szept: pojedyncze, jednorazowe wyłonienia sekcji przy
+  przewijaniu i mikroprzejścia na hover; wszystko wyłączone przy
+  `prefers-reduced-motion`; strona w pełni czytelna bez JavaScriptu;
 - mobile-first; bez ikon ozdobnych i symboliki religijnej w warstwie
   UI — treść religijna pojawia się wyłącznie jako fakt w danych.
 
@@ -126,7 +133,7 @@ Głosy użytkowników mają zaprojektowaną formę: cytat szeryfową kursywą,
 autor i data, ocena jako dyskretne kropki z liczbą (nie gwiazdki),
 wymiary doświadczenia, zdjęcia miejsc z podpisem autora — model
 i bezpieczniki w [dokumencie 03](03-model-glosow-ocen-i-rankingu.md).
-Wzorcem jest makieta v4. Estetyka nie jest w pełni mechanizowalna —
+Wzorcem jest makieta v5. Estetyka nie jest w pełni mechanizowalna —
 ostateczną akceptację „ślicznie" wydaje operator przy odbiorze
 wdrożenia, i tak zapisuje to kontrakt.
 
