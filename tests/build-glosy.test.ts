@@ -1,9 +1,10 @@
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { syntetycznyPNG } from './pomoc-obrazy.ts';
 
 // Build na danych jawnie fikcyjnych (parafie i głosy testowe, niemylące
 // się z realnymi wspólnotami i osobami) dowodzi zachowań obserwowalnych
@@ -46,10 +47,12 @@ const glos = (
   ocenaOgolna: number,
   status: string,
   tekst?: string,
+  zdjecia?: { plik: string; alt: string; podpis?: string }[],
 ) => ({
   parafiaSlug: slug,
   autor: { pseudonim, konto },
   status,
+  ...(zdjecia ? { zdjecia } : {}),
   ocenaOgolna,
   wymiary: { przyjecie: 5, muzyka: 4, zDziecmi: 4, dostepnosc: 4, organizacja: 4 },
   ...(tekst ? { tekst } : {}),
@@ -68,9 +71,15 @@ function czytajHtml(katalog: string) {
   }
 }
 
+// Katalog fixture'ów głosów żyje w repozytorium (usuwany po teście),
+// bo tylko ścieżki repo są osiągalne dla builda przy osadzaniu obrazów.
+const glosyDir = join(korzen, 'tests/fixtures/glosy-build/dane');
+let parafieDir: string;
+
 beforeAll(() => {
-  const parafieDir = mkdtempSync(join(tmpdir(), 'parafie-fixture-'));
-  const glosyDir = mkdtempSync(join(tmpdir(), 'glosy-fixture-'));
+  parafieDir = mkdtempSync(join(tmpdir(), 'parafie-fixture-'));
+  rmSync(join(korzen, 'tests/fixtures/glosy-build'), { recursive: true, force: true });
+  mkdirSync(glosyDir, { recursive: true });
   dist = mkdtempSync(join(tmpdir(), 'build-glosy-'));
 
   const parafie = [
@@ -84,7 +93,9 @@ beforeAll(() => {
   // alfa: 5 głosów approved (średnia 4,6) + pending + rejected;
   // beta: 2 approved (pod progiem rankingu); gamma: żadnego głosu.
   const glosy = [
-    glos('parafia-testowa-alfa', 'k1', 'Aniela Testowa', 5, 'approved', 'Testowy głos pierwszy.'),
+    glos('parafia-testowa-alfa', 'k1', 'Aniela Testowa', 5, 'approved', 'Testowy głos pierwszy.', [
+      { plik: 'k1-1.png', alt: 'wnętrze testowego kościoła (obraz syntetyczny)', podpis: 'nawa testowa' },
+    ]),
     glos('parafia-testowa-alfa', 'k2', 'Bogumił Testowy', 4, 'approved'),
     glos('parafia-testowa-alfa', 'k3', 'Celina Testowa', 5, 'approved'),
     glos('parafia-testowa-alfa', 'k4', 'Dobromir Testowy', 4, 'approved'),
@@ -99,6 +110,7 @@ beforeAll(() => {
     mkdirSync(katalog, { recursive: true });
     writeFileSync(join(katalog, `glos-${i}.json`), JSON.stringify(g));
   });
+  writeFileSync(join(glosyDir, 'parafia-testowa-alfa/k1-1.png'), syntetycznyPNG(8, 6));
 
   execFileSync(join(korzen, 'node_modules/.bin/astro'), ['build'], {
     cwd: korzen,
@@ -112,6 +124,10 @@ beforeAll(() => {
   });
   czytajHtml(dist);
 }, 180_000);
+
+afterAll(() => {
+  rmSync(join(korzen, 'tests/fixtures/glosy-build'), { recursive: true, force: true });
+});
 
 const profil = (slug: string) =>
   html.get(`/parafia/miasto-przykladowe/${slug}/index.html`) ??
@@ -219,6 +235,48 @@ describe('zgłoszenie błędu faktu w buildzie', () => {
       expect(strona, slug).toContain(`/blad/`);
     }
   });
+});
+
+describe('galeria zdjęć w buildzie', () => {
+  it('profil z opublikowanym zdjęciem renderuje galerię: img z altem i podpis „fot. <pseudonim>"', () => {
+    const strona = profil('parafia-testowa-alfa');
+    expect(strona).toContain('class="gallery"');
+    expect(strona).toContain('alt="wnętrze testowego kościoła (obraz syntetyczny)"');
+    expect(strona).toContain('nawa testowa');
+    expect(strona).toContain('fot. Aniela Testowa');
+  });
+
+  it('profil bez zdjęć nie renderuje sekcji galerii', () => {
+    expect(profil('parafia-testowa-gamma')).not.toContain('class="gallery"');
+  });
+
+  it('wyjście publiczne nie zdradza oryginalnych nazw plików ani metadanych', () => {
+    for (const tresc of html.values()) {
+      expect(tresc).not.toMatch(/IMG_\d|DSC_\d|Exif/i);
+    }
+  });
+
+  it('głos approved wskazujący nieistniejący plik zdjęcia nie przechodzi builda', () => {
+    const zlyDir = join(korzen, 'tests/fixtures/glosy-build/dane-zly');
+    const katalog = join(zlyDir, 'parafia-testowa-alfa');
+    mkdirSync(katalog, { recursive: true });
+    writeFileSync(
+      join(katalog, 'glos-zly.json'),
+      JSON.stringify(
+        glos('parafia-testowa-alfa', 'k9', 'Helena Testowa', 4, 'approved', undefined, [
+          { plik: 'k9-1.png', alt: 'obraz, którego nie ma' },
+        ]),
+      ),
+    );
+    const outDir = mkdtempSync(join(tmpdir(), 'build-zly-'));
+    expect(() =>
+      execFileSync(join(korzen, 'node_modules/.bin/astro'), ['build'], {
+        cwd: korzen,
+        stdio: 'pipe',
+        env: { ...process.env, PARAFIE_DIR: parafieDir, GLOSY_DIR: zlyDir, BUILD_OUT_DIR: outDir },
+      }),
+    ).toThrow();
+  }, 180_000);
 });
 
 describe('formularz głosu w buildzie', () => {

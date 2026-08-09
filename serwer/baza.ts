@@ -32,6 +32,13 @@ CREATE TABLE IF NOT EXISTS glosy (
   utworzone INTEGER NOT NULL DEFAULT 0,
   UNIQUE (konto_id, parafia_slug)
 );
+CREATE TABLE IF NOT EXISTS zdjecia (
+  id TEXT PRIMARY KEY,
+  glos_id TEXT NOT NULL REFERENCES glosy(id) ON DELETE CASCADE,
+  plik TEXT NOT NULL,
+  alt TEXT NOT NULL,
+  podpis TEXT
+);
 CREATE TABLE IF NOT EXISTS zgloszenia (
   id TEXT PRIMARY KEY,
   karta TEXT NOT NULL,

@@ -35,6 +35,13 @@ Serwis zapisu głosów (deweloperski): `npm run serwis` — wymaga zmiennych
 środowiskowych z [`serwer/.env.example`](serwer/.env.example); magic linki
 trafiają na konsolę, dopóki dostawca e-mail nie jest rozstrzygnięty.
 
+Zdjęcia w głosach: formularz głosu przyjmuje do trzech zdjęć (JPEG/PNG,
+do 8 MB, tekst alternatywny wymagany) zwykłym POST multipart; metadane
+(EXIF, geolokalizacja, dane urządzenia) są usuwane przed zapisem do
+magazynu (`serwer/magazyn/`, poza repo); publikacja wyłącznie drogą
+approve moderatora — zdjęcia wchodzą wtedy do repo obok pliku głosu,
+pod nazwą pochodną identyfikatora, nigdy oryginalną.
+
 Pipeline danych Gdańska (sieć wyłącznie przy generowaniu danych — testy
 chodzą na zarchiwizowanych fixture'ach):
 

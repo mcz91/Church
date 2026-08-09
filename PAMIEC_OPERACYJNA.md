@@ -16,13 +16,13 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-08 koder: `CHURCH-1`–`CHURCH-4` wykonane na gałęzi
+- 2026-08-08 koder: `CHURCH-1`–`CHURCH-5` wykonane na gałęzi
   `claude/church-rating-app-architecture-gnx6tr`; `npm run verify`
-  zielone; czekają odbiory operatora i decyzja o pilotażu przy
-  pokryciu 43,1% (`docs/CURRENT_STATE.md`).
-- 2026-08-08 arch: zieleń `CHURCH-4` zweryfikowana niezależnie
-  (142 testy); akt „zatwierdz" wpisany do `docs/09`; kontrakt
-  `CHURCH-5` napisany (`docs/10`) — czeka na akt operatora.
+  zielone; czekają odbiory operatora, decyzja o pilotażu (43,1%)
+  i BRAK-i (`docs/CURRENT_STATE.md`).
+- 2026-08-08 koder: akt zatwierdzenia `CHURCH-5` padł w czacie
+  („zatwierdzam", w odpowiedzi na OBJECTION o puste pole) — pole
+  w `docs/10` uzupełnia architekt, koder go nie dotyka.
 
 ## WĄTKI — otwarte, bez kontraktu
 
@@ -63,6 +63,10 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## DŁUG — DebtRecords czekające na kontrakt
 
+- 2026-08-08 koder: zdjęcia publikowane są kopiowane bajt w bajt — bez
+  miniatur, kadrowania i `srcset` (`docs/10`, decyzje techniczne);
+  przy realnym wolumenie zdjęć wraca jako osobna decyzja (waga stron
+  profilu rośnie z każdym opublikowanym obrazem).
 - 2026-08-08 koder: obraz Open Graph (`og:image`) wymaga absolutnego
   URL, więc czeka na decyzję o domenie (`BRAK` w `docs/01`); strony
   mają tytuł i opis OG zgodnie z akceptacją 6 `CHURCH-1`.

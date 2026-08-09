@@ -18,6 +18,7 @@ const app = utworzAplikacje({
   sekretSesji,
   moderatorzy: (process.env.MODERATORZY ?? '').split(',').map((a) => a.trim()).filter(Boolean),
   katalogEksportu: process.env.KATALOG_GLOSOW ?? 'src/dane/glosy',
+  katalogMagazynu: process.env.KATALOG_MAGAZYNU ?? 'serwer/magazyn',
   bazowyUrl: process.env.BAZOWY_URL ?? `http://localhost:${port}`,
 });
 

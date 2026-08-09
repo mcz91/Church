@@ -5,7 +5,15 @@ linkują tutaj zamiast utrzymywać własne kopie.
 
 ## Etap
 
-**4 — poszerzenie pokrycia Gdańska (`CHURCH-4`) wykonane.** Repozytorium
+**5 — zdjęcia w głosach (`CHURCH-5`) wykonane.** Głos może nieść do
+trzech zdjęć miejsca (JPEG/PNG do 8 MB, alt wymagany): serwis czyści
+metadane (EXIF, geolokalizacja) własnym parserem bez zależności przed
+zapisem do magazynu; publikacja wyłącznie drogą approve człowieka —
+zdjęcia wchodzą do repo obok pliku głosu pod nazwą pochodną
+identyfikatora; moderator może odrzucić same zdjęcia; usunięcie konta
+obejmuje magazyn i pliki obrazów w repo; galeria profilu wg makiety v6.
+Kontrakt: [`10-kontrakt-CHURCH-5.md`](10-kontrakt-CHURCH-5.md).
+Wcześniej: **4 — poszerzenie pokrycia Gdańska (`CHURCH-4`).** Repozytorium
 zawiera: parsery trzech silników stron parafialnych (ISP + WordPress
 i Joomla — dwa najliczniejsze z raportu silników), kolejkę wyjątków
 ręcznych z zapisem wyłącznie po potwierdzeniu człowieka i weryfikacją
@@ -48,16 +56,14 @@ z parafiami albo kolejne iteracje po zmianach na stronach.
 - publiczny start pilotażu czeka na BRAK-i operatora: dostawca e-mail,
   hosting/CI (harmonogram odświeżania), domena, analityka; zdjęcia
   w głosach → `CHURCH-5`;
-- registry kontraktów nie istnieje; kontrakty w treści `docs/02/05/08/09`;
+- registry kontraktów nie istnieje; kontrakty w treści `docs/02/05/08/09/10`;
 - ocena estetyczna („ślicznie") należy do operatora przy odbiorze.
 
 ## Następny krok
 
-Kontrakt [`CHURCH-5`](10-kontrakt-CHURCH-5.md) (zdjęcia w głosach:
-JPEG/PNG, EXIF usuwany przy przyjęciu bez zależności, publikacja
-wyłącznie drogą approve człowieka, galeria wg makiety v6) jest
-napisany — **czeka na akt zatwierdzenia operatora**. Pozostają decyzje
-operatora: (1) los pilotażu przy pokryciu 43,1% z wyczerpanymi dziś
+Decyzje operatora: (1) los pilotażu przy pokryciu 43,1% z wyczerpanymi
 przyczynami braków — start, kontakt z parafiami o publikację godzin,
-albo wstrzymanie; (2) odbiór estetyczny `CHURCH-1`–`CHURCH-4`;
-(3) BRAK-i (e-mail, hosting/CI, domena, analityka).
+albo wstrzymanie; (2) odbiór estetyczny `CHURCH-1`–`CHURCH-5`
+(w tym galerii, `docs/10` akc. 10); (3) BRAK-i (e-mail, hosting/CI,
+domena, analityka). Produkt jest funkcjonalnie kompletny wobec PB-002 —
+start pilotażu wymaga wyłącznie rozstrzygnięcia BRAK-ów.

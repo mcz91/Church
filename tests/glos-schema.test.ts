@@ -58,6 +58,26 @@ describe('schemat głosu', () => {
     expect(glosSchema.safeParse(obcyWymiar).success).toBe(false);
   });
 
+  it('przyjmuje opcjonalną listę zdjęć: plik pochodny identyfikatora, alt wymagany', () => {
+    const zeZdjeciem = {
+      ...glos,
+      zdjecia: [{ plik: 'konto-test-1-1.jpg', alt: 'nawa testowego kościoła', podpis: 'nawa główna' }],
+    };
+    expect(glosSchema.safeParse(zeZdjeciem).success).toBe(true);
+  });
+
+  it('odrzuca zdjęcie bez tekstu alternatywnego', () => {
+    const bezAlt = { ...glos, zdjecia: [{ plik: 'konto-test-1-1.jpg', podpis: 'nawa' }] };
+    expect(glosSchema.safeParse(bezAlt).success).toBe(false);
+  });
+
+  it('odrzuca nazwę pliku niepochodną od identyfikatora (np. oryginalną nazwę z aparatu)', () => {
+    const obcaNazwa = { ...glos, zdjecia: [{ plik: 'IMG_1234.JPG', alt: 'nawa' }] };
+    expect(glosSchema.safeParse(obcaNazwa).success).toBe(false);
+    const zeSciezka = { ...glos, zdjecia: [{ plik: '../ucieczka-1.jpg', alt: 'nawa' }] };
+    expect(glosSchema.safeParse(zeSciezka).success).toBe(false);
+  });
+
   it('odrzuca e-mail w jakimkolwiek polu publikowanym', () => {
     expect(
       glosSchema.safeParse({ ...glos, tekst: 'napisz do mnie: osoba@przyklad.example' }).success,

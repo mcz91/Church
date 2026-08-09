@@ -33,6 +33,31 @@ const zapisUrl = import.meta.env.PUBLIC_ZAPIS_URL ?? 'http://localhost:8788';
 const wybor = glosyParafii(data.slug, (await getCollection('glosy')).map((g) => g.data));
 const agregaty = policzAgregaty(wybor);
 const glosy = [...wybor.glosy].sort((a, b) => b.data.localeCompare(a.data));
+
+// Zdjęcia opublikowanych głosów: pliki żyją w repo obok plików głosów;
+// druga ścieżka globa istnieje wyłącznie dla builda testowego na danych
+// fikcyjnych (katalog znika po teście).
+const zasobyZdjec = {
+  ...import.meta.glob('/src/dane/glosy/**/*.{jpg,jpeg,png}', {
+    eager: true,
+    query: '?url',
+    import: 'default',
+  }),
+  ...import.meta.glob('/tests/fixtures/glosy-build/**/*.{jpg,jpeg,png}', {
+    eager: true,
+    query: '?url',
+    import: 'default',
+  }),
+} as Record<string, string>;
+const urlZdjecia = (plik: string): string | null =>
+  Object.entries(zasobyZdjec).find(([sciezka]) => sciezka.endsWith(`/${data.slug}/${plik}`))?.[1] ??
+  null;
+const zdjeciaProfilu = glosy.flatMap((glos) =>
+  (glos.zdjecia ?? []).flatMap((zdjecie) => {
+    const url = urlZdjecia(zdjecie.plik);
+    return url ? [{ ...zdjecie, url, autor: glos.autor.pseudonim }] : [];
+  }),
+);
 ---
 
 <Bazowy
@@ -93,6 +118,21 @@ const glosy = [...wybor.glosy].sort((a, b) => b.data.localeCompare(a.data));
         Dostrzegasz błąd w faktach? <a href={`${zapisUrl}/blad/${data.miastoSlug}/${data.slug}`}>Zgłoś błąd</a>
         — poprawka ma pierwszeństwo.
       </p>
+
+      {
+        zdjeciaProfilu.length > 0 && (
+          <div class="gallery" aria-label="Zdjęcia miejsca z opublikowanych głosów">
+            {zdjeciaProfilu.map((zdjecie) => (
+              <figure class="ph">
+                <img src={zdjecie.url} alt={zdjecie.alt} loading="lazy" />
+                <figcaption>
+                  {zdjecie.podpis ? `${zdjecie.podpis} · ` : ''}fot. {zdjecie.autor}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        )
+      }
 
       {
         agregaty && (

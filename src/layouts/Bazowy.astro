@@ -435,6 +435,39 @@ const { tytul, opis } = Astro.props;
     margin-top: 5px;
   }
 
+  .gallery {
+    display: flex;
+    gap: 8px;
+    margin-top: 22px;
+  }
+  .gallery .ph {
+    flex: 1;
+    max-width: 33%;
+    aspect-ratio: 4 / 3;
+    border-radius: 7px;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    background: var(--accent-soft);
+  }
+  .gallery .ph img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .gallery .ph figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 0.62rem;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(37, 42, 38, 0.55));
+    padding: 16px 8px 5px;
+    letter-spacing: 0.02em;
+  }
+
   .aspects {
     margin-top: 24px;
     border-top: 1px solid var(--line);

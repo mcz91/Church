@@ -5,7 +5,10 @@ import type { Context } from 'hono';
 import { getCookie, setCookie } from 'hono/cookie';
 import { EMAIL, WYMIARY, ZASADY_MODERACJI, glosSchema } from '../src/lib/glosy.ts';
 import type { Glos } from '../src/lib/glosy.ts';
+import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { eksportujGlos, usunPlikiAutora } from './eksport.ts';
+import { LIMIT_BAJTOW, oczyscObraz } from './obrazy.ts';
 import type { DostawcaEmail } from './email.ts';
 import { klasyfikujGlos } from './moderacja-wstepna.ts';
 
@@ -15,6 +18,7 @@ export type Konfiguracja = {
   sekretSesji: string;
   moderatorzy: string[];
   katalogEksportu: string;
+  katalogMagazynu: string;
   bazowyUrl: string;
 };
 
@@ -50,6 +54,25 @@ function poleOceny(nazwa: string, etykieta: string): string {
 
 export function utworzAplikacje(k: Konfiguracja): Hono {
   const app = new Hono();
+  mkdirSync(k.katalogMagazynu, { recursive: true });
+
+  const zdjeciaGlosu = (glosId: string) =>
+    k.baza.prepare('SELECT * FROM zdjecia WHERE glos_id = ? ORDER BY plik').all(glosId) as {
+      id: string;
+      glos_id: string;
+      plik: string;
+      alt: string;
+      podpis: string | null;
+    }[];
+
+  // Jedyna droga zdjęcia do katalogu publikowanego wiedzie przez approve;
+  // każda inna ścieżka może zdjęcia wyłącznie usuwać.
+  const usunZdjeciaGlosu = (glosId: string) => {
+    for (const zdjecie of zdjeciaGlosu(glosId)) {
+      rmSync(join(k.katalogMagazynu, zdjecie.plik), { force: true });
+    }
+    k.baza.prepare('DELETE FROM zdjecia WHERE glos_id = ?').run(glosId);
+  };
   const moderatorzy = k.moderatorzy.map((adres) => adres.toLowerCase());
 
   const podpis = (kontoId: string) =>
@@ -138,7 +161,7 @@ export function utworzAplikacje(k: Konfiguracja): Hono {
     return c.html(
       strona(
         'Twój głos',
-        `<form method="post" action="/glos">
+        `<form method="post" action="/glos" enctype="multipart/form-data">
 <input type="hidden" name="parafia" value="${ucieknij(parafia)}">
 ${poleOceny('ocenaOgolna', 'Ocena ogólna (1–5)')}
 ${Object.entries(WYMIARY)
@@ -146,6 +169,22 @@ ${Object.entries(WYMIARY)
   .join('\n')}
 <label style="display:block;margin-top:.6rem">Twoje doświadczenie (opcjonalnie)
 <textarea name="tekst" rows="5" style="width:100%"></textarea></label>
+<fieldset style="margin-top:1rem;border:1px solid #ccc;padding:.6rem">
+<legend>Zdjęcia miejsca (opcjonalnie, JPEG/PNG do 8 MB)</legend>
+<p><small>Zdjęcia pokazują miejsce, nie ludzi — fotografie z rozpoznawalnymi
+osobami odpadają w moderacji. Metadane (EXIF, geolokalizacja, dane
+urządzenia) usuwamy przy przyjęciu.</small></p>
+${[1, 2, 3]
+  .map(
+    (n) => `<label style="display:block;margin-top:.6rem">Zdjęcie ${n}
+<input type="file" name="zdjecie${n}" accept="image/jpeg,image/png"></label>
+<label style="display:block">Co przedstawia (tekst alternatywny — wymagany przy zdjęciu)
+<input type="text" name="zdjecieAlt${n}" style="width:100%"></label>
+<label style="display:block">Podpis (opcjonalnie)
+<input type="text" name="zdjeciePodpis${n}" style="width:100%"></label>`,
+  )
+  .join('')}
+</fieldset>
 <button style="margin-top:1rem">Wyślij do moderacji</button>
 </form>
 <p><small>${ZASADY_MODERACJI}</small></p>`,
@@ -179,6 +218,35 @@ ${Object.entries(WYMIARY)
     const wynik = glosSchema.safeParse(kandydat);
     if (!wynik.success) return c.text('Głos nie przechodzi walidacji — popraw pola.', 400);
     const glos = wynik.data;
+
+    // Zdjęcia: walidacja w całości przed jakimkolwiek zapisem; metadane
+    // (EXIF, geolokalizacja) usuwane przed zapisem do magazynu.
+    const obrazy: { dane: Buffer; rozszerzenie: string; alt: string; podpis: string | null }[] = [];
+    for (const n of [1, 2, 3]) {
+      const plik = cialo[`zdjecie${n}`];
+      if (!(plik instanceof File) || plik.size === 0) continue;
+      if (plik.size > LIMIT_BAJTOW) {
+        return c.text(`Zdjęcie ${n} przekracza limit 8 MB — odrzucone.`, 400);
+      }
+      const alt = String(cialo[`zdjecieAlt${n}`] ?? '').trim();
+      if (!alt) {
+        return c.text(`Zdjęcie ${n} wymaga tekstu alternatywnego opisującego miejsce.`, 400);
+      }
+      const podpis = String(cialo[`zdjeciePodpis${n}`] ?? '').trim() || null;
+      if (EMAIL.test(alt) || (podpis && EMAIL.test(podpis))) {
+        return c.text('Opisy zdjęć nie mogą zawierać adresu e-mail.', 400);
+      }
+      const oczyszczony = oczyscObraz(Buffer.from(await plik.arrayBuffer()));
+      if (!oczyszczony) {
+        return c.text(`Zdjęcie ${n}: przyjmujemy wyłącznie JPEG lub PNG w rozsądnych wymiarach.`, 400);
+      }
+      obrazy.push({
+        dane: oczyszczony.dane,
+        rozszerzenie: oczyszczony.format === 'jpeg' ? 'jpg' : 'png',
+        alt,
+        podpis,
+      });
+    }
 
     // Wstępna moderacja regułowa: twarde przypadki automat odrzuca
     // z powodem i flagą odwołania; approved ustawia wyłącznie człowiek.
@@ -224,6 +292,19 @@ ${Object.entries(WYMIARY)
         glos.data,
         Date.now(),
       );
+    const { id: idGlosu } = k.baza
+      .prepare('SELECT id FROM glosy WHERE konto_id = ? AND parafia_slug = ?')
+      .get(konto.id, glos.parafiaSlug) as { id: string };
+    // Ponowny zapis nadpisuje także zdjęcia; pliki w magazynie noszą
+    // wyłącznie identyfikator głosu, nigdy oryginalną nazwę.
+    usunZdjeciaGlosu(idGlosu);
+    obrazy.forEach((obraz, i) => {
+      const nazwa = `${idGlosu}-${i + 1}.${obraz.rozszerzenie}`;
+      writeFileSync(join(k.katalogMagazynu, nazwa), obraz.dane);
+      k.baza
+        .prepare('INSERT INTO zdjecia (id, glos_id, plik, alt, podpis) VALUES (?, ?, ?, ?, ?)')
+        .run(randomUUID(), idGlosu, nazwa, obraz.alt, obraz.podpis);
+    });
     if (autoOdrzucony) {
       return c.html(
         strona(
@@ -308,6 +389,15 @@ o ${ucieknij(String(g.parafia_slug))} · ogólna ${String(g.ocena_ogolna)}<br>
 ${ucieknij(String(g.tekst ?? '(bez tekstu)'))}
 ${g.podpowiedz ? `<br><em>podpowiedź automatu: ${ucieknij(String(g.podpowiedz))}</em>` : ''}
 ${g.auto_odrzucone ? `<br><em>odrzucony automatycznie (${ucieknij(String(g.powod_odrzucenia))}) — odwołanie możliwe</em>` : ''}
+${zdjeciaGlosu(g.id)
+  .map(
+    (z) => `<br><img src="/moderacja/zdjecie/${ucieknij(z.plik)}" alt="${ucieknij(z.alt)}" style="max-width:220px">
+<br><small>podpis: ${ucieknij(z.podpis ?? '(bez podpisu)')} · zasada: miejsce, nie ludzie — rozpoznawalne osoby: odrzucenie</small>
+<form method="post" action="/moderacja/odrzuc-zdjecia" style="display:inline">
+<input type="hidden" name="id" value="${ucieknij(g.id)}">
+<input name="powod" placeholder="powód odrzucenia zdjęć" required><button>odrzuć same zdjęcia</button></form>`,
+  )
+  .join('')}
 <form method="post" action="/moderacja/przyjmij" style="display:inline">
 <input type="hidden" name="id" value="${ucieknij(g.id)}"><button>przyjmij</button></form>
 <form method="post" action="/moderacja/odrzuc" style="display:inline">
@@ -334,6 +424,32 @@ ${g.auto_odrzucone ? `<br><em>odrzucony automatycznie (${ucieknij(String(g.powod
 <h2>Zgłoszenia błędów faktów</h2><ul>${listaZgloszen || '<li>żadnych</li>'}</ul>`,
       ),
     );
+  });
+
+  app.post('/moderacja/odrzuc-zdjecia', async (c) => {
+    if (!moderator(c)) return c.text('Panel wyłącznie dla operatora.', sesja(c) ? 403 : 401);
+    const cialo = await c.req.parseBody();
+    const id = String(cialo.id ?? '');
+    const powod = String(cialo.powod ?? '').trim();
+    if (!powod) return c.text('BRAK: powód odrzucenia zdjęć.', 400);
+    const istnieje = k.baza.prepare('SELECT id FROM glosy WHERE id = ?').get(id);
+    if (!istnieje) return c.text('Nie ma takiego głosu.', 404);
+    usunZdjeciaGlosu(id);
+    return c.text('Zdjęcia odrzucone i usunięte z magazynu — głos pozostaje w kolejce bez zdjęć.');
+  });
+
+  app.get('/moderacja/zdjecie/:plik', (c) => {
+    if (!moderator(c)) return c.text('Panel wyłącznie dla operatora.', sesja(c) ? 403 : 401);
+    const plik = c.req.param('plik');
+    if (!/^[a-z0-9-]+-\d+\.(jpg|png)$/.test(plik)) return c.notFound();
+    try {
+      const dane = readFileSync(join(k.katalogMagazynu, plik));
+      return c.body(new Uint8Array(dane), 200, {
+        'content-type': plik.endsWith('.png') ? 'image/png' : 'image/jpeg',
+      });
+    } catch {
+      return c.notFound();
+    }
   });
 
   app.post('/moderacja/zgloszenie-zamknij', async (c) => {
@@ -370,7 +486,23 @@ ${g.auto_odrzucone ? `<br><em>odrzucony automatycznie (${ucieknij(String(g.powod
       ...(wiersz.tekst ? { tekst: String(wiersz.tekst) } : {}),
       data: String(wiersz.data),
     };
-    const plik = eksportujGlos(k.katalogEksportu, glos);
+    // Nazwy publikowanych plików pochodzą od identyfikatora konta (jak
+    // plik głosu), nigdy od nazwy oryginalnej.
+    const obrazyGlosu = zdjeciaGlosu(id);
+    const zdjecia = obrazyGlosu.map((zdjecie, i) => ({
+      plik: `${String(wiersz.konto_id)}-${i + 1}.${zdjecie.plik.endsWith('.png') ? 'png' : 'jpg'}`,
+      alt: zdjecie.alt,
+      ...(zdjecie.podpis ? { podpis: zdjecie.podpis } : {}),
+    }));
+    if (zdjecia.length > 0) glos.zdjecia = zdjecia;
+    const plik = eksportujGlos(
+      k.katalogEksportu,
+      glos,
+      obrazyGlosu.map((zdjecie, i) => ({
+        zrodlo: join(k.katalogMagazynu, zdjecie.plik),
+        plik: zdjecia[i].plik,
+      })),
+    );
     k.baza.prepare(`UPDATE glosy SET status = 'approved', powod_odrzucenia = NULL WHERE id = ?`).run(id);
     return c.text(`Przyjęty i wyeksportowany: ${plik}`);
   });
@@ -385,12 +517,17 @@ ${g.auto_odrzucone ? `<br><em>odrzucony automatycznie (${ucieknij(String(g.powod
       .prepare(`UPDATE glosy SET status = 'rejected', powod_odrzucenia = ? WHERE id = ?`)
       .run(powod, id);
     if (wynik.changes === 0) return c.text('Nie ma takiego głosu.', 404);
-    return c.text('Odrzucony z powodem — nic nie zostało opublikowane.');
+    usunZdjeciaGlosu(id);
+    return c.text('Odrzucony z powodem — nic nie zostało opublikowane, zdjęcia usunięte z magazynu.');
   });
 
   app.post('/konto/usun', (c) => {
     const konto = sesja(c);
     if (!konto) return c.text('Zaloguj się magic linkiem.', 401);
+    const glosyKonta = k.baza.prepare('SELECT id FROM glosy WHERE konto_id = ?').all(konto.id) as {
+      id: string;
+    }[];
+    for (const wiersz of glosyKonta) usunZdjeciaGlosu(wiersz.id);
     const pliki = usunPlikiAutora(k.katalogEksportu, konto.id);
     k.baza.prepare('DELETE FROM konta WHERE id = ?').run(konto.id);
     return c.text(

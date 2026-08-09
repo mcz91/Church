@@ -25,11 +25,24 @@ function tekstyPola(wartosc: unknown): string[] {
   return [];
 }
 
+// Nazwa pliku zdjęcia jest pochodną identyfikatora głosu — nigdy
+// oryginalną nazwą z aparatu (prywatność autora, docs/10 acc. 9).
+const zdjecieSchema = z
+  .object({
+    plik: z.string().regex(/^[a-z0-9-]+-\d+\.(jpg|png)$/),
+    alt: z.string().min(1),
+    podpis: z.string().min(1).optional(),
+  })
+  .strict();
+
+export type Zdjecie = z.infer<typeof zdjecieSchema>;
+
 export const glosSchema = z
   .object({
     parafiaSlug: z.string().regex(SLUG),
     autor: z.object({ pseudonim: z.string().min(1), konto: z.string().min(1) }).strict(),
     status: z.enum(STATUSY_MODERACJI),
+    zdjecia: z.array(zdjecieSchema).max(3).optional(),
     ocenaOgolna: ocena,
     wymiary: z
       .object({

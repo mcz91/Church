@@ -23,21 +23,24 @@ export type Srodowisko = {
   baza: DatabaseSync;
   email: EmailTestowy;
   katalogEksportu: string;
+  katalogMagazynu: string;
 };
 
 export function srodowiskoTestowe(): Srodowisko {
   const baza = otworzBaze(':memory:');
   const email = new EmailTestowy();
   const katalogEksportu = mkdtempSync(join(tmpdir(), 'glosy-eksport-'));
+  const katalogMagazynu = mkdtempSync(join(tmpdir(), 'zdjecia-magazyn-'));
   const app = utworzAplikacje({
     baza,
     email,
     sekretSesji: 'sekret-testowy',
     moderatorzy: [MODERATOR],
     katalogEksportu,
+    katalogMagazynu,
     bazowyUrl: 'http://localhost:8788',
   });
-  return { app, baza, email, katalogEksportu };
+  return { app, baza, email, katalogEksportu, katalogMagazynu };
 }
 
 export function formularz(pola: Record<string, string>): RequestInit {
