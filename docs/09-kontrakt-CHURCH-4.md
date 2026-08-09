@@ -4,8 +4,10 @@ Wersja: 1 · Data: 2026-08-08 · Autor: architekt · Typ: feature
 (nowe zachowanie — nowe testy muszą być czerwone przed implementacją;
 suity `CHURCH-1`–`CHURCH-3` to preservation: pełna zieleń przed i po).
 
-**Zatwierdzenie operatora:** _niewypełnione — kontrakt staje się
-wykonywalny wyłącznie po jawnym akcie operatora._
+**Zatwierdzenie operatora:** zatwierdzony aktem operatora z 2026-08-08
+(czat): „zatwierdz" — wydanym w odpowiedzi na `OBJECTION` kodera
+o pustym polu zatwierdzenia; wpis uzupełnił architekt. Kontrakt jest
+od tej chwili niemutowalny.
 
 Decyzja kierunkowa operatora (czat 2026-08-08, wybór „poszerz
 pokrycie"): pokrycie Gdańska rośnie kolejką wyjątków ręcznych

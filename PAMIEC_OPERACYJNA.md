@@ -20,15 +20,14 @@ Protokół (koszt czytelnika > koszt pisarza):
   `claude/church-rating-app-architecture-gnx6tr`; `npm run verify`
   zielone; czekają odbiory operatora i decyzja o pilotażu przy
   pokryciu 43,1% (`docs/CURRENT_STATE.md`).
-- 2026-08-08 koder: akt zatwierdzenia `CHURCH-4` padł w czacie
-  („zatwierdz", w odpowiedzi na OBJECTION o puste pole) — pole
-  w `docs/09` uzupełnia architekt, koder go nie dotyka.
+- 2026-08-08 arch: zieleń `CHURCH-4` zweryfikowana niezależnie
+  (142 testy); akt „zatwierdz" wpisany do `docs/09`; kontrakt
+  `CHURCH-5` napisany (`docs/10`) — czeka na akt operatora.
 
 ## WĄTKI — otwarte, bez kontraktu
 
 - 2026-08-08 arch: narzędzie analityki odwiedzin (diagnostyka `PB-002`)
-  — decyzja operatora przed startem pilotażu Gdańska; `CHURCH-5`
-  (zdjęcia) do napisania po wykonaniu `CHURCH-4` (`docs/09`).
+  — decyzja operatora przed startem pilotażu Gdańska.
 
 ## DECYZJE Z CZATU — obowiązują, niezmechanizowane
 

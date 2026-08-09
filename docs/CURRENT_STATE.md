@@ -53,8 +53,11 @@ z parafiami albo kolejne iteracje po zmianach na stronach.
 
 ## Następny krok
 
-Decyzje operatora: (1) los pilotażu przy pokryciu 43,1% z wyczerpanymi
-dziś przyczynami braków — start, kontakt z parafiami o publikację
-godzin, albo wstrzymanie; (2) odbiór estetyczny `CHURCH-1`–`CHURCH-4`;
-(3) BRAK-i (e-mail, hosting/CI, domena, analityka). Po decyzjach
-architekt pisze `CHURCH-5` (zdjęcia w głosach).
+Kontrakt [`CHURCH-5`](10-kontrakt-CHURCH-5.md) (zdjęcia w głosach:
+JPEG/PNG, EXIF usuwany przy przyjęciu bez zależności, publikacja
+wyłącznie drogą approve człowieka, galeria wg makiety v6) jest
+napisany — **czeka na akt zatwierdzenia operatora**. Pozostają decyzje
+operatora: (1) los pilotażu przy pokryciu 43,1% z wyczerpanymi dziś
+przyczynami braków — start, kontakt z parafiami o publikację godzin,
+albo wstrzymanie; (2) odbiór estetyczny `CHURCH-1`–`CHURCH-4`;
+(3) BRAK-i (e-mail, hosting/CI, domena, analityka).
