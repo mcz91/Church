@@ -3,6 +3,7 @@ import type { IncomingMessage } from 'node:http';
 import { utworzAplikacje } from './aplikacja.ts';
 import { otworzBaze } from './baza.ts';
 import { DostawcaKonsolowy } from './email.ts';
+import { DostawcaBrevo } from './email-brevo.ts';
 
 // Uruchomienie deweloperskie: `npm run serwis`. Hosting produkcyjny jest
 // nierozstrzygnięty (BRAK w dokumencie 04) — adapter node:http wystarcza
@@ -12,9 +13,15 @@ const sekretSesji = process.env.SEKRET_SESJI;
 if (!sekretSesji) throw new Error('BRAK: zmienna środowiskowa SEKRET_SESJI');
 
 const port = Number(process.env.PORT ?? 8788);
+// Z kluczem Brevo i zweryfikowanym nadawcą magic linki idą naprawdę;
+// bez nich pozostaje tryb deweloperski na konsolę.
+const email =
+  process.env.BREVO_API_KEY && process.env.NADAWCA_EMAIL
+    ? new DostawcaBrevo(process.env.BREVO_API_KEY, process.env.NADAWCA_EMAIL)
+    : new DostawcaKonsolowy();
 const app = utworzAplikacje({
   baza: otworzBaze(process.env.BAZA_SQLITE ?? 'serwer/dane.db'),
-  email: new DostawcaKonsolowy(),
+  email,
   sekretSesji,
   moderatorzy: (process.env.MODERATORZY ?? '').split(',').map((a) => a.trim()).filter(Boolean),
   katalogEksportu: process.env.KATALOG_GLOSOW ?? 'src/dane/glosy',

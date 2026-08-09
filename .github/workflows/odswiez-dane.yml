@@ -1,0 +1,46 @@
+# Harmonogram odświeżania danych Gdańska (BRAK hosting/CI rozstrzygnięty
+# aktem operatora: GitHub Actions, konfiguracja darmowa). Jeden przebieg
+# dziennie z odstępami wewnątrz pipeline'u (pułapka anty-botowa w pamięci
+# operacyjnej). Zmiany wchodzą przez pull request — droga zapisu danych
+# pozostaje drogą PR (dokument 07, decyzja 3).
+name: Odświeżenie danych Gdańska
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  odswiez:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run dane:odswiez
+      - run: npm run dane:pokrycie
+      - name: Pull request ze zmianami
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet; then
+            echo "Źródła bez zmian — żadnego diffu (dokument 07)."
+            exit 0
+          fi
+          galaz="dane/odswiezenie-$(date +%Y%m%d)"
+          git config user.name "church-dane"
+          git config user.email "dane@users.noreply.github.com"
+          git checkout -b "$galaz"
+          git add src/dane
+          git commit -m "Odświeżenie danych Gdańska ($(date +%Y-%m-%d))" \
+            -m "Automatyczny przebieg dane:odswiez: nowa wartość wchodzi z nową datą odczytu, niezmienione źródło nie daje diffu; rekordy ręczne nietknięte (ewentualny raport do przeglądu w src/dane/raporty/)."
+          git push -u origin "$galaz"
+          gh pr create \
+            --title "Odświeżenie danych Gdańska $(date +%Y-%m-%d)" \
+            --body "Automatyczne odświeżenie (\`npm run dane:odswiez\`). Diff wyłącznie tam, gdzie źródło zmieniło wartość; rekordy ręczne nigdy nie są nadpisywane automatycznie — jeśli ich źródła się zmieniły, raport czeka w \`src/dane/raporty/gdansk-przeglad-reczny.md\`. Recenzja tego PR jest moderacją danych (dokument 01)."

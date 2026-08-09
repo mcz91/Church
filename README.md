@@ -60,6 +60,29 @@ chodzą na zarchiwizowanych fixture'ach):
    przeciw treści strony źródłowej
    (`npm run dane:kolejka -- potwierdzenia.json`).
 
+## Wdrożenie (konfiguracja darmowa — akt operatora 2026-08-08)
+
+1. **Statyka — Cloudflare Pages**: połącz repozytorium w panelu
+   Cloudflare (Workers & Pages → Create → Pages → Connect to Git);
+   build: `npm ci && npm run build`, katalog wyjściowy: `dist`,
+   zmienna `PUBLIC_ZAPIS_URL` = publiczny adres serwisu zapisu.
+   Witryna działa pod subdomeną `*.pages.dev` (własna domena — osobna
+   decyzja; odblokuje też `og:image`).
+2. **Odświeżanie danych — GitHub Actions**: workflow
+   [`odswiez-dane.yml`](.github/workflows/odswiez-dane.yml) raz dziennie
+   uruchamia `dane:odswiez` i otwiera pull request ze zmianami — jego
+   recenzja jest moderacją danych.
+3. **Serwis zapisu — maszyna z Node ≥ 22** (Oracle Cloud Always Free
+   albo własna z Cloudflare Tunnel): sklonuj repo, `npm ci`, uzupełnij
+   zmienne z [`serwer/.env.example`](serwer/.env.example)
+   (`SEKRET_SESJI`, `MODERATORZY`, `BREVO_API_KEY`, `NADAWCA_EMAIL`,
+   `BAZOWY_URL`) i uruchom `npm run serwis` pod nadzorem systemd/pm2.
+   Baza i magazyn zdjęć żyją na dysku maszyny — kopia zapasowa = kopia
+   plików `serwer/dane.db` i `serwer/magazyn/`.
+4. **E-mail — Brevo** (plan darmowy, 300/dzień): załóż konto, zweryfikuj
+   adres nadawcy, wygeneruj klucz API i podaj go serwisowi w env —
+   bez klucza serwis loguje magic linki na konsolę (tryb deweloperski).
+
 ## Najważniejsza zasada produktu
 
 > Każdy fakt o kościele ma źródło, każda ocena ma autora, a wirusowość

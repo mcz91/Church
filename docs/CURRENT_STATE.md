@@ -61,9 +61,12 @@ z parafiami albo kolejne iteracje po zmianach na stronach.
 
 ## Następny krok
 
-Decyzje operatora: (1) los pilotażu przy pokryciu 43,1% z wyczerpanymi
-przyczynami braków — start, kontakt z parafiami o publikację godzin,
-albo wstrzymanie; (2) odbiór estetyczny `CHURCH-1`–`CHURCH-5`
-(w tym galerii, `docs/10` akc. 10); (3) BRAK-i (e-mail, hosting/CI,
-domena, analityka). Produkt jest funkcjonalnie kompletny wobec PB-002 —
-start pilotażu wymaga wyłącznie rozstrzygnięcia BRAK-ów.
+BRAK-i wdrożeniowe rozstrzygnięte aktem operatora (konfiguracja
+darmowa, czat 2026-08-08): e-mail — Brevo (implementacja
+`DostawcaBrevo` gotowa), hosting statyki — Cloudflare Pages,
+harmonogram odświeżania — GitHub Actions (workflow w repo), serwis
+zapisu — maszyna operatora (Oracle Free / tunel), domena — subdomena
+platformy (własna domena i `og:image` — nadal otwarte). Kroki
+wymagające kont operatora wylicza `README.md`, sekcja „Wdrożenie".
+Pozostają: wykonanie tych kroków przez operatora, decyzja o pilotażu
+przy pokryciu 43,1% oraz odbiór estetyczny `CHURCH-1`–`CHURCH-5`.

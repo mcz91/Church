@@ -16,10 +16,11 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-08 koder: `CHURCH-1`–`CHURCH-5` wykonane na gałęzi
+- 2026-08-08 koder: `CHURCH-1`–`CHURCH-5` + przygotowanie wdrożenia
+  (Brevo, workflow odświeżania, README „Wdrożenie") wykonane na gałęzi
   `claude/church-rating-app-architecture-gnx6tr`; `npm run verify`
-  zielone; czekają odbiory operatora, decyzja o pilotażu (43,1%)
-  i BRAK-i (`docs/CURRENT_STATE.md`).
+  zielone; czekają kroki kontowe operatora (README), odbiory
+  i decyzja o pilotażu przy 43,1% (`docs/CURRENT_STATE.md`).
 - 2026-08-08 koder: akt zatwierdzenia `CHURCH-5` padł w czacie
   („zatwierdzam", w odpowiedzi na OBJECTION o puste pole) — pole
   w `docs/10` uzupełnia architekt, koder go nie dotyka.
@@ -31,6 +32,11 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## DECYZJE Z CZATU — obowiązują, niezmechanizowane
 
+- 2026-08-08 operator: BRAK-i wdrożeniowe rozstrzygnięte aktem („tak.
+  wykonaj" + „działaj"): konfiguracja darmowa, szczegóły delegowane na
+  kodera (Cloudflare Pages, GitHub Actions, Brevo, VM/tunel, subdomena);
+  wymóg kontraktu dla tego zakresu uchylony — architekt może doszyć
+  dokument post factum; kroki kontowe operatora: README „Wdrożenie".
 - 2026-08-08 arch: repo startuje z czwórką ról `PROMPT_{PM,ARCHITEKT,
   KODER,AUDYTOR}.md` w korzeniu i kopią konstytucji Foundry; konwencja
   wspólna z `mcz91/foundry` i `mcz91/ezmat`, rozszerzona o PM.
@@ -52,14 +58,12 @@ Protokół (koszt czytelnika > koszt pisarza):
   wyłącznie zamknięte warianty etykiet w `<strong>`; poszerzanie
   pokrycia = nowy zweryfikowany wariant etykiety + fixture, nigdy
   luźniejszy regex (błędne godziny mszy to realna szkoda).
-- 2026-08-08 koder: podstrony „Msze" na ISP nie mają modułu
-  `gpg-service` (ślepa uliczka); jadwigaorunia.gda.pl po południu
-  serwowała anty-botową przejściówkę — pipeline'u nie uruchamiać
-  w pętli, odstępy i pojedyncze przebiegi.
-- 2026-08-08 koder: katalog diecezja.gda.pl po wielu odsłonach jednego
-  dnia bywa niestabilny (karty chwilowo nieczytelne) — wyjątki
-  pojedynczego przebiegu nie kasują istniejących kart; raport silników
-  z takiego dnia może zawyżać „brak-www".
+- 2026-08-08 koder: pipeline uruchamiać pojedynczo z odstępami —
+  strony parafii bywają za anty-botem (jadwigaorunia), a katalog
+  diecezji po wielu odsłonach dziennie bywa niestabilny (chwilowo
+  nieczytelne karty nie kasują istniejących danych, ale raport
+  silników z takiego dnia zawyża „brak-www"); podstrony „Msze" na ISP
+  nie mają modułu gpg-service (ślepa uliczka).
 
 ## DŁUG — DebtRecords czekające na kontrakt
 
