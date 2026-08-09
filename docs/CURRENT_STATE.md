@@ -62,15 +62,18 @@ z parafiami albo kolejne iteracje po zmianach na stronach.
 ## Następny krok
 
 BRAK-i wdrożeniowe rozstrzygnięte aktem operatora (konfiguracja
-darmowa, czat 2026-08-08): e-mail — Brevo (implementacja
-`DostawcaBrevo` gotowa), hosting statyki — Cloudflare Pages,
-harmonogram odświeżania — GitHub Actions (workflow w repo), serwis
-zapisu — maszyna operatora (Oracle Free / tunel), domena — subdomena
-platformy (własna domena i `og:image` — nadal otwarte). Kroki
-wymagające kont operatora wylicza `README.md`, sekcja „Wdrożenie".
-Witryna statyczna jest ONLINE (2026-08-09, upload ręczny buildu):
-https://curly-recipe-bde5.dontfolditpl.workers.dev — czyta się
-wszystko; formularze głosów i zgłoszeń czekają na uruchomienie serwisu
-zapisu. Pozostają: integracja publikacji (Git albo token — obie drogi
-w repo), serwis zapisu + Brevo, decyzja o pilotażu przy pokryciu
-43,1% oraz odbiór estetyczny `CHURCH-1`–`CHURCH-5`.
+darmowa, czat 2026-08-08; dokumentacja post factum:
+[dokument 12](12-decyzja-wdrozenie-darmowe.md)): e-mail — Brevo
+(implementacja `DostawcaBrevo` gotowa), hosting statyki — Cloudflare
+Pages, harmonogram odświeżania — GitHub Actions (workflow w repo),
+serwis zapisu — maszyna operatora (Oracle Free / tunel), domena —
+subdomena platformy (własna domena i `og:image` — nadal otwarte).
+Kroki wymagające kont operatora wylicza `README.md`, sekcja
+„Wdrożenie". Witryna statyczna jest ONLINE (2026-08-09, upload ręczny
+buildu): https://curly-recipe-bde5.dontfolditpl.workers.dev — czyta
+się wszystko; formularze głosów i zgłoszeń czekają na uruchomienie
+serwisu zapisu. Kontrakt [`CHURCH-6`](11-kontrakt-CHURCH-6.md)
+(zdjęcia-wizytówki budynków z Wikimedia Commons, żądanie operatora
+„ślicznie") **czeka na akt zatwierdzenia**. Pozostają też: integracja
+publikacji (Git albo token), serwis zapisu + Brevo, decyzja o pilotażu
+przy pokryciu 43,1% oraz odbiór estetyczny `CHURCH-1`–`CHURCH-5`.

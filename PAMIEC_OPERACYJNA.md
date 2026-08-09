@@ -22,8 +22,10 @@ Protokół (koszt czytelnika > koszt pisarza):
   porównania); aktualizacje wymagają nowej paczki, dopóki operator nie
   domknie integracji Git/tokenu (obie drogi przygotowane w repo);
   formularze głosów czekają na serwis zapisu (etap B).
-- 2026-08-08 koder: akty zatwierdzeń `CHURCH-5` i wdrożenia padły
-  w czacie — pola w `docs/10` uzupełnia architekt.
+- 2026-08-09 arch: akt `CHURCH-5` wpisany do `docs/10`, wdrożenie
+  udokumentowane post factum w `docs/12`; kontrakt `CHURCH-6`
+  (`docs/11`, wizytówki budynków z Commons, żądanie „ślicznie")
+  czeka na akt operatora.
 
 ## WĄTKI — otwarte, bez kontraktu
 
