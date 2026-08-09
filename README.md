@@ -62,10 +62,15 @@ chodzą na zarchiwizowanych fixture'ach):
 
 ## Wdrożenie (konfiguracja darmowa — akt operatora 2026-08-08)
 
-1. **Statyka — Cloudflare Pages**: połącz repozytorium w panelu
-   Cloudflare (Workers & Pages → Create → Pages → Connect to Git);
-   build: `npm ci && npm run build`, katalog wyjściowy: `dist`,
-   zmienna `PUBLIC_ZAPIS_URL` = publiczny adres serwisu zapisu.
+1. **Statyka — Cloudflare Pages**, dwie równoważne drogi:
+   (a) automatyczna — wygeneruj w Cloudflare token API o zakresie
+   „Cloudflare Pages: Edit", wpisz `CLOUDFLARE_API_TOKEN`
+   i `CLOUDFLARE_ACCOUNT_ID` w GitHub → Settings → Secrets, a workflow
+   [`deploy-pages.yml`](.github/workflows/deploy-pages.yml) zweryfikuje
+   bramkę i opublikuje build przy każdym pushu do gałęzi domyślnej;
+   (b) ręczna — połącz repozytorium w panelu Cloudflare (Connect to
+   Git; build `npm ci && npm run build`, katalog `dist`). W obu drogach
+   zmienna `PUBLIC_ZAPIS_URL` wskazuje publiczny adres serwisu zapisu.
    Witryna działa pod subdomeną `*.pages.dev` (własna domena — osobna
    decyzja; odblokuje też `og:image`).
 2. **Odświeżanie danych — GitHub Actions**: workflow
