@@ -53,9 +53,10 @@ z parafiami albo kolejne iteracje po zmianach na stronach.
 - automat moderacji i bezpieczniki bez zmian (dokumenty 03, 07): zero
   agregacji po wyznaniu, ranking per miasto z progiem i fail-closed,
   `approved` ustawia wyłącznie człowiek, LLM poza ścieżką prawdy;
-- publiczny start pilotażu czeka na BRAK-i operatora: dostawca e-mail,
-  hosting/CI (harmonogram odświeżania), domena, analityka; zdjęcia
-  w głosach → `CHURCH-5`;
+- wdrożenie w konfiguracji darmowej rozstrzygnięte
+  ([dokument 12](12-decyzja-wdrozenie-darmowe.md)); otwarte: własna
+  domena (blokuje `og:image`), analityka odwiedzin, formalny start
+  pilotażu;
 - registry kontraktów nie istnieje; kontrakty w treści `docs/02/05/08/09/10`;
 - ocena estetyczna („ślicznie") należy do operatora przy odbiorze.
 
