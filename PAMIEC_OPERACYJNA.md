@@ -16,11 +16,12 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-08 koder: `CHURCH-1`–`CHURCH-5` + przygotowanie wdrożenia
-  (Brevo, workflow odświeżania, README „Wdrożenie") wykonane na gałęzi
-  `claude/church-rating-app-architecture-gnx6tr`; `npm run verify`
-  zielone; czekają kroki kontowe operatora (README), odbiory
-  i decyzja o pilotażu przy 43,1% (`docs/CURRENT_STATE.md`).
+- 2026-08-09 koder: witryna ONLINE (upload ręczny buildu na Cloudflare
+  Workers Assets): curly-recipe-bde5.dontfolditpl.workers.dev —
+  zweryfikowana z zewnątrz (strona główna, profile obu miast,
+  porównania); aktualizacje wymagają nowej paczki, dopóki operator nie
+  domknie integracji Git/tokenu (obie drogi przygotowane w repo);
+  formularze głosów czekają na serwis zapisu (etap B).
 - 2026-08-08 koder: akty zatwierdzeń `CHURCH-5` i wdrożenia padły
   w czacie — pola w `docs/10` uzupełnia architekt.
 

@@ -68,5 +68,9 @@ harmonogram odświeżania — GitHub Actions (workflow w repo), serwis
 zapisu — maszyna operatora (Oracle Free / tunel), domena — subdomena
 platformy (własna domena i `og:image` — nadal otwarte). Kroki
 wymagające kont operatora wylicza `README.md`, sekcja „Wdrożenie".
-Pozostają: wykonanie tych kroków przez operatora, decyzja o pilotażu
-przy pokryciu 43,1% oraz odbiór estetyczny `CHURCH-1`–`CHURCH-5`.
+Witryna statyczna jest ONLINE (2026-08-09, upload ręczny buildu):
+https://curly-recipe-bde5.dontfolditpl.workers.dev — czyta się
+wszystko; formularze głosów i zgłoszeń czekają na uruchomienie serwisu
+zapisu. Pozostają: integracja publikacji (Git albo token — obie drogi
+w repo), serwis zapisu + Brevo, decyzja o pilotażu przy pokryciu
+43,1% oraz odbiór estetyczny `CHURCH-1`–`CHURCH-5`.
