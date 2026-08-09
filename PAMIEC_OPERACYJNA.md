@@ -21,9 +21,8 @@ Protokół (koszt czytelnika > koszt pisarza):
   `claude/church-rating-app-architecture-gnx6tr`; `npm run verify`
   zielone; czekają kroki kontowe operatora (README), odbiory
   i decyzja o pilotażu przy 43,1% (`docs/CURRENT_STATE.md`).
-- 2026-08-08 koder: akt zatwierdzenia `CHURCH-5` padł w czacie
-  („zatwierdzam", w odpowiedzi na OBJECTION o puste pole) — pole
-  w `docs/10` uzupełnia architekt, koder go nie dotyka.
+- 2026-08-08 koder: akty zatwierdzeń `CHURCH-5` i wdrożenia padły
+  w czacie — pola w `docs/10` uzupełnia architekt.
 
 ## WĄTKI — otwarte, bez kontraktu
 
@@ -74,9 +73,6 @@ Protokół (koszt czytelnika > koszt pisarza):
 - 2026-08-08 koder: obraz Open Graph (`og:image`) wymaga absolutnego
   URL, więc czeka na decyzję o domenie (`BRAK` w `docs/01`); strony
   mają tytuł i opis OG zgodnie z akceptacją 6 `CHURCH-1`.
-- 2026-08-08 koder: pole `www` rekordu WNMP wskazuje
-  `https://parafia-wnmp.pl` (503); działa wariant `http://` — zmiana
-  poza listą poprawek z przeglądu, czeka na kontrakt/decyzję.
 - 2026-08-08 koder: mianownik listy bazowej Gdańska bez innych wyznań —
   sprawdzone 2026-08-08 (docs/09 acc. 7): luteranie.pl/parafie to
   wyszukiwarka-mapa bez statycznej listy miejskiej, bg.cerkiew.pl nie
