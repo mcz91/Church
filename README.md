@@ -64,6 +64,14 @@ Mapka na karcie parafii składa się z czterech kafelków OpenStreetMap
 leżących w repo (`public/mapki/`), a ujemne marginesy ustawiają punkt
 parafii na środku kadru — bez skryptu i bez zasobu z obcej domeny.
 
+**Bez działającego serwisu zapisu formularze nic nie zapiszą.** Strony
+są statyczne, a adres serwisu wchodzi do nich przy buildzie ze zmiennej
+`PUBLIC_ZAPIS_URL`; gdy jej nie ma, w HTML ląduje deweloperskie
+`http://localhost:8788`, czyli maszyna odwiedzającego — przeglądarka
+nie ma z czym rozmawiać. Publiczny build wymaga więc jednego i drugiego:
+uruchomionego serwisu pod publicznym adresem i `PUBLIC_ZAPIS_URL`
+wskazującego ten adres.
+
 Serwis zapisu głosów (deweloperski): `npm run serwis` — wymaga zmiennych
 środowiskowych z [`serwer/.env.example`](serwer/.env.example); magic linki
 trafiają na konsolę, dopóki dostawca e-mail nie jest rozstrzygnięty.

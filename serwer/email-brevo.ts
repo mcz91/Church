@@ -5,18 +5,25 @@ import type { DostawcaEmail } from './email.ts';
 // zmiennych środowiskowych; fetch wstrzykiwany, więc testy nie dotykają
 // sieci. Plan wyjścia: wymiana klasy za interfejsem DostawcaEmail.
 export class DostawcaBrevo implements DostawcaEmail {
-  constructor(
-    private readonly klucz: string,
-    private readonly nadawca: string,
-    private readonly fetchFn: typeof fetch = fetch,
-  ) {}
+  // Pola przypisywane jawnie, nie przez właściwości w parametrach:
+  // `node --experimental-strip-types` typy wyłącznie wycina i nie
+  // wygeneruje przypisań za nas, a to on uruchamia serwis w produkcji.
+  readonly #klucz: string;
+  readonly #nadawca: string;
+  readonly #fetchFn: typeof fetch;
+
+  constructor(klucz: string, nadawca: string, fetchFn: typeof fetch = fetch) {
+    this.#klucz = klucz;
+    this.#nadawca = nadawca;
+    this.#fetchFn = fetchFn;
+  }
 
   async wyslij(adres: string, temat: string, tresc: string): Promise<void> {
-    const odpowiedz = await this.fetchFn('https://api.brevo.com/v3/smtp/email', {
+    const odpowiedz = await this.#fetchFn('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
-      headers: { 'api-key': this.klucz, 'content-type': 'application/json' },
+      headers: { 'api-key': this.#klucz, 'content-type': 'application/json' },
       body: JSON.stringify({
-        sender: { name: 'Church', email: this.nadawca },
+        sender: { name: 'Church', email: this.#nadawca },
         to: [{ email: adres }],
         subject: temat,
         textContent: tresc,
