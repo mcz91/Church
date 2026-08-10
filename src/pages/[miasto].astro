@@ -63,7 +63,8 @@ const filtrowalne = new Map(
     </p>
   </section>
 
-  <section class="wrap filtry" id="filtry" aria-label="Zawężenie listy parafii" hidden>
+  <details class="wrap filtry" id="filtry" hidden>
+    <summary>Zawęź: najbliższa msza, czego szukasz</summary>
     <div class="filtry-grupa">
       <span class="kicker" id="filtr-czas">Msza niedługo</span>
       <div class="chipsy" role="group" aria-labelledby="filtr-czas">
@@ -100,7 +101,7 @@ const filtrowalne = new Map(
       urządzeniu — bez pozycji z zastrzeżeniem sezonowym, których nie da się
       rozstrzygnąć na dziś. Pełny porządek ze źródłem jest na karcie parafii.
     </p>
-  </section>
+  </details>
 
   <section class="wrap miasto" aria-label={`Parafie — ${miastoNazwa}`}>
     <div class="list">

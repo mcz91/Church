@@ -319,8 +319,11 @@ describe('wybór pary i strona 404', () => {
 describe('zawężanie listy na stronie miasta', () => {
   const miasto = () => html.get('/miasto-przykladowe/index.html') ?? '';
 
-  it('panel filtrów jest w dokumencie, ale ukryty do czasu włączenia skryptem', () => {
-    expect(miasto()).toMatch(/<section[^>]*id="filtry"[^>]*hidden/);
+  // Zawężanie jest dodatkiem: siedzi w zwiniętym „details", żeby nie
+  // zabierało uwagi liście parafii (żądanie operatora 2026-08-10).
+  it('panel filtrów jest zwinięty i ukryty do czasu włączenia skryptem', () => {
+    expect(miasto()).toMatch(/<details[^>]*id="filtry"[^>]*hidden/);
+    expect(miasto()).not.toMatch(/<details[^>]*id="filtry"[^>]*\sopen/);
     expect(miasto()).toContain('Msza z udziałem dzieci');
     expect(miasto()).toContain('Spowiedź poza mszą');
   });

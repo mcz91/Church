@@ -416,9 +416,33 @@ const swiezosc = dataOstatniejZmiany((await getCollection('parafie')).map((p) =>
     display: none;
   }
 
+  /* Zawężanie jest dodatkiem, nie bramką: przy dzisiejszych danych
+     rzadko zawęża cokolwiek istotnie, więc siedzi zwinięte i nie
+     zabiera uwagi liście parafii. */
   .filtry {
-    margin-top: 30px;
+    margin-top: 26px;
     text-align: left;
+  }
+  .filtry > summary {
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 6px 0;
+    list-style: none;
+  }
+  .filtry > summary::-webkit-details-marker {
+    display: none;
+  }
+  .filtry > summary::before {
+    content: '+ ';
+    color: var(--accent);
+  }
+  .filtry[open] > summary::before {
+    content: '– ';
+  }
+  .filtry > summary:hover,
+  .filtry > summary:focus-visible {
+    color: var(--accent-deep);
   }
   .filtry-grupa + .filtry-grupa {
     margin-top: 16px;
@@ -507,6 +531,7 @@ const swiezosc = dataOstatniejZmiany((await getCollection('parafie')).map((p) =>
   .row .who {
     flex: 1;
     min-width: 0;
+    text-align: left;
   }
   .row .sub {
     color: var(--muted);
@@ -549,6 +574,56 @@ const swiezosc = dataOstatniejZmiany((await getCollection('parafie')).map((p) =>
     border-radius: 5px;
     flex-shrink: 0;
     align-self: center;
+  }
+
+  /* Mapka: okno o stałej wysokości, w którym plansza 2×2 kafelków jest
+     przesunięta ujemnym marginesem tak, by punkt parafii wypadł na
+     przecięciu środków — niezależnie od szerokości ekranu, bez skryptu. */
+  .mapka {
+    margin-top: 24px;
+  }
+  .mapka-okno {
+    position: relative;
+    height: 210px;
+    overflow: hidden;
+    border-radius: 9px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .mapka-plansza {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 512px;
+    height: 512px;
+    display: grid;
+    grid-template-columns: 256px 256px;
+    grid-template-rows: 256px 256px;
+  }
+  .mapka-plansza img {
+    display: block;
+    width: 256px;
+    height: 256px;
+  }
+  .mapka-punkt {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    margin: -7px 0 0 -7px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2.5px solid var(--surface);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  }
+  .mapka figcaption {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .mapka figcaption a {
+    color: inherit;
   }
   .sheet {
     background: var(--surface);

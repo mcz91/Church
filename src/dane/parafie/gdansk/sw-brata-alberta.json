@@ -8,6 +8,15 @@
     "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_ko%C5%9Bci%C3%B3%C5%82_%C5%9Aw._Brata_Alberta.JPG",
     "dataPobrania": "2026-08-10"
   },
+  "polozenie": {
+    "szerokosc": 54.404844,
+    "dlugosc": 18.6036699,
+    "zrodlo": {
+      "nazwa": "OpenStreetMap (Nominatim), ODbL",
+      "url": "https://www.openstreetmap.org/copyright"
+    },
+    "dataOdczytu": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

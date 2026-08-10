@@ -47,16 +47,20 @@ jedna parafia z danymi. Slugi filtrów pochodzą z zamkniętej mapy
 w [`src/lib/filtry.ts`](src/lib/filtry.ts), nie z etykiet, więc zmiana
 napisu nie psuje cudzych linków.
 
-Zawężanie listy startowej: panel nad listą pozwala wybrać porę („msza
-niedługo": 30 minut, godzina, 2 godziny) i cechy z faktów (msza
-z udziałem dzieci, msza dla młodzieży, spowiedź poza mszą). Godziny do
-wyszukiwarki wydobywa [`src/lib/msze.ts`](src/lib/msze.ts) z zapisu
+Zawężanie listy miasta jest **dodatkiem** — siedzi zwinięte pod listą
+parafii i rozwija się na żądanie: pora („msza niedługo": 30 minut,
+godzina, 2 godziny) i cechy z faktów (msza z udziałem dzieci, msza dla
+młodzieży, spowiedź poza mszą). Godziny do wyszukiwarki wydobywa [`src/lib/msze.ts`](src/lib/msze.ts) z zapisu
 porządku mszy i **bierze wyłącznie pozycje pewne** — dopisek sezonowy,
 inny dzień albo zdanie negujące („w wakacje nie ma Mszy o 12:00")
 unieważniają godzinę, więc parafia po prostu nie pojawia się w wynikach
 zamiast pokazać godzinę zgadniętą. Panel jest ukryty w HTML i odsłania
 go dopiero skrypt: bez JavaScriptu nie ma martwych kontrolek, a pełna
 lista parafii jest w dokumencie zawsze.
+
+Mapka na karcie parafii składa się z czterech kafelków OpenStreetMap
+leżących w repo (`public/mapki/`), a ujemne marginesy ustawiają punkt
+parafii na środku kadru — bez skryptu i bez zasobu z obcej domeny.
 
 Serwis zapisu głosów (deweloperski): `npm run serwis` — wymaga zmiennych
 środowiskowych z [`serwer/.env.example`](serwer/.env.example); magic linki
@@ -94,7 +98,13 @@ chodzą na zarchiwizowanych fixture'ach):
    z plikiem potwierdzeń człowieka, po weryfikacji każdej godziny
    przeciw treści strony źródłowej
    (`npm run dane:kolejka -- potwierdzenia.json`);
-6. `npm run dane:wizytowki` — dobór zdjęcia-wizytówki budynku
+6. `npm run dane:mapki` — położenie parafii z OpenStreetMap
+   (Nominatim, ODbL) i cztery kafelki mapy na parafię do
+   `public/mapki/`. Przyjmowane jest wyłącznie trafienie typu „miejsce
+   kultu" w granicach Polski — adres pasujący do sąsiedniego budynku
+   odpada, a parafia zostaje bez mapki. Raport:
+   [`src/dane/raporty/mapki.md`](src/dane/raporty/mapki.md);
+7. `npm run dane:wizytowki` — dobór zdjęcia-wizytówki budynku
    (jedno na parafię, wyłącznie Wikimedia Commons, licencje z zamkniętej
    listy wolnych): bez argumentu pokazuje kandydatów z API razem
    z autorem i licencją z `extmetadata` (bez zapisu); zapis wyłącznie

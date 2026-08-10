@@ -21,7 +21,9 @@ Protokół (koszt czytelnika > koszt pisarza):
   wymaga ręcznej paczki do czasu integracji Git/tokenu; formularze
   głosów czekają na serwis zapisu (etap B).
 - 2026-08-10 koder: `CHURCH-7` wykonany na gałęzi; pole zatwierdzenia
-  w `docs/13` wciąż „niewypełnione" — uzupełnia architekt.
+  w `docs/13` wciąż „niewypełnione" — uzupełnia architekt. Po nim akt
+  „nie ma mapek" wprowadził mapki OSM (16/28 parafii) mimo `non_goals`
+  kontraktu — architekt musi to odnotować w `docs/01`.
 
 ## WĄTKI — otwarte, bez kontraktu
 
@@ -34,14 +36,12 @@ Protokół (koszt czytelnika > koszt pisarza):
   pole zatwierdzenia w `docs/11` wciąż „niewypełnione" — uzupełnia
   architekt (koder ma zakaz zapisu `docs/11`); akt odnotowany też
   w commicie wykonawczym.
-- 2026-08-10 operator: akt dla `CHURCH-7` padł jako „Wez pod uwage
-  sugestie. zaplanuj, wykonaj"; wcześniej „proceed" i „zero tarcia"
-  jako zgoda bez kontraktu. Odległość, mapka i wymiary
-  `kazanie`/znaczniki nadal czekają na architekta — propozycja
-  kryteriów padła tylko w czacie.
-- 2026-08-10 koder: „JS wyłącznie dla formularza pary" wzięte jako
-  zakaz DOKŁADANIA nowego JS, nie nakaz usunięcia panelu „msza
-  niedługo" (`docs/13` dopuszcza JS dla filtrowania). Do potwierdzenia.
+- 2026-08-10 operator: akt dla `CHURCH-7` = „Wez pod uwage sugestie.
+  zaplanuj, wykonaj"; wcześniej „proceed", „zero tarcia", „nie ma
+  mapek". Odległość i wymiary `kazanie`/znaczniki czekają na
+  architekta — propozycja kryteriów padła tylko w czacie.
+- 2026-08-10 koder: „JS wyłącznie dla formularza pary" = zakaz
+  DOKŁADANIA JS, nie nakaz usunięcia panelu. Do potwierdzenia.
 - 2026-08-08 operator: BRAK-i wdrożeniowe rozstrzygnięte aktem („tak.
   wykonaj" + „działaj"): konfiguracja darmowa, szczegóły delegowane na
   kodera (Cloudflare Pages, GitHub Actions, Brevo, VM/tunel, subdomena);

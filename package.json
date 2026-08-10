@@ -16,7 +16,8 @@
     "check": "astro check",
     "test": "vitest run",
     "build": "astro build",
-    "verify": "npm run lint && npm run check && npm run test && npm run build"
+    "verify": "npm run lint && npm run check && npm run test && npm run build",
+    "dane:mapki": "node --experimental-strip-types narzedzia/mapki-cli.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",

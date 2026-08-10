@@ -8,6 +8,15 @@
     "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bci%C3%B3%C5%82_parafialny_pw_%C5%9Bw_Kazimierza_Kr%C3%B3lewicza_-_2011_b_ubt.JPG",
     "dataPobrania": "2026-08-10"
   },
+  "polozenie": {
+    "szerokosc": 54.3915624,
+    "dlugosc": 18.596611,
+    "zrodlo": {
+      "nazwa": "OpenStreetMap (Nominatim), ODbL",
+      "url": "https://www.openstreetmap.org/copyright"
+    },
+    "dataOdczytu": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

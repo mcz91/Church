@@ -8,6 +8,15 @@
     "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk,_Ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Miko%C5%82aja_-_fotopolska.eu_(304478).jpg",
     "dataPobrania": "2026-08-10"
   },
+  "polozenie": {
+    "szerokosc": 54.3522302,
+    "dlugosc": 18.6521218,
+    "zrodlo": {
+      "nazwa": "OpenStreetMap (Nominatim), ODbL",
+      "url": "https://www.openstreetmap.org/copyright"
+    },
+    "dataOdczytu": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

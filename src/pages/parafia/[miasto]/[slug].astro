@@ -6,6 +6,7 @@ import { glosyParafii, policzAgregaty } from '../../../lib/agregaty';
 import { WYMIARY, liczbaZPrzecinkiem, miesiacGlosu, odmianaGlosow } from '../../../lib/glosy';
 import type { Wymiar } from '../../../lib/glosy';
 import { OSIE } from '../../../lib/parafie';
+import { kafelkiWokol } from '../../../lib/mapki';
 import type { Os } from '../../../lib/parafie';
 import { sciezkaPorownania } from '../../../lib/porownanie';
 
@@ -30,6 +31,13 @@ const osieZDanymi = (Object.keys(OSIE) as Os[]).filter((os) => data.osie[os]);
 const mapyUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(`${data.adres.wartosc}`)}`;
 
 const zapisUrl = import.meta.env.PUBLIC_ZAPIS_URL ?? 'http://localhost:8788';
+
+// Kadr mapki: cztery kafelki OSM leżące w repo składa przeglądarka,
+// a ujemne marginesy ustawiają punkt parafii dokładnie na środku okna —
+// bez skryptu i bez zasobu z obcej domeny.
+const kadr = data.polozenie
+  ? kafelkiWokol(data.polozenie.szerokosc, data.polozenie.dlugosc, 16)
+  : null;
 const wybor = glosyParafii(data.slug, (await getCollection('glosy')).map((g) => g.data));
 const agregaty = policzAgregaty(wybor);
 const glosy = [...wybor.glosy].sort((a, b) => b.data.localeCompare(a.data));
@@ -126,6 +134,29 @@ const zdjeciaProfilu = glosy.flatMap((glos) =>
           })
         }
       </dl>
+      {
+        kadr && data.polozenie && (
+          <figure class="mapka">
+            <div class="mapka-okno">
+              <div
+                class="mapka-plansza"
+                style={`margin-left:${-kadr.punkt.x}px;margin-top:${-kadr.punkt.y}px`}
+              >
+                {kadr.kafelki.map((_, i) => (
+                  <img src={`/mapki/${data.slug}-${i + 1}.png`} alt="" width="256" height="256" loading="lazy" />
+                ))}
+              </div>
+              <span class="mapka-punkt" aria-hidden="true" />
+            </div>
+            <figcaption>
+              Położenie wg{' '}
+              <a href={data.polozenie.zrodlo.url}>OpenStreetMap</a> (ODbL), odczyt{' '}
+              {data.polozenie.dataOdczytu}
+            </figcaption>
+          </figure>
+        )
+      }
+
       <p class="zglos">
         Dostrzegasz błąd w faktach? <a href={`${zapisUrl}/blad/${data.miastoSlug}/${data.slug}`}>Zgłoś błąd</a>{' '}
         — poprawka ma pierwszeństwo.

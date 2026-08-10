@@ -8,6 +8,15 @@
     "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_ko%C5%9Bci%C3%B3%C5%82_NMP_Matki_Ko%C5%9Bcio%C5%82a_i_%C5%9Bw._Katarzyny_Szwedzkiej.JPG",
     "dataPobrania": "2026-08-10"
   },
+  "polozenie": {
+    "szerokosc": 54.3771535,
+    "dlugosc": 18.629648,
+    "zrodlo": {
+      "nazwa": "OpenStreetMap (Nominatim), ODbL",
+      "url": "https://www.openstreetmap.org/copyright"
+    },
+    "dataOdczytu": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

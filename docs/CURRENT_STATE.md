@@ -114,12 +114,18 @@ z parafiami albo kolejne iteracje po zmianach na stronach.
   opcjonalnymi zmienia model głosu z
   [dokumentu 03](03-model-glosow-ocen-i-rankingu.md) i należy do
   architekta;
-- „niedaleko" (odległość), mapka na karcie i nowe kryteria ocen
-  (`kazanie`, znaczniki) **nie weszły**: wymagają współrzędnych ze
-  źródłem, odwrócenia decyzji o mapie z [dokumentu 01](01-decyzja-mvp-znajdz-swoje-miejsce.md)
-  („mapa interaktywna — odłóż") oraz nowej wersji
-  [dokumentu 03](03-model-glosow-ocen-i-rankingu.md) (wymiary głosu to
-  typ zamknięty) — to praca architekta, nie kodera;
+- mapka na karcie parafii **weszła** aktem operatora („nie ma mapek",
+  czat 2026-08-10): położenie z OpenStreetMap (ODbL) jako fakt ze
+  źródłem, kafelki self-hostowane, zero zasobów z obcej domeny
+  w runtime. Ma ją **16 z 28** parafii — dla reszty geokoder nie zwrócił
+  jednoznacznego „miejsca kultu"
+  ([raport](../src/dane/raporty/mapki.md)). Akt odwraca decyzję „mapa
+  interaktywna — odłóż" z [dokumentu 01](01-decyzja-mvp-znajdz-swoje-miejsce.md);
+  zapis w dokumencie należy do architekta;
+- „niedaleko" (odległość) i nowe kryteria ocen (`kazanie`, znaczniki)
+  **nie weszły**: te drugie wymagają nowej wersji
+  [dokumentu 03](03-model-glosow-ocen-i-rankingu.md), bo wymiary głosu
+  to typ zamknięty — to praca architekta, nie kodera;
 - registry kontraktów nie istnieje; kontrakty w treści `docs/02/05/08/09/10`;
 - ocena estetyczna („ślicznie") należy do operatora przy odbiorze.
 

@@ -1,5 +1,14 @@
 {
   "nazwa": "Parafia pw. Św. Stanisława Bp.",
+  "polozenie": {
+    "szerokosc": 54.3859418,
+    "dlugosc": 18.6144921,
+    "zrodlo": {
+      "nazwa": "OpenStreetMap (Nominatim), ODbL",
+      "url": "https://www.openstreetmap.org/copyright"
+    },
+    "dataOdczytu": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

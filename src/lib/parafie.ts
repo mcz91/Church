@@ -53,9 +53,22 @@ const zdjecieWizytowkaSchema = z
   })
   .strict();
 
+// Położenie jest faktem ze źródłem jak każdy inny (OpenStreetMap,
+// ODbL); zakres pilnuje, żeby błąd geokodera nie przeniósł parafii
+// na drugą półkulę.
+const polozenieSchema = z
+  .object({
+    szerokosc: z.number().min(49).max(55),
+    dlugosc: z.number().min(14).max(24.2),
+    zrodlo: zrodloSchema,
+    dataOdczytu: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  })
+  .strict();
+
 export const parafiaSchema = z.object({
   nazwa: z.string().min(1),
   zdjecie: zdjecieWizytowkaSchema.optional(),
+  polozenie: polozenieSchema.optional(),
   wyznanie: z.string().min(1),
   miasto: z.string().min(1),
   miastoSlug: z.string().regex(SLUG),
