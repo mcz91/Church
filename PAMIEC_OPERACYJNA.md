@@ -36,10 +36,10 @@ Protokół (koszt czytelnika > koszt pisarza):
   pole zatwierdzenia w `docs/11` wciąż „niewypełnione" — uzupełnia
   architekt (koder ma zakaz zapisu `docs/11`); akt odnotowany też
   w commicie wykonawczym.
-- 2026-08-10 operator: „proceed" po sprzeciwie kodera = zgoda na część
-  żądania („msza niedługo" + filtry) bez kontraktu; reszta (odległość,
-  mapka, wymiary `kazanie`/znaczniki) czeka na architekta — propozycja
-  kryteriów padła wyłącznie w czacie, repo jej nie zna.
+- 2026-08-10 operator: „proceed" oraz „uprosc dodawanie komentow, zero
+  tarcia" = zgoda na pracę bez kontraktu („msza niedługo", filtry,
+  jednoprzebiegowy głos); odległość, mapka i wymiary `kazanie`/znaczniki
+  czekają na architekta — propozycja kryteriów padła tylko w czacie.
 - 2026-08-08 operator: BRAK-i wdrożeniowe rozstrzygnięte aktem („tak.
   wykonaj" + „działaj"): konfiguracja darmowa, szczegóły delegowane na
   kodera (Cloudflare Pages, GitHub Actions, Brevo, VM/tunel, subdomena);

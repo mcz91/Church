@@ -41,12 +41,45 @@ describe('rejestracja i weryfikacja', () => {
 });
 
 describe('przyjmowanie głosu', () => {
-  it('odrzuca głos bez sesji zweryfikowanego konta', async () => {
+  // Głos wolno teraz napisać przed potwierdzeniem adresu (gość podaje
+  // e-mail i pseudonim w tym samym formularzu), więc brak sesji nie jest
+  // już sam w sobie odmową. Niezmienne zostaje to, co chroniło produkt:
+  // głos bez tożsamości autora nie powstaje wcale.
+  it('odrzuca głos bez sesji i bez tożsamości w formularzu — nic nie powstaje', async () => {
     const s = srodowiskoTestowe();
     const bezSesji = await zlozGlos(s, 'sesja=nieistniejaca.podpis');
-    expect(bezSesji.status).toBe(401);
+    expect(bezSesji.status).toBe(400);
+    expect(await bezSesji.text()).toMatch(/e-mail/i);
     const wiersze = s.baza.prepare('SELECT COUNT(*) AS n FROM glosy').get() as { n: number };
     expect(wiersze.n).toBe(0);
+    const konta = s.baza.prepare('SELECT COUNT(*) AS n FROM konta').get() as { n: number };
+    expect(konta.n).toBe(0);
+  });
+
+  it('podrobione ciasteczko sesji nie czyni z gościa autora', async () => {
+    const s = srodowiskoTestowe();
+    const zadanie = formularz({
+      parafia: 'parafia-testowa-alfa',
+      email: 'gosc@przyklad.example',
+      pseudonim: 'Gość Testowy',
+      ocenaOgolna: '5',
+      przyjecie: '5',
+      muzyka: '5',
+      zDziecmi: '5',
+      dostepnosc: '5',
+      organizacja: '5',
+    });
+    const podszycie = await s.app.request('/glos', {
+      ...zadanie,
+      headers: { ...zadanie.headers, cookie: 'sesja=nieistniejaca.podpis' },
+    });
+    expect(podszycie.status).toBe(200);
+    const konto = s.baza.prepare('SELECT email, zweryfikowane FROM konta').get() as {
+      email: string;
+      zweryfikowane: number;
+    };
+    expect(konto.email).toBe('gosc@przyklad.example');
+    expect(konto.zweryfikowane).toBe(0);
   });
 
   it('zapisuje głos trwale w bazie przed odpowiedzią', async () => {

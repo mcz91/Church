@@ -20,7 +20,13 @@ negujące unieważniają godzinę, a parafia nie pojawia się w wynikach
 zamiast pokazać godzinę zgadniętą. Pokrycie na danych realnych: pewne
 godziny niedzielne ma **28 z 28** parafii, tygodniowe **26 z 28**.
 Panel jest progresywnym wzbogaceniem — bez JavaScriptu pełna lista
-zostaje w dokumencie. **Kolizja do rozstrzygnięcia przy `CHURCH-7`:**
+zostaje w dokumencie. Tym samym aktem (żądanie „zero tarcia" przy
+komentarzach, czat 2026-08-10) droga głosu stała się jednoprzebiegowa:
+oceny, tekst, pseudonim i adres idą w jednym formularzu, a link
+potwierdzający przychodzi po wysłaniu; głos od niepotwierdzonego adresu
+czeka jako `pending` i moderator nie może go przyjąć (409), więc
+bezpieczniki dokumentu 03 zostają nienaruszone.
+**Kolizja do rozstrzygnięcia przy `CHURCH-7`:**
 jego akceptacja 3 planuje statyczne strony-filtry `/<miasto>/<filtr>`,
 a akceptacja 2 przenosi listę parafii ze startu na strony miast — panel
 trzeba będzie wtedy przenieść albo zastąpić.
@@ -91,6 +97,11 @@ z parafiami albo kolejne iteracje po zmianach na stronach.
   ([dokument 12](12-decyzja-wdrozenie-darmowe.md)); otwarte: własna
   domena (blokuje `og:image`), analityka odwiedzin, formalny start
   pilotażu;
+- głos wciąż wymaga sześciu ocen (ogólna + pięć wymiarów, wszystkie
+  obowiązkowe) — to największe pozostałe tarcie; uczynienie wymiarów
+  opcjonalnymi zmienia model głosu z
+  [dokumentu 03](03-model-glosow-ocen-i-rankingu.md) i należy do
+  architekta;
 - „niedaleko" (odległość), mapka na karcie i nowe kryteria ocen
   (`kazanie`, znaczniki) **nie weszły**: wymagają współrzędnych ze
   źródłem, odwrócenia decyzji o mapie z [dokumentu 01](01-decyzja-mvp-znajdz-swoje-miejsce.md)

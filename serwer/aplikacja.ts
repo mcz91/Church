@@ -193,16 +193,43 @@ ${[1, 2, 3]
   });
 
   app.post('/glos', async (c) => {
-    const konto = sesja(c);
-    if (!konto || !konto.zweryfikowane || !konto.pseudonim) {
-      return c.text('Głos przyjmujemy wyłącznie od zweryfikowanego konta z pseudonimem.', 401);
-    }
     const cialo = await c.req.parseBody();
+
+    // Treść powstaje od razu, adres potwierdza się po wysłaniu: gość
+    // podaje e-mail i pseudonim w tym samym formularzu, a link
+    // weryfikacyjny idzie dopiero z przyjętym głosem. Doktryna
+    // dokumentu 03 bez zmian — autor ma zweryfikowany adres, a głos
+    // czeka na moderację; zmienia się wyłącznie kolejność kroków.
+    let konto = sesja(c);
+    let doWeryfikacji: { id: string; email: string } | null = null;
+    let pseudonimAutora = konto?.pseudonim ?? '';
+    if (!konto || !konto.zweryfikowane || !konto.pseudonim) {
+      const email = String(cialo.email ?? '').trim();
+      const pseudonim = String(cialo.pseudonim ?? '').trim();
+      if (!EMAIL.test(email)) return c.text('BRAK: poprawny adres e-mail', 400);
+      if (!pseudonim || EMAIL.test(pseudonim)) {
+        return c.text('BRAK: pseudonim (bez adresu e-mail)', 400);
+      }
+      const istniejace = k.baza.prepare('SELECT * FROM konta WHERE email = ?').get(email) as
+        | Konto
+        | undefined;
+      if (istniejace) {
+        k.baza.prepare('UPDATE konta SET pseudonim = ? WHERE id = ?').run(pseudonim, istniejace.id);
+        konto = { ...istniejace, pseudonim };
+      } else {
+        konto = { id: randomUUID(), email, pseudonim, zweryfikowane: 0 };
+        k.baza
+          .prepare('INSERT INTO konta (id, email, pseudonim, zweryfikowane) VALUES (?, ?, ?, 0)')
+          .run(konto.id, email, pseudonim);
+      }
+      if (!konto.zweryfikowane) doWeryfikacji = { id: konto.id, email };
+      pseudonimAutora = pseudonim;
+    }
     const liczba = (pole: string) => Number(cialo[pole]);
     const tekst = String(cialo.tekst ?? '').trim();
     const kandydat = {
       parafiaSlug: String(cialo.parafia ?? ''),
-      autor: { pseudonim: konto.pseudonim, konto: konto.id },
+      autor: { pseudonim: pseudonimAutora, konto: konto.id },
       status: 'pending',
       ocenaOgolna: liczba('ocenaOgolna'),
       wymiary: {
@@ -250,7 +277,7 @@ ${[1, 2, 3]
 
     // Wstępna moderacja regułowa: twarde przypadki automat odrzuca
     // z powodem i flagą odwołania; approved ustawia wyłącznie człowiek.
-    const klasyfikacja = klasyfikujGlos({ tekst: glos.tekst, pseudonim: konto.pseudonim });
+    const klasyfikacja = klasyfikujGlos({ tekst: glos.tekst, pseudonim: pseudonimAutora });
     const autoOdrzucony = klasyfikacja.twarde.length > 0;
     const powod = autoOdrzucony
       ? klasyfikacja.twarde.map((t) => t.powod).join('; ')
@@ -305,6 +332,22 @@ ${[1, 2, 3]
         .prepare('INSERT INTO zdjecia (id, glos_id, plik, alt, podpis) VALUES (?, ?, ?, ?, ?)')
         .run(randomUUID(), idGlosu, nazwa, obraz.alt, obraz.podpis);
     });
+    // Link idzie dopiero teraz — gość ma już wszystko z siebie oddane,
+    // a jedno kliknięcie domyka jego tożsamość.
+    if (doWeryfikacji) {
+      const token = randomUUID();
+      k.baza
+        .prepare('INSERT INTO tokeny (token, konto_id, parafia_slug, wygasa) VALUES (?, ?, ?, ?)')
+        .run(token, doWeryfikacji.id, glos.parafiaSlug, Date.now() + WAZNOSC_TOKENU_MS);
+      await k.email.wyslij(
+        doWeryfikacji.email,
+        'Potwierdź swój głos — Church',
+        `Twój głos jest zapisany. Potwierdź adres jednym kliknięciem: ` +
+          `${k.bazowyUrl}/weryfikacja?token=${token}\n` +
+          'Bez potwierdzenia głos nie zostanie opublikowany. Link działa godzinę i tylko raz.',
+      );
+    }
+
     if (autoOdrzucony) {
       return c.html(
         strona(
@@ -316,7 +359,13 @@ na stronie parafii — odwołanie trafi do moderatora-człowieka.</p>`,
       );
     }
     return c.html(
-      strona('Dziękujemy', '<p>Głos czeka na moderację — po przyjęciu pojawi się na stronie parafii.</p>'),
+      strona(
+        'Dziękujemy',
+        doWeryfikacji
+          ? '<p>Głos jest zapisany. Wysłaliśmy jeden link na Twój adres — kliknięcie ' +
+            'potwierdza, że to Ty, i dopiero wtedy głos idzie do moderacji.</p>'
+          : '<p>Głos czeka na moderację — po przyjęciu pojawi się na stronie parafii.</p>',
+      ),
     );
   });
 
@@ -467,10 +516,15 @@ ${zdjeciaGlosu(g.id)
     const cialo = await c.req.parseBody();
     const id = String(cialo.id ?? '');
     const wiersz = k.baza
-      .prepare(`SELECT g.*, k2.pseudonim FROM glosy g JOIN konta k2 ON k2.id = g.konto_id
+      .prepare(`SELECT g.*, k2.pseudonim, k2.zweryfikowane FROM glosy g JOIN konta k2 ON k2.id = g.konto_id
                 WHERE g.id = ?`)
       .get(id) as Record<string, string | number | null> | undefined;
     if (!wiersz) return c.text('Nie ma takiego głosu.', 404);
+    // Treść wolno napisać przed potwierdzeniem adresu, ale opublikować
+    // wolno wyłącznie głos autora z potwierdzonym adresem (dokument 03).
+    if (!Number(wiersz.zweryfikowane)) {
+      return c.text('Autor nie potwierdził jeszcze adresu — głos nie może zostać przyjęty.', 409);
+    }
     const glos: Glos = {
       parafiaSlug: String(wiersz.parafia_slug),
       autor: { pseudonim: String(wiersz.pseudonim), konto: String(wiersz.konto_id) },

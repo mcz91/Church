@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Bazowy from '../../layouts/Bazowy.astro';
-import { ZASADY_MODERACJI } from '../../lib/glosy';
+import { WYMIARY, ZASADY_MODERACJI } from '../../lib/glosy';
 
 export async function getStaticPaths() {
   const parafie = await getCollection('parafie');
@@ -26,23 +26,50 @@ const zapisUrl = import.meta.env.PUBLIC_ZAPIS_URL ?? 'http://localhost:8788';
       <div class="denom">Parafia {data.wyznanie} · {data.miasto}</div>
       <h2>{data.nazwa}</h2>
       <p class="wstep">
-        Głos to Twoje doświadczenie z tego miejsca: ocena ogólna, pięć wymiarów
-        i — jeśli chcesz — kilka zdań. Podpisujemy go wyłącznie pseudonimem.
+        Napisz od razu — adres potwierdzisz jednym kliknięciem po wysłaniu.
+        Podpisujemy głos wyłącznie pseudonimem.
       </p>
 
-      <form class="form-glos" method="post" action={`${zapisUrl}/rejestracja`}>
+      <form class="form-glos" method="post" action={`${zapisUrl}/glos`}>
         <input type="hidden" name="parafia" value={data.slug} />
+
+        <fieldset class="oceny">
+          <legend>Jak Ci tam było?</legend>
+          {
+            [['ocenaOgolna', 'Ogólnie'] as const, ...Object.entries(WYMIARY)].map(
+              ([nazwa, etykieta]) => (
+                <div class="ocena">
+                  <span class="ocena-nazwa">{etykieta}</span>
+                  <span class="ocena-skala">
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <label class="gwiazdka">
+                        <input type="radio" name={nazwa} value={String(n)} required />
+                        <span>{n}</span>
+                      </label>
+                    ))}
+                  </span>
+                </div>
+              ),
+            )
+          }
+        </fieldset>
+
         <label>
-          Adres e-mail (tylko do weryfikacji, nigdy publiczny)
-          <input type="email" name="email" required autocomplete="email" />
+          Twoje doświadczenie (opcjonalnie)
+          <textarea name="tekst" rows="4" maxlength="2000"></textarea>
         </label>
         <label>
           Pseudonim (podpis Twojego głosu)
           <input type="text" name="pseudonim" required maxlength="80" />
         </label>
-        <button type="submit">Wyślij link do głosu</button>
+        <label>
+          Adres e-mail (tylko do potwierdzenia, nigdy publiczny)
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+        <button type="submit">Wyślij głos</button>
         <p class="dopisek">
-          Wyślemy jednorazowy link — kliknięcie potwierdza adres i otwiera formularz ocen.
+          Po wysłaniu dostaniesz jeden link — kliknięcie potwierdza, że to Ty.
+          Bez niego głos nie zostanie opublikowany.
         </p>
       </form>
 

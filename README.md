@@ -46,6 +46,14 @@ Serwis zapisu głosów (deweloperski): `npm run serwis` — wymaga zmiennych
 środowiskowych z [`serwer/.env.example`](serwer/.env.example); magic linki
 trafiają na konsolę, dopóki dostawca e-mail nie jest rozstrzygnięty.
 
+Droga głosu jest jednoprzebiegowa: na stronie `/glos/<parafia>` gość
+wypełnia oceny, tekst, pseudonim i adres w **jednym** formularzu, a link
+potwierdzający dostaje dopiero po wysłaniu — pisanie nie wymaga wcześniejszej
+wizyty w skrzynce. Doktryna [dokumentu 03](docs/03-model-glosow-ocen-i-rankingu.md)
+zostaje: głos od niepotwierdzonego adresu jest zapisany jako `pending`,
+ale moderator **nie może go przyjąć** (409), więc publikacja nadal wymaga
+autora ze zweryfikowanym adresem i zgody człowieka.
+
 Zdjęcia w głosach: formularz głosu przyjmuje do trzech zdjęć (JPEG/PNG,
 do 8 MB, tekst alternatywny wymagany) zwykłym POST multipart; metadane
 (EXIF, geolokalizacja, dane urządzenia) są usuwane przed zapisem do

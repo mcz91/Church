@@ -322,6 +322,12 @@ const { tytul, opis } = Astro.props;
   .row:hover a.name {
     background-size: 100% 1px;
   }
+  /* Bez tego blok nazwy kurczy się do treści, a „space-between" stawia
+     go w innym miejscu w każdym wierszu — nazwy parafii się rozjeżdżają. */
+  .row .who {
+    flex: 1;
+    min-width: 0;
+  }
   .row .sub {
     color: var(--muted);
     font-size: 0.84rem;
@@ -779,6 +785,73 @@ const { tytul, opis } = Astro.props;
   .form-glos input:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 1px;
+  }
+  .form-glos textarea {
+    width: 100%;
+    margin-top: 5px;
+    padding: 9px 11px;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background: var(--bg);
+    font: inherit;
+    color: inherit;
+    resize: vertical;
+  }
+  .form-glos .oceny {
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 12px 14px 14px;
+    margin-top: 4px;
+  }
+  .form-glos .oceny legend {
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    padding: 0 6px;
+  }
+  .ocena {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 5px 0;
+  }
+  .ocena-nazwa {
+    font-size: 0.9rem;
+  }
+  .ocena-skala {
+    display: inline-flex;
+    gap: 5px;
+  }
+  .gwiazdka {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    min-height: 36px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+    font-size: 0.86rem;
+    cursor: pointer;
+  }
+  /* Natywny przycisk zostaje w drzewie dostępności, ale wizualnie
+     zastępuje go całe pole — cel dotykowy 36 px zamiast kropki. */
+  .gwiazdka input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  .gwiazdka:has(input:checked) {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+    font-weight: 600;
+  }
+  .gwiazdka:focus-within {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
   .form-glos button {
     margin-top: 16px;
