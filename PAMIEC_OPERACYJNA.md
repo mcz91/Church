@@ -16,16 +16,12 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-09 koder: witryna ONLINE (upload ręczny buildu na Cloudflare
-  Workers Assets): curly-recipe-bde5.dontfolditpl.workers.dev —
-  zweryfikowana z zewnątrz (strona główna, profile obu miast,
-  porównania); aktualizacje wymagają nowej paczki, dopóki operator nie
-  domknie integracji Git/tokenu (obie drogi przygotowane w repo);
+- 2026-08-10 koder: witryna ONLINE (upload ręczny buildu na Cloudflare
+  Workers Assets): curly-recipe-bde5.dontfolditpl.workers.dev;
+  aktualizacje wymagają nowej paczki, dopóki operator nie domknie
+  integracji Git/tokenu (obie drogi w repo) — wizytówki `CHURCH-6`
+  będą na żywej witrynie dopiero po ponownym wgraniu buildu;
   formularze głosów czekają na serwis zapisu (etap B).
-- 2026-08-09 arch: akt `CHURCH-5` wpisany do `docs/10`, wdrożenie
-  udokumentowane post factum w `docs/12`; kontrakt `CHURCH-6`
-  (`docs/11`, wizytówki budynków z Commons, żądanie „ślicznie")
-  czeka na akt operatora.
 
 ## WĄTKI — otwarte, bez kontraktu
 
@@ -34,14 +30,15 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## DECYZJE Z CZATU — obowiązują, niezmechanizowane
 
+- 2026-08-09 operator: akt „zatwierdz" dla `CHURCH-6` padł w czacie;
+  pole zatwierdzenia w `docs/11` wciąż „niewypełnione" — uzupełnia
+  architekt (koder ma zakaz zapisu `docs/11`); akt odnotowany też
+  w commicie wykonawczym.
 - 2026-08-08 operator: BRAK-i wdrożeniowe rozstrzygnięte aktem („tak.
   wykonaj" + „działaj"): konfiguracja darmowa, szczegóły delegowane na
   kodera (Cloudflare Pages, GitHub Actions, Brevo, VM/tunel, subdomena);
   wymóg kontraktu dla tego zakresu uchylony — architekt może doszyć
   dokument post factum; kroki kontowe operatora: README „Wdrożenie".
-- 2026-08-08 arch: repo startuje z czwórką ról `PROMPT_{PM,ARCHITEKT,
-  KODER,AUDYTOR}.md` w korzeniu i kopią konstytucji Foundry; konwencja
-  wspólna z `mcz91/foundry` i `mcz91/ezmat`, rozszerzona o PM.
 - 2026-08-08 operator (czat, kolejno): „buduj" bez ProductBriefu PM-a;
   estetyka niedewocyjna → „poetycko piękne" → rozbudowa opinii →
   zatwierdzenie CHURCH-1 z odrzuceniem fontu — wszystko utrwalone

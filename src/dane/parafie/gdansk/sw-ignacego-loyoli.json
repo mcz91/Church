@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Św. Ignacego Loyoli",
+  "zdjecie": {
+    "plik": "sw-ignacego-loyoli.jpg",
+    "alt": "kościół św. Ignacego Loyoli w Gdańsku Starych Szkotach",
+    "autor": "Artur Andrzej",
+    "licencja": "CC0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Ignacego_Loyoli.jpg",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

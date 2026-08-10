@@ -278,6 +278,34 @@ const { tytul, opis } = Astro.props;
     font-size: 0.82rem;
   }
 
+  .wizytowka {
+    margin: -36px -38px 22px;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+  }
+  .wizytowka img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+  .wizytowka figcaption {
+    font-size: 0.68rem;
+    color: var(--muted);
+    padding: 8px 38px 0;
+    letter-spacing: 0.02em;
+  }
+  .wizytowka figcaption a {
+    color: inherit;
+  }
+  .row img.mini {
+    width: 56px;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 5px;
+    flex-shrink: 0;
+    align-self: center;
+  }
   .sheet {
     background: var(--surface);
     border: 1px solid var(--line);
@@ -843,9 +871,19 @@ const { tytul, opis } = Astro.props;
     .sheet {
       padding: 28px 22px;
     }
+    .wizytowka {
+      margin: -28px -22px 18px;
+    }
+    .wizytowka figcaption {
+      padding: 8px 22px 0;
+    }
     .row {
       flex-direction: column;
       gap: 4px;
+    }
+    .row img.mini {
+      align-self: flex-start;
+      width: 72px;
     }
     .row .aside {
       text-align: left;

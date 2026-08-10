@@ -11,6 +11,7 @@
     "dane:pokrycie": "node --experimental-strip-types narzedzia/raport-pokrycia.ts",
     "dane:silniki": "node --experimental-strip-types narzedzia/raport-silnikow.ts",
     "dane:kolejka": "node --experimental-strip-types narzedzia/kolejka-cli.ts",
+    "dane:wizytowki": "node --experimental-strip-types narzedzia/wizytowki-cli.ts",
     "lint": "eslint .",
     "check": "astro check",
     "test": "vitest run",

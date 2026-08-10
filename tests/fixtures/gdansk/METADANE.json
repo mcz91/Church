@@ -50,6 +50,10 @@
     "joomla-stanislaw-msze.html": {
       "url": "http://www.stanislawbiskup.pl/parafia/porzadek-nabozenstw",
       "opis": "Podstrona mszy na Joomli z etykietami wyłącznie kwalifikowanymi („PODCZAS ROKU SZKOLNEGO / LETNICH WAKACJI\") i minutami w <sup> — przypadek odrzucany przez parser (kwalifikator wyklucza segment), obsługiwany kolejką ręczną."
+    },
+    "../commons-szukaj-katedra-torun.json": {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Katedra Świętych Janów Toruń&gsrnamespace=6&gsrlimit=5&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=1600&format=json",
+      "opis": "Zarchiwizowana odpowiedź API Wikimedia Commons (wyszukiwanie zdjęć katedry toruńskiej) do testów parsera kandydatów wizytówek — pobrana 2026-08-09."
     }
   }
 }

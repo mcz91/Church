@@ -83,7 +83,17 @@ beforeAll(() => {
   dist = mkdtempSync(join(tmpdir(), 'build-glosy-'));
 
   const parafie = [
-    parafia('Parafia Testowa Alfa', 'parafia-testowa-alfa', 'testowe pierwsze'),
+    {
+      ...parafia('Parafia Testowa Alfa', 'parafia-testowa-alfa', 'testowe pierwsze'),
+      zdjecie: {
+        plik: 'parafia-testowa-alfa.png',
+        alt: 'bryła testowego kościoła od frontu (obraz syntetyczny)',
+        autor: 'Autor Testowy',
+        licencja: 'CC BY-SA 4.0',
+        zrodloUrl: 'https://commons.wikimedia.org/wiki/File:Testowy.png',
+        dataPobrania: '2026-08-09',
+      },
+    },
     parafia('Parafia Testowa Beta', 'parafia-testowa-beta', 'testowe drugie'),
     parafia('Parafia Testowa Gamma', 'parafia-testowa-gamma', 'testowe pierwsze'),
     parafia('Parafia Testowa Delta', 'parafia-testowa-delta', 'testowe pierwsze', 'Miasto Próbne', 'miasto-probne'),
@@ -111,6 +121,8 @@ beforeAll(() => {
     writeFileSync(join(katalog, `glos-${i}.json`), JSON.stringify(g));
   });
   writeFileSync(join(glosyDir, 'parafia-testowa-alfa/k1-1.png'), syntetycznyPNG(8, 6));
+  mkdirSync(join(korzen, 'public/wizytowki'), { recursive: true });
+  writeFileSync(join(korzen, 'public/wizytowki/parafia-testowa-alfa.png'), syntetycznyPNG(9, 6));
 
   execFileSync(join(korzen, 'node_modules/.bin/astro'), ['build'], {
     cwd: korzen,
@@ -127,6 +139,7 @@ beforeAll(() => {
 
 afterAll(() => {
   rmSync(join(korzen, 'tests/fixtures/glosy-build'), { recursive: true, force: true });
+  rmSync(join(korzen, 'public/wizytowki/parafia-testowa-alfa.png'), { force: true });
 });
 
 const profil = (slug: string) =>
@@ -234,6 +247,27 @@ describe('zgłoszenie błędu faktu w buildzie', () => {
       expect(strona, slug).toMatch(/zgłoś błąd/i);
       expect(strona, slug).toContain(`/blad/`);
     }
+  });
+});
+
+describe('wizytówka kościoła w buildzie', () => {
+  it('profil ze zdjęciem-wizytówką renderuje je u góry arkusza z altem i atrybucją z linkiem', () => {
+    const strona = profil('parafia-testowa-alfa');
+    expect(strona).toContain('class="wizytowka"');
+    expect(strona).toContain('alt="bryła testowego kościoła od frontu (obraz syntetyczny)"');
+    expect(strona).toContain('fot. Autor Testowy');
+    expect(strona).toContain('CC BY-SA 4.0');
+    expect(strona).toContain('https://commons.wikimedia.org/wiki/File:Testowy.png');
+  });
+
+  it('profil bez wizytówki renderuje arkusz dokładnie jak dotąd', () => {
+    expect(profil('parafia-testowa-gamma')).not.toContain('class="wizytowka"');
+  });
+
+  it('lista startowa pokazuje miniaturę przy wierszu parafii ze zdjęciem', () => {
+    const start = html.get('/index.html') ?? '';
+    expect(start).toContain('class="mini"');
+    expect(start).toContain('/wizytowki/parafia-testowa-alfa.png');
   });
 });
 

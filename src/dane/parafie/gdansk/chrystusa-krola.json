@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Chrystusa Króla",
+  "zdjecie": {
+    "plik": "chrystusa-krola.jpg",
+    "alt": "bryła kościoła Chrystusa Króla w Gdańsku",
+    "autor": "Artur Andrzej",
+    "licencja": "CC BY-SA 3.0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bci%C3%B3%C5%82_Chrystusa_Kr%C3%B3la_w_Gda%C5%84sku.JPG",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

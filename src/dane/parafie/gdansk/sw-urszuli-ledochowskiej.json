@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Św. Urszuli Ledóchowskiej",
+  "zdjecie": {
+    "plik": "sw-urszuli-ledochowskiej.jpg",
+    "alt": "kościół św. Urszuli Ledóchowskiej przy ul. Cieszyńskiego na gdańskim Chełmie",
+    "autor": "Artur Andrzej",
+    "licencja": "CC0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_Che%C5%82m_-_ko%C5%9Bci%C3%B3%C5%82_pw._%C5%9Aw._Urszuli_Led%C3%B3chowskiej.JPG",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

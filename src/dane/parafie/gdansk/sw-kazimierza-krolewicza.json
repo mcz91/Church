@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Św. Kazimierza",
+  "zdjecie": {
+    "plik": "sw-kazimierza-krolewicza.jpg",
+    "alt": "kościół parafialny św. Kazimierza Królewicza na gdańskiej Zaspie",
+    "autor": "© 2011 by Tomasz Sienicki [user: tsca , mail: tomasz.sienicki at gmail.com]",
+    "licencja": "CC BY 3.0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bci%C3%B3%C5%82_parafialny_pw_%C5%9Bw_Kazimierza_Kr%C3%B3lewicza_-_2011_b_ubt.JPG",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

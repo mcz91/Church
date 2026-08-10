@@ -5,7 +5,21 @@ linkują tutaj zamiast utrzymywać własne kopie.
 
 ## Etap
 
-**5 — zdjęcia w głosach (`CHURCH-5`) wykonane.** Głos może nieść do
+**6 — zdjęcia-wizytówki budynków (`CHURCH-6`) wykonane** (akt
+zatwierdzenia: czat 2026-08-09 „zatwierdz"). Każda parafia może mieć
+jedno redakcyjne zdjęcie budynku wyłącznie z Wikimedia Commons:
+schemat `zdjecie` (plik, alt, autor, licencja z zamkniętej listy
+wolnych, URL strony pliku, data pobrania), kolejka
+`npm run dane:wizytowki` z metadanymi z `extmetadata` API i zapisem
+tylko po potwierdzeniu człowieka, render ≤1600 px self-hostowany
+w `public/wizytowki/` (koszyk 1280 px — Commons nie serwuje 1600),
+zdjęcie na profilu z atrybucją „fot. autor · licencja · Wikimedia
+Commons" i miniatury na liście startowej. Dane realne: **26 z 28
+parafii ma wizytówkę** (3× Toruń, 23× Gdańsk); 2 braki z przyczynami
+w raporcie
+[`src/dane/raporty/wizytowki.md`](../src/dane/raporty/wizytowki.md).
+Kontrakt: [`11-kontrakt-CHURCH-6.md`](11-kontrakt-CHURCH-6.md).
+Wcześniej: **5 — zdjęcia w głosach (`CHURCH-5`).** Głos może nieść do
 trzech zdjęć miejsca (JPEG/PNG do 8 MB, alt wymagany): serwis czyści
 metadane (EXIF, geolokalizacja) własnym parserem bez zależności przed
 zapisem do magazynu; publikacja wyłącznie drogą approve człowieka —
@@ -73,8 +87,8 @@ Kroki wymagające kont operatora wylicza `README.md`, sekcja
 „Wdrożenie". Witryna statyczna jest ONLINE (2026-08-09, upload ręczny
 buildu): https://curly-recipe-bde5.dontfolditpl.workers.dev — czyta
 się wszystko; formularze głosów i zgłoszeń czekają na uruchomienie
-serwisu zapisu. Kontrakt [`CHURCH-6`](11-kontrakt-CHURCH-6.md)
-(zdjęcia-wizytówki budynków z Wikimedia Commons, żądanie operatora
-„ślicznie") **czeka na akt zatwierdzenia**. Pozostają też: integracja
-publikacji (Git albo token), serwis zapisu + Brevo, decyzja o pilotażu
-przy pokryciu 43,1% oraz odbiór estetyczny `CHURCH-1`–`CHURCH-5`.
+serwisu zapisu; wizytówki z `CHURCH-6` pojawią się na niej po
+ponownym wgraniu buildu. Pozostają: integracja publikacji (Git albo
+token), serwis zapisu + Brevo, decyzja o pilotażu przy pokryciu 43,1%
+oraz odbiór estetyczny `CHURCH-1`–`CHURCH-6` („ślicznie" ocenia
+operator).

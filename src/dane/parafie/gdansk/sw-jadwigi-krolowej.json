@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Św. Jadwigi Królowej",
+  "zdjecie": {
+    "plik": "sw-jadwigi-krolowej.jpg",
+    "alt": "kościół św. Jadwigi Królowej przy ul. Krzemowej w Gdańsku Oruni",
+    "autor": "Artur Andrzej",
+    "licencja": "CC0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Jadwigi_Kr%C3%B3lowej.JPG",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

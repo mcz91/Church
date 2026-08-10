@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. NMP Matki Kościoła i Św. Katarzyny Szwedzkiej",
+  "zdjecie": {
+    "plik": "nmp-matki-kosciola-i-sw-katarzyny-szwedzkiej.jpg",
+    "alt": "kościół NMP Matki Kościoła i św. Katarzyny Szwedzkiej w Gdańsku Młyniskach",
+    "autor": "Artur Andrzej",
+    "licencja": "CC0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_ko%C5%9Bci%C3%B3%C5%82_NMP_Matki_Ko%C5%9Bcio%C5%82a_i_%C5%9Bw._Katarzyny_Szwedzkiej.JPG",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

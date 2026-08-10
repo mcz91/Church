@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Św. Walentego",
+  "zdjecie": {
+    "plik": "sw-walentego.jpg",
+    "alt": "kościół św. Walentego w Gdańsku Matarni, widok od frontu",
+    "autor": "Jan Derenda",
+    "licencja": "CC BY-SA 4.0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_Ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Walentego_widok_od_frontu.jpg",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

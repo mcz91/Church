@@ -38,8 +38,24 @@ export const OSIE = {
 
 export type Os = keyof typeof OSIE;
 
+// Zamknięta lista wolnych licencji wizytówek (docs/11): domena
+// publiczna / CC0 / CC BY / CC BY-SA w dowolnej wersji; NC i ND nigdy.
+export const LICENCJA_WOLNA = /^(public domain|cc0(\s\S+)?|cc by(-sa)?\s\d\.\d(\s\S+)?)$/i;
+
+const zdjecieWizytowkaSchema = z
+  .object({
+    plik: z.string().regex(/^[a-z0-9-]+\.(jpg|jpeg|png|webp)$/),
+    alt: z.string().min(1),
+    autor: z.string().min(1),
+    licencja: z.string().regex(LICENCJA_WOLNA),
+    zrodloUrl: z.url(),
+    dataPobrania: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  })
+  .strict();
+
 export const parafiaSchema = z.object({
   nazwa: z.string().min(1),
+  zdjecie: zdjecieWizytowkaSchema.optional(),
   wyznanie: z.string().min(1),
   miasto: z.string().min(1),
   miastoSlug: z.string().regex(SLUG),

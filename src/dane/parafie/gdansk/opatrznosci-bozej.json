@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Opatrzności Bożej",
+  "zdjecie": {
+    "plik": "opatrznosci-bozej.jpg",
+    "alt": "kościół Opatrzności Bożej przy al. Jana Pawła II na gdańskiej Zaspie",
+    "autor": "Artur Andrzej",
+    "licencja": "CC0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_ko%C5%9Bci%C3%B3%C5%82_Opatrzno%C5%9Bci_Bo%C5%BCej.JPG",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

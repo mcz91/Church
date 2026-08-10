@@ -52,6 +52,14 @@ const wedlugSluga = new Map(parafie.map((p) => [p.data.slug, p.data]));
         <div class="list">
           {m.parafie.map((p) => (
             <div class="row">
+              {p.data.zdjecie && (
+                <img
+                  class="mini"
+                  src={`/wizytowki/${p.data.zdjecie.plik}`}
+                  alt=""
+                  loading="lazy"
+                />
+              )}
               <div>
                 <b>
                   <a class="name" href={`/parafia/${p.data.miastoSlug}/${p.data.slug}`}>

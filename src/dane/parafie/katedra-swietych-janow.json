@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia katedralna Świętych Jana Chrzciciela i Jana Ewangelisty",
+  "zdjecie": {
+    "plik": "katedra-swietych-janow.jpg",
+    "alt": "gotycka bryła katedry Świętych Janów w Toruniu",
+    "autor": "Tomek Grudziński",
+    "licencja": "CC BY-SA 3.0 pl",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Bazylika_katedralna_%C5%9Awi%C4%99tych_Jana_Chrzciciela_i_Jana_Ewangelisty_w_Toruniu.JPG",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Toruń",
   "miastoSlug": "torun",

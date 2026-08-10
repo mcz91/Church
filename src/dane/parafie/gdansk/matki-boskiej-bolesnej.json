@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Matki Boskiej Bolesnej",
+  "zdjecie": {
+    "plik": "matki-boskiej-bolesnej.jpg",
+    "alt": "kościół Matki Boskiej Bolesnej przy ul. Głębokiej w Gdańsku",
+    "autor": "Krzysztof Rakowski",
+    "licencja": "CC BY-SA 3.0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bci%C3%B3%C5%82_p.w._Matki_Boskiej_Bolesnej,_Gda%C5%84sk_-_panoramio.jpg",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

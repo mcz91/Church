@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Św. Mikołaja",
+  "zdjecie": {
+    "plik": "sw-mikolaja.jpg",
+    "alt": "kościół św. Mikołaja (dominikanów) w Gdańsku od strony ul. Lawendowej",
+    "autor": "Yanek",
+    "licencja": "CC BY-SA 3.0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk,_Ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Miko%C5%82aja_-_fotopolska.eu_(304478).jpg",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

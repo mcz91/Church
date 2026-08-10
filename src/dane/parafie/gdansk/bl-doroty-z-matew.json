@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Bł. Doroty z Mątew",
+  "zdjecie": {
+    "plik": "bl-doroty-z-matew.jpg",
+    "alt": "kościół bł. Doroty z Mątew przy ul. Kartuskiej w Gdańsku Jasieniu",
+    "autor": "Artur Andrzej",
+    "licencja": "CC0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_ko%C5%9Bci%C3%B3%C5%82_b%C5%82ogos%C5%82awionej_Doroty_z_M%C4%85tew.JPG",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

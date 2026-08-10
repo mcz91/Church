@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Miłosierdzia Bożego",
+  "zdjecie": {
+    "plik": "milosierdzia-bozego.jpg",
+    "alt": "kościół Miłosierdzia Bożego przy ul. Myśliwskiej w Gdańsku Migowie",
+    "autor": "Artur Andrzej",
+    "licencja": "CC0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_ko%C5%9Bci%C3%B3%C5%82_Mi%C5%82osierdzia_Bo%C5%BCego.JPG",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

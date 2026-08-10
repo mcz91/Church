@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Św. Ojca Pio",
+  "zdjecie": {
+    "plik": "sw-ojca-pio.jpg",
+    "alt": "kościół parafialny św. Ojca Pio w Gdańsku Ujeścisku",
+    "autor": "Artur Andrzej",
+    "licencja": "CC0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_Uje%C5%9Bcisko_ko%C5%9Bci%C3%B3%C5%82_parafialny_%C5%9Bw._Ojca_Pio.JPG",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

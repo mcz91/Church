@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia Wniebowzięcia Najświętszej Maryi Panny i bł. ks. Stefana Wincentego Frelichowskiego",
+  "zdjecie": {
+    "plik": "wniebowziecia-nmp.jpg",
+    "alt": "kościół Wniebowzięcia Najświętszej Maryi Panny w Toruniu",
+    "autor": "Derbrauni",
+    "licencja": "CC BY 4.0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Church_of_the_Assumption_of_Our_Lady_in_Toru%C5%84_01.jpg",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Toruń",
   "miastoSlug": "torun",

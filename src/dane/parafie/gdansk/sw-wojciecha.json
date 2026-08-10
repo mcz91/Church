@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Św. Wojciecha",
+  "zdjecie": {
+    "plik": "sw-wojciecha.jpg",
+    "alt": "gotycki kościół św. Wojciecha przy Trakcie św. Wojciecha w Gdańsku",
+    "autor": "Lotek70",
+    "licencja": "CC0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk,_ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Wojciecha.jpg",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

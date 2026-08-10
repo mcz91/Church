@@ -58,7 +58,16 @@ chodzą na zarchiwizowanych fixture'ach):
    deterministycznych kandydatów (bez zapisu); zapis wyłącznie
    z plikiem potwierdzeń człowieka, po weryfikacji każdej godziny
    przeciw treści strony źródłowej
-   (`npm run dane:kolejka -- potwierdzenia.json`).
+   (`npm run dane:kolejka -- potwierdzenia.json`);
+6. `npm run dane:wizytowki` — dobór zdjęcia-wizytówki budynku
+   (jedno na parafię, wyłącznie Wikimedia Commons, licencje z zamkniętej
+   listy wolnych): bez argumentu pokazuje kandydatów z API razem
+   z autorem i licencją z `extmetadata` (bez zapisu); zapis wyłącznie
+   z plikiem potwierdzeń człowieka, że to właściwy kościół
+   (`npm run dane:wizytowki -- potwierdzenia.json`) — render ≤1600 px
+   trafia do `public/wizytowki/`, metadane do rekordu parafii, raport
+   doboru i braków do
+   [`src/dane/raporty/wizytowki.md`](src/dane/raporty/wizytowki.md).
 
 ## Wdrożenie (konfiguracja darmowa — akt operatora 2026-08-08)
 

@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Św. Piotra i Pawła",
+  "zdjecie": {
+    "plik": "sw-piotra-i-pawla.jpg",
+    "alt": "kościół św. Piotra i Pawła przy ul. Żabi Kruk w Gdańsku, widok od południowego zachodu",
+    "autor": "Yanek",
+    "licencja": "CC BY-SA 3.0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk,_Ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Piotra_i_Paw%C5%82a_-_fotopolska.eu_(211706).jpg",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

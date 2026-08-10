@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia Świętego Jakuba Apostoła",
+  "zdjecie": {
+    "plik": "sw-jakuba-apostola.jpg",
+    "alt": "gotycki kościół św. Jakuba w Toruniu",
+    "autor": "Mateuszgdynia",
+    "licencja": "CC BY-SA 4.0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gotycki_ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Jakuba_w_Toruniu.jpg",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Toruń",
   "miastoSlug": "torun",

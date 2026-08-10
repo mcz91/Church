@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
@@ -34,5 +34,21 @@ describe('dane parafii', () => {
   it('mają unikatowe slugi', () => {
     const parsy = rekordy.map((r) => parafiaSchema.parse(r.dane));
     expect(new Set(parsy.map((p) => p.slug)).size).toBe(parsy.length);
+  });
+
+  const katalogWizytowek = fileURLToPath(new URL('../public/wizytowki', import.meta.url));
+  const zdjecieIstnieje = (p: { zdjecie?: { plik: string } }) =>
+    !p.zdjecie || existsSync(join(katalogWizytowek, p.zdjecie.plik));
+
+  it('każde zdjęcie-wizytówka wskazuje istniejący plik w repo', () => {
+    for (const { plik, dane } of rekordy) {
+      expect(zdjecieIstnieje(parafiaSchema.parse(dane)), plik).toBe(true);
+    }
+  });
+
+  it('rekord ze zdjęciem wskazującym nieistniejący plik nie przechodzi testu danych', () => {
+    expect(
+      zdjecieIstnieje({ zdjecie: { plik: 'nieistniejacy-plik-testowy.jpg' } }),
+    ).toBe(false);
   });
 });

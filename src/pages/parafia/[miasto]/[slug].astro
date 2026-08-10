@@ -67,6 +67,17 @@ const zdjeciaProfilu = glosy.flatMap((glos) =>
   <div class="kicker wrap">Profil</div>
   <section class="wrap">
     <div class="sheet">
+      {
+        data.zdjecie && (
+          <figure class="wizytowka">
+            <img src={`/wizytowki/${data.zdjecie.plik}`} alt={data.zdjecie.alt} />
+            <figcaption>
+              fot. {data.zdjecie.autor} · {data.zdjecie.licencja} ·{' '}
+              <a href={data.zdjecie.zrodloUrl}>Wikimedia Commons</a>
+            </figcaption>
+          </figure>
+        )
+      }
       <div class="profile-top">
         <div>
           <div class="denom">Parafia {data.wyznanie} · {data.miasto}</div>

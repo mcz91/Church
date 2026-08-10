@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Św. Anny i Joachima",
+  "zdjecie": {
+    "plik": "sw-anny-i-joachima.jpg",
+    "alt": "kościół św. Anny i Joachima przy ul. Suchej w Gdańsku Letnicy",
+    "autor": "Artur Andrzej",
+    "licencja": "CC0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Anny_i_Joachima.JPG",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",

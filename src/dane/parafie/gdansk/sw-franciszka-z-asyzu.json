@@ -1,5 +1,13 @@
 {
   "nazwa": "Parafia pw. Św. Franciszka z Asyżu",
+  "zdjecie": {
+    "plik": "sw-franciszka-z-asyzu.jpg",
+    "alt": "kościół św. Franciszka z Asyżu przy ul. Kartuskiej w Gdańsku Siedlcach",
+    "autor": "Artur Andrzej",
+    "licencja": "CC0",
+    "zrodloUrl": "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bci%C3%B3%C5%82_pw_%C5%9Aw._Franciszka_z_Asy%C5%BCu_w_Gda%C5%84sku.JPG",
+    "dataPobrania": "2026-08-10"
+  },
   "wyznanie": "rzymskokatolicka",
   "miasto": "Gdańsk",
   "miastoSlug": "gdansk",
