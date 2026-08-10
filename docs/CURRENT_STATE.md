@@ -88,7 +88,12 @@ Kroki wymagające kont operatora wylicza `README.md`, sekcja
 buildu): https://curly-recipe-bde5.dontfolditpl.workers.dev — czyta
 się wszystko; formularze głosów i zgłoszeń czekają na uruchomienie
 serwisu zapisu; wizytówki z `CHURCH-6` pojawią się na niej po
-ponownym wgraniu buildu. Pozostają: integracja publikacji (Git albo
-token), serwis zapisu + Brevo, decyzja o pilotażu przy pokryciu 43,1%
-oraz odbiór estetyczny `CHURCH-1`–`CHURCH-6` („ślicznie" ocenia
-operator).
+ponownym wgraniu buildu. Kontrakt
+[`CHURCH-7` — szlif „subtelny wow"](13-kontrakt-CHURCH-7.md)
+(strony miast, filtry faktów, wybór pary, `og:image` z wizytówek przy
+`SITE_URL`, tryb ciemny tokenami, arkusz druku, zdyscyplinowany ruch,
+stopka zaufania, 404) jest napisany na żądanie operatora z 2026-08-10
+— **czeka na akt zatwierdzenia**. Pozostają: integracja publikacji
+(Git albo token), serwis zapisu + Brevo, decyzja o pilotażu przy
+pokryciu 43,1% oraz odbiór estetyczny `CHURCH-1`–`CHURCH-6`
+(„ślicznie" ocenia operator).

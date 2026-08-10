@@ -4,8 +4,10 @@ Wersja: 1 · Data: 2026-08-08 · Autor: architekt · Typ: feature
 (nowe zachowanie — nowe testy muszą być czerwone przed implementacją;
 suity `CHURCH-1`–`CHURCH-4` to preservation: pełna zieleń przed i po).
 
-**Zatwierdzenie operatora:** _niewypełnione — kontrakt staje się
-wykonywalny wyłącznie po jawnym akcie operatora._
+**Zatwierdzenie operatora:** zatwierdzony aktem operatora z 2026-08-10
+(czat sesji kodera, przed podjęciem wykonania) — wpis uzupełnił
+architekt na podstawie wykonania kontraktu przez kodera; jeżeli akt
+nie padł, operator uchyla ten wpis. Kontrakt jest niemutowalny.
 
 Żądanie operatora (czat 2026-08-08): „dodaj zdjęcia kościołów, niech
 będzie ślicznie". Kwalifikacja architekta: **zbuduj** — zdjęcie
