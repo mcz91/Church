@@ -64,6 +64,38 @@ Mapka na karcie parafii składa się z czterech kafelków OpenStreetMap
 leżących w repo (`public/mapki/`), a ujemne marginesy ustawiają punkt
 parafii na środku kadru — bez skryptu i bez zasobu z obcej domeny.
 
+### Najprostsza droga do działających głosów
+
+Cztery kroki na własnym komputerze; nic nie kosztuje i nie wymaga
+zakładania kont poza tym, które już masz w Cloudflare.
+
+```bash
+npm ci
+npm run serwis:konfiguracja -- twoj@adres.pl   # generuje serwer/.env
+npm run serwis                                  # serwis słucha na :8788
+```
+
+W drugim oknie terminala wystaw go na świat tunelem Cloudflare
+(instalacja: `cloudflared` ze strony Cloudflare):
+
+```bash
+cloudflared tunnel --url http://localhost:8788
+```
+
+Tunel wypisze adres w rodzaju `https://cos-tam.trycloudflare.com` —
+to jest publiczny adres serwisu. Przebuduj witrynę tak, żeby formularze
+wiedziały, dokąd wysyłać, i wgraj ją ponownie:
+
+```bash
+PUBLIC_ZAPIS_URL=https://cos-tam.trycloudflare.com \
+SITE_URL=https://koscioly.pages.dev npm run build
+```
+
+Ograniczenie tej drogi: głosy przychodzą tylko wtedy, gdy Twój komputer
+jest włączony, a darmowy tunel dostaje nowy adres po każdym
+uruchomieniu. Do pilotażu wystarczy; do stałego działania potrzebna jest
+maszyna działająca bez przerwy (punkt 3 sekcji „Wdrożenie").
+
 **Bez działającego serwisu zapisu formularze nic nie zapiszą.** Strony
 są statyczne, a adres serwisu wchodzi do nich przy buildzie ze zmiennej
 `PUBLIC_ZAPIS_URL`; gdy jej nie ma, w HTML ląduje deweloperskie
