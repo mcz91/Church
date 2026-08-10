@@ -4,7 +4,8 @@ import Bazowy from '../layouts/Bazowy.astro';
 import Kropki from '../components/Kropki.astro';
 import { glosyParafii, policzAgregaty } from '../lib/agregaty';
 import { liczbaZPrzecinkiem, odmianaGlosow } from '../lib/glosy';
-import { wyrozniki } from '../lib/parafie';
+import { godzinyPewne } from '../lib/msze';
+import { CECHY, cechyParafii, wyrozniki } from '../lib/parafie';
 import { rankingMiejski } from '../lib/ranking';
 import type { Ranking } from '../lib/ranking';
 
@@ -31,6 +32,21 @@ const miasta: Grupa[] = [...new Map(parafie.map((p) => [p.data.miastoSlug, p.dat
     };
   });
 const wedlugSluga = new Map(parafie.map((p) => [p.data.slug, p.data]));
+
+// Do filtrowania po stronie przeglądarki jadą wyłącznie godziny pewne
+// — pozycje z zastrzeżeniem sezonowym odpadają już tutaj, więc żadna
+// wyszukiwarka nie może pokazać godziny, której źródło nie potwierdza
+// na dziś. Pełna wartość ze źródłem zostaje na karcie parafii.
+const filtrowalne = new Map(
+  parafie.map((p) => [
+    p.data.slug,
+    {
+      cechy: cechyParafii(p.data).join(' '),
+      niedziela: godzinyPewne(p.data.osie.mszeNiedziela?.wartosc ?? '').pewne.join(','),
+      tydzien: godzinyPewne(p.data.osie.mszeTydzien?.wartosc ?? '').pewne.join(','),
+    },
+  ]),
+);
 ---
 
 <Bazowy
@@ -45,13 +61,57 @@ const wedlugSluga = new Map(parafie.map((p) => [p.data.slug, p.data]));
     </nav>
   </section>
 
+  <section class="wrap filtry" id="filtry" aria-label="Zawężenie listy parafii" hidden>
+    <div class="filtry-grupa">
+      <span class="kicker" id="filtr-czas">Msza niedługo</span>
+      <div class="chipsy" role="group" aria-labelledby="filtr-czas">
+        {
+          [
+            [0, 'dowolna pora'],
+            [30, 'w 30 minut'],
+            [60, 'w godzinę'],
+            [120, 'w 2 godziny'],
+          ].map(([minuty, etykieta]) => (
+            <label class="chip">
+              <input type="radio" name="okno" value={String(minuty)} checked={minuty === 0} />
+              <span>{etykieta}</span>
+            </label>
+          ))
+        }
+      </div>
+    </div>
+    <div class="filtry-grupa">
+      <span class="kicker" id="filtr-cechy">Czego szukasz</span>
+      <div class="chipsy" role="group" aria-labelledby="filtr-cechy">
+        {
+          Object.entries(CECHY).map(([klucz, etykieta]) => (
+            <label class="chip">
+              <input type="checkbox" name="cecha" value={klucz} />
+              <span>{etykieta}</span>
+            </label>
+          ))
+        }
+      </div>
+    </div>
+    <p class="filtry-nota">
+      „Niedługo" liczy z porządku podanego przez parafię, wobec czasu na Twoim
+      urządzeniu — bez pozycji z zastrzeżeniem sezonowym, których nie da się
+      rozstrzygnąć na dziś. Pełny porządek ze źródłem jest na karcie parafii.
+    </p>
+  </section>
+
   {
     miasta.map((m) => (
       <section class="wrap miasto" id={`miasto-${m.slug}`} aria-label={`Parafie — ${m.miasto}`}>
         <h2 class="miasto-tytul">{m.miasto}</h2>
         <div class="list">
           {m.parafie.map((p) => (
-            <div class="row">
+            <div
+              class="row"
+              data-cechy={filtrowalne.get(p.data.slug)!.cechy}
+              data-nd={filtrowalne.get(p.data.slug)!.niedziela}
+              data-tyg={filtrowalne.get(p.data.slug)!.tydzien}
+            >
               {p.data.zdjecie && (
                 <img
                   class="mini"
@@ -71,11 +131,13 @@ const wedlugSluga = new Map(parafie.map((p) => [p.data.slug, p.data]));
                 </div>
               </div>
               <div class="aside">
+                <div class="wkrotce" hidden />
                 <div class="facts">{wyrozniki(p.data).join(' · ')}</div>
               </div>
             </div>
           ))}
         </div>
+        <p class="pusto" hidden>Żadna parafia w tym mieście nie pasuje do wybranych filtrów.</p>
 
         {m.ranking && (
           <div class="rank">
@@ -125,3 +187,63 @@ const wedlugSluga = new Map(parafie.map((p) => [p.data.slug, p.data]));
     ))
   }
 </Bazowy>
+
+<script>
+  import { wkrotce } from '../lib/msze';
+
+  // Panel jest ukryty w HTML i odsłania go dopiero skrypt: bez
+  // JavaScriptu nie ma martwych kontrolek, a pełna lista parafii jest
+  // w dokumencie tak czy inaczej (wymóg czytelności bez JS).
+  const panel = document.getElementById('filtry');
+  if (panel) {
+    panel.hidden = false;
+    const miasta = [...document.querySelectorAll<HTMLElement>('.miasto')];
+
+    const odmianaMinut = (n: number): string => {
+      if (n === 1) return 'minutę';
+      if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) return 'minuty';
+      return 'minut';
+    };
+
+    const odswiez = (): void => {
+      const okno = Number(panel.querySelector<HTMLInputElement>('input[name="okno"]:checked')?.value ?? 0);
+      const szukane = [...panel.querySelectorAll<HTMLInputElement>('input[name="cecha"]:checked')].map(
+        (pole) => pole.value,
+      );
+      const teraz = new Date();
+      const minuty = teraz.getHours() * 60 + teraz.getMinutes();
+      const porzadek = teraz.getDay() === 0 ? 'nd' : 'tyg';
+
+      for (const miasto of miasta) {
+        let widoczne = 0;
+        for (const wiersz of miasto.querySelectorAll<HTMLElement>('.row')) {
+          const znacznik = wiersz.querySelector<HTMLElement>('.wkrotce')!;
+          znacznik.hidden = true;
+          const cechy = (wiersz.dataset.cechy ?? '').split(' ');
+          let pasuje = szukane.every((cecha) => cechy.includes(cecha));
+
+          if (pasuje && okno > 0) {
+            const godziny = (wiersz.dataset[porzadek] ?? '').split(',').filter(Boolean);
+            const najblizsza = wkrotce(godziny, minuty, okno)[0];
+            pasuje = Boolean(najblizsza);
+            if (najblizsza) {
+              znacznik.textContent =
+                najblizsza.za === 0
+                  ? `msza ${najblizsza.godzina} — właśnie się zaczyna`
+                  : `msza ${najblizsza.godzina} — za ${najblizsza.za} ${odmianaMinut(najblizsza.za)}`;
+              znacznik.hidden = false;
+            }
+          }
+
+          wiersz.hidden = !pasuje;
+          if (pasuje) widoczne += 1;
+        }
+        const pusto = miasto.querySelector<HTMLElement>('.pusto');
+        if (pusto) pusto.hidden = widoczne > 0;
+      }
+    };
+
+    panel.addEventListener('change', odswiez);
+    odswiez();
+  }
+</script>

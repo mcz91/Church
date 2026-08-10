@@ -31,6 +31,17 @@ npm run verify
 
 Podgląd lokalny: `npm run dev`.
 
+Zawężanie listy startowej: panel nad listą pozwala wybrać porę („msza
+niedługo": 30 minut, godzina, 2 godziny) i cechy z faktów (msza
+z udziałem dzieci, msza dla młodzieży, spowiedź poza mszą). Godziny do
+wyszukiwarki wydobywa [`src/lib/msze.ts`](src/lib/msze.ts) z zapisu
+porządku mszy i **bierze wyłącznie pozycje pewne** — dopisek sezonowy,
+inny dzień albo zdanie negujące („w wakacje nie ma Mszy o 12:00")
+unieważniają godzinę, więc parafia po prostu nie pojawia się w wynikach
+zamiast pokazać godzinę zgadniętą. Panel jest ukryty w HTML i odsłania
+go dopiero skrypt: bez JavaScriptu nie ma martwych kontrolek, a pełna
+lista parafii jest w dokumencie zawsze.
+
 Serwis zapisu głosów (deweloperski): `npm run serwis` — wymaga zmiennych
 środowiskowych z [`serwer/.env.example`](serwer/.env.example); magic linki
 trafiają na konsolę, dopóki dostawca e-mail nie jest rozstrzygnięty.

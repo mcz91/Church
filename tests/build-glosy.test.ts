@@ -240,6 +240,27 @@ describe('wielomiastowość w buildzie', () => {
   });
 });
 
+describe('zawężanie listy startowej w buildzie', () => {
+  it('panel filtrów jest w dokumencie, ale ukryty do czasu włączenia skryptem', () => {
+    const start = html.get('/index.html') ?? '';
+    expect(start).toMatch(/<section[^>]*id="filtry"[^>]*hidden/);
+    expect(start).toContain('Msza z udziałem dzieci');
+    expect(start).toContain('Spowiedź poza mszą');
+  });
+
+  it('wiersz niesie pewne godziny mszy do filtrowania po stronie przeglądarki', () => {
+    const start = html.get('/index.html') ?? '';
+    expect(start).toContain('data-nd="9:00,11:00"');
+  });
+
+  it('pełna lista parafii jest w HTML niezależnie od filtrów', () => {
+    const start = html.get('/index.html') ?? '';
+    for (const nazwa of ['Parafia Testowa Alfa', 'Parafia Testowa Beta', 'Parafia Testowa Delta']) {
+      expect(start).toContain(nazwa);
+    }
+  });
+});
+
 describe('zgłoszenie błędu faktu w buildzie', () => {
   it('każda karta parafii ma link „zgłoś błąd" do formularza serwisu', () => {
     for (const slug of ['parafia-testowa-alfa', 'parafia-testowa-gamma', 'parafia-testowa-delta']) {

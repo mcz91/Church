@@ -34,16 +34,18 @@ Protokół (koszt czytelnika > koszt pisarza):
   pole zatwierdzenia w `docs/11` wciąż „niewypełnione" — uzupełnia
   architekt (koder ma zakaz zapisu `docs/11`); akt odnotowany też
   w commicie wykonawczym.
+- 2026-08-10 operator: „proceed" po sprzeciwie kodera = zgoda na część
+  żądania („msza niedługo" + filtry) bez kontraktu; reszta (odległość,
+  mapka, wymiary `kazanie`/znaczniki) czeka na architekta — propozycja
+  kryteriów i znalezisk inżynierskich padła w czacie 2026-08-10
+  i nie jest nigdzie zapisana w repo.
 - 2026-08-08 operator: BRAK-i wdrożeniowe rozstrzygnięte aktem („tak.
   wykonaj" + „działaj"): konfiguracja darmowa, szczegóły delegowane na
   kodera (Cloudflare Pages, GitHub Actions, Brevo, VM/tunel, subdomena);
   wymóg kontraktu dla tego zakresu uchylony — architekt może doszyć
   dokument post factum; kroki kontowe operatora: README „Wdrożenie".
-- 2026-08-08 operator (czat, kolejno): „buduj" bez ProductBriefu PM-a;
-  estetyka niedewocyjna → „poetycko piękne" → rozbudowa opinii →
-  zatwierdzenie CHURCH-1 z odrzuceniem fontu — wszystko utrwalone
-  w `docs/01`–`03`; makiety v1–v6 żyły w artefakcie czatu, wzorcem
-  wykonawczym jest opis tokenów w `docs/01`, nie plik makiety.
+- 2026-08-08 operator: makiety v1–v6 żyły wyłącznie w artefakcie czatu —
+  wzorcem wykonawczym jest opis tokenów w `docs/01`, nie plik makiety.
 
 ## PUŁAPKI — koszt odkrycia > koszt linii
 
@@ -66,10 +68,8 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## DŁUG — DebtRecords czekające na kontrakt
 
-- 2026-08-08 koder: zdjęcia publikowane są kopiowane bajt w bajt — bez
-  miniatur, kadrowania i `srcset` (`docs/10`, decyzje techniczne);
-  przy realnym wolumenie zdjęć wraca jako osobna decyzja (waga stron
-  profilu rośnie z każdym opublikowanym obrazem).
+- 2026-08-08 koder: zdjęcia bez miniatur, kadrowania i `srcset`
+  (`docs/10`) — wraca jako decyzja przy realnym wolumenie obrazów.
 - 2026-08-08 koder: obraz Open Graph (`og:image`) wymaga absolutnego
   URL, więc czeka na decyzję o domenie (`BRAK` w `docs/01`); strony
   mają tytuł i opis OG zgodnie z akceptacją 6 `CHURCH-1`.

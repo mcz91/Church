@@ -79,6 +79,30 @@ export const parafiaSchema = z.object({
 
 export type Parafia = z.infer<typeof parafiaSchema>;
 
+// Zamknięta lista cech do filtrowania listy startowej. Każda wynika
+// wyłącznie z osi faktów (a więc ma źródło w rekordzie) — filtr nigdy
+// nie sięga do ocen. Osie puste w danych (dostępność, transmisja,
+// muzyka) nie dostają filtra, żeby nie budować martwego sterowania.
+export const CECHY = {
+  dzieci: 'Msza z udziałem dzieci',
+  mlodziez: 'Msza dla młodzieży',
+  spowiedz: 'Spowiedź poza mszą',
+} as const;
+
+export type Cecha = keyof typeof CECHY;
+
+export function cechyParafii(parafia: { osie: Partial<Record<Os, Fakt>> }): Cecha[] {
+  const opisMszy = [parafia.osie.mszeNiedziela?.wartosc, parafia.osie.mszeSzczegolne?.wartosc]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+  const cechy: Cecha[] = [];
+  if (/dzieci|przedszkol|rodzinn/.test(opisMszy)) cechy.push('dzieci');
+  if (/młodzież|młodzieżow|studen/.test(opisMszy)) cechy.push('mlodziez');
+  if (parafia.osie.spowiedz) cechy.push('spowiedz');
+  return cechy;
+}
+
 function odmianaMszy(n: number): string {
   if (n === 1) return 'msza';
   if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) return 'msze';

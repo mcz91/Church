@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { wyrozniki } from '../src/lib/parafie';
+import { cechyParafii, wyrozniki } from '../src/lib/parafie';
 
 // Dane jawnie fikcyjne — nazwy testowe, niemylące się z realnymi wspólnotami.
 const fakt = (wartosc: string) => ({
@@ -51,5 +51,24 @@ describe('wyróżniki karty parafii', () => {
       },
     });
     expect(w.length).toBeLessThanOrEqual(3);
+  });
+});
+
+describe('cechy parafii do filtrowania', () => {
+  it('czyta udział dzieci i młodzieży także z porządku niedzielnego', () => {
+    const c = cechyParafii({
+      osie: { mszeNiedziela: fakt('8:00 · 11:00 (dla dzieci) · 18:00 (dla młodzieży)') },
+    });
+    expect(c).toContain('dzieci');
+    expect(c).toContain('mlodziez');
+  });
+
+  it('sygnalizuje spowiedź wyłącznie wtedy, gdy oś istnieje', () => {
+    expect(cechyParafii({ osie: { spowiedz: fakt('w piątki 17:00–18:00') } })).toContain('spowiedz');
+    expect(cechyParafii({ osie: { mszeNiedziela: fakt('8:00') } })).not.toContain('spowiedz');
+  });
+
+  it('parafia bez sygnałów nie dostaje żadnej cechy', () => {
+    expect(cechyParafii({ osie: { mszeNiedziela: fakt('8:00 · 10:00') } })).toEqual([]);
   });
 });

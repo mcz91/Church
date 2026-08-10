@@ -5,7 +5,19 @@ linkują tutaj zamiast utrzymywać własne kopie.
 
 ## Etap
 
-**6 — zdjęcia-wizytówki budynków (`CHURCH-6`) wykonane** (akt
+**7 — wyszukiwanie „msza niedługo" i filtry listy startowej wykonane**
+(akt operatora „proceed", czat 2026-08-10 — po sprzeciwie kodera, że
+reszta żądania wymaga dokumentów architekta). Panel nad listą zawęża
+parafie po porze najbliższej mszy (30 min / godzina / 2 godziny) i po
+cechach wyprowadzonych z faktów (dzieci, młodzież, spowiedź poza mszą).
+Godziny wydobywa [`src/lib/msze.ts`](../src/lib/msze.ts) i bierze
+wyłącznie pozycje pewne: dopisek sezonowy, inny dzień albo zdanie
+negujące unieważniają godzinę, a parafia nie pojawia się w wynikach
+zamiast pokazać godzinę zgadniętą. Pokrycie na danych realnych: pewne
+godziny niedzielne ma **28 z 28** parafii, tygodniowe **26 z 28**.
+Panel jest progresywnym wzbogaceniem — bez JavaScriptu pełna lista
+zostaje w dokumencie.
+Wcześniej: **6 — zdjęcia-wizytówki budynków (`CHURCH-6`)** (akt
 zatwierdzenia: czat 2026-08-09 „zatwierdz"). Każda parafia może mieć
 jedno redakcyjne zdjęcie budynku wyłącznie z Wikimedia Commons:
 schemat `zdjecie` (plik, alt, autor, licencja z zamkniętej listy
@@ -71,6 +83,12 @@ z parafiami albo kolejne iteracje po zmianach na stronach.
   ([dokument 12](12-decyzja-wdrozenie-darmowe.md)); otwarte: własna
   domena (blokuje `og:image`), analityka odwiedzin, formalny start
   pilotażu;
+- „niedaleko" (odległość), mapka na karcie i nowe kryteria ocen
+  (`kazanie`, znaczniki) **nie weszły**: wymagają współrzędnych ze
+  źródłem, odwrócenia decyzji o mapie z [dokumentu 01](01-decyzja-mvp-znajdz-swoje-miejsce.md)
+  („mapa interaktywna — odłóż") oraz nowej wersji
+  [dokumentu 03](03-model-glosow-ocen-i-rankingu.md) (wymiary głosu to
+  typ zamknięty) — to praca architekta, nie kodera;
 - registry kontraktów nie istnieje; kontrakty w treści `docs/02/05/08/09/10`;
 - ocena estetyczna („ślicznie") należy do operatora przy odbiorze.
 
