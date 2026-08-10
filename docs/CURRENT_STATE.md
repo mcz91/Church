@@ -106,9 +106,11 @@ z parafiami albo kolejne iteracje po zmianach na stronach.
   agregacji po wyznaniu, ranking per miasto z progiem i fail-closed,
   `approved` ustawia wyłącznie człowiek, LLM poza ścieżką prawdy;
 - wdrożenie w konfiguracji darmowej rozstrzygnięte
-  ([dokument 12](12-decyzja-wdrozenie-darmowe.md)); otwarte: własna
-  domena (blokuje `og:image`), analityka odwiedzin, formalny start
-  pilotażu;
+  ([dokument 12](12-decyzja-wdrozenie-darmowe.md)); adres publiczny
+  wybrany aktem operatora (czat 2026-08-10): **koscioly.pages.dev**,
+  darmowy projekt Cloudflare Pages — `og:image` i sitemapa działają,
+  gdy build dostanie `SITE_URL`. Otwarte: własna domena `.pl` (płatna),
+  analityka odwiedzin, formalny start pilotażu;
 - głos wciąż wymaga sześciu ocen (ogólna + pięć wymiarów, wszystkie
   obowiązkowe) — to największe pozostałe tarcie; uczynienie wymiarów
   opcjonalnymi zmienia model głosu z

@@ -31,8 +31,10 @@ npm run verify
 
 Podgląd lokalny: `npm run dev`.
 
-Adres publiczny: build czyta `SITE_URL` (np.
-`SITE_URL=https://przyklad.pl npm run build`). Dopiero z nim strony
+Adres publiczny: **https://koscioly.pages.dev** (wybór operatora,
+czat 2026-08-10; projekt Cloudflare Pages o nazwie `koscioly`). Build
+czyta go ze zmiennej `SITE_URL`
+(`SITE_URL=https://koscioly.pages.dev npm run build`). Dopiero z nim strony
 emitują `og:url`, absolutny `og:image` (profil — wizytówka parafii,
 porównanie — wizytówka pierwszej alfabetycznie parafii pary) oraz
 `sitemap.xml` i `robots.txt`. Bez `SITE_URL` build przechodzi i po
@@ -125,8 +127,10 @@ chodzą na zarchiwizowanych fixture'ach):
    (b) ręczna — połącz repozytorium w panelu Cloudflare (Connect to
    Git; build `npm ci && npm run build`, katalog `dist`). W obu drogach
    zmienna `PUBLIC_ZAPIS_URL` wskazuje publiczny adres serwisu zapisu.
-   Witryna działa pod subdomeną `*.pages.dev` (własna domena — osobna
-   decyzja; odblokuje też `og:image`).
+   Projekt Pages nazywa się `koscioly`, więc witryna stoi pod
+   `https://koscioly.pages.dev`. W GitHub → Settings → Variables
+   ustaw `SITE_URL` na ten adres, żeby workflow budował z podglądami
+   i sitemapą. Własna domena (`.pl`) pozostaje osobną, płatną decyzją.
 2. **Odświeżanie danych — GitHub Actions**: workflow
    [`odswiez-dane.yml`](.github/workflows/odswiez-dane.yml) raz dziennie
    uruchamia `dane:odswiez` i otwiera pull request ze zmianami — jego

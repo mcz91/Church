@@ -24,13 +24,14 @@ jobs:
       - run: npm run build
         env:
           PUBLIC_ZAPIS_URL: ${{ vars.PUBLIC_ZAPIS_URL }}
+          SITE_URL: ${{ vars.SITE_URL }}
       - name: Utwórz projekt Pages (pierwszy raz; potem bez skutku)
-        run: npx wrangler pages project create church --production-branch=main || true
+        run: npx wrangler pages project create koscioly --production-branch=main || true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       - name: Wgraj build
-        run: npx wrangler pages deploy dist --project-name=church
+        run: npx wrangler pages deploy dist --project-name=koscioly
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
