@@ -31,6 +31,22 @@ npm run verify
 
 Podgląd lokalny: `npm run dev`.
 
+Adres publiczny: build czyta `SITE_URL` (np.
+`SITE_URL=https://przyklad.pl npm run build`). Dopiero z nim strony
+emitują `og:url`, absolutny `og:image` (profil — wizytówka parafii,
+porównanie — wizytówka pierwszej alfabetycznie parafii pary) oraz
+`sitemap.xml` i `robots.txt`. Bez `SITE_URL` build przechodzi i po
+prostu ich nie ma: lepiej bez podglądu niż z adresem zmyślonym.
+Zmienna `PUBLIC_ZAPIS_URL` wskazuje publiczny adres serwisu zapisu.
+
+Struktura adresów: start jest bramą z kartami miast, `/<miasto>`
+(np. `/torun`) daje listę parafii z rankingiem i zawężaniem, a
+`/<miasto>/<filtr>` (np. `/torun/msza-z-dziecmi`) to statyczna strona
+faktu — powstaje wyłącznie dla osi, dla której w mieście jest choć
+jedna parafia z danymi. Slugi filtrów pochodzą z zamkniętej mapy
+w [`src/lib/filtry.ts`](src/lib/filtry.ts), nie z etykiet, więc zmiana
+napisu nie psuje cudzych linków.
+
 Zawężanie listy startowej: panel nad listą pozwala wybrać porę („msza
 niedługo": 30 minut, godzina, 2 godziny) i cechy z faktów (msza
 z udziałem dzieci, msza dla młodzieży, spowiedź poza mszą). Godziny do

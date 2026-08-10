@@ -22,6 +22,11 @@ export async function getStaticPaths() {
 }
 
 const { a, b } = Astro.props;
+
+// Podgląd pary bierze wizytówkę parafii pierwszej alfabetycznie — ta
+// sama reguła co w kanonicznym adresie porównania, więc obraz nie
+// zależy od kolejności wejścia.
+const pierwszaAlfabetycznie = [a.data, b.data].sort((x, y) => x.slug.localeCompare(y.slug))[0];
 const { zDanymi, bezDanych } = podzialOsi(a.data.osie, b.data.osie);
 const trwalyLink = Astro.url.pathname.replace(/\/$/, '');
 
@@ -31,6 +36,7 @@ const malaLitera = (etykieta: string) => etykieta.charAt(0).toLowerCase() + etyk
 <Bazowy
   tytul={`${a.data.nazwa} i ${b.data.nazwa} obok siebie — ${a.data.miasto}`}
   opis={`${a.data.nazwa} oraz ${b.data.nazwa} (${a.data.miasto}): fakty obok siebie, każdy ze źródłem i datą odczytu.`}
+  obraz={pierwszaAlfabetycznie.zdjecie ? `/wizytowki/${pierwszaAlfabetycznie.zdjecie.plik}` : undefined}
 >
   <div class="kicker wrap">Porównanie</div>
   <section class="wrap">

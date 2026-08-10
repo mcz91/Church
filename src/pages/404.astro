@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Bazowy from '../layouts/Bazowy.astro';
+
+const parafie = await getCollection('parafie');
+const miasta = [...new Map(parafie.map((p) => [p.data.miastoSlug, p.data.miasto]))].sort(
+  ([, a], [, b]) => a.localeCompare(b, 'pl'),
+);
+---
+
+<Bazowy
+  tytul="Nie ma takiej strony — Church"
+  opis="Pod tym adresem nic nie ma. Wejścia do miast prowadzą do list parafii."
+>
+  <section class="hero wrap">
+    <h1>Nie ma takiej strony</h1>
+    <p class="sub">
+      Adres nie prowadzi do żadnej parafii ani zestawienia. Możliwe, że coś się w nim
+      pogubiło po drodze.
+    </p>
+  </section>
+
+  <section class="wrap bramy" aria-label="Wybór miasta">
+    {
+      miasta.map(([slug, nazwa]) => (
+        <a class="brama" href={`/${slug}`}>
+          <span class="brama-tresc">
+            <b class="brama-nazwa">{nazwa}</b>
+            <span class="brama-ile">lista parafii</span>
+          </span>
+        </a>
+      ))
+    }
+  </section>
+</Bazowy>

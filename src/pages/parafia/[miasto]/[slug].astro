@@ -63,6 +63,7 @@ const zdjeciaProfilu = glosy.flatMap((glos) =>
 <Bazowy
   tytul={`${data.nazwa} — ${data.miasto}`}
   opis={`Fakty o parafii: ${data.nazwa}, ${data.miasto}. ${osieZDanymi.map((os) => OSIE[os]).join(', ')} — każdy fakt ze źródłem i datą odczytu.`}
+  obraz={data.zdjecie ? `/wizytowki/${data.zdjecie.plik}` : undefined}
 >
   <div class="kicker wrap">Profil</div>
   <section class="wrap">
@@ -126,7 +127,7 @@ const zdjeciaProfilu = glosy.flatMap((glos) =>
         }
       </dl>
       <p class="zglos">
-        Dostrzegasz błąd w faktach? <a href={`${zapisUrl}/blad/${data.miastoSlug}/${data.slug}`}>Zgłoś błąd</a>
+        Dostrzegasz błąd w faktach? <a href={`${zapisUrl}/blad/${data.miastoSlug}/${data.slug}`}>Zgłoś błąd</a>{' '}
         — poprawka ma pierwszeństwo.
       </p>
 

@@ -20,10 +20,8 @@ Protokół (koszt czytelnika > koszt pisarza):
   z zewnątrz — curly-recipe-bde5.dontfolditpl.workers.dev; aktualizacja
   wymaga ręcznej paczki do czasu integracji Git/tokenu; formularze
   głosów czekają na serwis zapisu (etap B).
-- 2026-08-10 arch: zieleń `CHURCH-6` zweryfikowana niezależnie
-  (182 testy); przegląd „wow, ale subtelnie" wykonany na zrzutach
-  żywego buildu — projekt w kontrakcie `CHURCH-7` (`docs/13`), czeka
-  na akt operatora.
+- 2026-08-10 koder: `CHURCH-7` wykonany na gałęzi; pole zatwierdzenia
+  w `docs/13` wciąż „niewypełnione" — uzupełnia architekt.
 
 ## WĄTKI — otwarte, bez kontraktu
 
@@ -36,10 +34,14 @@ Protokół (koszt czytelnika > koszt pisarza):
   pole zatwierdzenia w `docs/11` wciąż „niewypełnione" — uzupełnia
   architekt (koder ma zakaz zapisu `docs/11`); akt odnotowany też
   w commicie wykonawczym.
-- 2026-08-10 operator: „proceed" oraz „uprosc dodawanie komentow, zero
-  tarcia" = zgoda na pracę bez kontraktu („msza niedługo", filtry,
-  jednoprzebiegowy głos); odległość, mapka i wymiary `kazanie`/znaczniki
-  czekają na architekta — propozycja kryteriów padła tylko w czacie.
+- 2026-08-10 operator: akt dla `CHURCH-7` padł jako „Wez pod uwage
+  sugestie. zaplanuj, wykonaj"; wcześniej „proceed" i „zero tarcia"
+  jako zgoda bez kontraktu. Odległość, mapka i wymiary
+  `kazanie`/znaczniki nadal czekają na architekta — propozycja
+  kryteriów padła tylko w czacie.
+- 2026-08-10 koder: „JS wyłącznie dla formularza pary" wzięte jako
+  zakaz DOKŁADANIA nowego JS, nie nakaz usunięcia panelu „msza
+  niedługo" (`docs/13` dopuszcza JS dla filtrowania). Do potwierdzenia.
 - 2026-08-08 operator: BRAK-i wdrożeniowe rozstrzygnięte aktem („tak.
   wykonaj" + „działaj"): konfiguracja darmowa, szczegóły delegowane na
   kodera (Cloudflare Pages, GitHub Actions, Brevo, VM/tunel, subdomena);
@@ -71,8 +73,6 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 - 2026-08-08 koder: zdjęcia bez miniatur, kadrowania i `srcset`
   (`docs/10`) — wraca jako decyzja przy realnym wolumenie obrazów.
-- 2026-08-08 koder: `og:image` wymaga absolutnego URL — `CHURCH-7`
-  akc. 5 rozwiązuje to przez `SITE_URL`, dopóki nie ma domeny.
 - 2026-08-08 koder: mianownik listy bazowej Gdańska bez innych wyznań —
   sprawdzone 2026-08-08 (docs/09 acc. 7): luteranie.pl/parafie to
   wyszukiwarka-mapa bez statycznej listy miejskiej, bg.cerkiew.pl nie

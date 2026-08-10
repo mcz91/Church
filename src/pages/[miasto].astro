@@ -1,0 +1,299 @@
+---
+import { getCollection } from 'astro:content';
+import Bazowy from '../layouts/Bazowy.astro';
+import Kropki from '../components/Kropki.astro';
+import { glosyParafii, policzAgregaty } from '../lib/agregaty';
+import { liczbaZPrzecinkiem, odmianaGlosow } from '../lib/glosy';
+import { godzinyPewne } from '../lib/msze';
+import { CECHY, cechyParafii, wyrozniki } from '../lib/parafie';
+import { FILTRY, parafieFiltru } from '../lib/filtry';
+import { rankingMiejski } from '../lib/ranking';
+
+export async function getStaticPaths() {
+  const parafie = await getCollection('parafie');
+  const miasta = [...new Map(parafie.map((p) => [p.data.miastoSlug, p.data.miasto]))];
+  return miasta.map(([slug, nazwa]) => ({
+    params: { miasto: slug },
+    props: { miastoSlug: slug, miastoNazwa: nazwa },
+  }));
+}
+
+const { miastoSlug, miastoNazwa } = Astro.props;
+
+const wszystkie = await getCollection('parafie');
+const parafie = wszystkie
+  .filter((p) => p.data.miastoSlug === miastoSlug)
+  .sort((a, b) => a.data.nazwa.localeCompare(b.data.nazwa, 'pl'));
+const glosy = (await getCollection('glosy')).map((g) => g.data);
+
+const ranking = rankingMiejski(
+  parafie.map((p) => {
+    const agregaty = policzAgregaty(glosyParafii(p.data.slug, glosy));
+    return { slug: p.data.slug, ocena: agregaty?.ogolna ?? 0, liczba: agregaty?.liczba ?? 0 };
+  }),
+);
+const wedlugSluga = new Map(parafie.map((p) => [p.data.slug, p.data]));
+
+const dane = parafie.map((p) => p.data);
+const dostepneFiltry = Object.entries(FILTRY).filter(
+  ([klucz]) => parafieFiltru(dane, klucz as keyof typeof FILTRY).length > 0,
+);
+
+const filtrowalne = new Map(
+  parafie.map((p) => [
+    p.data.slug,
+    {
+      cechy: cechyParafii(p.data).join(' '),
+      niedziela: godzinyPewne(p.data.osie.mszeNiedziela?.wartosc ?? '').pewne.join(','),
+      tydzien: godzinyPewne(p.data.osie.mszeTydzien?.wartosc ?? '').pewne.join(','),
+    },
+  ]),
+);
+---
+
+<Bazowy
+  tytul={`Parafie — ${miastoNazwa} | Church`}
+  opis={`Parafie w mieście ${miastoNazwa}: godziny mszy, spowiedź, msze z dziećmi — same fakty, każdy ze źródłem i datą odczytu.`}
+>
+  <section class="hero wrap">
+    <h1>{miastoNazwa}</h1>
+    <p class="sub">
+      {parafie.length} {parafie.length === 1 ? 'parafia' : 'parafie'} — godziny mszy, spowiedź,
+      msze z dziećmi, każdy fakt ze źródłem.
+    </p>
+  </section>
+
+  <section class="wrap filtry" id="filtry" aria-label="Zawężenie listy parafii" hidden>
+    <div class="filtry-grupa">
+      <span class="kicker" id="filtr-czas">Msza niedługo</span>
+      <div class="chipsy" role="group" aria-labelledby="filtr-czas">
+        {
+          [
+            [0, 'dowolna pora'],
+            [30, 'w 30 minut'],
+            [60, 'w godzinę'],
+            [120, 'w 2 godziny'],
+          ].map(([minuty, etykieta]) => (
+            <label class="chip">
+              <input type="radio" name="okno" value={String(minuty)} checked={minuty === 0} />
+              <span>{etykieta}</span>
+            </label>
+          ))
+        }
+      </div>
+    </div>
+    <div class="filtry-grupa">
+      <span class="kicker" id="filtr-cechy">Czego szukasz</span>
+      <div class="chipsy" role="group" aria-labelledby="filtr-cechy">
+        {
+          Object.entries(CECHY).map(([klucz, etykieta]) => (
+            <label class="chip">
+              <input type="checkbox" name="cecha" value={klucz} />
+              <span>{etykieta}</span>
+            </label>
+          ))
+        }
+      </div>
+    </div>
+    <p class="filtry-nota">
+      „Niedługo" liczy z porządku podanego przez parafię, wobec czasu na Twoim
+      urządzeniu — bez pozycji z zastrzeżeniem sezonowym, których nie da się
+      rozstrzygnąć na dziś. Pełny porządek ze źródłem jest na karcie parafii.
+    </p>
+  </section>
+
+  <section class="wrap miasto" aria-label={`Parafie — ${miastoNazwa}`}>
+    <div class="list">
+      {
+        parafie.map((p) => (
+          <div
+            class="row"
+            data-cechy={filtrowalne.get(p.data.slug)!.cechy}
+            data-nd={filtrowalne.get(p.data.slug)!.niedziela}
+            data-tyg={filtrowalne.get(p.data.slug)!.tydzien}
+          >
+            {p.data.zdjecie && (
+              <img class="mini" src={`/wizytowki/${p.data.zdjecie.plik}`} alt="" loading="lazy" />
+            )}
+            <div class="who">
+              <b>
+                <a class="name" href={`/parafia/${p.data.miastoSlug}/${p.data.slug}`}>
+                  {p.data.nazwa}
+                </a>
+              </b>
+              <div class="sub">
+                {p.data.wyznanie} · {p.data.adres.wartosc}
+              </div>
+            </div>
+            <div class="aside">
+              <div class="wkrotce" hidden />
+              <div class="facts">{wyrozniki(p.data).join(' · ')}</div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <p class="pusto" hidden>Żadna parafia w tym mieście nie pasuje do wybranych filtrów.</p>
+
+    {
+      dostepneFiltry.length > 0 && (
+        <p class="wskazowki">
+          Zobacz też:{' '}
+          {dostepneFiltry.map(([, filtr], i) => (
+            <>
+              {i > 0 && ' · '}
+              <a href={`/${miastoSlug}/${filtr.slug}`}>{filtr.etykieta.toLowerCase()}</a>
+            </>
+          ))}
+        </p>
+      )
+    }
+
+    <form class="para" id="para" action="/porownaj" method="get" hidden>
+      <span class="kicker">Zestaw dwie parafie</span>
+      <div class="para-pola">
+        <label>
+          <span class="ukryte">Pierwsza parafia</span>
+          <select name="a">
+            {parafie.map((p) => <option value={p.data.slug}>{p.data.nazwa}</option>)}
+          </select>
+        </label>
+        <label>
+          <span class="ukryte">Druga parafia</span>
+          <select name="b">
+            {parafie.map((p) => <option value={p.data.slug}>{p.data.nazwa}</option>)}
+          </select>
+        </label>
+        <button type="submit">Porównaj</button>
+      </div>
+    </form>
+
+    {
+      ranking && (
+        <div class="rank">
+          <div class="kicker">Z głosów — {miastoNazwa}</div>
+          <div class="sheet">
+            <ol class="rank-lista">
+              {ranking.pozycje.map((pozycja) => {
+                const daneParafii = wedlugSluga.get(pozycja.slug)!;
+                return (
+                  <li>
+                    <span class="poz">{pozycja.pozycja}</span>
+                    <div class="who">
+                      <b>
+                        <a
+                          class="name"
+                          href={`/parafia/${daneParafii.miastoSlug}/${daneParafii.slug}`}
+                        >
+                          {daneParafii.nazwa}
+                        </a>
+                      </b>
+                      <div class="sub">
+                        {daneParafii.wyznanie} · {daneParafii.adres.wartosc}
+                      </div>
+                    </div>
+                    <div class="sc">
+                      <Kropki ocena={pozycja.ocena} />
+                      <span class="score-num">{liczbaZPrzecinkiem(pozycja.ocena)}</span>
+                      <small>
+                        {pozycja.liczba} {odmianaGlosow(pozycja.liczba)}
+                      </small>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+            <p class="foot">
+              Kolejność wynika wyłącznie z głosów o doświadczeniu — nie ocenia wiary ani wyznania.
+              {ranking.zaMaloGlosow.length > 0 && (
+                <>
+                  {' '}
+                  Za mało głosów, by wejść do zestawienia:{' '}
+                  {ranking.zaMaloGlosow.map((slug) => wedlugSluga.get(slug)!.nazwa).join(', ')}.
+                </>
+              )}
+            </p>
+          </div>
+        </div>
+      )
+    }
+  </section>
+</Bazowy>
+
+<script>
+  import { wkrotce } from '../lib/msze';
+
+  // Panel i formularz pary są ukryte w HTML i odsłania je dopiero
+  // skrypt: bez JavaScriptu nie ma martwych kontrolek, a pełna lista
+  // parafii jest w dokumencie tak czy inaczej.
+  const panel = document.getElementById('filtry');
+  if (panel) {
+    panel.hidden = false;
+    const miasta = [...document.querySelectorAll<HTMLElement>('.miasto')];
+
+    const odmianaMinut = (n: number): string => {
+      if (n === 1) return 'minutę';
+      if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) return 'minuty';
+      return 'minut';
+    };
+
+    const odswiez = (): void => {
+      const okno = Number(
+        panel.querySelector<HTMLInputElement>('input[name="okno"]:checked')?.value ?? 0,
+      );
+      const szukane = [
+        ...panel.querySelectorAll<HTMLInputElement>('input[name="cecha"]:checked'),
+      ].map((pole) => pole.value);
+      const teraz = new Date();
+      const minuty = teraz.getHours() * 60 + teraz.getMinutes();
+      const porzadek = teraz.getDay() === 0 ? 'nd' : 'tyg';
+
+      for (const miasto of miasta) {
+        let widoczne = 0;
+        for (const wiersz of miasto.querySelectorAll<HTMLElement>('.row')) {
+          const znacznik = wiersz.querySelector<HTMLElement>('.wkrotce')!;
+          znacznik.hidden = true;
+          const cechy = (wiersz.dataset.cechy ?? '').split(' ');
+          let pasuje = szukane.every((cecha) => cechy.includes(cecha));
+
+          if (pasuje && okno > 0) {
+            const godziny = (wiersz.dataset[porzadek] ?? '').split(',').filter(Boolean);
+            const najblizsza = wkrotce(godziny, minuty, okno)[0];
+            pasuje = Boolean(najblizsza);
+            if (najblizsza) {
+              znacznik.textContent =
+                najblizsza.za === 0
+                  ? `msza ${najblizsza.godzina} — właśnie się zaczyna`
+                  : `msza ${najblizsza.godzina} — za ${najblizsza.za} ${odmianaMinut(najblizsza.za)}`;
+              znacznik.hidden = false;
+            }
+          }
+
+          wiersz.hidden = !pasuje;
+          if (pasuje) widoczne += 1;
+        }
+        const pusto = miasto.querySelector<HTMLElement>('.pusto');
+        if (pusto) pusto.hidden = widoczne > 0;
+      }
+    };
+
+    panel.addEventListener('change', odswiez);
+    odswiez();
+  }
+
+  // Adres porównania jest kanoniczny (slugi po alfabecie), więc para
+  // składa się po stronie przeglądarki, a nie przez zapytanie GET.
+  const para = document.getElementById('para') as HTMLFormElement | null;
+  if (para) {
+    para.hidden = false;
+    para.addEventListener('submit', (zdarzenie) => {
+      zdarzenie.preventDefault();
+      const dane = new FormData(para);
+      const a = String(dane.get('a') ?? '');
+      const b = String(dane.get('b') ?? '');
+      if (!a || !b || a === b) return;
+      const [pierwszy, drugi] = [a, b].sort();
+      window.location.href = `/porownaj/${pierwszy}-vs-${drugi}`;
+    });
+  }
+</script>

@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import Bazowy from '../../layouts/Bazowy.astro';
+import { FILTRY, parafieFiltru } from '../../lib/filtry';
+import type { Os } from '../../lib/parafie';
+
+export async function getStaticPaths() {
+  const wszystkie = (await getCollection('parafie')).map((p) => p.data);
+  const miasta = [...new Map(wszystkie.map((p) => [p.miastoSlug, p.miasto]))];
+  return miasta.flatMap(([miastoSlug, miastoNazwa]) => {
+    const wMiescie = wszystkie
+      .filter((p) => p.miastoSlug === miastoSlug)
+      .sort((a, b) => a.nazwa.localeCompare(b.nazwa, 'pl'));
+    // Oś bez ani jednej parafii z faktem nie dostaje strony — pusty
+    // filtr obiecywałby dane, których nie ma.
+    return (Object.keys(FILTRY) as Os[])
+      .map((os) => ({ os, pasujace: parafieFiltru(wMiescie, os) }))
+      .filter(({ pasujace }) => pasujace.length > 0)
+      .map(({ os, pasujace }) => ({
+        params: { miasto: miastoSlug, filtr: FILTRY[os].slug },
+        props: { os, miastoNazwa, miastoSlug, pasujace },
+      }));
+  });
+}
+
+const { os, miastoNazwa, miastoSlug, pasujace } = Astro.props;
+const filtr = FILTRY[os as Os];
+---
+
+<Bazowy
+  tytul={`${filtr.etykieta} — ${miastoNazwa} | Church`}
+  opis={`Parafie w mieście ${miastoNazwa}, dla których źródło podaje: ${filtr.etykieta.toLowerCase()}. Każda wartość ze źródłem i datą odczytu.`}
+>
+  <section class="hero wrap">
+    <div class="kicker">{miastoNazwa}</div>
+    <h1>{filtr.etykieta}</h1>
+    <p class="sub">
+      {pasujace.length}{' '}
+      {pasujace.length === 1 ? 'parafia, dla której' : 'parafie, dla których'} źródło podaje tę
+      informację. Pozostałe nie znaczą „nie ma" — znaczą „źródło milczy".
+    </p>
+  </section>
+
+  <section class="wrap miasto" aria-label={`${filtr.etykieta} — ${miastoNazwa}`}>
+    <div class="list">
+      {
+        pasujace.map((p) => (
+          <div class="row">
+            {p.zdjecie && (
+              <img class="mini" src={`/wizytowki/${p.zdjecie.plik}`} alt="" loading="lazy" />
+            )}
+            <div class="who">
+              <b>
+                <a class="name" href={`/parafia/${p.miastoSlug}/${p.slug}`}>
+                  {p.nazwa}
+                </a>
+              </b>
+              <div class="sub">{p.osie[os as Os]!.wartosc}</div>
+              <div class="zrodlo">
+                Źródło: <a href={p.osie[os as Os]!.zrodlo.url}>{p.osie[os as Os]!.zrodlo.nazwa}</a>,
+                odczyt {p.osie[os as Os]!.dataOdczytu}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <p class="wskazowki"><a href={`/${miastoSlug}`}>← wszystkie parafie w mieście {miastoNazwa}</a></p>
+  </section>
+</Bazowy>

@@ -5,8 +5,19 @@ linkują tutaj zamiast utrzymywać własne kopie.
 
 ## Etap
 
-**6 — zdjęcia-wizytówki budynków (`CHURCH-6`)** to ostatni **kontrakt**
-zamknięty w repo. Ponad nim leży jedna zmiana **bez kontraktu**:
+**7 — szlif „subtelny wow" (`CHURCH-7`) wykonany** (akt operatora:
+czat 2026-08-10, „Wez pod uwage sugestie. zaplanuj, wykonaj"; pole
+zatwierdzenia w [dokumencie 13](13-kontrakt-CHURCH-7.md) uzupełnia
+architekt). Start jest bramą z kartami miast, listy przeniosły się na
+`/torun` i `/gdansk`, każda oś faktu z danymi ma statyczną stronę
+`/<miasto>/<filtr>`, ze strony miasta można zestawić dowolną parę,
+`SITE_URL` odblokowuje `og:url`, absolutny `og:image` z wizytówek oraz
+`sitemap.xml` i `robots.txt`, doszedł tryb ciemny tokenami (bez JS),
+arkusz druku, stopka z datą ostatniej zmiany danych liczoną z plików,
+strona 404 i zdyscyplinowany ruch (długie listy wyłaniają się jako
+całość, przejście między stronami deklaratywne `@view-transition`).
+Wcześniej: **6 — zdjęcia-wizytówki budynków (`CHURCH-6`)**. Ponad
+etapem 6 leżała też zmiana **bez kontraktu**:
 wyszukiwanie „msza niedługo" i zawężanie listy startowej (akt operatora
 „proceed", czat 2026-08-10, po sprzeciwie kodera, że reszta żądania
 wymaga dokumentów architekta). Nie myl jej z `CHURCH-7` — ten numer
@@ -26,10 +37,11 @@ oceny, tekst, pseudonim i adres idą w jednym formularzu, a link
 potwierdzający przychodzi po wysłaniu; głos od niepotwierdzonego adresu
 czeka jako `pending` i moderator nie może go przyjąć (409), więc
 bezpieczniki dokumentu 03 zostają nienaruszone.
-**Kolizja do rozstrzygnięcia przy `CHURCH-7`:**
-jego akceptacja 3 planuje statyczne strony-filtry `/<miasto>/<filtr>`,
-a akceptacja 2 przenosi listę parafii ze startu na strony miast — panel
-trzeba będzie wtedy przenieść albo zastąpić.
+Zapowiadana kolizja z `CHURCH-7` została rozstrzygnięta w tym
+kontrakcie: panel przeniósł się na strony miast razem z listą, a
+statyczne strony-filtry stanęły obok niego — panel odpowiada na
+pytanie „gdzie zdążę teraz", strony-filtry są trwałymi adresami do
+udostępniania.
 
 Etap 6 (akt zatwierdzenia: czat 2026-08-09 „zatwierdz") dał zdjęcia
 budynków. Każda parafia może mieć

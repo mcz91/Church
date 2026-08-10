@@ -38,3 +38,24 @@ describe('kontrast tokenu --muted', () => {
     expect(kontrast(token('--muted'), token('--bg'))).toBeGreaterThanOrEqual(4.5);
   });
 });
+
+// Para nocna (aneks tokenów w kontrakcie CHURCH-7, akceptacja 6).
+// Wartości nocne trzymamy jako osobne tokeny z literalnym zapisem hex,
+// a tryb ciemny wyłącznie je podstawia — dzięki temu obie palety są
+// mierzalne tym samym testem, bez czytania reguł media.
+describe('kontrast palety nocnej', () => {
+  it('przygaszony tekst ma co najmniej 4,5:1 na obu nocnych tłach', () => {
+    expect(kontrast(token('--noc-muted'), token('--noc-bg'))).toBeGreaterThanOrEqual(4.5);
+    expect(kontrast(token('--noc-muted'), token('--noc-surface'))).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it('atrament ma co najmniej 4,5:1 na obu nocnych tłach', () => {
+    expect(kontrast(token('--noc-ink'), token('--noc-bg'))).toBeGreaterThanOrEqual(4.5);
+    expect(kontrast(token('--noc-ink'), token('--noc-surface'))).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it('zieleń rozjaśniona do czytelności na ciemnym tle', () => {
+    expect(kontrast(token('--noc-accent'), token('--noc-bg'))).toBeGreaterThanOrEqual(4.5);
+    expect(kontrast(token('--noc-accent'), token('--noc-surface'))).toBeGreaterThanOrEqual(4.5);
+  });
+});

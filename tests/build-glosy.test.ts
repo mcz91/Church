@@ -189,7 +189,9 @@ describe('agregaty w buildzie', () => {
 
 describe('ranking w buildzie', () => {
   it('zestawia wyłącznie parafie nad progiem; poniżej progu — „za mało głosów" bez pozycji', () => {
-    const start = html.get('/index.html') ?? '';
+    // Ranking przeniósł się ze startu na stronę miasta (CHURCH-7 akc. 2);
+    // próg i komunikat o zbyt małej liczbie głosów bez zmian.
+    const start = html.get('/miasto-przykladowe/index.html') ?? '';
     const sekcja = /<ol class="rank-lista">[\s\S]*?<\/ol>/.exec(start)?.[0] ?? '';
     expect(sekcja).toContain('Parafia Testowa Alfa');
     expect(sekcja).not.toContain('Parafia Testowa Beta');
@@ -218,11 +220,12 @@ describe('bezpieczniki w buildzie', () => {
 
 describe('wielomiastowość w buildzie', () => {
   it('strona startowa daje wybór miasta linkami działającymi bez JavaScriptu', () => {
+    // Brama prowadzi teraz do osobnych stron miast zamiast do kotwic
+    // na jednej długiej stronie; wybór nadal jest zwykłym linkiem.
     const start = html.get('/index.html') ?? '';
-    expect(start).toContain('href="#miasto-miasto-przykladowe"');
-    expect(start).toContain('href="#miasto-miasto-probne"');
-    expect(start).toContain('id="miasto-miasto-probne"');
-    expect(start).toContain('Parafia Testowa Delta');
+    expect(start).toContain('href="/miasto-przykladowe"');
+    expect(start).toContain('href="/miasto-probne"');
+    expect(html.get('/miasto-probne/index.html') ?? '').toContain('Parafia Testowa Delta');
   });
 
   it('porównania istnieją wyłącznie w obrębie jednego miasta', () => {
@@ -235,28 +238,100 @@ describe('wielomiastowość w buildzie', () => {
   });
 
   it('ranking renderuje się per miasto — miasto bez progu nie ma zestawienia', () => {
-    const start = html.get('/index.html') ?? '';
-    expect(start.split('<ol class="rank-lista">')).toHaveLength(2);
+    expect((html.get('/miasto-przykladowe/index.html') ?? '').split('<ol class="rank-lista">')).toHaveLength(2);
+    expect(html.get('/miasto-probne/index.html') ?? '').not.toContain('<ol class="rank-lista">');
   });
 });
 
-describe('zawężanie listy startowej w buildzie', () => {
-  it('panel filtrów jest w dokumencie, ale ukryty do czasu włączenia skryptem', () => {
+describe('strony miast i brama startowa', () => {
+  it('każde miasto ma własną stronę z listą parafii i rankingiem', () => {
+    expect(html.has('/miasto-przykladowe/index.html')).toBe(true);
+    expect(html.has('/miasto-probne/index.html')).toBe(true);
+    const przykladowe = html.get('/miasto-przykladowe/index.html') ?? '';
+    expect(przykladowe).toContain('Parafia Testowa Alfa');
+    expect(przykladowe).toContain('Parafia Testowa Beta');
+    expect(przykladowe).not.toContain('Parafia Testowa Delta');
+    expect(przykladowe).toContain('<ol class="rank-lista">');
+  });
+
+  it('start jest bramą: karty miast z liczbą parafii, bez pełnej listy i rankingu', () => {
     const start = html.get('/index.html') ?? '';
-    expect(start).toMatch(/<section[^>]*id="filtry"[^>]*hidden/);
-    expect(start).toContain('Msza z udziałem dzieci');
-    expect(start).toContain('Spowiedź poza mszą');
+    expect(start).toContain('href="/miasto-przykladowe"');
+    expect(start).toContain('href="/miasto-probne"');
+    expect(start).toContain('3 parafie');
+    expect(start).toContain('1 parafia');
+    expect(start).not.toContain('<ol class="rank-lista">');
+  });
+
+  it('stare kotwice miast nadal prowadzą do celu na stronie startowej', () => {
+    const start = html.get('/index.html') ?? '';
+    expect(start).toContain('id="miasto-miasto-przykladowe"');
+    expect(start).toContain('id="miasto-miasto-probne"');
+  });
+});
+
+describe('statyczne strony-filtry faktów', () => {
+  it('oś z danymi dostaje stronę filtru z wartościami i źródłami', () => {
+    expect(html.has('/miasto-przykladowe/msze-w-niedziele/index.html')).toBe(true);
+    const strona = html.get('/miasto-przykladowe/msze-w-niedziele/index.html') ?? '';
+    expect(strona).toContain('Parafia Testowa Alfa');
+    expect(strona).toContain('9:00 · 11:00');
+    expect(strona).toContain('strona testowa');
+  });
+
+  it('oś bez ani jednej parafii z faktem nie generuje strony', () => {
+    for (const slug of ['spowiedz-poza-msza', 'transmisja-online', 'dostepnosc', 'muzyka']) {
+      expect(html.has(`/miasto-przykladowe/${slug}/index.html`)).toBe(false);
+    }
+  });
+
+  it('strona miasta prowadzi do istniejących filtrów i tylko do nich', () => {
+    const miasto = html.get('/miasto-przykladowe/index.html') ?? '';
+    expect(miasto).toContain('href="/miasto-przykladowe/msze-w-niedziele"');
+    expect(miasto).not.toContain('href="/miasto-przykladowe/transmisja-online"');
+  });
+});
+
+describe('wybór pary i strona 404', () => {
+  it('formularz pary nie jest renderowany jako działający bez JavaScriptu', () => {
+    const miasto = html.get('/miasto-przykladowe/index.html') ?? '';
+    expect(miasto).toMatch(/<form[^>]*id="para"[^>]*hidden/);
+  });
+
+  it('bez SITE_URL build przechodzi i nie emituje adresów absolutnych', () => {
+    for (const tresc of html.values()) {
+      expect(tresc).not.toContain('og:url');
+      expect(tresc).not.toContain('og:image');
+    }
+    expect(html.has('/sitemap.xml')).toBe(false);
+  });
+
+  it('strona 404 istnieje i prowadzi do miast', () => {
+    expect(html.has('/404.html')).toBe(true);
+    const strona = html.get('/404.html') ?? '';
+    expect(strona).toContain('href="/miasto-przykladowe"');
+    expect(strona).toContain('href="/miasto-probne"');
+  });
+});
+
+// Panel zawężania mieszka od CHURCH-7 na stronie miasta — start jest
+// bramą, a lista parafii przeniosła się razem z nim.
+describe('zawężanie listy na stronie miasta', () => {
+  const miasto = () => html.get('/miasto-przykladowe/index.html') ?? '';
+
+  it('panel filtrów jest w dokumencie, ale ukryty do czasu włączenia skryptem', () => {
+    expect(miasto()).toMatch(/<section[^>]*id="filtry"[^>]*hidden/);
+    expect(miasto()).toContain('Msza z udziałem dzieci');
+    expect(miasto()).toContain('Spowiedź poza mszą');
   });
 
   it('wiersz niesie pewne godziny mszy do filtrowania po stronie przeglądarki', () => {
-    const start = html.get('/index.html') ?? '';
-    expect(start).toContain('data-nd="9:00,11:00"');
+    expect(miasto()).toContain('data-nd="9:00,11:00"');
   });
 
-  it('pełna lista parafii jest w HTML niezależnie od filtrów', () => {
-    const start = html.get('/index.html') ?? '';
-    for (const nazwa of ['Parafia Testowa Alfa', 'Parafia Testowa Beta', 'Parafia Testowa Delta']) {
-      expect(start).toContain(nazwa);
+  it('pełna lista parafii miasta jest w HTML niezależnie od filtrów', () => {
+    for (const nazwa of ['Parafia Testowa Alfa', 'Parafia Testowa Beta', 'Parafia Testowa Gamma']) {
+      expect(miasto()).toContain(nazwa);
     }
   });
 });
@@ -285,10 +360,10 @@ describe('wizytówka kościoła w buildzie', () => {
     expect(profil('parafia-testowa-gamma')).not.toContain('class="wizytowka"');
   });
 
-  it('lista startowa pokazuje miniaturę przy wierszu parafii ze zdjęciem', () => {
-    const start = html.get('/index.html') ?? '';
-    expect(start).toContain('class="mini"');
-    expect(start).toContain('/wizytowki/parafia-testowa-alfa.png');
+  it('lista miasta pokazuje miniaturę przy wierszu parafii ze zdjęciem', () => {
+    const miasto = html.get('/miasto-przykladowe/index.html') ?? '';
+    expect(miasto).toContain('class="mini"');
+    expect(miasto).toContain('/wizytowki/parafia-testowa-alfa.png');
   });
 });
 
