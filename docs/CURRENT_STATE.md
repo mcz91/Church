@@ -5,9 +5,13 @@ linkują tutaj zamiast utrzymywać własne kopie.
 
 ## Etap
 
-**7 — wyszukiwanie „msza niedługo" i filtry listy startowej wykonane**
-(akt operatora „proceed", czat 2026-08-10 — po sprzeciwie kodera, że
-reszta żądania wymaga dokumentów architekta). Panel nad listą zawęża
+**6 — zdjęcia-wizytówki budynków (`CHURCH-6`)** to ostatni **kontrakt**
+zamknięty w repo. Ponad nim leży jedna zmiana **bez kontraktu**:
+wyszukiwanie „msza niedługo" i zawężanie listy startowej (akt operatora
+„proceed", czat 2026-08-10, po sprzeciwie kodera, że reszta żądania
+wymaga dokumentów architekta). Nie myl jej z `CHURCH-7` — ten numer
+należy do niezatwierdzonego kontraktu szlifu
+([dokument 13](13-kontrakt-CHURCH-7.md)). Panel nad listą zawęża
 parafie po porze najbliższej mszy (30 min / godzina / 2 godziny) i po
 cechach wyprowadzonych z faktów (dzieci, młodzież, spowiedź poza mszą).
 Godziny wydobywa [`src/lib/msze.ts`](../src/lib/msze.ts) i bierze
@@ -16,9 +20,13 @@ negujące unieważniają godzinę, a parafia nie pojawia się w wynikach
 zamiast pokazać godzinę zgadniętą. Pokrycie na danych realnych: pewne
 godziny niedzielne ma **28 z 28** parafii, tygodniowe **26 z 28**.
 Panel jest progresywnym wzbogaceniem — bez JavaScriptu pełna lista
-zostaje w dokumencie.
-Wcześniej: **6 — zdjęcia-wizytówki budynków (`CHURCH-6`)** (akt
-zatwierdzenia: czat 2026-08-09 „zatwierdz"). Każda parafia może mieć
+zostaje w dokumencie. **Kolizja do rozstrzygnięcia przy `CHURCH-7`:**
+jego akceptacja 3 planuje statyczne strony-filtry `/<miasto>/<filtr>`,
+a akceptacja 2 przenosi listę parafii ze startu na strony miast — panel
+trzeba będzie wtedy przenieść albo zastąpić.
+
+Etap 6 (akt zatwierdzenia: czat 2026-08-09 „zatwierdz") dał zdjęcia
+budynków. Każda parafia może mieć
 jedno redakcyjne zdjęcie budynku wyłącznie z Wikimedia Commons:
 schemat `zdjecie` (plik, alt, autor, licencja z zamkniętej listy
 wolnych, URL strony pliku, data pobrania), kolejka
@@ -104,9 +112,10 @@ subdomena platformy (własna domena i `og:image` — nadal otwarte).
 Kroki wymagające kont operatora wylicza `README.md`, sekcja
 „Wdrożenie". Witryna statyczna jest ONLINE (2026-08-09, upload ręczny
 buildu): https://curly-recipe-bde5.dontfolditpl.workers.dev — czyta
-się wszystko; formularze głosów i zgłoszeń czekają na uruchomienie
-serwisu zapisu; wizytówki z `CHURCH-6` pojawią się na niej po
-ponownym wgraniu buildu. Kontrakt
+się wszystko, wizytówki `CHURCH-6` są na niej od 2026-08-10
+(sprawdzone z zewnątrz); formularze głosów i zgłoszeń czekają na
+uruchomienie serwisu zapisu, a każda kolejna zmiana wymaga ręcznego
+wgrania nowej paczki. Kontrakt
 [`CHURCH-7` — szlif „subtelny wow"](13-kontrakt-CHURCH-7.md)
 (strony miast, filtry faktów, wybór pary, `og:image` z wizytówek przy
 `SITE_URL`, tryb ciemny tokenami, arkusz druku, zdyscyplinowany ruch,

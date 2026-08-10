@@ -16,12 +16,11 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-10 koder: witryna ONLINE (upload ręczny buildu na Cloudflare
-  Workers Assets): curly-recipe-bde5.dontfolditpl.workers.dev;
-  aktualizacje wymagają nowej paczki, dopóki operator nie domknie
-  integracji Git/tokenu (obie drogi w repo) — wizytówki `CHURCH-6`
-  będą na żywej witrynie dopiero po ponownym wgraniu buildu;
-  formularze głosów czekają na serwis zapisu (etap B).
+- 2026-08-10 koder: witryna ONLINE wraz z wizytówkami `CHURCH-6` —
+  curly-recipe-bde5.dontfolditpl.workers.dev, sprawdzone z zewnątrz
+  2026-08-10 (26 miniatur na starcie, obrazy 200); każda aktualizacja
+  wymaga nowej paczki, dopóki operator nie domknie integracji
+  Git/tokenu; formularze głosów czekają na serwis zapisu (etap B).
 - 2026-08-10 arch: zieleń `CHURCH-6` zweryfikowana niezależnie
   (182 testy); przegląd „wow, ale subtelnie" wykonany na zrzutach
   żywego buildu — projekt w kontrakcie `CHURCH-7` (`docs/13`), czeka
@@ -41,8 +40,7 @@ Protokół (koszt czytelnika > koszt pisarza):
 - 2026-08-10 operator: „proceed" po sprzeciwie kodera = zgoda na część
   żądania („msza niedługo" + filtry) bez kontraktu; reszta (odległość,
   mapka, wymiary `kazanie`/znaczniki) czeka na architekta — propozycja
-  kryteriów i znalezisk inżynierskich padła w czacie 2026-08-10
-  i nie jest nigdzie zapisana w repo.
+  kryteriów padła wyłącznie w czacie, repo jej nie zna.
 - 2026-08-08 operator: BRAK-i wdrożeniowe rozstrzygnięte aktem („tak.
   wykonaj" + „działaj"): konfiguracja darmowa, szczegóły delegowane na
   kodera (Cloudflare Pages, GitHub Actions, Brevo, VM/tunel, subdomena);
@@ -74,9 +72,8 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 - 2026-08-08 koder: zdjęcia bez miniatur, kadrowania i `srcset`
   (`docs/10`) — wraca jako decyzja przy realnym wolumenie obrazów.
-- 2026-08-08 koder: obraz Open Graph (`og:image`) wymaga absolutnego
-  URL, więc czeka na decyzję o domenie (`BRAK` w `docs/01`); strony
-  mają tytuł i opis OG zgodnie z akceptacją 6 `CHURCH-1`.
+- 2026-08-08 koder: `og:image` wymaga absolutnego URL — `CHURCH-7`
+  akc. 5 rozwiązuje to przez `SITE_URL`, dopóki nie ma domeny.
 - 2026-08-08 koder: mianownik listy bazowej Gdańska bez innych wyznań —
   sprawdzone 2026-08-08 (docs/09 acc. 7): luteranie.pl/parafie to
   wyszukiwarka-mapa bez statycznej listy miejskiej, bg.cerkiew.pl nie
