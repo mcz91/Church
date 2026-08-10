@@ -16,11 +16,10 @@ Protokół (koszt czytelnika > koszt pisarza):
 
 ## STAN — praca w locie
 
-- 2026-08-10 koder: witryna ONLINE wraz z wizytówkami `CHURCH-6` —
-  curly-recipe-bde5.dontfolditpl.workers.dev, sprawdzone z zewnątrz
-  2026-08-10 (26 miniatur na starcie, obrazy 200); każda aktualizacja
-  wymaga nowej paczki, dopóki operator nie domknie integracji
-  Git/tokenu; formularze głosów czekają na serwis zapisu (etap B).
+- 2026-08-10 koder: witryna ONLINE z wizytówkami `CHURCH-6`, sprawdzona
+  z zewnątrz — curly-recipe-bde5.dontfolditpl.workers.dev; aktualizacja
+  wymaga ręcznej paczki do czasu integracji Git/tokenu; formularze
+  głosów czekają na serwis zapisu (etap B).
 - 2026-08-10 arch: zieleń `CHURCH-6` zweryfikowana niezależnie
   (182 testy); przegląd „wow, ale subtelnie" wykonany na zrzutach
   żywego buildu — projekt w kontrakcie `CHURCH-7` (`docs/13`), czeka
