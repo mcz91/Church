@@ -22,6 +22,10 @@ Protokół (koszt czytelnika > koszt pisarza):
   integracji Git/tokenu (obie drogi w repo) — wizytówki `CHURCH-6`
   będą na żywej witrynie dopiero po ponownym wgraniu buildu;
   formularze głosów czekają na serwis zapisu (etap B).
+- 2026-08-10 arch: zieleń `CHURCH-6` zweryfikowana niezależnie
+  (182 testy); przegląd „wow, ale subtelnie" wykonany na zrzutach
+  żywego buildu — projekt w kontrakcie `CHURCH-7` (`docs/13`), czeka
+  na akt operatora.
 
 ## WĄTKI — otwarte, bez kontraktu
 
